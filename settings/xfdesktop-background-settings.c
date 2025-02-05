@@ -65,6 +65,8 @@ struct _XfdesktopBackgroundSettings {
 
     gboolean image_list_loaded;
 
+    GtkListStore *preview_model;
+
     GtkWidget *infobar;
     GtkWidget *infobar_label;
     GtkWidget *label_header;
@@ -109,7 +111,6 @@ typedef struct {
 
 typedef struct {
     GFileEnumerator *file_enumerator;
-    GtkListStore *ls;
     GtkTreeIter *selected_iter;
     gchar *last_image;
     gchar *file_path;
@@ -351,10 +352,10 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                    gchar *thumb_file,
                    XfdesktopBackgroundSettings *background_settings)
 {
-    GtkTreeModel *model = gtk_icon_view_get_model(GTK_ICON_VIEW(background_settings->image_iconview));
-    GtkTreeIter iter;
-    PreviewData *pdata = NULL;
+    g_return_if_fail(GTK_IS_LIST_STORE(background_settings->preview_model));
+    GtkTreeModel *model = GTK_TREE_MODEL(background_settings->preview_model);
 
+    GtkTreeIter iter;
     if (gtk_tree_model_get_iter_first(model, &iter)) {
         do {
             gchar *filename = NULL;
@@ -363,11 +364,11 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
             /* We're looking for the src_file */
             if (g_strcmp0(filename, src_file) == 0) {
                 /* Add the thumb_file to it */
-                gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                gtk_list_store_set(background_settings->preview_model, &iter,
                                    COL_THUMBNAIL, thumb_file, -1);
 
-                pdata = g_new0(PreviewData, 1);
-                pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
+                PreviewData *pdata = g_new0(PreviewData, 1);
+                pdata->model = g_object_ref(model);
                 pdata->iter = gtk_tree_iter_copy(&iter);
                 pdata->pix = NULL;
                 pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(background_settings->image_iconview));
@@ -397,7 +398,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
         /* Thumbnailing not possible, add it to the queue to be loaded manually */
         PreviewData *pdata;
         pdata = g_new0(PreviewData, 1);
-        pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
+        pdata->model = g_object_ref(model);
         pdata->iter = gtk_tree_iter_copy(iter);
         pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(background_settings->image_iconview));
 
@@ -422,7 +423,7 @@ image_list_compare(GtkTreeModel *model, const gchar *a, GtkTreeIter *b) {
 }
 
 static GtkTreeIter *
-xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
+xfdesktop_settings_image_iconview_add(GtkListStore *model,
                                       GFile *file,
                                       GFileInfo *info,
                                       XfdesktopBackgroundSettings *background_settings)
@@ -452,26 +453,26 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
 
                 /* Insert sorted */
                 GtkTreeIter search_iter;
-                gboolean valid = gtk_tree_model_get_iter_first(model, &search_iter);
+                gboolean valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(model), &search_iter);
                 gboolean found = FALSE;
                 gint position = 0;
                 while (valid && !found) {
-                    if (image_list_compare(model, collate_key, &search_iter) <= 0) {
+                    if (image_list_compare(GTK_TREE_MODEL(model), collate_key, &search_iter) <= 0) {
                         found = TRUE;
                     } else {
-                        valid = gtk_tree_model_iter_next(model, &search_iter);
+                        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(model), &search_iter);
                         position++;
                     }
                 }
 
-                gtk_list_store_insert_with_values(GTK_LIST_STORE(model),
+                gtk_list_store_insert_with_values(model,
                                                   &iter,
                                                   position,
                                                   COL_NAME, name_markup,
                                                   COL_FILENAME, g_file_peek_path(file),
                                                   COL_COLLATE_KEY, collate_key,
                                                   -1);
-                xfdesktop_settings_queue_preview(model, &iter, background_settings);
+                xfdesktop_settings_queue_preview(GTK_TREE_MODEL(model), &iter, background_settings);
 
                 added = TRUE;
 
@@ -517,27 +518,28 @@ dir_data_free(AddDirData *dir_data) {
 static void
 cb_enumerator_file_ready(GObject *source, GAsyncResult *res, gpointer user_data) {
     AddDirData *dir_data = user_data;
+    XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
     GError *error = NULL;
     GList *file_infos = g_file_enumerator_next_files_finish(G_FILE_ENUMERATOR(source), res, &error);
     if (error != NULL) {
         if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
-            XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
             xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
                                    error,
                                    _("Unable to load images from folder \"%s\""),
                                    g_file_peek_path(background_settings->selected_folder));
             g_error_free(error);
         }
+        xfdesktop_thumbnailer_dequeue_all_thumbnails(dir_data->background_settings->thumbnailer);
+        g_clear_object(&background_settings->preview_model);
         dir_data_free(dir_data);
     } else if (file_infos == NULL) {
-        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
-
         gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview),
-                                GTK_TREE_MODEL(dir_data->ls));
+                                GTK_TREE_MODEL(background_settings->preview_model));
 
         if (dir_data->selected_iter != NULL) {
-            GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
+            GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(background_settings->preview_model),
+                                                        dir_data->selected_iter);
             gtk_icon_view_select_path(GTK_ICON_VIEW(background_settings->image_iconview), path);
             gtk_tree_path_free(path);
         } else {
@@ -553,13 +555,11 @@ cb_enumerator_file_ready(GObject *source, GAsyncResult *res, gpointer user_data)
 
         dir_data_free(dir_data);
     } else {
-
-        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
         for (GList *l = file_infos; l != NULL; l = l->next) {
             GFileInfo *info = G_FILE_INFO(l->data);
             GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
 
-            GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls),
+            GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(background_settings->preview_model,
                                                                       file,
                                                                       info,
                                                                       background_settings);
@@ -589,30 +589,48 @@ static void
 xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer user_data) {
     TRACE("entering");
 
+    GFile *new_folder = G_FILE(source_object);
     XfdesktopBackgroundSettings *background_settings = user_data;
 
     GError *error = NULL;
-    GFileEnumerator *enumerator = g_file_enumerate_children_finish(background_settings->selected_folder,
+    GFileEnumerator *enumerator = g_file_enumerate_children_finish(new_folder,
                                                                    res,
                                                                    &error);
     if (enumerator == NULL) {
+        g_object_unref(new_folder);
+
+        if (background_settings->selected_folder != NULL) {
+            create_file_chooser_button(background_settings);
+            gtk_file_chooser_set_current_folder_file(GTK_FILE_CHOOSER(background_settings->btn_folder),
+                                                     background_settings->selected_folder,
+                                                     NULL);
+        }
+
         xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
                                error,
                                _("Unable to load images from folder \"%s\""),
                                g_file_peek_path(background_settings->selected_folder));
         g_error_free(error);
     } else {
+        if (background_settings->selected_folder != NULL) {
+            g_object_unref(background_settings->selected_folder);
+        }
+        background_settings->selected_folder = new_folder;
+
         AddDirData *dir_data = g_new0(AddDirData, 1);
         dir_data->background_settings = background_settings;
         dir_data->file_enumerator = enumerator;
 
-        dir_data->ls = gtk_list_store_new(N_COLS,
-                                          GDK_TYPE_PIXBUF,
-                                          CAIRO_GOBJECT_TYPE_SURFACE,
-                                          G_TYPE_STRING,
-                                          G_TYPE_STRING,
-                                          G_TYPE_STRING,
-                                          G_TYPE_STRING);
+        g_clear_object(&background_settings->preview_model);
+        gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview), NULL);
+
+        background_settings->preview_model = gtk_list_store_new(N_COLS,
+                                                                GDK_TYPE_PIXBUF,
+                                                                CAIRO_GOBJECT_TYPE_SURFACE,
+                                                                G_TYPE_STRING,
+                                                                G_TYPE_STRING,
+                                                                G_TYPE_STRING,
+                                                                G_TYPE_STRING);
 
         /* Get the last image/current image displayed so we can select it in the
          * icon view */
@@ -1000,17 +1018,12 @@ update_icon_view_model(XfdesktopBackgroundSettings *background_settings) {
 
     TRACE("folder changed to: %s", new_folder);
 
-    if (background_settings->selected_folder != NULL) {
-        g_object_unref(background_settings->selected_folder);
-    }
-    background_settings->selected_folder = g_file_new_for_path(new_folder);
-
     /* Stop any previous loading since something changed */
     stop_image_loading(background_settings);
 
     background_settings->cancel_enumeration = g_cancellable_new();
 
-    g_file_enumerate_children_async(background_settings->selected_folder,
+    g_file_enumerate_children_async(g_file_new_for_path(new_folder),
                                     XFDESKTOP_FILE_INFO_NAMESPACE,
                                     G_FILE_QUERY_INFO_NONE,
                                     G_PRIORITY_DEFAULT,
