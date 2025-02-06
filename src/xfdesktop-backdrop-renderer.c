@@ -516,12 +516,8 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
     } else if (bytes == 0) {
         g_input_stream_close(stream, NULL, NULL);
         g_object_unref(stream);
-        if (!gdk_pixbuf_loader_close(image_data->loader, &error)) {
-            image_data_error(image_data, error);
-            image_data_free(image_data);
-            g_error_free(error);
-        }
-    } else if (gdk_pixbuf_loader_write(image_data->loader, image_data->image_buffer, bytes, &error)) {
+        gdk_pixbuf_loader_close(image_data->loader, NULL);
+    } else if (gdk_pixbuf_loader_write(image_data->loader, image_data->image_buffer, bytes, NULL)) {
         g_input_stream_read_async(stream,
                                   image_data->image_buffer,
                                   XFCE_BACKDROP_BUFFER_SIZE,
@@ -532,9 +528,6 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
     } else {
         g_input_stream_close(stream, NULL, NULL);
         g_object_unref(stream);
-        image_data_error(image_data, error);
-        image_data_free(image_data);
-        g_error_free(error);
     }
 }
 
