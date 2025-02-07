@@ -26,13 +26,14 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include "common/xfdesktop-common.h"
 #include "xfdesktop-cell-renderer-icon-label.h"
 
 #define DEFAULT_ALIGNMENT                     PANGO_ALIGN_LEFT
 #define DEFAULT_ALIGN_SET                     FALSE
 #define DEFAULT_ELLIPSIZE                     PANGO_ELLIPSIZE_NONE
 #define DEFAULT_ELLIPSIZE_SET                 FALSE
-#define DEFAULT_SIZE_POINTS                   8
+#define DEFAULT_SIZE_POINTS                   DEFAULT_ICON_FONT_SIZE
 #define DEFAULT_SIZE_POINTS_SET               FALSE
 #define DEFAULT_SIZE                          (DEFAULT_SIZE_POINTS * PANGO_SCALE)
 #define DEFAULT_SIZE_SET                      FALSE
@@ -259,6 +260,8 @@ xfdesktop_cell_renderer_icon_label_init(XfdesktopCellRendererIconLabel *renderer
     renderer->ellipsize = DEFAULT_ELLIPSIZE;
     renderer->ellipsize_set = DEFAULT_ELLIPSIZE_SET;
     renderer->extra_attrs = NULL;
+    renderer->size_points = DEFAULT_SIZE_POINTS;
+    renderer->size_points_set = DEFAULT_SIZE_POINTS_SET;
     renderer->size = DEFAULT_SIZE;
     renderer->size_set = DEFAULT_SIZE_SET;
     renderer->text = NULL;
