@@ -44,7 +44,10 @@ GFile *xfdesktop_file_utils_next_new_file_name(GFile *file);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 GList *xfdesktop_file_utils_file_list_from_string(const gchar *string);
-gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);
+gchar *xfdesktop_file_utils_file_list_to_string(GList *list,
+                                                const gchar *prefix,
+                                                gboolean format_for_text,
+                                                gsize *len);
 gchar **xfdesktop_file_utils_file_list_to_uri_array(GList *file_list);
 void xfdesktop_file_utils_file_list_free(GList *file_list);
 

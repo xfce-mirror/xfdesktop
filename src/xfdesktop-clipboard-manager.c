@@ -467,46 +467,43 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
                                           gpointer          user_data)
 {
   XfdesktopClipboardManager *manager = XFDESKTOP_CLIPBOARD_MANAGER (user_data);
-  GList                  *file_list = NULL;
-  gchar                  *string_list;
-  gchar                  *data;
-  gchar                 **uris;
 
   g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
   g_return_if_fail (manager->clipboard == clipboard);
 
   /* determine the file list from the icon list */
-  file_list = xfdesktop_file_utils_file_icon_list_to_file_list (manager->files);
-
-  /* determine the string representation of the file list */
-  string_list = xfdesktop_file_utils_file_list_to_string (file_list);
+  GList *file_list = xfdesktop_file_utils_file_icon_list_to_file_list (manager->files);
 
   switch (target_info)
     {
-    case TARGET_TEXT_URI_LIST:
-      uris = xfdesktop_file_utils_file_list_to_uri_array (file_list);
+    case TARGET_TEXT_URI_LIST: {
+      gchar **uris = xfdesktop_file_utils_file_list_to_uri_array (file_list);
       gtk_selection_data_set_uris (selection_data, uris);
       g_strfreev (uris);
       break;
+    }
 
-    case TARGET_GNOME_COPIED_FILES:
-      data = g_strconcat (manager->files_cutted ? "cut\n" : "copy\n", string_list, NULL);
+    case TARGET_GNOME_COPIED_FILES: {
+      const gchar *prefix = manager->files_cutted ? "cut\n" : "copy\n";
+      gsize len = 0;
+      gchar *str = xfdesktop_file_utils_file_list_to_string(file_list, prefix, FALSE, &len);
       gtk_selection_data_set (selection_data,
                               gtk_selection_data_get_target(selection_data),
                               8,
-                              (guchar *) data,
-                              strlen (data));
-      g_free (data);
+                              (guchar *) str,
+                              len);
+      g_free (str);
       break;
+    }
 
-    case TARGET_UTF8_STRING:
-      gtk_selection_data_set (selection_data,
-                              gtk_selection_data_get_target(selection_data),
-                              8,
-                              (guchar *) string_list,
-                              strlen (string_list));
+    case TARGET_UTF8_STRING: {
+      gsize len = 0;
+      gchar *str = xfdesktop_file_utils_file_list_to_string(file_list, NULL, TRUE, &len);
+      gtk_selection_data_set_text(selection_data, str, len);
+      g_free(str);
       break;
+    }
 
     default:
       g_assert_not_reached ();
@@ -514,7 +511,6 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
 
   /* cleanup */
   xfdesktop_file_utils_file_list_free (file_list);
-  g_free (string_list);
 }
 
 

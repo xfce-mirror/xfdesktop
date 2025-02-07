@@ -371,22 +371,26 @@ xfdesktop_file_utils_file_list_from_string(const gchar *string)
 }
 
 gchar *
-xfdesktop_file_utils_file_list_to_string(GList *list)
-{
-    GString *string;
-    GList *lp;
-    gchar *uri;
+xfdesktop_file_utils_file_list_to_string(GList *list, const gchar *prefix, gboolean format_for_text, gsize *len) {
+    GString *string = g_string_new(prefix);
 
-    /* allocate initial string */
-    string = g_string_new(NULL);
+    for (GList *lp = list; lp != NULL; lp = lp->next) {
+        GFile *file = G_FILE(lp->data);
 
-    for (lp = list; lp != NULL; lp = lp->next) {
-        uri = g_file_get_uri(lp->data);
-        string = g_string_append(string, uri);
-        g_free(uri);
+        gchar *name = format_for_text
+            ? g_file_get_parse_name(file)
+            : g_file_get_uri(file);
+        string = g_string_append(string, name);
+        g_free(name);
 
-        string = g_string_append(string, "\r\n");
-      }
+        if (lp->next != NULL) {
+            string = g_string_append_c(string, '\n');
+        }
+    }
+
+    if (len != NULL) {
+        *len = string->len;
+    }
 
     return g_string_free(string, FALSE);
 }
