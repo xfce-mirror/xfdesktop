@@ -1704,9 +1704,16 @@ cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button, XfdesktopBackgroundSetting
                             active);
 
     if (active) {
-        xfconf_channel_set_int(background_settings->settings->channel,
-                               SINGLE_WORKSPACE_NUMBER,
-                               background_settings->workspace);
+        if (background_settings->workspace < 0 && background_settings->xfw_window != NULL) {
+            background_settings->workspace = xfdesktop_settings_get_active_workspace(background_settings,
+                                                                                     background_settings->xfw_window);
+        }
+
+        if (background_settings->workspace >= 0) {
+            xfconf_channel_set_int(background_settings->settings->channel,
+                                   SINGLE_WORKSPACE_NUMBER,
+                                   background_settings->workspace);
+        }
     } else {
         cb_update_background_tab(background_settings->xfw_window, background_settings);
     }

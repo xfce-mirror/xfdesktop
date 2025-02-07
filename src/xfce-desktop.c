@@ -519,14 +519,14 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                          "single-workspace-mode",
                                                          "single-workspace-mode",
                                                          TRUE,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_NUMBER,
                                     g_param_spec_int("single-workspace-number",
                                                      "single-workspace-number",
                                                      "single-workspace-number",
-                                                     -1, G_MAXINT16, -1,
-                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+                                                     0, G_MAXINT16, 0,
+                                                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class,
                                     PROP_ACTIVE,
@@ -540,6 +540,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
+    desktop->single_workspace_mode = TRUE;
     desktop->single_workspace_num = -1;
 }
 
@@ -595,6 +596,10 @@ xfce_desktop_constructed(GObject *obj)
 
     g_signal_connect(desktop->backdrop_manager, "backdrop-changed",
                      G_CALLBACK(manager_backdrop_changed), desktop);
+
+    if (desktop->single_workspace_num == -1) {
+        xfce_desktop_set_single_workspace_number(desktop, 0);
+    }
 }
 
 static void
