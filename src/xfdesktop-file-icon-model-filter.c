@@ -421,7 +421,7 @@ is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *ico
             visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
                 || (filter->show_device_volumes && is_removable && is_device)
                 || (filter->show_fixed_device_volumes && !is_removable && is_device)
-                || (filter->show_unknown_volumes && is_removable && volume_type == NULL);
+                || (filter->show_unknown_volumes && volume_type == NULL);
             g_free(volume_type);
         } else {
             GMount *mount = xfdesktop_volume_icon_peek_mount(icon);
