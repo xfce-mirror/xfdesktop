@@ -418,10 +418,11 @@ is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *ico
 
             gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
             gboolean is_device = g_strcmp0(volume_type, "device") == 0;
+            g_message("volume_type=%s, is_removable=%d", volume_type, is_removable);
             visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
                 || (filter->show_device_volumes && is_removable && is_device)
                 || (filter->show_fixed_device_volumes && !is_removable && is_device)
-                || (filter->show_unknown_volumes && volume_type == NULL);
+                || (filter->show_unknown_volumes && (volume_type == NULL || g_strcmp0(volume_type, "loop") == 0));
             g_free(volume_type);
         } else {
             GMount *mount = xfdesktop_volume_icon_peek_mount(icon);
