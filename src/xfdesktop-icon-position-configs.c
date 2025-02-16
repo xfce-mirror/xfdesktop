@@ -1064,14 +1064,15 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
                     }
 
                     case PARSER_CONFIG_MONITOR_MAP:
-                        g_assert(cur_config != NULL);
                         if (cur_monitor_id == NULL) {
                             PARSE_ERROR(level, state, configs, event, "Monitor is missing ID");
                         } else {
+                            g_assert(cur_pos_monitor != NULL);
                             const gchar *err_msg = validate_monitor_config(cur_pos_monitor);
                             if (err_msg != NULL) {
                                 PARSE_ERROR(level, state, configs, event, "%s", err_msg);
                             } else {
+                                g_assert(cur_config != NULL);
                                 g_hash_table_insert(cur_config->monitors, cur_monitor_id, cur_pos_monitor);
                                 cur_monitor_id = NULL;
                                 cur_pos_monitor = NULL;
@@ -1085,6 +1086,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
                         break;
 
                     case PARSER_CONFIG_MAP: {
+                        g_assert(cur_config != NULL);
                         const gchar *err_msg = validate_position_config(cur_config);
                         if (err_msg != NULL) {
                             PARSE_ERROR(level, state, configs, event, "%s", err_msg);
