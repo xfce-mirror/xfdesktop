@@ -35,7 +35,20 @@
 
 #define XFCE_BACKDROP_BUFFER_SIZE 32768
 
-static const double backdrop_gamma = 2.2;
+// Below constants are from the 1999 and 2003 IEC sRGB standards
+#define GAMMA (2.4)
+#define GAMMA_A (12.92)
+// The breakpoint for the linear section of the gamma-to-linear transfer function
+#define GAMMA_U (0.04045)
+// The breakpoint for the linear section of the linear-to-gamme transfer function
+#define GAMMA_V (0.0031308)
+#define GAMMA_C (0.055)
+
+#if G_BYTE_ORDER == G_LITTLE_ENDIAN
+#define FAST_POW_IDX 1
+#else
+#define FAST_POW_IDX 0
+#endif
 
 typedef struct
 {
@@ -134,97 +147,126 @@ create_solid(GdkRGBA *color, gint width, gint height) {
     return pix;
 }
 
-static void
-apply_gamma(GdkRGBA *dest, const GdkRGBA *src) {
-    dest->red = pow(src->red, backdrop_gamma);
-    dest->green = pow(src->green, backdrop_gamma);
-    dest->blue = pow(src->blue, backdrop_gamma);
-    dest->alpha = src->alpha;
+// From https://martin.ankerl.com/2012/01/25/optimized-approximative-pow-in-c-and-cpp/
+static gdouble
+fast_pow(gdouble a, gdouble b) {
+    // calculate approximation with fraction of the exponent
+    int e = (int) b;
+    union {
+        double d;
+        int x[2];
+    } u = { a };
+    u.x[FAST_POW_IDX] = (int)((b - e) * (u.x[FAST_POW_IDX] - 1072632447) + 1072632447);
+    u.x[!FAST_POW_IDX] = 0;
+
+    // exponentiation by squaring with the exponent's integer part
+    // double r = u.d makes everything much slower, not sure why
+    double r = 1.0;
+    while (e) {
+        if (e & 1) {
+            r *= a;
+        }
+        a *= a;
+        e >>= 1;
+    }
+
+    return r * u.d;
 }
 
-static unsigned int
+static inline gdouble
+decode_gamma(gdouble cval) {
+    if (cval <= GAMMA_U) {
+        return cval / GAMMA_A;
+    } else {
+        return fast_pow((cval + GAMMA_C) / (1 + GAMMA_C), GAMMA);
+    }
+}
+
+static inline gdouble
+encode_gamma(gdouble cval) {
+    if (cval <= GAMMA_V) {
+        return cval * 12.92;
+    } else {
+        return (1 + GAMMA_C) * fast_pow(cval, 1.0 / GAMMA) - GAMMA_C;
+    }
+}
+
+static inline guint32
 round_threshold(double x, double threshold) {
-    double ipart;
-    double fpart = modf(x, &ipart);
-    if (fpart >= threshold)
+    unsigned int ipart = (unsigned int)x;
+    double fpart = x - ipart;
+    if (fpart >= threshold) {
         return ipart + 1;
-    else
+    } else {
         return ipart;
+    }
 }
 
-static unsigned char
-interpolate(double x1, double x2, int position, int max, double threshold) {
-    const double t = (double)position / (max - 1); // we want to interpolate all the way to max-1
-    const double xi = x1 * (1 - t) + x2 * t;
-    return CLAMP((int)round_threshold(pow(xi, 1 / backdrop_gamma) * 255, threshold), 0, 255);
-}
-
-static double
+static inline double
 gen_threshold(unsigned int *seed) {
     return (double)rand_r(seed) / RAND_MAX;
 }
 
+static inline guint8
+interpolate(gdouble position, gdouble color_start, gdouble color_end, gdouble threshold) {
+    return round_threshold(encode_gamma(color_start * (1 - position) + color_end * position) * 255, threshold) & 0xff;
+}
+
 static GdkPixbuf *
 create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height, XfceBackdropColorStyle style) {
-    GdkWindow *root;
-    GdkPixbuf *pix;
-    cairo_surface_t *surface;
-    gint scale_factor;
-    unsigned char *data;
-    int stride;
-    gint ax1;
-    gint ax1_max;
-    gint ax2;
-    gint ax2_max;
-    GdkRGBA color1_lin;
-    GdkRGBA color2_lin;
-    unsigned int seed;
+    GdkWindow *root = gdk_screen_get_root_window(gdk_screen_get_default());
+    gint scale_factor = gdk_window_get_scale_factor(root);
+    cairo_surface_t *surface = gdk_window_create_similar_image_surface(root, CAIRO_FORMAT_RGB24, width, height, scale_factor);
+    guchar *data = cairo_image_surface_get_data(surface);
+    gint stride = cairo_image_surface_get_stride(surface);
 
-    g_return_val_if_fail(color1 != NULL && color2 != NULL, NULL);
-    g_return_val_if_fail(width > 0 && height > 0, NULL);
-    g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
+    GdkRGBA color1_linear = {
+        .red = decode_gamma(color1->red),
+        .green = decode_gamma(color1->green),
+        .blue = decode_gamma(color1->blue),
+        .alpha = color1->alpha,
+    };
+    GdkRGBA color2_linear = {
+        .red = decode_gamma(color2->red),
+        .green = decode_gamma(color2->green),
+        .blue = decode_gamma(color2->blue),
+        .alpha = color1->alpha,
+    };
 
-    root = gdk_screen_get_root_window(gdk_screen_get_default());
-    scale_factor = gdk_window_get_scale_factor(root);
-    surface = gdk_window_create_similar_image_surface(root, CAIRO_FORMAT_RGB24, width, height, scale_factor);
-    data = cairo_image_surface_get_data(surface);
-    stride = cairo_image_surface_get_stride(surface);
-
-    if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
-        ax1_max = height;
-        ax2_max = width;
+    gint maxi, maxj, maxlen;
+    if (style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT) {
+        maxi = height;
+        maxj = width;
+        maxlen = width;
     } else {
-        ax1_max = width;
-        ax2_max = height;
+        maxi = width;
+        maxj = height;
+        maxlen = height;
     }
 
-    apply_gamma(&color1_lin, color1);
-    apply_gamma(&color2_lin, color2);
-    seed = 0;
+    unsigned int threshold_seed = 0;
 
-    for (ax1 = 0; ax1 < ax1_max; ax1++) {
-        for (ax2 = 0; ax2 < ax2_max; ax2++) {
-            guint x, y;
-            guint32 *p;
-            unsigned char r, g, b;
-            double threshold = gen_threshold(&seed);
-            r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max, threshold);
-            g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max, threshold);
-            b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max, threshold);
-            if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
-                x = ax2;
-                y = ax1;
+    for (gint i = 0; i < maxi; ++i) {
+        for (gint j = 0; j < maxj; ++j) {
+            gdouble pos = (gdouble)j / maxlen;
+
+            gdouble threshold = gen_threshold(&threshold_seed);
+            guint8 red = interpolate(pos, color1_linear.red, color2_linear.red, threshold);
+            guint8 green = interpolate(pos, color1_linear.green, color2_linear.green, threshold);
+            guint8 blue = interpolate(pos, color1_linear.blue, color2_linear.blue, threshold);
+
+            guint32 *pixel;
+            if (style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT) {
+                pixel = (guint32 *)(gpointer)(data + i * stride + j * sizeof(guint32));
             } else {
-                x = ax1;
-                y = ax2;
+                pixel = (guint32 *)(gpointer)(data + j * stride + i * sizeof(guint32));
             }
-            p = (guint32 *)(gpointer)(data + y * stride + x * sizeof(guint32));
-            *p = (r << 16) | (g << 8) | (b << 0);
+            *pixel = (red << 16) | (green << 8) | (blue << 0);
         }
     }
     cairo_surface_mark_dirty(surface);
 
-    pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
+    GdkPixbuf *pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
     cairo_surface_destroy(surface);
 
     return pix;
