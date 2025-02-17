@@ -1,3 +1,31 @@
+4.20.1 (2025-02-17)
+======
+- Fix another gcc-analyzer warning
+- Improve performance of gradient rendering
+- Add simple benchmark for rendering gradients
+- Refactor tests a bit
+- Fix or suppress gcc-analyzer warnings
+- meson-build: Use SPDX license expression
+- Don't send URIs to the clipboard when the paster requests UTF8_STRING
+- Ensure single-workspace-number is never set to a negative value
+- Remove debugging log statement
+- Show loop device volumes if "Other Devices" is selected
+- For the "unknown volumes" type, don't require it to be removable
+- Initialize icon label font point size settings to defaults
+- Fix use-after-free when attempting to load invalid background
+- settings: keep a reference to the backdrop preview model
+- Work around GTK issue with setting the file chooser button folder
+- Manually call gtk_init() in main()
+- Don't add the XfceSMClient command-line options if no X11 support
+- meson-build: Update debug/optimization flag management
+- Fix typo in issue template
+- Fix monitor chooser UI resource path
+- Translation Updates:
+  Albanian, Basque, Catalan, Czech, Danish, English (United Kingdom),
+  French, Galician, German, Greek, Italian, Norwegian Bokmål, Occitan
+  (post 1500), Persian (Iran), Portuguese, Portuguese (Brazil),
+  Romanian, Serbian, Slovak, Spanish, Swedish, Ukrainian
+
 4.20.0 (2024-12-15)
 ======
 - Fix incorrect format passed to gtk_selection_data_set()
