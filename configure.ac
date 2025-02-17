@@ -21,7 +21,7 @@ m4_define([gtk_layer_shell_minimum_version], [0.7.0])
 m4_define([libyaml_minimum_version], [0.2.5])
 
 dnl version info
-XDT_VERSION_INIT([4.20.1])
+XDT_VERSION_INIT([4.20.1], [git])
 m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
