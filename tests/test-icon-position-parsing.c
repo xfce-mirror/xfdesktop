@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "xfdesktop-icon-position-configs.h"
+#include "xfdesktop-icon-position-configs.c"
 
 int
 main(int argc, char **argv) {
@@ -28,8 +28,6 @@ main(int argc, char **argv) {
         g_object_unref(screen);
         return EXIT_FAILURE;
     }
-
-    G_BREAKPOINT();
 
     xfdesktop_icon_position_configs_free(configs);
     g_object_unref(screen);

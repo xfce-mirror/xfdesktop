@@ -20,14 +20,12 @@ tests_ldadd = \
 	$(LIBYAML_LIBS)
 
 test_icon_position_parsing_SOURCES = \
-	test-icon-position-parsing.c \
-	$(top_srcdir)/src/xfdesktop-icon-position-configs.c
+	test-icon-position-parsing.c
 test_icon_position_parsing_CFLAGS = $(tests_cflags)
 test_icon_position_parsing_LDADD = $(tests_ldadd)
 
 test_icon_position_saving_SOURCES = \
-	test-icon-position-saving.c \
-	$(top_srcdir)/src/xfdesktop-icon-position-configs.c
+	test-icon-position-saving.c
 test_icon_position_saving_CFLAGS = $(tests_cflags)
 test_icon_position_saving_LDADD = $(tests_ldadd)
 

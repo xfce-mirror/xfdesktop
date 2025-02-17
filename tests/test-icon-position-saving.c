@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "xfdesktop-icon-position-configs.h"
+#include "xfdesktop-icon-position-configs.c"
 
 int
 main(int argc, char **argv) {

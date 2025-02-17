@@ -1053,6 +1053,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
                         break;
 
                     case PARSER_CONFIG_ICON_MAP: {
+                        g_assert(cur_position != NULL);
                         const gchar *err_msg = validate_position(cur_position);
                         if (err_msg != NULL) {
                             PARSE_ERROR(level, state, configs, event, "%s", err_msg);
