@@ -20,12 +20,14 @@ m4_define([cairo_minimum_version], [1.16])
 m4_define([gtk_layer_shell_minimum_version], [0.7.0])
 m4_define([libyaml_minimum_version], [0.2.5])
 
+m4_define([copyright_year], [2025])
+
 dnl version info
 XDT_VERSION_INIT([4.20.1], [git])
 m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2024 The Xfce development team])
+AC_COPYRIGHT([Copyright (c) 2003-copyright_year() The Xfce development team])
 AC_INIT([xfdesktop], [xdt_version], [https://gitlab.xfce.org/xfce/xfdesktop])
 AC_PREREQ([2.69])
 
@@ -67,6 +69,10 @@ dnl define xfdesktop's short version (major.minor)
 AC_DEFINE([VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
 dnl replace the version in settings/xfce-backdrop-settings.desktop.in
 AC_SUBST([VERSION_VERSION], [xfdesktop_version_short])
+
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 dnl required
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
