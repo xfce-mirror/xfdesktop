@@ -1197,7 +1197,11 @@ xfdesktop_application_handle_local_options(GApplication *g_application, GVariant
         g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
                 GTK_MAJOR_VERSION,GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                 gtk_major_version, gtk_minor_version, gtk_micro_version);
-        g_print("\n");
+        g_print("\n\n");
+        g_print("%s\n", "Copyright (c) 2004-" COPYRIGHT_YEAR);
+        g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
+        g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
+        g_print("\n\n");
         g_print(_("Build options:\n"));
         g_print(_("    Desktop Menu:        %s\n"),
 #ifdef ENABLE_DESKTOP_MENU
