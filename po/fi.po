@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfdesktop.master package.
 # 
 # Translators:
-# Ammuu5, 2017-2021
+# Ammuu5, 2017-2021,2025
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2019,2024
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 # Lasse Liehu-Inui <larso@gmx.com>, 2014,2016
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-12-12 00:52+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>, 2019,2024\n"
+"Last-Translator: Ammuu5, 2017-2021,2025\n"
 "Language-Team: Finnish (http://app.transifex.com/xfce/xfdesktop/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:95
 msgid "Select _All"
-msgstr ""
+msgstr "Valitse _kaikki"
 
 #: common/xfdesktop-keyboard-shortcuts.c:96
 msgid "U_nselect All"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:97
 msgid "A_rrange Icons"
-msgstr ""
+msgstr "J_ärjestä kuvakkeet"
 
 #: common/xfdesktop-keyboard-shortcuts.c:101
 msgid "Un_minimize Window"
@@ -69,7 +69,7 @@ msgstr "Sulje ikk_una"
 
 #: common/xfdesktop-keyboard-shortcuts.c:107
 msgid "Create _Folder"
-msgstr ""
+msgstr "Luo _kansio"
 
 #: common/xfdesktop-keyboard-shortcuts.c:108
 #: src/xfdesktop-file-icon-manager.c:1789
@@ -119,7 +119,7 @@ msgstr "_Liitä"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
 msgid "Paste _Into Folder"
-msgstr ""
+msgstr "Liitä _kansioon"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
 #: src/xfdesktop-file-icon-manager.c:2025
@@ -212,7 +212,7 @@ msgstr "<b>%s</b>\nTyyppi: %s\nKoko: %s"
 #: settings/xfdesktop-background-settings.c:573
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr ""
+msgstr "Kansiosta \"%s\" ei voi ladata kuvia"
 
 #: settings/xfdesktop-background-settings.c:666
 #, c-format
@@ -389,7 +389,7 @@ msgstr "Läpinäkyvä"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
-msgstr "Valitse hakemisto josta taustakuvat valitaan."
+msgstr "Valitse kansio josta taustakuvat valitaan."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
@@ -460,7 +460,7 @@ msgstr "Käytä kaikilla _työtiloilla"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
-msgstr "_Hakemisto:"
+msgstr "_Kansio:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
@@ -925,7 +925,7 @@ msgstr "Luo _URL-linkki..."
 
 #: src/xfdesktop-file-icon-manager.c:1779
 msgid "Create _Folder..."
-msgstr "Luo _hakemisto..."
+msgstr "Luo _kansio..."
 
 #: src/xfdesktop-file-icon-manager.c:1820
 msgid "No templates installed"
@@ -962,7 +962,7 @@ msgstr "Aseta _oletussovellus..."
 
 #: src/xfdesktop-file-icon-manager.c:2014
 msgid "Paste Into Folder"
-msgstr "Liitä hakemistoon"
+msgstr "Liitä kansioon"
 
 #: src/xfdesktop-file-icon-manager.c:2045
 msgid "_Rename..."
@@ -1025,11 +1025,11 @@ msgstr "_Peru"
 #: src/xfdesktop-file-icon-manager.c:3647
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Työpöydän hakemistoa \"%s\" ei voi luoda"
+msgstr "Työpöydän kansiota \"%s\" ei voi luoda"
 
 #: src/xfdesktop-file-icon-manager.c:3655
 msgid "Failed to load the desktop folder"
-msgstr "Työpöytähakemiston lataaminen epäonnistui"
+msgstr "Työpöytäkansion lataaminen epäonnistui"
 
 #: src/xfdesktop-file-icon-manager.c:3664
 msgid "A desktop file icon error occurred"
@@ -1037,7 +1037,7 @@ msgstr ""
 
 #: src/xfdesktop-file-icon-manager.c:3668
 msgid "Desktop Folder Error"
-msgstr "Työpöydän hakemiston virhe"
+msgstr "Työpöydän kansion virhe"
 
 #: src/xfdesktop-file-icon-model.c:552
 msgid ""
@@ -1076,11 +1076,11 @@ msgstr "Tuntematon"
 #: src/xfdesktop-file-utils.c:335
 #, c-format
 msgid "%.*s %u%s"
-msgstr ""
+msgstr "%.*s %u%s"
 
 #: src/xfdesktop-file-utils.c:582
 msgid "The folder could not be opened"
-msgstr "Hakemiston avaaminen epäonnistui"
+msgstr "Kansion avaaminen epäonnistui"
 
 #: src/xfdesktop-file-utils.c:699
 msgid "Error"
@@ -1150,7 +1150,7 @@ msgstr "Uusi tyhjä tiedosto"
 #: src/xfdesktop-file-utils.c:1114
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
-msgstr ""
+msgstr "Uutta kansiota \"%1$s\" ei voi luoda: %2$s"
 
 #: src/xfdesktop-file-utils.c:1120 src/xfdesktop-file-utils.c:1313
 msgid "Could not create a new folder"
