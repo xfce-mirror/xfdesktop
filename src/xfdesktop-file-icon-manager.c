@@ -132,8 +132,6 @@ struct _XfdesktopFileIconManager
 #endif
 
     gboolean show_delete_menu;
-    guint max_templates;
-    guint templates_count;
 };
 
 enum {
@@ -339,7 +337,6 @@ static const struct
     const gchar *property;
 } setting_bindings[] = {
     { DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN, "show-delete-menu" },
-    { DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT, "max-templates" },
 };
 
 static const GtkTargetEntry drag_targets[] = {
@@ -405,13 +402,6 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          TRUE,
                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
-    g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
-                                    g_param_spec_uint("max-templates",
-                                                      "max-templates",
-                                                      "max-templates",
-                                                      0, G_MAXUSHORT, 16,
-                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
-
     xfdesktop_app_info_quark = g_quark_from_static_string("xfdesktop-app-info-quark");
 }
 
@@ -424,7 +414,6 @@ xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
                                                    (GDestroyNotify)monitor_data_free);
     fmanager->ready = FALSE;
     fmanager->show_delete_menu = TRUE;
-    fmanager->max_templates = 16;
 }
 
 static void
@@ -566,10 +555,6 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             fmanager->show_delete_menu = g_value_get_boolean(value);
             break;
 
-        case PROP_MAX_TEMPLATES:
-            fmanager->max_templates = MIN(g_value_get_uint(value), G_MAXUINT16);
-            break;
-
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -594,10 +579,6 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_SHOW_DELETE_MENU:
             g_value_set_boolean(value, fmanager->show_delete_menu);
-            break;
-
-        case PROP_MAX_TEMPLATES:
-            g_value_set_int(value, fmanager->max_templates);
             break;
 
         default:
@@ -1202,18 +1183,9 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
     if(enumerator == NULL)
         return;
 
-    if(recursive == FALSE)
-        mdata->fmanager->templates_count = 0;
-
-    /* keep it under fmanager->max_templates otherwise the menu
-     * could have tons of items and be unusable. Additionally this should
-     * help in instances where the XDG_TEMPLATES_DIR has a large number of
-     * files in it. */
     GList *files = NULL;
     GFileInfo *info;
-    while((info = g_file_enumerator_next_file(enumerator, NULL, NULL))
-          && mdata->fmanager->templates_count < mdata->fmanager->max_templates)
-    {
+    while((info = g_file_enumerator_next_file(enumerator, NULL, NULL)) != NULL) {
         /* skip hidden & backup files */
         if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
             g_object_unref(info);
@@ -1223,9 +1195,6 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         GFile *file = g_file_get_child(template_dir, g_file_info_get_name(info));
         g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
         files = g_list_prepend(files, file);
-
-        if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
-            mdata->fmanager->templates_count++;
     }
 
     g_object_unref(enumerator);
@@ -1783,65 +1752,62 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                     g_object_set_data(G_OBJECT(create_folder_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
                     g_object_set_data(G_OBJECT(create_folder_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
-                    /* create document submenu, 0 disables the sub-menu */
-                    if(fmanager->max_templates > 0) {
-                        GtkWidget *tmpl_mi = add_menu_item(menu,
-                                                           _("Create _Document"),
-                                                           g_themed_icon_new("document-new"),
-                                                           NULL,
-                                                           NULL);
+                    GtkWidget *tmpl_mi = add_menu_item(menu,
+                                                       _("Create _Document"),
+                                                       g_themed_icon_new("document-new"),
+                                                       NULL,
+                                                       NULL);
 
-                        GtkWidget *tmpl_menu = gtk_menu_new();
-                        gtk_menu_set_reserve_toggle_size(GTK_MENU(tmpl_menu), FALSE);
-                        gtk_menu_item_set_submenu(GTK_MENU_ITEM(tmpl_mi), tmpl_menu);
+                    GtkWidget *tmpl_menu = gtk_menu_new();
+                    gtk_menu_set_reserve_toggle_size(GTK_MENU(tmpl_menu), FALSE);
+                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(tmpl_mi), tmpl_menu);
 
-                        /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
-                         * templates if so. */
-                        GFile *home_dir = g_file_new_for_path(xfce_get_homedir());
-                        const gchar *templates_dir_path = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
-                        DBG("templates dir path: %s", templates_dir_path);
-                        GFile *templates_dir = NULL;
-                        if(templates_dir_path) {
-                            templates_dir = g_file_new_for_path(templates_dir_path);
-                        }
-
-                        if(templates_dir && !g_file_equal(home_dir, templates_dir)) {
-                            xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
-                                                                        templates_dir,
-                                                                        mdata,
-                                                                        dest_row,
-                                                                        dest_col,
-                                                                        FALSE);
-                        }
-
-                        GList *children = gtk_container_get_children(GTK_CONTAINER(tmpl_menu));
-                        if (children == NULL) {
-                            GtkWidget *no_tmpl_mi = add_menu_item(tmpl_menu,
-                                                                  _("No templates installed"),
-                                                                   NULL,
-                                                                   NULL,
-                                                                   NULL);
-                            gtk_widget_set_sensitive(no_tmpl_mi, FALSE);
-                        } else {
-                            g_list_free(children);
-                        }
-
-                        if (templates_dir) {
-                            g_object_unref(templates_dir);
-                        }
-                        g_object_unref(home_dir);
-
-                        add_menu_separator(tmpl_menu);
-
-                        /* add the "Empty File" template option */
-                        GtkWidget *create_empty_file_mi = add_menu_item(tmpl_menu,
-                                                                        _("_Empty File"),
-                                                                        g_themed_icon_new("text-x-generic"),
-                                                                        G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                                                                        mdata);
-                        g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
-                        g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
+                    /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
+                     * templates if so. */
+                    GFile *home_dir = g_file_new_for_path(xfce_get_homedir());
+                    const gchar *templates_dir_path = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
+                    DBG("templates dir path: %s", templates_dir_path);
+                    GFile *templates_dir = NULL;
+                    if(templates_dir_path) {
+                        templates_dir = g_file_new_for_path(templates_dir_path);
                     }
+
+                    if(templates_dir && !g_file_equal(home_dir, templates_dir)) {
+                        xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
+                                                                    templates_dir,
+                                                                    mdata,
+                                                                    dest_row,
+                                                                    dest_col,
+                                                                    FALSE);
+                    }
+
+                    GList *children = gtk_container_get_children(GTK_CONTAINER(tmpl_menu));
+                    if (children == NULL) {
+                        GtkWidget *no_tmpl_mi = add_menu_item(tmpl_menu,
+                                                              _("No templates installed"),
+                                                               NULL,
+                                                               NULL,
+                                                               NULL);
+                        gtk_widget_set_sensitive(no_tmpl_mi, FALSE);
+                    } else {
+                        g_list_free(children);
+                    }
+
+                    if (templates_dir) {
+                        g_object_unref(templates_dir);
+                    }
+                    g_object_unref(home_dir);
+
+                    add_menu_separator(tmpl_menu);
+
+                    /* add the "Empty File" template option */
+                    GtkWidget *create_empty_file_mi = add_menu_item(tmpl_menu,
+                                                                    _("_Empty File"),
+                                                                    g_themed_icon_new("text-x-generic"),
+                                                                    G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                                                                    mdata);
+                    g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+                    g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
                 } else {
                     /* Menu on folder icons */
                     add_menu_item(menu,
