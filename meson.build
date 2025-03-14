@@ -24,6 +24,7 @@ dependency_versions = {
   'libxfce4windowing': '>= 4.19.8',
   'libyaml': '>= 0.2.5',
   'xfce4': '>= 4.18.0',
+  'libxfce4ui': '>= 4.21.0',
   'xfconf': '>= 4.19.3',
   'gtk-layer-shell': '>= 0.7.0',
 }
@@ -33,12 +34,11 @@ glib = dependency('glib-2.0', version: dependency_versions['glib'])
 gio_unix = dependency('gio-unix-2.0', version: dependency_versions['glib'])
 gtk = dependency('gtk+-3.0', version: dependency_versions['gtk'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
-libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
+libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['libxfce4ui'])
 libxfce4kbd_private = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
 libxfce4windowing = dependency('libxfce4windowing-0', version: dependency_versions['libxfce4windowing'])
 libxfce4windowingui = dependency('libxfce4windowingui-0', version: dependency_versions['libxfce4windowing'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
-exo = dependency('exo-2', version: dependency_versions['xfce4'])
 libm = cc.find_library('m', required: false)
 
 # Feature desktop-menu
