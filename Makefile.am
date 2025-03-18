@@ -61,7 +61,6 @@ compile_flags.txt: $(shell find . -name Makefile)
 		-DENABLE_WAYLAND=1 \
 		-DENABLE_FILE_ICONS=1 \
 		-DLOCALEDIR=\"$(localedir)\" \
-		-DEXO_API_SUBJECT_TO_CHANGE \
 		-DDEFAULT_BACKDROP=\"\" \
 		-DBACKGROUNDS_DIR=\"\" \
 		-I$(top_srcdir) \
@@ -82,7 +81,6 @@ compile_flags.txt: $(shell find . -name Makefile)
 		$(LIBXFCE4WINDOWINGUI_CFLAGS) \
 		$(GTK_LAYER_SHELL_CFLAGS) \
 		$(XFCONF_CFLAGS) \
-		$(LIBEXO_CFLAGS) \
 		$(CAIRO_CFLAGS) \
 		$(THUNARX_CFLAGS) \
 		$(GARCON_CFLAGS) \

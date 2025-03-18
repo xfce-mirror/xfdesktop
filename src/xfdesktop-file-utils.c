@@ -50,8 +50,6 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <exo/exo.h>
-
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
@@ -600,12 +598,11 @@ xfdesktop_file_utils_open_folders_fallback(const gchar *const *uris,
     for (gint i = 0; uris[i] != NULL; ++i) {
         GError *error = NULL;
 
-        if (!exo_execute_preferred_application_on_screen("FileManager",
-                                                         uris[i],
-                                                         NULL,
-                                                         NULL,
-                                                         screen,
-                                                         &error))
+        if (!xfce_execute_preferred_application("FileManager",
+                                                uris[i],
+                                                NULL,
+                                                NULL,
+                                                &error))
         {
             if (report_errors) {
                 report_open_folders_error(parent, error);
@@ -1813,9 +1810,9 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 }
 
 static gboolean
-exo_desktop_item_edit_has_print_saved_uri_flag(void) {
+xfce_desktop_item_edit_has_print_saved_uri_flag(void) {
     const gchar *test_argv[] = {
-        "exo-desktop-item-edit",
+        "xfce-desktop-item-edit",
         "--help",
         NULL,
     };
@@ -1910,7 +1907,7 @@ xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
     g_return_if_fail(g_strcmp0(launcher_type, "Application") == 0 || g_strcmp0(launcher_type, "Link") == 0);
 
     GStrvBuilder *argv_builder = g_strv_builder_new();
-    g_strv_builder_add(argv_builder, "exo-desktop-item-edit");
+    g_strv_builder_add(argv_builder, "xfce-desktop-item-edit");
 
     if (screen != NULL && xfw_windowing_get() == XFW_WINDOWING_X11) {
         const gchar *display_name = gdk_display_get_name(gdk_screen_get_display(screen));
@@ -1936,7 +1933,7 @@ xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
         g_strv_builder_add(argv_builder, suggested_command_or_url);
     }
 
-    gboolean used_print_saved_uri = callback != NULL && exo_desktop_item_edit_has_print_saved_uri_flag();
+    gboolean used_print_saved_uri = callback != NULL && xfce_desktop_item_edit_has_print_saved_uri_flag();
     if (used_print_saved_uri) {
         g_strv_builder_add(argv_builder, "--print-saved-uri");
     }
@@ -1979,7 +1976,7 @@ xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
         } else if (callback != NULL) {
             error = g_error_new_literal(G_IO_ERROR,
                                         G_IO_ERROR_NOT_SUPPORTED,
-                                        "exo-desktop-item-edit doesn't support the --print-saved-uri option");
+                                        "xfce-desktop-item-edit doesn't support the --print-saved-uri option");
             callback(NULL, error, callback_data);
             g_error_free(error);
         }
