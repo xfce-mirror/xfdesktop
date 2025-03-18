@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
-# Priit Jõerüüt <transifex@joeruut.com>, 2023
+# Priit Jõerüüt <transifex@joeruut.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 12:54+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2022-12-22 11:24+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2023\n"
-"Language-Team: Estonian (https://www.transifex.com/xfce/teams/16840/et/)\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2025\n"
+"Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,7 +76,7 @@ msgstr "Taustapilt kuvarile %d"
 
 #: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Tõsta see dialoogiaken kuvarile, mille seadistusi soovid muuta."
+msgstr "Tõsta see vaade kuvarile, mille seadistusi soovid muuta."
 
 #: ../settings/main.c:760
 #, c-format
@@ -92,8 +92,7 @@ msgstr "Taustapilt %s jaoks kuvaril %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr ""
-"Tõsta see dialoogiaken kuvarile ja tööalale, mille seadistusi soovid muuta."
+msgstr "Tõsta see vaade kuvarile ja tööalale, mille seadistusi soovid muuta."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:779
@@ -109,7 +108,7 @@ msgstr "Taustapilt %s jaoks"
 
 #: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Tõsta see dialoogiaken tööalale, mille seadistusi soovid muuta."
+msgstr "Tõsta see vaade tööalale, mille seadistusi soovid muuta."
 
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
@@ -175,7 +174,7 @@ msgstr "Pildifailid"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1969
 msgid "Select a Directory"
-msgstr "Vali kataloog"
+msgstr "Vali kaust"
 
 #: ../settings/main.c:2178
 msgid "Settings manager socket"
@@ -205,11 +204,11 @@ msgstr "Xfce arendusmeeskond. Kõik õigused kaitstud."
 #: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Palun teata vigadest <%s>."
+msgstr "Palun teata vigadest aadressil <%s>."
 
 #: ../settings/main.c:2224
 msgid "Desktop Settings"
-msgstr "Töölaua sätted"
+msgstr "Töölaua seadistused"
 
 #: ../settings/main.c:2226
 msgid "Unable to contact settings server"
@@ -500,7 +499,7 @@ msgstr "_Näita loendis tööalade nimetusi"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Kasuta iga tööpinna akende jaoks _alammenüüsid"
+msgstr "Kasuta iga tööala akende jaoks _alammenüüsid"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
@@ -747,8 +746,8 @@ msgstr "Töölaua kausta viga"
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
-"Sama nimega tavaline fail on juba olemas. Palun kustutage see või nimetage "
-"ümber."
+"Sama nimega tavaline fail on juba olemas. Palun kustuta see või muuda tema "
+"nime."
 
 #: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:897
 #: ../src/xfdesktop-file-utils.c:961
@@ -865,7 +864,7 @@ msgstr "_Kopeeri"
 
 #: ../src/xfdesktop-file-icon-manager.c:1846
 msgid "Paste Into Folder"
-msgstr "Aseta kataloogi"
+msgstr "Aseta kausta"
 
 #: ../src/xfdesktop-file-icon-manager.c:1865
 msgid "Mo_ve to Trash"
@@ -893,7 +892,7 @@ msgstr "_Järgmine taustapilt"
 
 #: ../src/xfdesktop-file-icon-manager.c:1990
 msgid "Desktop _Settings..."
-msgstr "Töölaua _sätted..."
+msgstr "Töölaua _seadistused..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1998
 #: ../src/xfdesktop-volume-icon.c:935
@@ -1000,7 +999,7 @@ msgstr "Valitud faile ei õnnestunud kustutada"
 
 #: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1131
 msgid "Trash Error"
-msgstr "Prügikasti Viga"
+msgstr "Prügikasti viga"
 
 #: ../src/xfdesktop-file-utils.c:1084
 msgid "The selected files could not be moved to the trash"
@@ -1036,11 +1035,11 @@ msgstr "Uut dokumenti ei õnnestunud malli põhjal luua"
 
 #: ../src/xfdesktop-file-utils.c:1331
 msgid "File Properties Error"
-msgstr "Viga faili omadustega"
+msgstr "Faili omaduste viga"
 
 #: ../src/xfdesktop-file-utils.c:1332
 msgid "The file properties dialog could not be opened"
-msgstr "Faili omaduste dialoogi ei õnnestunud avada"
+msgstr "Faili omaduste vaadet ei õnnestunud avada"
 
 #: ../src/xfdesktop-file-utils.c:1393
 msgid "The file could not be opened"
@@ -1057,7 +1056,7 @@ msgstr "Rakenduse valijat ei olnud võimalik avada"
 
 #: ../src/xfdesktop-file-utils.c:1660 ../src/xfdesktop-file-utils.c:1729
 msgid "Transfer Error"
-msgstr "Ülekande viga"
+msgstr "Viga teisaldamisel"
 
 #: ../src/xfdesktop-file-utils.c:1661 ../src/xfdesktop-file-utils.c:1730
 msgid "The file transfer could not be performed"
@@ -1066,7 +1065,7 @@ msgstr "Faili ei õnnestunud üle kanda"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr "Seadme lahtihaakimine"
+msgstr "Seade on lahtihaakimisel"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:130
@@ -1090,8 +1089,8 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"Andmeid on veel ootel seadmesse „%s“ salvestamiseks. Palun ära eemalda veel "
-"mälupulka või ketast"
+"Andmeid on veel ootel seadmesse „%s“ salvestamiseks. Palun ära eemalda "
+"andmekandjat või seadet"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1105,13 +1104,13 @@ msgstr "Andmekandja „%s“ on turvaliselt eemaldatud."
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr "Seadme väljastamine"
+msgstr "Seade on eemaldamisel"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Seadet „%s” väljastatakse. Selleks võib kuluda aega."
+msgstr "„%s“ seade on eemaldamisel. Selleks võib kuluda aega"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
