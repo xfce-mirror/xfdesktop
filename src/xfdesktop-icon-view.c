@@ -35,7 +35,6 @@
 #include <gdk/gdkkeysyms.h>
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include <exo/exo.h>
 
 #ifdef ENABLE_X11
 #include <X11/Xlib.h>
@@ -2242,10 +2241,10 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                     if (height < width) {
                                         // The height is less than the width, so it's probably
                                         // worth using the larger icon.
-                                        GdkPixbuf *scaled = exo_gdk_pixbuf_scale_down(pix,
-                                                                                      TRUE,
-                                                                                      ICON_WIDTH * scale_factor,
-                                                                                      ICON_SIZE * scale_factor);
+                                        GdkPixbuf *scaled = xfce_gdk_pixbuf_scale_down(pix,
+                                                                                       TRUE,
+                                                                                       ICON_WIDTH * scale_factor,
+                                                                                       ICON_SIZE * scale_factor);
                                         g_object_unref(pix);
                                         pix = scaled;
                                     } else {
@@ -2282,7 +2281,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                                -1);
                             opacity = CLAMP(opacity, 0.0, 1.0);
                             if (opacity < 1.0) {
-                                GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity * 100);
+                                GdkPixbuf *tmp = xfce_gdk_pixbuf_lucent(pix, opacity * 100);
                                 g_object_unref(pix);
                                 pix = tmp;
                             }
