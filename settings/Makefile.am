@@ -35,6 +35,7 @@ xfdesktop_settings_CFLAGS =						\
 xfdesktop_settings_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
+	$(LIBXFCE4UTIL_LIBS)							\
 	$(LIBXFCE4UI_LIBS)							\
 	$(LIBXFCE4KBD_PRIVATE_LIBS)					\
 	$(LIBXFCE4WINDOWING_LIBS)					\
