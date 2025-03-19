@@ -4,22 +4,21 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Wellington Almeida <wsalmeida6@gmail.com>, 2025
 # Lucas Wilm <lucaswilm@gmail.com>, 2025
 # Andre Miranda <andre@andreldm.com>, 2025
 # The Cat, 2025
-# Michael Martins, 2025
 # Nick Schermer <nick@xfce.org>, 2025
 # Xfce Bot <transifex@xfce.org>, 2025
+# Michael Martins, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop.xfce-4-20\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-03-19 11:22+0100\n"
+"POT-Creation-Date: 2025-03-19 12:58+0100\n"
 "PO-Revision-Date: 2025-03-19 10:22+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2025\n"
+"Last-Translator: Michael Martins, 2025\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,7 +175,7 @@ msgstr "A equipe de desenvolvimento do Xfce. Todos os direitos reservados."
 #: settings/main.c:133 src/xfdesktop-application.c:1203
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Por favor, relate os erros para <%s>."
+msgstr "Relate bugs para <%s>."
 
 #: settings/main.c:139
 msgid "Desktop Settings"
@@ -225,7 +224,7 @@ msgstr ""
 #: settings/xfdesktop-background-settings.c:611
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr "Não é possível carregar imagens da pasta \"%s\""
+msgstr "Não foi possível carregar imagens da pasta \"%s\""
 
 #: settings/xfdesktop-background-settings.c:712
 #, c-format
@@ -239,7 +238,7 @@ msgstr "Papel de parede do monitor %d"
 
 #: settings/xfdesktop-background-settings.c:722
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Mova esse diálogo para a tela cujas configurações você deseja editar."
+msgstr "Mova esse diálogo para a tela cujas configurações deseja editar."
 
 #: settings/xfdesktop-background-settings.c:727
 #, c-format
@@ -256,7 +255,7 @@ msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
-"Mova esse diálogo para a tela e espaço de trabalho cujas configurações você "
+"Mova esse diálogo para a tela e espaço de trabalho cujas configurações "
 "deseja editar."
 
 #. Single monitor and single workspace
@@ -316,7 +315,7 @@ msgstr "Dispositivos"
 
 #: settings/xfdesktop-file-icon-settings.c:102
 msgid "Network Shares"
-msgstr "Compartilhamentos de Rede"
+msgstr "Compartilhamentos de rede"
 
 #: settings/xfdesktop-file-icon-settings.c:104
 msgid "Removable Disks and Drives"
@@ -337,7 +336,7 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
-"Você gostaria de posicionar todos os ícones\n"
+"Gostaria de posicionar todos os ícones\n"
 "de acordo com a orientação selecionada?"
 
 #: settings/xfdesktop-icon-settings.c:94
@@ -453,8 +452,7 @@ msgstr "Telas estendidas"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
-"Especifica o estilo da cor desenhada atrás da imagem da plano de fundo."
+msgstr "Especifique o estilo da cor desenhada atrás da imagem de fundo."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:207
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -486,7 +484,7 @@ msgstr "C_or:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:332
 msgid "Change the _background "
-msgstr "Alterar o p_lano de fundo"
+msgstr "Alterar o p_lano de fundo "
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:337
 msgid ""
@@ -517,11 +515,11 @@ msgstr "na inicialização"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "every hour"
-msgstr "a cada hora"
+msgstr "toda hora"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every day"
-msgstr "a cada dia"
+msgstr "diariamente"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "chronologically"
@@ -542,7 +540,7 @@ msgid ""
 " to cycle."
 msgstr ""
 "Seleciona aleatoriamente uma outra imagem da mesma pasta quando os planos de"
-" parede são alternados."
+" fundo são alternados."
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -777,8 +775,8 @@ msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr ""
-"Os ícones de arquivo/lançador não estão ativados. Você pode ativá-los na aba"
-" \"Ícones da Área de Trabalho\"."
+"Os ícones de arquivo/lançador não estão habilitados. Você pode habilitá-los "
+"na aba \"Ícones da área de trabalho\"."
 
 #: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
@@ -798,7 +796,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1283
 msgid "Show \"Delete\" option in file context menu"
-msgstr "Mostrar a opção \"Apagar\" no menu de contexto do arquivo"
+msgstr "Mostrar a opção \"Excluir\" no menu de contexto do arquivo"
 
 #: settings/xfdesktop-settings-ui.glade:1300
 msgid "_Arrange folders before files"
@@ -810,11 +808,11 @@ msgstr "Geral"
 
 #: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
-msgstr "Ícones Predefinidos"
+msgstr "Ícones padrão"
 
 #: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
-msgstr "Ícones de Arquivo/Lançador"
+msgstr "_Ícones de arquivos/lançadores"
 
 #: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
@@ -830,7 +828,7 @@ msgstr "Lista de janelas"
 
 #: src/xfdesktop-application.c:278
 msgid "Display version information"
-msgstr "Exibir informação da versão"
+msgstr "Exibe informação da versão"
 
 #: src/xfdesktop-application.c:279
 msgid "Reload all settings"
@@ -867,7 +865,7 @@ msgstr "Interrompe o xfdesktop"
 #: src/xfdesktop-application.c:1195
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Este é a %s versão %s, rodando no Xfce %s.\n"
+msgstr "Este é o %s na versão %s, executando no Xfce %s.\n"
 
 #: src/xfdesktop-application.c:1197
 #, c-format
@@ -881,7 +879,7 @@ msgstr "Opções de compilação:\n"
 #: src/xfdesktop-application.c:1206
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "Menu da área de trabalho: %s\n"
+msgstr "    Menu da área de trabalho:     %s\n"
 
 #: src/xfdesktop-application.c:1208 src/xfdesktop-application.c:1215
 #: src/xfdesktop-application.c:1222
@@ -896,12 +894,12 @@ msgstr "desabilitado"
 #: src/xfdesktop-application.c:1213
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Ícones da área de trabalho: %s\n"
+msgstr "    Ícones da área de trabalho:      %s\n"
 
 #: src/xfdesktop-application.c:1220
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Ícones de arquivos da área de trabalho: %s\n"
+msgstr "    Ícones de arquivos da área de trabalho:  %s\n"
 
 #: src/xfdesktop-file-icon-manager.c:699 src/xfdesktop-file-utils.c:757
 #: src/xfdesktop-file-utils.c:821
@@ -933,7 +931,7 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 "Não foi possível executar \"exo-desktop-item-edit\", que é necessário para "
-"criar e editar lançadores e ligações na área de trabalho."
+"criar e editar lançadores e links na área de trabalho."
 
 #: src/xfdesktop-file-icon-manager.c:1422
 #, c-format
@@ -941,8 +939,8 @@ msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr ""
-"Você gostaria de atribuir um layout de ícones da área de trabalho existente "
-"ao monitor <b>%s</b>?"
+"Gostaria de atribuir um layout de ícones da área de trabalho existente ao "
+"monitor <b>%s</b>?"
 
 #: src/xfdesktop-file-icon-manager.c:1430
 msgid "Monitors"
@@ -974,7 +972,7 @@ msgstr "Arquivo _vazio"
 
 #: src/xfdesktop-file-icon-manager.c:1814
 msgid "_Open All"
-msgstr "_Abrir Todos"
+msgstr "A_brir todos"
 
 #: src/xfdesktop-file-icon-manager.c:1827
 msgid "_Execute"
@@ -991,11 +989,11 @@ msgstr "Abri_r com"
 #: src/xfdesktop-file-icon-manager.c:1916
 #: src/xfdesktop-file-icon-manager.c:1933
 msgid "Ope_n With Other Application..."
-msgstr "A_brir com outra aplicação..."
+msgstr "A_brir com outro aplicativo..."
 
 #: src/xfdesktop-file-icon-manager.c:1924
 msgid "Set Defa_ult Application..."
-msgstr "Definir aplicação _padrão..."
+msgstr "Definir aplicativo _padrão..."
 
 #: src/xfdesktop-file-icon-manager.c:1980
 msgid "Paste Into Folder"
@@ -1017,7 +1015,7 @@ msgstr "_Posicionar ícones da área de trabalho"
 #: src/xfdesktop-file-icon-manager.c:2084
 #: src/xfdesktop-window-icon-manager.c:322
 msgid "_Next Background"
-msgstr "Próximo pla_no de fundo "
+msgstr "Próximo pla_no de fundo"
 
 #: src/xfdesktop-file-icon-manager.c:2094
 #: src/xfdesktop-window-icon-manager.c:335
@@ -1079,9 +1077,7 @@ msgstr "Erro na pasta da área de trabalho"
 #: src/xfdesktop-file-icon-model.c:552
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Um arquivo comum com o mesmo nome já existe. Por favor, apague-o ou "
-"renomeie-o."
+msgstr "Um arquivo comum com o mesmo nome já existe. Exclua-o ou renomeie-o."
 
 #. TRANSLATORS: file was modified less than one day ago
 #: src/xfdesktop-file-utils.c:184
@@ -1165,8 +1161,8 @@ msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"Este recurso requer um serviço de lixeira presente (como o provido pelo "
-"Thunar)."
+"Esse recurso requer a presença de um serviço de lixeira (como o fornecido "
+"pelo Thunar)."
 
 #: src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
@@ -1265,8 +1261,8 @@ msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
-"Isso irá reordenar todos Itens da Área de Trabalho e colocá-los em diferentes posições. \n"
-"Tem certeza? "
+"Isso irá reordenar todos Itens da área de trabalho e colocá-los em diferentes posições. \n"
+"Tem certeza?"
 
 #: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
@@ -1290,7 +1286,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:162 src/xfdesktop-notify.c:241
 msgid "Writing data to device"
-msgstr "Escrevendo dados no dispositivo"
+msgstr "Gravando dados no dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:165 src/xfdesktop-notify.c:244
@@ -1299,17 +1295,17 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"Existem dados que precisam ser escritos no dispositivo \"%s\" antes que ele "
-"possa ser removido. Não remova a mídia ou desconecte a unidade"
+"Existem dados a serem gravados no dispositivo \"%s\" antes que ele possa ser"
+" removido. Não remova a mídia ou desconecte a unidade"
 
 #: src/xfdesktop-notify.c:211
 msgid "Unmount Finished"
-msgstr "Desmotagem concluída"
+msgstr "Desmontagem concluída"
 
 #: src/xfdesktop-notify.c:212 src/xfdesktop-notify.c:355
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "O dispositivo \"%s\" foi removido do sistema com segurança."
+msgstr "O dispositivo \"%s\" foi removido do sistema com segurança. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:234
@@ -1426,7 +1422,7 @@ msgstr "_Travar volume"
 
 #: src/xfdesktop-volume-icon.c:792
 msgid "_Eject Volume"
-msgstr "Ejetar volume"
+msgstr "_Ejetar volume"
 
 #: src/xfdesktop-volume-icon.c:801
 msgid "_Unmount Volume"
