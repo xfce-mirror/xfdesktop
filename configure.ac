@@ -10,10 +10,9 @@ m4_define([libx11_minimum_version], [1.6.7])
 m4_define([glib_minimum_version], [2.72.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
-m4_define([libxfce4ui_minimum_version], [4.18.0])
+m4_define([libxfce4ui_minimum_version], [4.21.0])
 m4_define([libxfce4windowing_minimum_version], [4.19.8])
 m4_define([garcon_minimum_version], [0.6.0])
-m4_define([exo_minimum_version], [0.11.0])
 m4_define([thunar_minimum_version], [4.17.10])
 m4_define([xfconf_minimum_version], [4.19.3])
 m4_define([cairo_minimum_version], [1.16])
@@ -92,7 +91,6 @@ XDT_CHECK_PACKAGE([LIBXFCE4WINDOWING], [libxfce4windowing-0],
 XDT_CHECK_PACKAGE([LIBXFCE4WINDOWINGUI], [libxfce4windowingui-0],
                   [libxfce4windowing_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
-XDT_CHECK_PACKAGE([LIBEXO], [exo-2], [exo_minimum_version])
 XDT_CHECK_PACKAGE([CAIRO], [cairo], [cairo_minimum_version])
 
 XDT_CHECK_OPTIONAL_FEATURE([X11],

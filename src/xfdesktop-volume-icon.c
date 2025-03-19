@@ -52,8 +52,6 @@
 #include "xfdesktop-notify.h"
 #endif
 
-#include <exo/exo.h>
-
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-volume-icon.h"

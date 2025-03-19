@@ -99,7 +99,6 @@ executable(
     libxfce4windowing,
     libxfce4windowingui,
     xfconf,
-    exo,
     desktop_menu_deps,
     desktop_icons_deps,
     x11_deps,

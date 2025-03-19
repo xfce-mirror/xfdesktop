@@ -1009,7 +1009,7 @@ desktop_file_created(GFile *desktop_file, GError *error, gpointer data) {
             xfce_message_dialog(toplevel_window_for_monitor_data(cdfwpdata->mdata),
                                 _("Launch Error"),
                                 "dialog-error",
-                                _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
+                                _("Unable to launch \"xfce-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
                                 error->message,
                                 XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
@@ -1038,7 +1038,7 @@ xfdesktop_file_icon_menu_edit_launcher(GtkWidget *widget, MonitorData *mdata) {
     g_return_if_fail(G_IS_FILE(file));
 
     GStrvBuilder *argv_builder = g_strv_builder_new();
-    g_strv_builder_add(argv_builder, "exo-desktop-item-edit");
+    g_strv_builder_add(argv_builder, "xfce-desktop-item-edit");
 
     if (xfw_windowing_get() == XFW_WINDOWING_X11) {
         g_strv_builder_add(argv_builder, "--display");
@@ -1057,7 +1057,7 @@ xfdesktop_file_icon_menu_edit_launcher(GtkWidget *widget, MonitorData *mdata) {
         xfce_message_dialog(toplevel_window_for_monitor_data(mdata),
                             _("Launch Error"),
                             "dialog-error",
-                            _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
+                            _("Unable to launch \"xfce-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
                             error->message,
                             XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
@@ -3223,8 +3223,8 @@ handle_netscape_url_drop_data(MonitorData *mdata,
 
     gboolean drop_ok = FALSE;
     GFile *source_file = xfdesktop_file_icon_peek_file(mdata->fmanager->icon_on_drop_dest);
-    gchar *exo_desktop_item_edit = g_find_program_in_path("exo-desktop-item-edit");
-    if (source_file != NULL && exo_desktop_item_edit != NULL) {
+    gchar *xfce_desktop_item_edit = g_find_program_in_path("xfce-desktop-item-edit");
+    if (source_file != NULL && xfce_desktop_item_edit != NULL) {
         /* data is "URL\nTITLE" */
         gchar **parts = g_strsplit((const gchar *)gtk_selection_data_get_data(data), "\n", -1);
 
@@ -3259,7 +3259,7 @@ handle_netscape_url_drop_data(MonitorData *mdata,
         g_strfreev(parts);
     }
 
-    g_free(exo_desktop_item_edit);
+    g_free(xfce_desktop_item_edit);
 
     return drop_ok;
 }
