@@ -427,7 +427,7 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             GIcon *gicon = xfdesktop_file_icon_get_gicon(icon);
             if (icon != NULL) {
                 g_value_init(value, G_TYPE_ICON);
-                g_value_set_object(value, gicon);
+                g_value_take_object(value, gicon);
             }
             break;
         }
@@ -495,7 +495,7 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             GIcon *gicon = xfdesktop_file_icon_get_gicon(icon);
             if (icon != NULL) {
                 g_value_init(value, G_TYPE_ICON);
-                g_value_set_object(value, gicon);
+                g_value_take_object(value, gicon);
             }
             break;
         }
