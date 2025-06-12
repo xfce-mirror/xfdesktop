@@ -1290,10 +1290,18 @@ xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject      *thunarx_me
         GList *children = thunarx_menu_get_items(thunarx_menu);
         GtkWidget *submenu = gtk_menu_new();
         for (GList *lp = children; lp != NULL; lp = lp->next) {
-            xfdesktop_menu_create_menu_item_from_thunarx_menu_item(lp->data, GTK_MENU_SHELL (submenu));
+            GtkWidget *gtk_menu_item = xfdesktop_menu_create_menu_item_from_thunarx_menu_item(lp->data, GTK_MENU_SHELL (submenu));
+
+            /* Each thunarx_menu_item will be destroyed together with its related gtk_menu_item */
+            g_signal_connect_swapped(G_OBJECT(gtk_menu_item), "destroy",
+                                     G_CALLBACK(g_object_unref), lp->data);
         }
         gtk_menu_item_set_submenu(GTK_MENU_ITEM (mi), submenu);
-        thunarx_menu_item_list_free(children);
+        g_list_free(children);
+    }
+
+    if (thunarx_menu != NULL) {
+        g_object_unref(thunarx_menu);
     }
 
     g_free (label);
