@@ -1426,6 +1426,7 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
         g_assert(builder != NULL);
 
         GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_candidates_chooser"));
+        gtk_window_set_title(GTK_WINDOW(dialog), _("Choose Monitor Configuration"));
 
         gchar *monitor_question_text = g_strdup_printf( _("Would you like to assign an existing desktop icon layout to monitor <b>%s</b>?"),
                                                        xfw_monitor_get_description(monitor));
