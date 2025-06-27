@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-03-19 12:56+0100\n"
+"POT-Creation-Date: 2025-06-26 12:55+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2025\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
@@ -70,12 +70,12 @@ msgid "Create _Folder"
 msgstr "フォルダーを作成(_F)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:108
-#: src/xfdesktop-file-icon-manager.c:1756
+#: src/xfdesktop-file-icon-manager.c:1765
 msgid "Create _Document"
 msgstr "ドキュメントの作成(_D)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:109
-#: src/xfdesktop-file-icon-manager.c:1814
+#: src/xfdesktop-file-icon-manager.c:1823
 #: src/xfdesktop-special-file-icon.c:339 src/xfdesktop-volume-icon.c:754
 msgid "_Open"
 msgstr "開く(_O)"
@@ -101,17 +101,17 @@ msgid "_Rename"
 msgstr "名前を変更(_R)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1960
+#: src/xfdesktop-file-icon-manager.c:1969
 msgid "Cu_t"
 msgstr "切り取り(_T)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:117
-#: src/xfdesktop-file-icon-manager.c:1968
+#: src/xfdesktop-file-icon-manager.c:1977
 msgid "_Copy"
 msgstr "コピー(_C)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:119
-#: src/xfdesktop-file-icon-manager.c:1947
+#: src/xfdesktop-file-icon-manager.c:1956
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
@@ -120,7 +120,7 @@ msgid "Paste _Into Folder"
 msgstr "フォルダーに貼り付け(_I)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:1991
+#: src/xfdesktop-file-icon-manager.c:2000
 msgid "Mo_ve to Trash"
 msgstr "ゴミ箱に捨てる(_V)"
 
@@ -130,7 +130,7 @@ msgid "_Empty Trash"
 msgstr "ゴミ箱を空にする(_E)"
 
 #: common/xfdesktop-keyboard-shortcuts.c:126
-#: src/xfdesktop-file-icon-manager.c:2000
+#: src/xfdesktop-file-icon-manager.c:2009
 msgid "_Delete"
 msgstr "削除(_D)"
 
@@ -327,7 +327,7 @@ msgstr "アイコンの整列"
 
 #. printf is to be translator-friendly
 #: settings/xfdesktop-icon-settings.c:98 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1317
+#: src/xfdesktop-file-icon-manager.c:1325
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\" を実行できません:"
@@ -335,7 +335,7 @@ msgstr "\"%s\" を実行できません:"
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:766
 #: src/xfdesktop-file-icon-manager.c:1010
 #: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1319 src/xfdesktop-file-utils.c:583
+#: src/xfdesktop-file-icon-manager.c:1327 src/xfdesktop-file-utils.c:583
 #: src/xfdesktop-file-utils.c:1466 src/xfdesktop-file-utils.c:1491
 #: src/xfdesktop-file-utils.c:1598 src/xfdesktop-file-utils.c:1662
 msgid "Launch Error"
@@ -346,8 +346,8 @@ msgstr "実行エラー"
 #: src/xfdesktop-file-icon-manager.c:702 src/xfdesktop-file-icon-manager.c:768
 #: src/xfdesktop-file-icon-manager.c:1014
 #: src/xfdesktop-file-icon-manager.c:1062
-#: src/xfdesktop-file-icon-manager.c:1321
-#: src/xfdesktop-file-icon-manager.c:3640 src/xfdesktop-file-utils.c:586
+#: src/xfdesktop-file-icon-manager.c:1329
+#: src/xfdesktop-file-icon-manager.c:3649 src/xfdesktop-file-utils.c:586
 #: src/xfdesktop-file-utils.c:703 src/xfdesktop-file-utils.c:758
 #: src/xfdesktop-file-utils.c:822 src/xfdesktop-file-utils.c:883
 #: src/xfdesktop-file-utils.c:944 src/xfdesktop-file-utils.c:992
@@ -390,6 +390,7 @@ msgid "Transparent"
 msgstr "透明"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:134
+#: src/xfdesktop-monitor-chooser-ui.glade:33
 msgid "Apply"
 msgstr "適用"
 
@@ -898,142 +899,146 @@ msgid ""
 " edit launchers and links on the desktop."
 msgstr "デスクトップのランチャーとリンクの作成・編集に必要な「xfce-desktop-item-edit」を起動できません。"
 
-#: src/xfdesktop-file-icon-manager.c:1422
+#: src/xfdesktop-file-icon-manager.c:1429
+msgid "Choose Monitor Configuration"
+msgstr "モニター設定を選択"
+
+#: src/xfdesktop-file-icon-manager.c:1431
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "既存デスクトップのアイコンレイアウトをモニター <b>%s</b> に割り当てますか？"
 
-#: src/xfdesktop-file-icon-manager.c:1430
+#: src/xfdesktop-file-icon-manager.c:1439
 msgid "Monitors"
 msgstr "モニター"
 
-#: src/xfdesktop-file-icon-manager.c:1716
+#: src/xfdesktop-file-icon-manager.c:1725
 msgid "_Open all"
 msgstr "すべて開く(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1728
+#: src/xfdesktop-file-icon-manager.c:1737
 msgid "Create _Launcher..."
 msgstr "ランチャーの作成(_L)..."
 
-#: src/xfdesktop-file-icon-manager.c:1738
+#: src/xfdesktop-file-icon-manager.c:1747
 msgid "Create _URL Link..."
 msgstr "URL リンクの作成(_U)..."
 
-#: src/xfdesktop-file-icon-manager.c:1748
+#: src/xfdesktop-file-icon-manager.c:1757
 msgid "Create _Folder..."
 msgstr "フォルダーの作成(_F)..."
 
-#: src/xfdesktop-file-icon-manager.c:1787
+#: src/xfdesktop-file-icon-manager.c:1796
 msgid "No templates installed"
 msgstr "テンプレートはインストールされていません"
 
-#: src/xfdesktop-file-icon-manager.c:1805
+#: src/xfdesktop-file-icon-manager.c:1814
 msgid "_Empty File"
 msgstr "空のファイル(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:1814
+#: src/xfdesktop-file-icon-manager.c:1823
 msgid "_Open All"
 msgstr "すべて開く(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1827
+#: src/xfdesktop-file-icon-manager.c:1836
 msgid "_Execute"
 msgstr "実行(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:1840
+#: src/xfdesktop-file-icon-manager.c:1849
 msgid "Edit _Launcher"
 msgstr "ランチャーを編集(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:1888
+#: src/xfdesktop-file-icon-manager.c:1897
 msgid "Ope_n With"
 msgstr "アプリで開く(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:1916
-#: src/xfdesktop-file-icon-manager.c:1933
+#: src/xfdesktop-file-icon-manager.c:1925
+#: src/xfdesktop-file-icon-manager.c:1942
 msgid "Ope_n With Other Application..."
 msgstr "他のアプリケーションで開く(_N)..."
 
-#: src/xfdesktop-file-icon-manager.c:1924
+#: src/xfdesktop-file-icon-manager.c:1933
 msgid "Set Defa_ult Application..."
 msgstr "デフォルトのアプリを設定(_U)..."
 
-#: src/xfdesktop-file-icon-manager.c:1980
+#: src/xfdesktop-file-icon-manager.c:1989
 msgid "Paste Into Folder"
 msgstr "フォルダーに貼り付け"
 
-#: src/xfdesktop-file-icon-manager.c:2011
+#: src/xfdesktop-file-icon-manager.c:2020
 msgid "_Rename..."
 msgstr "名前の変更(_R)..."
 
-#: src/xfdesktop-file-icon-manager.c:2062
+#: src/xfdesktop-file-icon-manager.c:2071
 msgid "_Open in New Window"
 msgstr "新しいウィンドウで開く(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:2069
+#: src/xfdesktop-file-icon-manager.c:2078
 #: src/xfdesktop-window-icon-manager.c:308
 msgid "Arrange Desktop _Icons"
 msgstr "デスクトップアイコンの整列(_I)"
 
-#: src/xfdesktop-file-icon-manager.c:2084
+#: src/xfdesktop-file-icon-manager.c:2093
 #: src/xfdesktop-window-icon-manager.c:322
 msgid "_Next Background"
 msgstr "次の背景(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:2094
+#: src/xfdesktop-file-icon-manager.c:2103
 #: src/xfdesktop-window-icon-manager.c:335
 msgid "Desktop _Settings..."
 msgstr "デスクトップの設定(_S)..."
 
-#: src/xfdesktop-file-icon-manager.c:2101 src/xfdesktop-volume-icon.c:816
+#: src/xfdesktop-file-icon-manager.c:2110 src/xfdesktop-volume-icon.c:816
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
-#: src/xfdesktop-file-icon-manager.c:3082
+#: src/xfdesktop-file-icon-manager.c:3091
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "ドロップしたファイルを '%s' に保存できませんでした"
 
-#: src/xfdesktop-file-icon-manager.c:3084
+#: src/xfdesktop-file-icon-manager.c:3093
 msgid "Drop Failure"
 msgstr "ドロップ失敗"
 
-#: src/xfdesktop-file-icon-manager.c:3088
+#: src/xfdesktop-file-icon-manager.c:3097
 #: src/xfdesktop-icon-view-manager.c:492
 msgid "_OK"
 msgstr "OK(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:3493
+#: src/xfdesktop-file-icon-manager.c:3502
 msgid "Copy _Here"
 msgstr "ここにコピー(_H)"
 
-#: src/xfdesktop-file-icon-manager.c:3494
+#: src/xfdesktop-file-icon-manager.c:3503
 msgid "_Move Here"
 msgstr "ここに移動(_M)"
 
-#: src/xfdesktop-file-icon-manager.c:3495
+#: src/xfdesktop-file-icon-manager.c:3504
 msgid "_Link Here"
 msgstr "ここにリンクを作成(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:3520 src/xfdesktop-file-utils.c:1153
+#: src/xfdesktop-file-icon-manager.c:3529 src/xfdesktop-file-utils.c:1153
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: src/xfdesktop-file-icon-manager.c:3613
+#: src/xfdesktop-file-icon-manager.c:3622
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "デスクトップフォルダー \"%s\" を作成できませんでした"
 
-#: src/xfdesktop-file-icon-manager.c:3621
+#: src/xfdesktop-file-icon-manager.c:3630
 msgid "Failed to load the desktop folder"
 msgstr "デスクトップフォルダーの読み込みに失敗しました"
 
-#: src/xfdesktop-file-icon-manager.c:3630
+#: src/xfdesktop-file-icon-manager.c:3639
 msgid "A desktop file icon error occurred"
 msgstr "デスクトップファイルアイコンエラーが発生しました"
 
-#: src/xfdesktop-file-icon-manager.c:3634
+#: src/xfdesktop-file-icon-manager.c:3643
 msgid "Desktop Folder Error"
 msgstr "デスクトップフォルダーエラー"
 
@@ -1222,6 +1227,18 @@ msgstr "すべてのデスクトップアイテムが並べ替えられて、異
 #: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "次回から確認しない(_N)"
+
+#: src/xfdesktop-monitor-chooser-ui.glade:77
+msgid "Allow Xfce to auto-assign the best match"
+msgstr "最適なものを Xfce に自動的に割り当てさせる"
+
+#: src/xfdesktop-monitor-chooser-ui.glade:92
+msgid "Select from existing monitor configurations:"
+msgstr "既存のモニター設定から選択:"
+
+#: src/xfdesktop-monitor-chooser-ui.glade:126
+msgid "Always auto-assign"
+msgstr "常に自動割り当て"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:152
