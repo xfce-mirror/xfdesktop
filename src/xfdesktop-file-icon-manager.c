@@ -2721,8 +2721,11 @@ select_drag_action(MonitorData *mdata, GdkDragContext *context, GList *src_files
         DBG("is trash=%d, actions=0x%08x", dest_is_trash, actions);
 
         // GTK will often suggest _COPY, but if the srcs and dest are on the
-        // same filesystem, we should default to _MOVE.
-        if ((actions & (GDK_ACTION_MOVE | GDK_ACTION_COPY)) != 0 && suggested_action == GDK_ACTION_COPY) {
+        // same filesystem, we should default to _MOVE.  We also need to check
+        // some invariants around whether or not things can be moved at all.
+        if ((actions & (GDK_ACTION_MOVE | GDK_ACTION_COPY)) != 0
+            && (suggested_action & (GDK_ACTION_MOVE | GDK_ACTION_COPY)) != 0)
+        {
             GHashTable *parent_writable_cache = g_hash_table_new_full(g_file_hash,
                                                                       (GEqualFunc)g_file_equal,
                                                                       g_object_unref,
@@ -2753,11 +2756,17 @@ select_drag_action(MonitorData *mdata, GdkDragContext *context, GList *src_files
                     suggested_action = GDK_ACTION_MOVE;
                 } else {
                     // If the src file's parent is not writable (meaning we
-                    // can't delete so we can't move) or if the src file and
-                    // the destination are on different filesystems, we default
-                    // to _COPY.
-                    suggested_action = GDK_ACTION_COPY;
-                    break;
+                    // can't delete so we can't move)...
+                    if (dest_is_trash) {
+                        // ... and the dest is trash, we can't really do anything here.
+                        actions = 0;
+                        break;
+                    } else {
+                        // ... and if the src file and the destination are on
+                        // different filesystems, we default to _COPY.
+                        suggested_action = GDK_ACTION_COPY;
+                        break;
+                    }
                 }
             }
 
