@@ -40,7 +40,6 @@ struct _XfdesktopBackdropCycler {
     gboolean random_order;
 
     guint timer_id;
-    gint prev_random_index;
 
     GFile *cur_image_file;
     /* Cached list of images in the same folder as image_path */
@@ -197,7 +196,6 @@ xfdesktop_backdrop_cycler_class_init(XfdesktopBackdropCyclerClass *klass) {
 
 static void
 xfdesktop_backdrop_cycler_init(XfdesktopBackdropCycler *cycler) {
-    cycler->prev_random_index = -1;
 }
 
 static void
@@ -703,8 +701,6 @@ xfdesktop_backdrop_cycler_choose_next(XfdesktopBackdropCycler *cycler) {
  * returns NULL on fail. */
 static GFile *
 xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
-    gint n_items = 0, cur_file;
-
     TRACE("entering");
 
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler), NULL);
@@ -718,21 +714,11 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
         }
     }
 
-    n_items = g_list_length(cycler->image_files);
+    gint n_items = g_list_length(cycler->image_files);
+    gint next_file_index = g_random_int_range(0, n_items);
 
-    /* If there's only 1 item, just return it, easy */
-    if (1 == n_items) {
-        return G_FILE(g_list_first(cycler->image_files)->data);
-    }
-
-    do {
-        /* g_random_int_range bounds to n_items-1 */
-        cur_file = g_random_int_range(0, n_items);
-    } while (cur_file == cycler->prev_random_index && G_LIKELY(cycler->prev_random_index != -1));
-
-    cycler->prev_random_index = cur_file;
-
-    GList *link = g_list_nth(cycler->image_files, cur_file);
+    GList *link = g_list_nth(cycler->image_files, next_file_index);
+    g_assert(link != NULL);
     cycler->image_files = g_list_remove_link(cycler->image_files, link);
     cycler->used_image_files = g_list_concat(link, cycler->used_image_files);
 
