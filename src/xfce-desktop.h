@@ -45,9 +45,6 @@ XfwMonitor *xfce_desktop_get_monitor(XfceDesktop *desktop);
 void xfce_desktop_update_monitor(XfceDesktop *desktop,
                                  XfwMonitor *monitor);
 
-void xfce_desktop_freeze_updates(XfceDesktop *desktop);
-void xfce_desktop_thaw_updates(XfceDesktop *desktop);
-
 void xfce_desktop_set_is_active(XfceDesktop *desktop,
                                 gboolean active);
 gboolean xfce_desktop_is_active(XfceDesktop *desktop);
