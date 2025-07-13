@@ -833,7 +833,7 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
                                                                    G_FILE_MONITOR_NONE,
                                                                    NULL,
                                                                    NULL);
-                if (backdrop->image_file_monitor == NULL) {
+                if (backdrop->image_file_monitor != NULL) {
                     g_signal_connect(backdrop->image_file_monitor, "changed",
                                      G_CALLBACK(backdrop_image_file_changed), backdrop);
                 }
