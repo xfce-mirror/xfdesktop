@@ -1099,24 +1099,6 @@ xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
 }
 
 void
-xfce_desktop_freeze_updates(XfceDesktop *desktop)
-{
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    desktop->updates_frozen = TRUE;
-}
-
-void
-xfce_desktop_thaw_updates(XfceDesktop *desktop)
-{
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-
-    if (desktop->updates_frozen) {
-        desktop->updates_frozen = FALSE;
-        fetch_backdrop(desktop, FALSE);
-    }
-}
-
-void
 xfce_desktop_set_is_active(XfceDesktop *desktop, gboolean active) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 

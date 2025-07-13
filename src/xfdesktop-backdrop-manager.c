@@ -970,8 +970,15 @@ xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
     gboolean is_spanning = FALSE;
 
     gchar *property_prefix = build_property_prefix(manager, xfwmonitor, workspace, &monitor, &is_spanning);
+    if (get_image_mode == IMAGE_FORCE_RELOAD) {
+        g_hash_table_remove(manager->backdrops, property_prefix);
+    }
+
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
-    if (get_image_mode != IMAGE_FORCE_RELOAD && backdrop != NULL && backdrop->surface != NULL) {
+    if (get_image_mode == IMAGE_FORCE_RELOAD && backdrop != NULL) {
+        g_hash_table_remove(manager->backdrops, property_prefix);
+    }
+    if (backdrop != NULL && backdrop->surface != NULL) {
         g_free(property_prefix);
         notify_complete(backdrop->surface,
                         monitor,
