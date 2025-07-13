@@ -31,11 +31,16 @@ Often it isn't clear: what did you expect to happen that didn't happen?
 # Additional Information
 
 <!--
-Please list the values of any settings that may be relevant to the
-issue.  Include any relevant logs or console output.  If this is a
-build problem, paste your build output, including all commands you used
-to run the build.  If a screenshot or screencast video may be helpful,
-attach it here.
+Any of the following may be useful here:
+1. Please list the values of any settings that may be relevant to the
+   issue.
+2. Include any relevant logs or console output.
+3. If this is a build problem, paste your build output, including all
+   commands you used to run the build.
+4. If you are reporting a crash, a stack trace from gdb will be
+   necessary in order to track it down, unless I can reproduce the issue
+   using your steps above.
+5. If a screenshot or screencast video may be helpful, attach it here.
 -->
 
 # Environment & Versions
@@ -49,6 +54,7 @@ that you test with the current state of git master.
 * OS distribution and version:
 * Overall Xfce version:
 * xfdesktop version (git hash if not a release):
+* thunar version (if issue related to file/launcher icons):
 * Windowing system (X11/Wayland):
 * Compositor and version (if Wayland):
 * GTK Theme:
