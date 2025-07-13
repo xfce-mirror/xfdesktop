@@ -52,6 +52,11 @@ typedef void (*GetImageSurfaceCallback)(cairo_surface_t *surface,
                                         GError *error,
                                         gpointer user_data);
 
+typedef enum {
+    IMAGE_GET_CACHED,
+    IMAGE_FORCE_RELOAD,
+} GetImageMode;
+
 G_DECLARE_FINAL_TYPE(XfdesktopBackdropManager, xfdesktop_backdrop_manager, XFDESKTOP, BACKDROP_MANAGER, GObject)
 #define XFDESKTOP_TYPE_BACKDROP_MANAGER (xfdesktop_backdrop_manager_get_type())
 
@@ -60,6 +65,7 @@ XfdesktopBackdropManager *xfdesktop_backdrop_manager_new(XfwScreen *screen,
 
 void xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
                                                   GCancellable *cancellable,
+                                                  GetImageMode get_image_mode,
                                                   XfwMonitor *monitor,
                                                   XfwWorkspace *workspace,
                                                   GetImageSurfaceCallback callback,
