@@ -1555,14 +1555,17 @@ xfdesktop_file_utils_execute(GFile *working_directory,
                     rc = xfce_rc_simple_open(path, TRUE);
                     if(rc != NULL) {
                         path_prop = xfce_rc_read_entry(rc, "Path", NULL);
-                        if(xfce_str_is_empty(path_prop))
-                            working_dir = g_strdup(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP));
-                        else
+                        if (!xfce_str_is_empty(path_prop)) {
                             working_dir = g_strdup(path_prop);
+                        }
                         xfce_rc_close(rc);
                     }
                     g_free(path);
                 }
+            }
+
+            if (working_dir == NULL) {
+                working_dir = g_strdup(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP));
             }
 
             if(info)
