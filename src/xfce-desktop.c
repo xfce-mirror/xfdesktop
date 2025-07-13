@@ -320,7 +320,7 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
 }
 
 static void
-fetch_backdrop(XfceDesktop *desktop) {
+fetch_backdrop(XfceDesktop *desktop, gboolean force_reload) {
     TRACE("entering");
     if (gtk_widget_get_realized(GTK_WIDGET(desktop)) && desktop->backdrop_workspace != NULL) {
         if (desktop->backdrop_load_cancellable != NULL) {
@@ -331,6 +331,7 @@ fetch_backdrop(XfceDesktop *desktop) {
 
         xfdesktop_backdrop_manager_get_image_surface(desktop->backdrop_manager,
                                                      desktop->backdrop_load_cancellable,
+                                                     force_reload ? IMAGE_FORCE_RELOAD : IMAGE_GET_CACHED,
                                                      desktop->monitor,
                                                      desktop->backdrop_workspace,
                                                      backdrop_loaded,
@@ -340,13 +341,13 @@ fetch_backdrop(XfceDesktop *desktop) {
 
 static void
 screen_composited_changed_cb(GdkScreen *gscreen, XfceDesktop *desktop) {
-    fetch_backdrop(desktop);
+    fetch_backdrop(desktop, FALSE);
 }
 
 static void
 monitor_prop_changed(XfwMonitor *monitor, GParamSpec *pspec, XfceDesktop *desktop) {
     xfce_desktop_place_on_monitor(desktop);
-    fetch_backdrop(desktop);
+    fetch_backdrop(desktop, TRUE);
 }
 
 static void
@@ -451,7 +452,7 @@ manager_backdrop_changed(XfdesktopBackdropManager *manager,
         monitor, desktop->monitor, xfw_workspace_get_number(workspace),
         xfw_workspace_get_number(desktop->backdrop_workspace));
     if (monitor == desktop->monitor && workspace == desktop->backdrop_workspace) {
-        fetch_backdrop(desktop);
+        fetch_backdrop(desktop, FALSE);
     }
 }
 
@@ -977,7 +978,7 @@ update_backdrop_workspace(XfceDesktop *desktop) {
              desktop->backdrop_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->backdrop_workspace) : -1);
 
     if (desktop->backdrop_workspace != old_backdrop_workspace || desktop->bg_surface == NULL) {
-        fetch_backdrop(desktop);
+        fetch_backdrop(desktop, FALSE);
         return TRUE;
     } else {
         return FALSE;
@@ -1048,7 +1049,7 @@ xfce_desktop_update_monitor(XfceDesktop *desktop, XfwMonitor *monitor) {
 
         if (gtk_widget_get_realized(GTK_WIDGET(desktop))) {
             xfce_desktop_place_on_monitor(desktop);
-            fetch_backdrop(desktop);
+            fetch_backdrop(desktop, TRUE);
         }
 
         g_object_notify(G_OBJECT(desktop), "monitor");
@@ -1111,7 +1112,7 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
 
     if (desktop->updates_frozen) {
         desktop->updates_frozen = FALSE;
-        fetch_backdrop(desktop);
+        fetch_backdrop(desktop, FALSE);
     }
 }
 
@@ -1141,7 +1142,7 @@ xfce_desktop_refresh(XfceDesktop *desktop) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if (desktop->backdrop_workspace != NULL) {
-        fetch_backdrop(desktop);
+        fetch_backdrop(desktop, TRUE);
     }
 }
 
