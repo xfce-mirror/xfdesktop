@@ -22,10 +22,6 @@
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <glib.h>
 #include <gio/gio.h>
 #include <libxfce4util/libxfce4util.h>

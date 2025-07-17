@@ -28,10 +28,6 @@
  *  https://specifications.freedesktop.org/thumbnail-spec/thumbnail-spec-latest.html
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <string.h>
 
 #include <gio/gio.h>

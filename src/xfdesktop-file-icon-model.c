@@ -19,10 +19,6 @@
  */
 
 #include "libxfce4windowing/libxfce4windowing.h"
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <gio/gio.h>
 #include <libxfce4util/libxfce4util.h>
 
