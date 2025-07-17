@@ -18,10 +18,6 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "xfdesktop-common.h"
 #include "xfdesktop-extensions.h"
 #include "xfdesktop-icon-view-model.h"

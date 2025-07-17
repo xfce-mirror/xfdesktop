@@ -24,10 +24,6 @@
  *     Copyright (c) 2004 Nils Rennebarth
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>

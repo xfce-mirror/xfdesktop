@@ -22,10 +22,6 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <cairo-gobject.h>
 #include <glib-object.h>
 #include <glib.h>

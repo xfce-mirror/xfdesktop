@@ -21,10 +21,6 @@
  * ALIGNED TO XFDESKTOP AND A FEW TRANSLATOR HINTS WERE ADDED.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <glib.h>
 #include <gio/gio.h>
 
