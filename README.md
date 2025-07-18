@@ -37,17 +37,17 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/NEWS) for detail
 From source: 
 
     % cd xfdesktop
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf xfdesktop-<version>.tar.bz2
+    % tar xf xfdesktop-<version>.tar.xz
     % cd xfdesktop-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 
