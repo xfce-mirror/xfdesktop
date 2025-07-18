@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Xfce
-# This file is distributed under the same license as the xfdesktop.master package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 # Alan Lee <bkrhlim@aol.com>, 2013
@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
-"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-03-19 12:56+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-18 01:00+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2023\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfdesktop/language/ko/)\n"
@@ -25,188 +25,174 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: common/xfdesktop-keyboard-shortcuts.c:75
+#: ../common/xfdesktop-keyboard-shortcuts.c:71
 msgid "_Reload"
 msgstr "다시 읽기(_R)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:78
+#: ../common/xfdesktop-keyboard-shortcuts.c:74
 msgid "Activate _Primary Menu"
 msgstr "기본 메뉴 활성(_P)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:80
+#: ../common/xfdesktop-keyboard-shortcuts.c:76
 msgid "Activate _Secondary Menu"
 msgstr "부차 메뉴 활성(_S)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:82
+#: ../common/xfdesktop-keyboard-shortcuts.c:78
 msgid "Cycle Next Background"
 msgstr "다음 배경 순환"
 
-#: common/xfdesktop-keyboard-shortcuts.c:88
+#: ../common/xfdesktop-keyboard-shortcuts.c:84
 msgid "_Activate Icon"
 msgstr "아이콘 활성(_A)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:93
+#: ../common/xfdesktop-keyboard-shortcuts.c:89
 msgid "_Toggle Cursor Icon"
 msgstr "커서 아이콘 전환(_T)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:95
+#: ../common/xfdesktop-keyboard-shortcuts.c:91
 msgid "Select _All"
 msgstr "모두 선택(_A)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:96
+#: ../common/xfdesktop-keyboard-shortcuts.c:92
 msgid "U_nselect All"
 msgstr "모두 선택 취소(_N)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:97
+#: ../common/xfdesktop-keyboard-shortcuts.c:93
 msgid "A_rrange Icons"
 msgstr "아이콘 정렬(_R)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:101
+#: ../common/xfdesktop-keyboard-shortcuts.c:97
 msgid "Un_minimize Window"
 msgstr "창 최소화 취소(_M)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:102
+#: ../common/xfdesktop-keyboard-shortcuts.c:98
 msgid "_Close Window"
 msgstr "창 닫기(_C)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:107
+#: ../common/xfdesktop-keyboard-shortcuts.c:103
 msgid "Create _Folder"
 msgstr "폴더 만들기(_F)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:108
-#: src/xfdesktop-file-icon-manager.c:1756
+#: ../common/xfdesktop-keyboard-shortcuts.c:104
+#: ../src/xfdesktop-file-icon-manager.c:1761
 msgid "Create _Document"
 msgstr "문서 만들기(_D)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:109
-#: src/xfdesktop-file-icon-manager.c:1814
-#: src/xfdesktop-special-file-icon.c:339 src/xfdesktop-volume-icon.c:754
+#: ../common/xfdesktop-keyboard-shortcuts.c:105
+#: ../src/xfdesktop-file-icon-manager.c:1819
+#: ../src/xfdesktop-special-file-icon.c:335 ../src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "열기(_O)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:110
+#: ../common/xfdesktop-keyboard-shortcuts.c:106
 msgid "Ope_n With Other Application"
 msgstr "다른 앱으로 열기(_N)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:111
+#: ../common/xfdesktop-keyboard-shortcuts.c:107
 msgid "Open _Filesystem"
 msgstr "파일 시스템 열기(_F)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:112
+#: ../common/xfdesktop-keyboard-shortcuts.c:108
 msgid "Open _Home"
 msgstr "내 폴더 열기(_H)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:113
+#: ../common/xfdesktop-keyboard-shortcuts.c:109
 msgid "Open _Trash"
 msgstr "휴지통 열기(_T)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:114
+#: ../common/xfdesktop-keyboard-shortcuts.c:110
 msgid "_Rename"
 msgstr "이름 바꾸기(_R)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1960
+#: ../common/xfdesktop-keyboard-shortcuts.c:111
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Cu_t"
 msgstr "잘라내기(_T)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:117
-#: src/xfdesktop-file-icon-manager.c:1968
+#: ../common/xfdesktop-keyboard-shortcuts.c:113
+#: ../src/xfdesktop-file-icon-manager.c:1973
 msgid "_Copy"
 msgstr "복사(_C)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:119
-#: src/xfdesktop-file-icon-manager.c:1947
+#: ../common/xfdesktop-keyboard-shortcuts.c:115
+#: ../src/xfdesktop-file-icon-manager.c:1952
 msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:121
+#: ../common/xfdesktop-keyboard-shortcuts.c:117
 msgid "Paste _Into Folder"
 msgstr "폴더에 붙여넣기(_I)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:1991
+#: ../common/xfdesktop-keyboard-shortcuts.c:118
+#: ../src/xfdesktop-file-icon-manager.c:1996
 msgid "Mo_ve to Trash"
 msgstr "휴지통으로 이동(_V)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:125
-#: src/xfdesktop-special-file-icon.c:355
+#: ../common/xfdesktop-keyboard-shortcuts.c:121
+#: ../src/xfdesktop-special-file-icon.c:351
 msgid "_Empty Trash"
 msgstr "휴지통 비우기(_E)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:126
-#: src/xfdesktop-file-icon-manager.c:2000
+#: ../common/xfdesktop-keyboard-shortcuts.c:122
+#: ../src/xfdesktop-file-icon-manager.c:2005
 msgid "_Delete"
 msgstr "지우기(_D)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:129
+#: ../common/xfdesktop-keyboard-shortcuts.c:125
 msgid "Show _Hidden Files"
 msgstr "숨김파일 표시(_H)"
 
-#: common/xfdesktop-keyboard-shortcuts.c:130
+#: ../common/xfdesktop-keyboard-shortcuts.c:126
 msgid "_Properties"
 msgstr "속성(_P)"
 
-#: settings/main.c:99
+#: ../settings/main.c:95
 msgid "Settings manager socket"
 msgstr "관리자 소켓 설정"
 
-#: settings/main.c:99
+#: ../settings/main.c:95
 msgid "SOCKET ID"
 msgstr "소켓 ID"
 
-#: settings/main.c:101
+#: ../settings/main.c:97
 msgid "Version information"
 msgstr "버전 정보"
 
-#: settings/main.c:102 src/xfdesktop-application.c:286
+#: ../settings/main.c:98 ../src/xfdesktop-application.c:282
 msgid "Enable debug messages"
 msgstr "디버깅 메시지 활성화"
 
-#: settings/main.c:120
+#: ../settings/main.c:116
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "사용법을 보려면 '%s --help'를 입력하십시오."
 
-#: settings/main.c:132 src/xfdesktop-application.c:1202
+#: ../settings/main.c:128 ../src/xfdesktop-application.c:1198
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 개발 팀. All rights reserved."
 
-#: settings/main.c:133 src/xfdesktop-application.c:1203
+#: ../settings/main.c:129 ../src/xfdesktop-application.c:1199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "<%s>(으)로 버그를 알려주십시오."
 
-#: settings/main.c:139
+#: ../settings/main.c:135
 msgid "Desktop Settings"
 msgstr "작업 공간 설정"
 
-#: settings/main.c:141
+#: ../settings/main.c:137
 msgid "Unable to contact settings server"
 msgstr "설정 서버에 연결할 수 없습니다."
 
-#: settings/main.c:143
+#: ../settings/main.c:139
 msgid "Quit"
 msgstr "끝내기"
 
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:42
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:563
-msgid "Desktop"
-msgstr "데스크톱"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "desktop;데스크톱;backgrund;바탕화면;wallpaper;배경;settings;설정;xfce;"
-
-#: settings/xfdesktop-background-settings.c:227
+#: ../settings/xfdesktop-background-settings.c:223
 msgid "Choose the folder to select wallpapers from."
 msgstr "배경 폴더를 선택합니다."
 
-#: settings/xfdesktop-background-settings.c:445
+#: ../settings/xfdesktop-background-settings.c:441
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -214,1026 +200,1047 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\n형식: %s\n크기: %s"
 
-#: settings/xfdesktop-background-settings.c:529
-#: settings/xfdesktop-background-settings.c:611
+#: ../settings/xfdesktop-background-settings.c:525
+#: ../settings/xfdesktop-background-settings.c:607
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "\"%s\" 폴더에서 그림을 불러올 수 없습니다"
 
-#: settings/xfdesktop-background-settings.c:712
+#: ../settings/xfdesktop-background-settings.c:708
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "%d번 화면(%s) 배경"
 
-#: settings/xfdesktop-background-settings.c:716
+#: ../settings/xfdesktop-background-settings.c:712
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "%d번 화면 배경"
 
-#: settings/xfdesktop-background-settings.c:722
+#: ../settings/xfdesktop-background-settings.c:718
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "설정을 편집할 화면으로 이 대화 상자를 옮기십시오."
 
-#: settings/xfdesktop-background-settings.c:727
+#: ../settings/xfdesktop-background-settings.c:723
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "%2$d번 화면(%3$s)의 %1$s 배경"
 
-#: settings/xfdesktop-background-settings.c:732
+#: ../settings/xfdesktop-background-settings.c:728
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "%2$d번 화면의 %1$s 배경"
 
-#: settings/xfdesktop-background-settings.c:740
+#: ../settings/xfdesktop-background-settings.c:736
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "설정을 편집할 화면과 작업 공간으로 이 대화 상자를 옮기십시오."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:749
+#: ../settings/xfdesktop-background-settings.c:745
 msgid "Wallpaper for my desktop"
 msgstr "내 데스크톱 배경"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:755
+#: ../settings/xfdesktop-background-settings.c:751
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s 배경"
 
-#: settings/xfdesktop-background-settings.c:760
+#: ../settings/xfdesktop-background-settings.c:756
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "설정을 편집할 작업 공간으로 이 대화 상자를 옮기십시오."
 
-#: settings/xfdesktop-background-settings.c:1074
+#: ../settings/xfdesktop-background-settings.c:1070
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "그림 표시 방식을 없음으로 선택했기 때문에 그림을 선택할 수 없습니다."
 
-#: settings/xfdesktop-background-settings.c:1515
+#: ../settings/xfdesktop-background-settings.c:1511
 msgid "Spanning screens"
 msgstr "화면 확장"
 
-#: settings/xfdesktop-background-settings.c:1904
+#: ../settings/xfdesktop-background-settings.c:1900
 msgid "Image files"
 msgstr "그림 파일"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1912
+#: ../settings/xfdesktop-background-settings.c:1908
 msgid "Select a Directory"
 msgstr "디렉터리 선택"
 
-#: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:236 src/xfdesktop-special-file-icon.c:274
+#: ../settings/xfdesktop-file-icon-settings.c:90
+#: ../src/xfdesktop-special-file-icon.c:232
+#: ../src/xfdesktop-special-file-icon.c:270
 msgid "Home"
 msgstr "내 폴더"
 
-#: settings/xfdesktop-file-icon-settings.c:96
-#: src/xfdesktop-special-file-icon.c:238 src/xfdesktop-special-file-icon.c:272
+#: ../settings/xfdesktop-file-icon-settings.c:92
+#: ../src/xfdesktop-special-file-icon.c:234
+#: ../src/xfdesktop-special-file-icon.c:268
 msgid "File System"
 msgstr "파일 시스템"
 
-#: settings/xfdesktop-file-icon-settings.c:98
-#: src/xfdesktop-special-file-icon.c:240
+#: ../settings/xfdesktop-file-icon-settings.c:94
+#: ../src/xfdesktop-special-file-icon.c:236
 msgid "Trash"
 msgstr "휴지통"
 
-#: settings/xfdesktop-file-icon-settings.c:100
+#: ../settings/xfdesktop-file-icon-settings.c:96
 msgid "Devices"
 msgstr "장치"
 
-#: settings/xfdesktop-file-icon-settings.c:102
+#: ../settings/xfdesktop-file-icon-settings.c:98
 msgid "Network Shares"
 msgstr "네트워크 공유"
 
-#: settings/xfdesktop-file-icon-settings.c:104
+#: ../settings/xfdesktop-file-icon-settings.c:100
 msgid "Removable Disks and Drives"
 msgstr "이동식 디스크 및 드라이브"
 
-#: settings/xfdesktop-file-icon-settings.c:106
+#: ../settings/xfdesktop-file-icon-settings.c:102
 msgid "Fixed Disks and Drives"
 msgstr "고정식 디스크 미 드라이브"
 
-#: settings/xfdesktop-file-icon-settings.c:108
+#: ../settings/xfdesktop-file-icon-settings.c:104
 msgid "Other Devices"
 msgstr "기타 장치"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/xfdesktop-icon-settings.c:90
+#: ../settings/xfdesktop-icon-settings.c:86
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "모든 기존 아이콘을 선택한 방향에 따라\n정렬하시겠습니까?"
 
-#: settings/xfdesktop-icon-settings.c:94
+#: ../settings/xfdesktop-icon-settings.c:90
 msgid "Arrange icons"
 msgstr "아이콘 정렬"
 
 #. printf is to be translator-friendly
-#: settings/xfdesktop-icon-settings.c:98 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1317
+#: ../settings/xfdesktop-icon-settings.c:94
+#: ../src/xfdesktop-file-icon-manager.c:760
+#: ../src/xfdesktop-file-icon-manager.c:1321
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\"을(를) 실행할 수 없음:"
 
-#: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:766
-#: src/xfdesktop-file-icon-manager.c:1010
-#: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1319 src/xfdesktop-file-utils.c:583
-#: src/xfdesktop-file-utils.c:1466 src/xfdesktop-file-utils.c:1491
-#: src/xfdesktop-file-utils.c:1598 src/xfdesktop-file-utils.c:1662
+#: ../settings/xfdesktop-icon-settings.c:95
+#: ../src/xfdesktop-file-icon-manager.c:762
+#: ../src/xfdesktop-file-icon-manager.c:1006
+#: ../src/xfdesktop-file-icon-manager.c:1054
+#: ../src/xfdesktop-file-icon-manager.c:1323 ../src/xfdesktop-file-utils.c:579
+#: ../src/xfdesktop-file-utils.c:1462 ../src/xfdesktop-file-utils.c:1487
+#: ../src/xfdesktop-file-utils.c:1597 ../src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
 msgstr "실행 오류"
 
-#: settings/xfdesktop-icon-settings.c:101
-#: settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:702 src/xfdesktop-file-icon-manager.c:768
-#: src/xfdesktop-file-icon-manager.c:1014
-#: src/xfdesktop-file-icon-manager.c:1062
-#: src/xfdesktop-file-icon-manager.c:1321
-#: src/xfdesktop-file-icon-manager.c:3640 src/xfdesktop-file-utils.c:586
-#: src/xfdesktop-file-utils.c:703 src/xfdesktop-file-utils.c:758
-#: src/xfdesktop-file-utils.c:822 src/xfdesktop-file-utils.c:883
-#: src/xfdesktop-file-utils.c:944 src/xfdesktop-file-utils.c:992
-#: src/xfdesktop-file-utils.c:1011 src/xfdesktop-file-utils.c:1125
-#: src/xfdesktop-file-utils.c:1221 src/xfdesktop-file-utils.c:1409
-#: src/xfdesktop-file-utils.c:1470 src/xfdesktop-file-utils.c:1493
-#: src/xfdesktop-file-utils.c:1602 src/xfdesktop-file-utils.c:1666
-#: src/xfdesktop-file-utils.c:1737 src/xfdesktop-file-utils.c:1807
-#: src/xfdesktop-volume-icon.c:393 src/xfdesktop-volume-icon.c:441
-#: src/xfdesktop-volume-icon.c:523
+#: ../settings/xfdesktop-icon-settings.c:97
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../src/xfdesktop-file-icon-manager.c:698
+#: ../src/xfdesktop-file-icon-manager.c:764
+#: ../src/xfdesktop-file-icon-manager.c:1010
+#: ../src/xfdesktop-file-icon-manager.c:1058
+#: ../src/xfdesktop-file-icon-manager.c:1325
+#: ../src/xfdesktop-file-icon-manager.c:3654 ../src/xfdesktop-file-utils.c:582
+#: ../src/xfdesktop-file-utils.c:699 ../src/xfdesktop-file-utils.c:754
+#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:940 ../src/xfdesktop-file-utils.c:988
+#: ../src/xfdesktop-file-utils.c:1007 ../src/xfdesktop-file-utils.c:1121
+#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1405
+#: ../src/xfdesktop-file-utils.c:1466 ../src/xfdesktop-file-utils.c:1489
+#: ../src/xfdesktop-file-utils.c:1601 ../src/xfdesktop-file-utils.c:1665
+#: ../src/xfdesktop-file-utils.c:1736 ../src/xfdesktop-file-utils.c:1806
+#: ../src/xfdesktop-volume-icon.c:389 ../src/xfdesktop-volume-icon.c:437
+#: ../src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:52
+#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:560
+msgid "Desktop"
+msgstr "데스크톱"
+
+#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
 msgstr "아이콘"
 
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:61
+#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:57
 msgid "Window Icons"
 msgstr "창 아이콘"
 
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:71
+#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:67
 msgid "File Icons"
 msgstr "파일 아리콘"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
 msgstr "단색"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:22
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
 msgstr "수평 그레디언트"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:25
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Vertical gradient"
 msgstr "수직 그레디언트"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:28
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
 msgstr "투명"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:134
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../src/xfdesktop-monitor-chooser-ui.glade.h:1
 msgid "Apply"
 msgstr "적용"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
 msgstr "표현 방식(_Y):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:164
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "그림을 화면에 어떻게 맞출지 지정합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:166
-#: settings/xfdesktop-settings-ui.glade:60
-#: settings/xfdesktop-settings-ui.glade:97
-#: settings/xfdesktop-settings-ui.glade:117
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
 msgstr "없음"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:167
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 msgid "Centered"
 msgstr "가운데로"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Tiled"
 msgstr "바둑판"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:169
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Stretched"
 msgstr "늘이기"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:170
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Scaled"
 msgstr "크기 맞춤"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:171
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Zoomed"
 msgstr "확대"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
 msgstr "화면 늘이기"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "배경 그림 뒤에 채울 색의 형식을 지정합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:207
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "그레디언트의 \"왼쪽\" 또는 \"위\" 방향의 색을 정합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:208
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
 msgstr "첫번째 색 선택"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "그레디언트의 \"오른쪽\" 또는 \"아래\" 방향의 색을 정합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
 msgstr "두번째 색 선택"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:231
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
 msgstr "모든 작업 공간에 적용(_W)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:249
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
 msgstr "폴더(_F):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
 msgstr "색상(_O):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:332
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
 msgstr "배경 바꾸기(_B)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:337
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "현재 디렉터리에서 각각의 다른 배경을 자동으로 선택합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:353
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
 msgstr "배경을 바꿀 시간을 지정합니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:355
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
 msgstr "초 단위:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
 msgstr "분 단위:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
 msgstr "시간 단위:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
 msgstr "시작할 때"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
 msgstr "매 시간마다"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
 msgstr "매일"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
 msgstr "시간 순으로"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:376
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
 msgstr "각각의 배경을 선택하기 전 대기 시간입니다."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:387
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
 msgstr "임의 순서(_R)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "배경을 순환하여 보여줄 때 동일한 디렉터리에서 다른 이미지를 임의로 선택합니다."
 
-#: settings/xfdesktop-settings-ui.glade:43
-#: settings/xfdesktop-settings-ui.glade:80
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
 msgstr "왼쪽"
 
-#: settings/xfdesktop-settings-ui.glade:46
-#: settings/xfdesktop-settings-ui.glade:83
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Middle"
 msgstr "가운데"
 
-#: settings/xfdesktop-settings-ui.glade:49
-#: settings/xfdesktop-settings-ui.glade:86
+#: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Right"
 msgstr "오른쪽"
 
-#: settings/xfdesktop-settings-ui.glade:63
-#: settings/xfdesktop-settings-ui.glade:100
+#: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Shift"
 msgstr "Shift"
 
-#: settings/xfdesktop-settings-ui.glade:66
-#: settings/xfdesktop-settings-ui.glade:103
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Alt"
 msgstr "Alt"
 
-#: settings/xfdesktop-settings-ui.glade:69
-#: settings/xfdesktop-settings-ui.glade:106
+#: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Control"
 msgstr "Control"
 
-#: settings/xfdesktop-settings-ui.glade:120
+#: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
 msgstr "최소화한 프로그램 아이콘"
 
-#: settings/xfdesktop-settings-ui.glade:123
+#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
 msgstr "파일/실행 아이콘"
 
-#: settings/xfdesktop-settings-ui.glade:134
+#: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
 msgstr "좌측 상단 수직"
 
-#: settings/xfdesktop-settings-ui.glade:137
+#: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
 msgstr "좌측 상단 수평"
 
-#: settings/xfdesktop-settings-ui.glade:140
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
 msgstr "우측 상단 수직"
 
-#: settings/xfdesktop-settings-ui.glade:143
+#: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
 msgstr "우측 상단 수평"
 
-#: settings/xfdesktop-settings-ui.glade:146
+#: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
 msgstr "좌측 하단 수직"
 
-#: settings/xfdesktop-settings-ui.glade:149
+#: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
 msgstr "좌측 하단 수평"
 
-#: settings/xfdesktop-settings-ui.glade:152
+#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
 msgstr "우측 하단 수직"
 
-#: settings/xfdesktop-settings-ui.glade:155
+#: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
 msgstr "우측 하단 수평"
 
-#: settings/xfdesktop-settings-ui.glade:182
+#: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: settings/xfdesktop-settings-ui.glade:238
+#: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "_Background"
 msgstr "배경(_B)"
 
-#: settings/xfdesktop-settings-ui.glade:271
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Include applications menu on _desktop right click"
 msgstr "데스크톱 단축 메뉴에 프로그램 메뉴 표시(_D)"
 
-#: settings/xfdesktop-settings-ui.glade:304
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
 msgstr "단추(_B):"
 
-#: settings/xfdesktop-settings-ui.glade:338
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Mo_difier:"
 msgstr "단축키(_D):"
 
-#: settings/xfdesktop-settings-ui.glade:376
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show _application icons in menu"
 msgstr "메뉴에 프로그램 아이콘 표시(_A)"
 
-#: settings/xfdesktop-settings-ui.glade:398
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "_Edit desktop menu"
 msgstr "데스크톱 메뉴 편집(_E)"
 
-#: settings/xfdesktop-settings-ui.glade:432
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>데스크톱 메뉴</b>"
 
-#: settings/xfdesktop-settings-ui.glade:461
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr "데스크톱에서 가운데 단추를 눌러 창 목록 메뉴 표시(_W)"
 
-#: settings/xfdesktop-settings-ui.glade:494
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "B_utton:"
 msgstr "단추(_U):"
 
-#: settings/xfdesktop-settings-ui.glade:528
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Modi_fier:"
 msgstr "단축키(_F):"
 
-#: settings/xfdesktop-settings-ui.glade:566
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
 msgstr "메뉴에 프로그램 아이콘 표시(_O)"
 
-#: settings/xfdesktop-settings-ui.glade:583
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "List windows on a_ll workspaces"
 msgstr "모든 작업 공간의 창 목록 표시(_L)"
 
-#: settings/xfdesktop-settings-ui.glade:600
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "목록에 작업 공간 이름 표시(_N)"
 
-#: settings/xfdesktop-settings-ui.glade:623
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
 msgstr "각 작업 공간에서 창 하위 메뉴 사용(_S)"
 
-#: settings/xfdesktop-settings-ui.glade:646
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
 msgstr "작업 공간에 끈적이 창만 표시(_T)"
 
-#: settings/xfdesktop-settings-ui.glade:662
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a section listing all _urgent windows on other workspaces"
 msgstr "다른 작업 공간의 모든 긴급 상황 창 섹션 표시(_U)"
 
-#: settings/xfdesktop-settings-ui.glade:678
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Show a_dd and remove workspace options in list"
 msgstr "목록에 작업 공간 추가/제거 옵션 표시(_D)"
 
-#: settings/xfdesktop-settings-ui.glade:707
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "<b>Window List Menu</b>"
 msgstr "<b>창 목록 메뉴</b>"
 
-#: settings/xfdesktop-settings-ui.glade:728
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "_Menus"
 msgstr "메뉴(_M)"
 
-#: settings/xfdesktop-settings-ui.glade:753
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Icon _type:"
 msgstr "아이콘 형태(_T):"
 
-#: settings/xfdesktop-settings-ui.glade:813
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icon _size:"
 msgstr "아이콘 크기(_S):"
 
-#: settings/xfdesktop-settings-ui.glade:829
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "48"
 msgstr "48"
 
-#: settings/xfdesktop-settings-ui.glade:840
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Fo_nt size:"
 msgstr "글꼴 크기(_N):"
 
-#: settings/xfdesktop-settings-ui.glade:860
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
 msgstr "12"
 
-#: settings/xfdesktop-settings-ui.glade:871
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon toolt_ips. Size:"
 msgstr "아이콘 풍선 도움말 표시 크기(_I):"
 
-#: settings/xfdesktop-settings-ui.glade:890
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
 msgstr "풍선 도움말 미리보기 그림의 크기입니다."
 
-#: settings/xfdesktop-settings-ui.glade:892
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "64"
 msgstr "64"
 
-#: settings/xfdesktop-settings-ui.glade:903
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "Font co_lor:"
 msgstr "글꼴 색상(_L):"
 
-#: settings/xfdesktop-settings-ui.glade:941
+#: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Label bac_kground color:"
 msgstr "레이블 배경 색상(_K):"
 
-#: settings/xfdesktop-settings-ui.glade:984
+#: ../settings/xfdesktop-settings-ui.glade.h:50
 msgid "<b>Appearance</b>"
 msgstr "<b>모양새</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1019
+#: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Placement _direction:"
 msgstr "배치 방향(_D):"
 
-#: settings/xfdesktop-settings-ui.glade:1059
+#: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Show icons only on _primary display"
 msgstr "주 화면에만 아이콘 표시(_P)"
 
-#: settings/xfdesktop-settings-ui.glade:1074
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "Single click to _activate items"
 msgstr "한 번 클릭하여 항목 활성(_A)"
 
-#: settings/xfdesktop-settings-ui.glade:1090
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "_Underline text on hover"
 msgstr "마우스를 올려둔 글자에 밑줄(_U)"
 
-#: settings/xfdesktop-settings-ui.glade:1106
+#: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "Show confirmation dialog before arran_ging icons"
 msgstr "아이콘 정렬 전 확인 대화상자 표시"
 
-#: settings/xfdesktop-settings-ui.glade:1127
+#: ../settings/xfdesktop-settings-ui.glade.h:56
 msgid "Behavior"
 msgstr "행동"
 
-#: settings/xfdesktop-settings-ui.glade:1150
+#: ../settings/xfdesktop-settings-ui.glade.h:57
 msgid "Desktop _Icons"
 msgstr "데스크톱 아이콘(_I)"
 
-#: settings/xfdesktop-settings-ui.glade:1204
+#: ../settings/xfdesktop-settings-ui.glade.h:58
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "파일/실행 아이콘을 사용하지 않고 있습니다. \"데스크톱 아이콘\" 탭에서 사용 설정할 수 있습니다."
 
-#: settings/xfdesktop-settings-ui.glade:1250
+#: ../settings/xfdesktop-settings-ui.glade.h:59
 msgid "Show hidden files on the desktop"
 msgstr "데스크톱에 숨김 파일 표시"
 
-#: settings/xfdesktop-settings-ui.glade:1266
+#: ../settings/xfdesktop-settings-ui.glade.h:60
 msgid "Show t_humbnails"
 msgstr "섬네일 표시(_H)"
 
-#: settings/xfdesktop-settings-ui.glade:1271
+#: ../settings/xfdesktop-settings-ui.glade.h:61
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "자동으로 만들어지는 섬네일 아이콘으로 데스크톱에서 미리 볼 수 있는 파일을 표시하려면 이 옵션을 선택하십시오."
 
-#: settings/xfdesktop-settings-ui.glade:1283
+#: ../settings/xfdesktop-settings-ui.glade.h:62
 msgid "Show \"Delete\" option in file context menu"
 msgstr "파일 단축 메뉴에서 \"삭제\" 옵션 표시"
 
-#: settings/xfdesktop-settings-ui.glade:1300
+#: ../settings/xfdesktop-settings-ui.glade.h:63
 msgid "_Arrange folders before files"
 msgstr "폴더를 파일보다 먼저 표시 정렬(_A)"
 
-#: settings/xfdesktop-settings-ui.glade:1321
+#: ../settings/xfdesktop-settings-ui.glade.h:64
 msgid "General"
 msgstr "일반"
 
-#: settings/xfdesktop-settings-ui.glade:1365
+#: ../settings/xfdesktop-settings-ui.glade.h:65
 msgid "Default Icons"
 msgstr "기본 아이콘"
 
-#: settings/xfdesktop-settings-ui.glade:1395
+#: ../settings/xfdesktop-settings-ui.glade.h:66
 msgid "_File/Launcher Icons"
 msgstr "파일/실행 아이콘(_F)"
 
-#: settings/xfdesktop-settings-ui.glade:1421
+#: ../settings/xfdesktop-settings-ui.glade.h:67
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: src/menu.c:86
+#: ../src/menu.c:82
 msgid "_Applications"
 msgstr "프로그램(_A)"
 
-#: src/windowlist.c:83
+#: ../src/windowlist.c:79
 msgid "Window List"
 msgstr "창 목록"
 
-#: src/xfdesktop-application.c:278
+#: ../src/xfdesktop-application.c:274
 msgid "Display version information"
 msgstr "버전 정보를 표시합니다"
 
-#: src/xfdesktop-application.c:279
+#: ../src/xfdesktop-application.c:275
 msgid "Reload all settings"
 msgstr "모든 설정을 다시 읽어들입니다"
 
-#: src/xfdesktop-application.c:280
+#: ../src/xfdesktop-application.c:276
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "현재 작업 공간에 다음 배경 표시 진행"
 
-#: src/xfdesktop-application.c:281
+#: ../src/xfdesktop-application.c:277
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)단축 메뉴를 나타냅니다"
 
-#: src/xfdesktop-application.c:282
+#: ../src/xfdesktop-application.c:278
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)창 목록을 나타냅니다"
 
-#: src/xfdesktop-application.c:284
+#: ../src/xfdesktop-application.c:280
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "모든 데스크톱의 아이콘을 자동 정렬합니다"
 
-#: src/xfdesktop-application.c:287
+#: ../src/xfdesktop-application.c:283
 msgid "Disable debug messages"
 msgstr "디버깅 메시지 비활성화"
 
-#: src/xfdesktop-application.c:289
+#: ../src/xfdesktop-application.c:285
 msgid "Do not wait for a window manager on startup"
 msgstr "시동시 창 관리자를 기다리지 않습니다"
 
-#: src/xfdesktop-application.c:291
+#: ../src/xfdesktop-application.c:287
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop을 끝냅니다"
 
-#: src/xfdesktop-application.c:1195
+#: ../src/xfdesktop-application.c:1191
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s 입니다. xfce %s에서 실행 중입니다.\n"
 
-#: src/xfdesktop-application.c:1197
+#: ../src/xfdesktop-application.c:1193
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d에서 빌드하고 GTK+ %d.%d.%d에 연결했습니다."
 
-#: src/xfdesktop-application.c:1205
+#: ../src/xfdesktop-application.c:1201
+#, c-format
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: src/xfdesktop-application.c:1206
+#: ../src/xfdesktop-application.c:1202
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "데스크톱 메뉴: %s\n"
 
-#: src/xfdesktop-application.c:1208 src/xfdesktop-application.c:1215
-#: src/xfdesktop-application.c:1222
+#: ../src/xfdesktop-application.c:1204 ../src/xfdesktop-application.c:1211
+#: ../src/xfdesktop-application.c:1218
 msgid "enabled"
 msgstr "활성화"
 
-#: src/xfdesktop-application.c:1210 src/xfdesktop-application.c:1217
-#: src/xfdesktop-application.c:1224
+#: ../src/xfdesktop-application.c:1206 ../src/xfdesktop-application.c:1213
+#: ../src/xfdesktop-application.c:1220
 msgid "disabled"
 msgstr "비활성화"
 
-#: src/xfdesktop-application.c:1213
+#: ../src/xfdesktop-application.c:1209
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "데스크톱 아이콘: %s\n"
 
-#: src/xfdesktop-application.c:1220
+#: ../src/xfdesktop-application.c:1216
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "데스크톱 파일 아이콘: %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:699 src/xfdesktop-file-utils.c:754
-#: src/xfdesktop-file-utils.c:818
+#: ../src/xfdesktop-file-icon-manager.c:695 ../src/xfdesktop-file-utils.c:750
+#: ../src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "이름 바꾸기 오류"
 
-#: src/xfdesktop-file-icon-manager.c:700 src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-icon-manager.c:696 ../src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "파일 이름을 바꿀 수 없습니다."
 
-#: src/xfdesktop-file-icon-manager.c:701
+#: ../src/xfdesktop-file-icon-manager.c:697
 msgid "None of the icons selected support being renamed."
 msgstr "이름 바꾸기를 지원하려 선택한 아이콘이 없습니다."
 
-#: src/xfdesktop-file-icon-manager.c:959
+#: ../src/xfdesktop-file-icon-manager.c:955
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"(으)로 열기(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:962
+#: ../src/xfdesktop-file-icon-manager.c:958
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"(으)로 열기"
 
-#: src/xfdesktop-file-icon-manager.c:1012
-#: src/xfdesktop-file-icon-manager.c:1060
+#: ../src/xfdesktop-file-icon-manager.c:1008
+#: ../src/xfdesktop-file-icon-manager.c:1056
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1422
+#: ../src/xfdesktop-file-icon-manager.c:1425
+msgid "Choose Monitor Configuration"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1427
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "<b>%s</b> 모니터에 기존 데스크톱 아이콘 배치를 설정하시렵니까?"
 
-#: src/xfdesktop-file-icon-manager.c:1430
+#: ../src/xfdesktop-file-icon-manager.c:1435
 msgid "Monitors"
 msgstr "모니터"
 
-#: src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1721
 msgid "_Open all"
 msgstr "모두 열기(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "실행 아이콘 만들기(_L)..."
 
-#: src/xfdesktop-file-icon-manager.c:1738
+#: ../src/xfdesktop-file-icon-manager.c:1743
 msgid "Create _URL Link..."
 msgstr "URL 연결 만들기(_U)..."
 
-#: src/xfdesktop-file-icon-manager.c:1748
+#: ../src/xfdesktop-file-icon-manager.c:1753
 msgid "Create _Folder..."
 msgstr "새 폴더 만들기(_F)..."
 
-#: src/xfdesktop-file-icon-manager.c:1787
+#: ../src/xfdesktop-file-icon-manager.c:1792
 msgid "No templates installed"
 msgstr "설치한 서식이 없습니다"
 
-#: src/xfdesktop-file-icon-manager.c:1805
+#: ../src/xfdesktop-file-icon-manager.c:1810
 msgid "_Empty File"
 msgstr "빈 파일(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:1814
+#: ../src/xfdesktop-file-icon-manager.c:1819
 msgid "_Open All"
 msgstr "모두 열기(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1827
+#: ../src/xfdesktop-file-icon-manager.c:1832
 msgid "_Execute"
 msgstr "실행(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:1840
+#: ../src/xfdesktop-file-icon-manager.c:1845
 msgid "Edit _Launcher"
 msgstr "실행 아이콘 편집(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "Ope_n With"
 msgstr "다음으로 열기(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:1916
-#: src/xfdesktop-file-icon-manager.c:1933
+#: ../src/xfdesktop-file-icon-manager.c:1921
+#: ../src/xfdesktop-file-icon-manager.c:1938
 msgid "Ope_n With Other Application..."
 msgstr "다른 프로그램으로 열기(_N)..."
 
-#: src/xfdesktop-file-icon-manager.c:1924
+#: ../src/xfdesktop-file-icon-manager.c:1929
 msgid "Set Defa_ult Application..."
 msgstr "기본 앱 선택(_U)..."
 
-#: src/xfdesktop-file-icon-manager.c:1980
+#: ../src/xfdesktop-file-icon-manager.c:1985
 msgid "Paste Into Folder"
 msgstr "폴더에 붙여넣기"
 
-#: src/xfdesktop-file-icon-manager.c:2011
+#: ../src/xfdesktop-file-icon-manager.c:2016
 msgid "_Rename..."
 msgstr "이름 바꾸기(_R)..."
 
-#: src/xfdesktop-file-icon-manager.c:2062
+#: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "_Open in New Window"
 msgstr "새 창에서 열기(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:2069
-#: src/xfdesktop-window-icon-manager.c:308
+#: ../src/xfdesktop-file-icon-manager.c:2074
+#: ../src/xfdesktop-window-icon-manager.c:304
 msgid "Arrange Desktop _Icons"
 msgstr "데스크톱 아이콘 정렬(_I)"
 
-#: src/xfdesktop-file-icon-manager.c:2084
-#: src/xfdesktop-window-icon-manager.c:322
+#: ../src/xfdesktop-file-icon-manager.c:2089
+#: ../src/xfdesktop-window-icon-manager.c:318
 msgid "_Next Background"
 msgstr "다음 배경(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:2094
-#: src/xfdesktop-window-icon-manager.c:335
+#: ../src/xfdesktop-file-icon-manager.c:2099
+#: ../src/xfdesktop-window-icon-manager.c:331
 msgid "Desktop _Settings..."
 msgstr "데스크톱 설정(_S)..."
 
-#: src/xfdesktop-file-icon-manager.c:2101 src/xfdesktop-volume-icon.c:816
+#: ../src/xfdesktop-file-icon-manager.c:2106
+#: ../src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "속성(_P)..."
 
-#: src/xfdesktop-file-icon-manager.c:3082
+#: ../src/xfdesktop-file-icon-manager.c:3096
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "'%s'에 끌어다 놓은 파일의 저장에 실패했습니다"
 
-#: src/xfdesktop-file-icon-manager.c:3084
+#: ../src/xfdesktop-file-icon-manager.c:3098
 msgid "Drop Failure"
 msgstr "끌어다 놓기 실패"
 
-#: src/xfdesktop-file-icon-manager.c:3088
-#: src/xfdesktop-icon-view-manager.c:492
+#: ../src/xfdesktop-file-icon-manager.c:3102
+#: ../src/xfdesktop-icon-view-manager.c:488
 msgid "_OK"
 msgstr "확인(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:3493
+#: ../src/xfdesktop-file-icon-manager.c:3507
 msgid "Copy _Here"
 msgstr "여기로 복사(_H)"
 
-#: src/xfdesktop-file-icon-manager.c:3494
+#: ../src/xfdesktop-file-icon-manager.c:3508
 msgid "_Move Here"
 msgstr "여기로 이동(_M)"
 
-#: src/xfdesktop-file-icon-manager.c:3495
+#: ../src/xfdesktop-file-icon-manager.c:3509
 msgid "_Link Here"
 msgstr "여기에 연결 만들기(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:3520 src/xfdesktop-file-utils.c:1153
-#: src/xfdesktop-icon-view-manager.c:491
+#: ../src/xfdesktop-file-icon-manager.c:3534
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-icon-view-manager.c:487
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: src/xfdesktop-file-icon-manager.c:3613
+#: ../src/xfdesktop-file-icon-manager.c:3627
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "\"%s\" 데스크톱 폴더를 만들 수 없습니다"
 
-#: src/xfdesktop-file-icon-manager.c:3621
+#: ../src/xfdesktop-file-icon-manager.c:3635
 msgid "Failed to load the desktop folder"
 msgstr "데스크톱 폴더 불러오기에 실패했습니다"
 
-#: src/xfdesktop-file-icon-manager.c:3630
+#: ../src/xfdesktop-file-icon-manager.c:3644
 msgid "A desktop file icon error occurred"
 msgstr "데스크톱 파일 아이콘에 오류가 있습니다"
 
-#: src/xfdesktop-file-icon-manager.c:3634
+#: ../src/xfdesktop-file-icon-manager.c:3648
 msgid "Desktop Folder Error"
 msgstr "데스크톱 폴더 오류"
 
-#: src/xfdesktop-file-icon-model.c:552
+#: ../src/xfdesktop-file-icon-model.c:548
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "같은 이름을 가진 일반 파일이 이미 존재합니다. 삭제하거나 이름을 바꿔 주십시오."
 
 #. TRANSLATORS: file was modified less than one day ago
-#: src/xfdesktop-file-utils.c:182
+#: ../src/xfdesktop-file-utils.c:178
 #, c-format
 msgid "Today at %X"
 msgstr "오늘, %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: src/xfdesktop-file-utils.c:186
+#: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "Yesterday at %X"
 msgstr "어제, %X"
 
 #. Days from last week
-#: src/xfdesktop-file-utils.c:191
+#: ../src/xfdesktop-file-utils.c:187
 #, c-format
 msgid "%A at %X"
 msgstr "%A, %X"
 
 #. Any other date
-#: src/xfdesktop-file-utils.c:194
+#: ../src/xfdesktop-file-utils.c:190
 #, c-format
 msgid "%x at %X"
 msgstr "%x, %X"
 
 #. the file_time is invalid
-#: src/xfdesktop-file-utils.c:204 src/xfdesktop-file-utils.c:1732
+#: ../src/xfdesktop-file-utils.c:200 ../src/xfdesktop-file-utils.c:1731
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: src/xfdesktop-file-utils.c:333
+#: ../src/xfdesktop-file-utils.c:329
 #, c-format
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: src/xfdesktop-file-utils.c:584
+#: ../src/xfdesktop-file-utils.c:580
 msgid "The folder could not be opened"
 msgstr "폴더를 열 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:696
 msgid "Error"
 msgstr "오류"
 
-#: src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:697
 msgid "The requested operation could not be completed"
 msgstr "요청한 동작을 완료할 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:755
+#: ../src/xfdesktop-file-utils.c:751
 msgid "The file could not be renamed"
 msgstr "파일의 이름을 바꿀 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:756 src/xfdesktop-file-utils.c:820
-#: src/xfdesktop-file-utils.c:881 src/xfdesktop-file-utils.c:1407
-#: src/xfdesktop-file-utils.c:1468 src/xfdesktop-file-utils.c:1600
-#: src/xfdesktop-file-utils.c:1664 src/xfdesktop-file-utils.c:1805
+#: ../src/xfdesktop-file-utils.c:752 ../src/xfdesktop-file-utils.c:816
+#: ../src/xfdesktop-file-utils.c:877 ../src/xfdesktop-file-utils.c:1403
+#: ../src/xfdesktop-file-utils.c:1464 ../src/xfdesktop-file-utils.c:1599
+#: ../src/xfdesktop-file-utils.c:1663 ../src/xfdesktop-file-utils.c:1804
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "이 기능을 사용하시려면(투나에서 제공하는 기능과 같은) 파일 관리자 서비스가 필요합니다."
 
-#: src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:875
 msgid "Delete Error"
 msgstr "삭제 오류"
 
-#: src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:876
 msgid "The selected files could not be deleted"
 msgstr "선택한 파일을 삭제할 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
+#: ../src/xfdesktop-file-utils.c:936 ../src/xfdesktop-file-utils.c:984
 msgid "Trash Error"
 msgstr "휴지통 오류"
 
-#: src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:937
 msgid "The selected files could not be moved to the trash"
 msgstr "선택한 파일을 휴지통으로 옮길 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:942 src/xfdesktop-file-utils.c:990
+#: ../src/xfdesktop-file-utils.c:938 ../src/xfdesktop-file-utils.c:986
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "이 기능을 사용하시려면(투나에서 제공하는 기능과 같은) 휴지통 서비스가 필요합니다."
 
-#: src/xfdesktop-file-utils.c:989
+#: ../src/xfdesktop-file-utils.c:985
 msgid "Could not empty the trash"
 msgstr "휴지통을 비울 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:999
+#: ../src/xfdesktop-file-utils.c:995
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "\"%2$s\" 양식 파일로 \"%1$s\" 새 파일을 만들 수 없습니다: %3$s"
 
-#: src/xfdesktop-file-utils.c:1005 src/xfdesktop-file-utils.c:1119
-#: src/xfdesktop-file-utils.c:1215
+#: ../src/xfdesktop-file-utils.c:1001 ../src/xfdesktop-file-utils.c:1115
+#: ../src/xfdesktop-file-utils.c:1211
 msgid "Create File Error"
 msgstr "파일 만들기 오류"
 
-#: src/xfdesktop-file-utils.c:1007 src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1003 ../src/xfdesktop-file-utils.c:1277
 msgid "Could not create a new file"
 msgstr "새 파일을 만들 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:1020
+#: ../src/xfdesktop-file-utils.c:1016
 msgid "New Empty File"
 msgstr "비어 있는 새 파일"
 
-#: src/xfdesktop-file-utils.c:1115
+#: ../src/xfdesktop-file-utils.c:1111
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "새 \"%1$s\" 폴더를 만들 수 없습니다: %2$s"
 
-#: src/xfdesktop-file-utils.c:1121 src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-utils.c:1117 ../src/xfdesktop-file-utils.c:1310
 msgid "Could not create a new folder"
 msgstr "새 폴더를 만들 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:1155
+#: ../src/xfdesktop-file-utils.c:1151
 msgid "C_reate"
 msgstr "만들기(_R)"
 
-#: src/xfdesktop-file-utils.c:1213
+#: ../src/xfdesktop-file-utils.c:1209
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "파일 이름 \"%s\"을(를) 로컬 인코딩으로 바꿀 수 없습니다."
 
-#: src/xfdesktop-file-utils.c:1275
+#: ../src/xfdesktop-file-utils.c:1271
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "\"%s\" 서식으로 새로운 문서를 만듭니다."
 
-#: src/xfdesktop-file-utils.c:1278 src/xfdesktop-file-utils.c:1311
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1307
 msgid "Enter the name:"
 msgstr "이름을 입력하십시오:"
 
-#: src/xfdesktop-file-utils.c:1303
+#: ../src/xfdesktop-file-utils.c:1299
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1305
 msgid "Create New Folder"
 msgstr "새폴더를 만듭니다."
 
-#: src/xfdesktop-file-utils.c:1405
+#: ../src/xfdesktop-file-utils.c:1401
 msgid "File Properties Error"
 msgstr "파일 속성 오류"
 
-#: src/xfdesktop-file-utils.c:1406
+#: ../src/xfdesktop-file-utils.c:1402
 msgid "The file properties dialog could not be opened"
 msgstr "파일 속성 대화 상자를 열 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:1467
+#: ../src/xfdesktop-file-utils.c:1463
 msgid "The file could not be opened"
 msgstr "파일을 열 수 없습니다"
 
-#: src/xfdesktop-file-utils.c:1488 src/xfdesktop-file-utils.c:1595
+#: ../src/xfdesktop-file-utils.c:1484 ../src/xfdesktop-file-utils.c:1594
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" 실행에 실패했습니다."
 
-#: src/xfdesktop-file-utils.c:1663
+#: ../src/xfdesktop-file-utils.c:1662
 msgid "The application chooser could not be opened"
 msgstr "프로그램 선택 메뉴를 열 수 없습니다."
 
-#: src/xfdesktop-file-utils.c:1734 src/xfdesktop-file-utils.c:1803
+#: ../src/xfdesktop-file-utils.c:1733 ../src/xfdesktop-file-utils.c:1802
 msgid "Transfer Error"
 msgstr "전송 오류"
 
-#: src/xfdesktop-file-utils.c:1735 src/xfdesktop-file-utils.c:1804
+#: ../src/xfdesktop-file-utils.c:1734 ../src/xfdesktop-file-utils.c:1803
 msgid "The file transfer could not be performed"
 msgstr "파일을 전송할 수 없습니다"
 
-#: src/xfdesktop-icon-view-manager.c:488
+#: ../src/xfdesktop-icon-view-manager.c:484
 msgid "Arrange Icons"
 msgstr "아이콘 정렬"
 
-#: src/xfdesktop-icon-view-manager.c:509
+#: ../src/xfdesktop-icon-view-manager.c:505
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "모든 바탕화면 항목을 재배치하여 서로 다른 화면 위치에 둡니다.\n계속하시렵니까?"
 
-#: src/xfdesktop-icon-view-manager.c:513
+#: ../src/xfdesktop-icon-view-manager.c:509
 msgid "Do _not ask me again"
 msgstr "다시 묻지 않습니다(_N)"
 
+#: ../src/xfdesktop-monitor-chooser-ui.glade.h:2
+msgid "Allow Xfce to auto-assign the best match"
+msgstr ""
+
+#: ../src/xfdesktop-monitor-chooser-ui.glade.h:3
+msgid "Select from existing monitor configurations:"
+msgstr ""
+
+#: ../src/xfdesktop-monitor-chooser-ui.glade.h:4
+msgid "Always auto-assign"
+msgstr ""
+
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:152
+#: ../src/xfdesktop-notify.c:148
 msgid "Unmounting device"
 msgstr "장치 마운트 해제 중"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:155
+#: ../src/xfdesktop-notify.c:151
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1241,43 +1248,43 @@ msgid ""
 msgstr "시스템에서 \"%s\" 장치 마운트를 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:162 src/xfdesktop-notify.c:241
+#: ../src/xfdesktop-notify.c:158 ../src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "장치에 데이터 쓰는 중"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:165 src/xfdesktop-notify.c:244
+#: ../src/xfdesktop-notify.c:161 ../src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "장치 제거 전 \"%s\" 장치로 기록할 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
 
-#: src/xfdesktop-notify.c:211
+#: ../src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "마운트 해제가 끝났습니다"
 
-#: src/xfdesktop-notify.c:212 src/xfdesktop-notify.c:355
+#: ../src/xfdesktop-notify.c:208 ../src/xfdesktop-notify.c:351
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "\"%s\" 장치를 시스템에서 안전하게 제거했습니다."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:234
+#: ../src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "장치 꺼내는 중"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:237
+#: ../src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "\"%s\" 장치를 꺼내는 중입니다. 시간이 약간 걸릴 수도 있습니다"
 
-#: src/xfdesktop-notify.c:354
+#: ../src/xfdesktop-notify.c:350
 msgid "Eject Finished"
 msgstr "장치 꺼내기를 끝냈습니다"
 
-#: src/xfdesktop-regular-file-icon.c:727
+#: ../src/xfdesktop-regular-file-icon.c:723
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1286,20 +1293,20 @@ msgid ""
 "Last modified: %s"
 msgstr "이름: %s\n형식: %s\n크기: %s\n최종 수정: %s"
 
-#: src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:254
 msgid "Trash is empty"
 msgstr "휴지통이 비었습니다"
 
-#: src/xfdesktop-special-file-icon.c:261
+#: ../src/xfdesktop-special-file-icon.c:257
 msgid "Trash contains one item"
 msgstr "휴지통에 항목 1개가 있습니다"
 
-#: src/xfdesktop-special-file-icon.c:262
+#: ../src/xfdesktop-special-file-icon.c:258
 #, c-format
 msgid "Trash contains %d items"
 msgstr "휴지통에 항목 %d개가 있습니다"
 
-#: src/xfdesktop-special-file-icon.c:290
+#: ../src/xfdesktop-special-file-icon.c:286
 #, c-format
 msgid ""
 "%s\n"
@@ -1307,15 +1314,15 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\n크기: %s\n최종 수정: %s"
 
-#: src/xfdesktop-volume-icon.c:332
+#: ../src/xfdesktop-volume-icon.c:328
 msgid "(not mounted)"
 msgstr "(마운트 안함)"
 
-#: src/xfdesktop-volume-icon.c:333 src/xfdesktop-volume-icon.c:334
+#: ../src/xfdesktop-volume-icon.c:329 ../src/xfdesktop-volume-icon.c:330
 msgid "(unknown)"
 msgstr "(알 수 없음)"
 
-#: src/xfdesktop-volume-icon.c:338
+#: ../src/xfdesktop-volume-icon.c:334
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1325,56 +1332,56 @@ msgid ""
 "Free Space: %s"
 msgstr "이름: %s\n형식: %s\n마운트: %s\n크기: %s\n여분 용량: %s"
 
-#: src/xfdesktop-volume-icon.c:340
+#: ../src/xfdesktop-volume-icon.c:336
 msgid "Removable Volume"
 msgstr "이동식 볼륨"
 
-#: src/xfdesktop-volume-icon.c:387 src/xfdesktop-volume-icon.c:434
+#: ../src/xfdesktop-volume-icon.c:383 ../src/xfdesktop-volume-icon.c:430
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" 꺼내기 실패"
 
-#: src/xfdesktop-volume-icon.c:391 src/xfdesktop-volume-icon.c:439
+#: ../src/xfdesktop-volume-icon.c:387 ../src/xfdesktop-volume-icon.c:435
 msgid "Eject Failed"
 msgstr "꺼내기 실패"
 
-#: src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" 마운트 실패"
 
-#: src/xfdesktop-volume-icon.c:521
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Mount Failed"
 msgstr "마운트 실패"
 
-#: src/xfdesktop-volume-icon.c:778
+#: ../src/xfdesktop-volume-icon.c:774
 msgid "Safely _Remove Volume"
 msgstr "볼륨을 안전하게 제거(_R)"
 
-#: src/xfdesktop-volume-icon.c:781
+#: ../src/xfdesktop-volume-icon.c:777
 msgid "_Disconnect Volume"
 msgstr "볼륨 연결 해제(_D)"
 
-#: src/xfdesktop-volume-icon.c:784
+#: ../src/xfdesktop-volume-icon.c:780
 msgid "Stop the _Multi-Disk Drive"
 msgstr "다중 디스크 드라이브 중지(_M)"
 
-#: src/xfdesktop-volume-icon.c:787
+#: ../src/xfdesktop-volume-icon.c:783
 msgid "_Lock Volume"
 msgstr "볼륨 잠그기(_L)"
 
-#: src/xfdesktop-volume-icon.c:790
+#: ../src/xfdesktop-volume-icon.c:786
 msgid "_Eject Volume"
 msgstr "볼륨 꺼내기(_E)"
 
-#: src/xfdesktop-volume-icon.c:799
+#: ../src/xfdesktop-volume-icon.c:795
 msgid "_Unmount Volume"
 msgstr "볼륨 마운트 해제(_U)"
 
-#: src/xfdesktop-volume-icon.c:806
+#: ../src/xfdesktop-volume-icon.c:802
 msgid "_Mount Volume"
 msgstr "볼륨 마운트(_M)"
 
-#: src/xfdesktop-window-icon-manager.c:296
+#: ../src/xfdesktop-window-icon-manager.c:292
 msgid "_Run Program..."
 msgstr "프로그램 실행(_R)..."
