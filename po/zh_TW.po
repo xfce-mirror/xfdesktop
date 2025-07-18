@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfdesktop.master package.
 # 
 # Translators:
 # Ambrose Li <acli@ada.dhs.org>, 2004
@@ -20,8 +20,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-18 01:00+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:10+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: anenasa, 2022-2023\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/xfce/xfdesktop/language/zh_TW/)\n"
@@ -31,174 +31,188 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:71
+#: common/xfdesktop-keyboard-shortcuts.c:71
 msgid "_Reload"
 msgstr "更新(_R)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:74
+#: common/xfdesktop-keyboard-shortcuts.c:74
 msgid "Activate _Primary Menu"
 msgstr "啟用主要選單(_P)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:76
+#: common/xfdesktop-keyboard-shortcuts.c:76
 msgid "Activate _Secondary Menu"
 msgstr "啟用次要選單(_S)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:78
+#: common/xfdesktop-keyboard-shortcuts.c:78
 msgid "Cycle Next Background"
 msgstr "循環到下一個背景"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:84
+#: common/xfdesktop-keyboard-shortcuts.c:84
 msgid "_Activate Icon"
 msgstr "啟用圖示(_A)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:89
+#: common/xfdesktop-keyboard-shortcuts.c:89
 msgid "_Toggle Cursor Icon"
 msgstr "切換滑鼠游標圖示(_T)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:91
+#: common/xfdesktop-keyboard-shortcuts.c:91
 msgid "Select _All"
 msgstr "全選(_A)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:92
+#: common/xfdesktop-keyboard-shortcuts.c:92
 msgid "U_nselect All"
 msgstr "取消全選(_N)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:93
+#: common/xfdesktop-keyboard-shortcuts.c:93
 msgid "A_rrange Icons"
 msgstr "排列圖示(_R)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:97
+#: common/xfdesktop-keyboard-shortcuts.c:97
 msgid "Un_minimize Window"
 msgstr "取消最小化視窗"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:98
+#: common/xfdesktop-keyboard-shortcuts.c:98
 msgid "_Close Window"
 msgstr "關閉視窗(_A)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:103
+#: common/xfdesktop-keyboard-shortcuts.c:103
 msgid "Create _Folder"
 msgstr "建立資料夾(_F)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:104
-#: ../src/xfdesktop-file-icon-manager.c:1761
+#: common/xfdesktop-keyboard-shortcuts.c:104
+#: src/xfdesktop-file-icon-manager.c:1761
 msgid "Create _Document"
 msgstr "建立文件(_D)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:105
-#: ../src/xfdesktop-file-icon-manager.c:1819
-#: ../src/xfdesktop-special-file-icon.c:335 ../src/xfdesktop-volume-icon.c:750
+#: common/xfdesktop-keyboard-shortcuts.c:105
+#: src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:106
+#: common/xfdesktop-keyboard-shortcuts.c:106
 msgid "Ope_n With Other Application"
 msgstr "使用其他應用程式開啟(_N)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:107
+#: common/xfdesktop-keyboard-shortcuts.c:107
 msgid "Open _Filesystem"
 msgstr "開啟檔案系統(_F)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:108
+#: common/xfdesktop-keyboard-shortcuts.c:108
 msgid "Open _Home"
 msgstr "開啟家目錄(_H)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:109
+#: common/xfdesktop-keyboard-shortcuts.c:109
 msgid "Open _Trash"
 msgstr "開啟垃圾桶(_T)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:110
+#: common/xfdesktop-keyboard-shortcuts.c:110
 msgid "_Rename"
 msgstr "重新命名(_R)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:111
-#: ../src/xfdesktop-file-icon-manager.c:1965
+#: common/xfdesktop-keyboard-shortcuts.c:111
+#: src/xfdesktop-file-icon-manager.c:1965
 msgid "Cu_t"
 msgstr "剪下(_T)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:113
-#: ../src/xfdesktop-file-icon-manager.c:1973
+#: common/xfdesktop-keyboard-shortcuts.c:113
+#: src/xfdesktop-file-icon-manager.c:1973
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:115
-#: ../src/xfdesktop-file-icon-manager.c:1952
+#: common/xfdesktop-keyboard-shortcuts.c:115
+#: src/xfdesktop-file-icon-manager.c:1952
 msgid "_Paste"
 msgstr "貼上(_P)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:117
+#: common/xfdesktop-keyboard-shortcuts.c:117
 msgid "Paste _Into Folder"
 msgstr "貼上至資料夾內"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:118
-#: ../src/xfdesktop-file-icon-manager.c:1996
+#: common/xfdesktop-keyboard-shortcuts.c:118
+#: src/xfdesktop-file-icon-manager.c:1996
 msgid "Mo_ve to Trash"
 msgstr "丟到垃圾桶(_V)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:121
-#: ../src/xfdesktop-special-file-icon.c:351
+#: common/xfdesktop-keyboard-shortcuts.c:121
+#: src/xfdesktop-special-file-icon.c:351
 msgid "_Empty Trash"
 msgstr "清空垃圾桶(_E)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:122
-#: ../src/xfdesktop-file-icon-manager.c:2005
+#: common/xfdesktop-keyboard-shortcuts.c:122
+#: src/xfdesktop-file-icon-manager.c:2005
 msgid "_Delete"
 msgstr "刪除(_D)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:125
+#: common/xfdesktop-keyboard-shortcuts.c:125
 msgid "Show _Hidden Files"
 msgstr "顯示隱藏檔(_H)"
 
-#: ../common/xfdesktop-keyboard-shortcuts.c:126
+#: common/xfdesktop-keyboard-shortcuts.c:126
 msgid "_Properties"
 msgstr "屬性(_P)"
 
-#: ../settings/main.c:95
+#: settings/main.c:95
 msgid "Settings manager socket"
 msgstr "設定值管理員 socket"
 
-#: ../settings/main.c:95
+#: settings/main.c:95
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:97
+#: settings/main.c:97
 msgid "Version information"
 msgstr "版本資訊"
 
-#: ../settings/main.c:98 ../src/xfdesktop-application.c:282
+#: settings/main.c:98 src/xfdesktop-application.c:282
 msgid "Enable debug messages"
 msgstr "啟用除錯訊息"
 
-#: ../settings/main.c:116
+#: settings/main.c:116
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "輸入 '%s --help' 以瞭解用法。"
 
-#: ../settings/main.c:128 ../src/xfdesktop-application.c:1198
+#: settings/main.c:128 src/xfdesktop-application.c:1198
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 開發團隊。保留所有權利。"
 
-#: ../settings/main.c:129 ../src/xfdesktop-application.c:1199
+#: settings/main.c:129 src/xfdesktop-application.c:1199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請回報程式錯誤至 <%s>。"
 
-#: ../settings/main.c:135
+#: settings/main.c:135
 msgid "Desktop Settings"
 msgstr "桌面設定"
 
-#: ../settings/main.c:137
+#: settings/main.c:137
 msgid "Unable to contact settings server"
 msgstr "無法聯絡設定值伺服器"
 
-#: ../settings/main.c:139
+#: settings/main.c:139
 msgid "Quit"
 msgstr "結束"
 
-#: ../settings/xfdesktop-background-settings.c:223
+#: settings/xfce-backdrop-settings.desktop.in:4
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:560
+msgid "Desktop"
+msgstr "桌面"
+
+#: settings/xfce-backdrop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "設定桌面背景、選單、圖示行為"
+
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "desktop;background;wallpaper;settings;xfce;"
+
+#: settings/xfdesktop-background-settings.c:223
 msgid "Choose the folder to select wallpapers from."
 msgstr "選擇桌布的來源資料夾。"
 
-#: ../settings/xfdesktop-background-settings.c:441
+#: settings/xfdesktop-background-settings.c:441
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -206,1047 +220,1043 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\n類型：%s\n大小：%s"
 
-#: ../settings/xfdesktop-background-settings.c:525
-#: ../settings/xfdesktop-background-settings.c:607
+#: settings/xfdesktop-background-settings.c:525
+#: settings/xfdesktop-background-settings.c:607
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "無法從資料夾「%s」載入圖片"
 
-#: ../settings/xfdesktop-background-settings.c:708
+#: settings/xfdesktop-background-settings.c:708
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "螢幕 %d 的桌布 (%s)"
 
-#: ../settings/xfdesktop-background-settings.c:712
+#: settings/xfdesktop-background-settings.c:712
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "螢幕 %d 的桌布"
 
-#: ../settings/xfdesktop-background-settings.c:718
+#: settings/xfdesktop-background-settings.c:718
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "將此對話方塊移動到您想編輯其設定的顯示器。"
 
-#: ../settings/xfdesktop-background-settings.c:723
+#: settings/xfdesktop-background-settings.c:723
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "%s 的桌布，螢幕 %d (%s)"
 
-#: ../settings/xfdesktop-background-settings.c:728
+#: settings/xfdesktop-background-settings.c:728
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "%s 的桌布，螢幕 %d"
 
-#: ../settings/xfdesktop-background-settings.c:736
+#: settings/xfdesktop-background-settings.c:736
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "將此對話方塊移動到您想編輯其設定的顯示器與工作空間。"
 
 #. Single monitor and single workspace
-#: ../settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:745
 msgid "Wallpaper for my desktop"
 msgstr "我桌面的桌布"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/xfdesktop-background-settings.c:751
+#: settings/xfdesktop-background-settings.c:751
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s 的桌布"
 
-#: ../settings/xfdesktop-background-settings.c:756
+#: settings/xfdesktop-background-settings.c:756
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "請將此對話視窗移至您想要更改設定之工作區內。"
 
-#: ../settings/xfdesktop-background-settings.c:1070
+#: settings/xfdesktop-background-settings.c:1070
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "當影像樣式設為「無」的時候，無法選取影像。"
 
-#: ../settings/xfdesktop-background-settings.c:1511
+#: settings/xfdesktop-background-settings.c:1511
 msgid "Spanning screens"
 msgstr "橫跨螢幕"
 
-#: ../settings/xfdesktop-background-settings.c:1900
+#: settings/xfdesktop-background-settings.c:1900
 msgid "Image files"
 msgstr "影像檔案"
 
 #. Change the title of the file chooser dialog
-#: ../settings/xfdesktop-background-settings.c:1908
+#: settings/xfdesktop-background-settings.c:1908
 msgid "Select a Directory"
 msgstr "選取目錄"
 
-#: ../settings/xfdesktop-file-icon-settings.c:90
-#: ../src/xfdesktop-special-file-icon.c:232
-#: ../src/xfdesktop-special-file-icon.c:270
+#: settings/xfdesktop-file-icon-settings.c:90
+#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
 msgid "Home"
 msgstr "家目錄"
 
-#: ../settings/xfdesktop-file-icon-settings.c:92
-#: ../src/xfdesktop-special-file-icon.c:234
-#: ../src/xfdesktop-special-file-icon.c:268
+#: settings/xfdesktop-file-icon-settings.c:92
+#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
 msgid "File System"
 msgstr "檔案系統"
 
-#: ../settings/xfdesktop-file-icon-settings.c:94
-#: ../src/xfdesktop-special-file-icon.c:236
+#: settings/xfdesktop-file-icon-settings.c:94
+#: src/xfdesktop-special-file-icon.c:236
 msgid "Trash"
 msgstr "垃圾桶"
 
-#: ../settings/xfdesktop-file-icon-settings.c:96
+#: settings/xfdesktop-file-icon-settings.c:96
 msgid "Devices"
 msgstr "裝置"
 
-#: ../settings/xfdesktop-file-icon-settings.c:98
+#: settings/xfdesktop-file-icon-settings.c:98
 msgid "Network Shares"
 msgstr "網路共享資源"
 
-#: ../settings/xfdesktop-file-icon-settings.c:100
+#: settings/xfdesktop-file-icon-settings.c:100
 msgid "Removable Disks and Drives"
 msgstr "可移除式磁碟與磁碟機"
 
-#: ../settings/xfdesktop-file-icon-settings.c:102
+#: settings/xfdesktop-file-icon-settings.c:102
 msgid "Fixed Disks and Drives"
 msgstr "固定式磁碟與磁碟機"
 
-#: ../settings/xfdesktop-file-icon-settings.c:104
+#: settings/xfdesktop-file-icon-settings.c:104
 msgid "Other Devices"
 msgstr "其他裝置"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/xfdesktop-icon-settings.c:86
+#: settings/xfdesktop-icon-settings.c:86
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "您要根據選取的方向\n排列所有存在的圖示嗎？"
 
-#: ../settings/xfdesktop-icon-settings.c:90
+#: settings/xfdesktop-icon-settings.c:90
 msgid "Arrange icons"
 msgstr "排列圖示"
 
 #. printf is to be translator-friendly
-#: ../settings/xfdesktop-icon-settings.c:94
-#: ../src/xfdesktop-file-icon-manager.c:760
-#: ../src/xfdesktop-file-icon-manager.c:1321
+#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:760
+#: src/xfdesktop-file-icon-manager.c:1321
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "無法啟動「%s」："
 
-#: ../settings/xfdesktop-icon-settings.c:95
-#: ../src/xfdesktop-file-icon-manager.c:762
-#: ../src/xfdesktop-file-icon-manager.c:1006
-#: ../src/xfdesktop-file-icon-manager.c:1054
-#: ../src/xfdesktop-file-icon-manager.c:1323 ../src/xfdesktop-file-utils.c:579
-#: ../src/xfdesktop-file-utils.c:1462 ../src/xfdesktop-file-utils.c:1487
-#: ../src/xfdesktop-file-utils.c:1597 ../src/xfdesktop-file-utils.c:1661
+#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:762
+#: src/xfdesktop-file-icon-manager.c:1006
+#: src/xfdesktop-file-icon-manager.c:1054
+#: src/xfdesktop-file-icon-manager.c:1323 src/xfdesktop-file-utils.c:579
+#: src/xfdesktop-file-utils.c:1462 src/xfdesktop-file-utils.c:1487
+#: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
 msgstr "啟動發生錯誤"
 
-#: ../settings/xfdesktop-icon-settings.c:97
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-#: ../src/xfdesktop-file-icon-manager.c:698
-#: ../src/xfdesktop-file-icon-manager.c:764
-#: ../src/xfdesktop-file-icon-manager.c:1010
-#: ../src/xfdesktop-file-icon-manager.c:1058
-#: ../src/xfdesktop-file-icon-manager.c:1325
-#: ../src/xfdesktop-file-icon-manager.c:3654 ../src/xfdesktop-file-utils.c:582
-#: ../src/xfdesktop-file-utils.c:699 ../src/xfdesktop-file-utils.c:754
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:940 ../src/xfdesktop-file-utils.c:988
-#: ../src/xfdesktop-file-utils.c:1007 ../src/xfdesktop-file-utils.c:1121
-#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1405
-#: ../src/xfdesktop-file-utils.c:1466 ../src/xfdesktop-file-utils.c:1489
-#: ../src/xfdesktop-file-utils.c:1601 ../src/xfdesktop-file-utils.c:1665
-#: ../src/xfdesktop-file-utils.c:1736 ../src/xfdesktop-file-utils.c:1806
-#: ../src/xfdesktop-volume-icon.c:389 ../src/xfdesktop-volume-icon.c:437
-#: ../src/xfdesktop-volume-icon.c:519
+#: settings/xfdesktop-icon-settings.c:97
+#: settings/xfdesktop-settings-ui.glade:198
+#: src/xfdesktop-file-icon-manager.c:698 src/xfdesktop-file-icon-manager.c:764
+#: src/xfdesktop-file-icon-manager.c:1010
+#: src/xfdesktop-file-icon-manager.c:1058
+#: src/xfdesktop-file-icon-manager.c:1325
+#: src/xfdesktop-file-icon-manager.c:3654 src/xfdesktop-file-utils.c:582
+#: src/xfdesktop-file-utils.c:699 src/xfdesktop-file-utils.c:754
+#: src/xfdesktop-file-utils.c:818 src/xfdesktop-file-utils.c:879
+#: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
+#: src/xfdesktop-file-utils.c:1007 src/xfdesktop-file-utils.c:1121
+#: src/xfdesktop-file-utils.c:1217 src/xfdesktop-file-utils.c:1405
+#: src/xfdesktop-file-utils.c:1466 src/xfdesktop-file-utils.c:1489
+#: src/xfdesktop-file-utils.c:1601 src/xfdesktop-file-utils.c:1665
+#: src/xfdesktop-file-utils.c:1736 src/xfdesktop-file-utils.c:1806
+#: src/xfdesktop-volume-icon.c:389 src/xfdesktop-volume-icon.c:437
+#: src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:560
-msgid "Desktop"
-msgstr "桌面"
-
-#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:48
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
 msgstr "圖示"
 
-#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:57
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:57
 msgid "Window Icons"
 msgstr "視窗圖示"
 
-#: ../settings/xfdesktop-keyboard-shortcuts-settings.c:67
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:67
 msgid "File Icons"
 msgstr "檔案圖示"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "實色"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:22
 msgid "Horizontal gradient"
 msgstr "水平漸層"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:25
 msgid "Vertical gradient"
 msgstr "垂直漸層"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:28
 msgid "Transparent"
 msgstr "透明"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-#: ../src/xfdesktop-monitor-chooser-ui.glade.h:1
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:134
+#: src/xfdesktop-monitor-chooser-ui.glade:33
 msgid "Apply"
 msgstr "套用"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
 msgid "St_yle:"
 msgstr "樣式(_Y)："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:164
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "指定影像大小該如何調整以適應螢幕。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-#: ../settings/xfdesktop-settings-ui.glade.h:4
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:166
+#: settings/xfdesktop-settings-ui.glade:60
+#: settings/xfdesktop-settings-ui.glade:97
+#: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "無"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:167
 msgid "Centered"
 msgstr "置中"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
 msgid "Tiled"
 msgstr "鋪排"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:169
 msgid "Stretched"
 msgstr "延展"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:170
 msgid "Scaled"
 msgstr "縮放"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:171
 msgid "Zoomed"
 msgstr "拉近"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
 msgid "Spanning Screens"
 msgstr "橫跨螢幕"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "指定背幕影像後所要描繪的色彩樣式。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:207
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "指定單色，或指定漸層的「左」色或「頂」色。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:208
 msgid "Select First Color"
 msgstr "選取第一色"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "指定漸層的「右」色或「底」色。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select Second Color"
 msgstr "選取第二色"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:231
 msgid "Apply to all _workspaces"
 msgstr "套用至所有工作區(_W)"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:249
 msgid "_Folder:"
 msgstr "資料夾(_F)："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "C_olor:"
 msgstr "色彩(_O)："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:332
 msgid "Change the _background "
 msgstr "變更背景(_B)"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:337
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "自動在目前目錄選取不同背景。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:353
 msgid "Specify how often the background will change."
 msgstr "指定多久換一次背景。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:355
 msgid "in seconds:"
 msgstr "秒："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in minutes:"
 msgstr "分鐘："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in hours:"
 msgstr "小時："
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "at start up"
 msgstr "開機時"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "every hour"
 msgstr "每小時"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every day"
 msgstr "每天"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "chronologically"
 msgstr "按時間"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:376
 msgid "Amount of time before a different background is selected."
 msgstr "多久才選取不同的背景。"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:387
 msgid "_Random Order"
 msgstr "隨機排序(_R)"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "當循環桌布時，隨機從同一目錄選取另一圖片。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:1
+#: settings/xfdesktop-settings-ui.glade:43
+#: settings/xfdesktop-settings-ui.glade:80
 msgid "Left"
 msgstr "左"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:2
+#: settings/xfdesktop-settings-ui.glade:46
+#: settings/xfdesktop-settings-ui.glade:83
 msgid "Middle"
 msgstr "中"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:3
+#: settings/xfdesktop-settings-ui.glade:49
+#: settings/xfdesktop-settings-ui.glade:86
 msgid "Right"
 msgstr "右"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:5
+#: settings/xfdesktop-settings-ui.glade:63
+#: settings/xfdesktop-settings-ui.glade:100
 msgid "Shift"
 msgstr "Shift"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: settings/xfdesktop-settings-ui.glade:66
+#: settings/xfdesktop-settings-ui.glade:103
 msgid "Alt"
 msgstr "Alt"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
+#: settings/xfdesktop-settings-ui.glade:69
+#: settings/xfdesktop-settings-ui.glade:106
 msgid "Control"
 msgstr "控制"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: settings/xfdesktop-settings-ui.glade:120
 msgid "Minimized application icons"
 msgstr "最小化應用程式圖示"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
+#: settings/xfdesktop-settings-ui.glade:123
 msgid "File/launcher icons"
 msgstr "檔案/啟動器圖示"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
+#: settings/xfdesktop-settings-ui.glade:134
 msgid "Top Left Vertical"
 msgstr "左上垂直"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:11
+#: settings/xfdesktop-settings-ui.glade:137
 msgid "Top Left Horizontal"
 msgstr "左上水平"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:12
+#: settings/xfdesktop-settings-ui.glade:140
 msgid "Top Right Vertical"
 msgstr "右上垂直"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:13
+#: settings/xfdesktop-settings-ui.glade:143
 msgid "Top Right Horizontal"
 msgstr "右上水平"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:14
+#: settings/xfdesktop-settings-ui.glade:146
 msgid "Bottom Left Vertical"
 msgstr "左下垂直"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:15
+#: settings/xfdesktop-settings-ui.glade:149
 msgid "Bottom Left Horizontal"
 msgstr "左下水平"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:16
+#: settings/xfdesktop-settings-ui.glade:152
 msgid "Bottom Right Vertical"
 msgstr "右下垂直"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: settings/xfdesktop-settings-ui.glade:155
 msgid "Bottom Right Horizontal"
 msgstr "右下水平"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: settings/xfdesktop-settings-ui.glade:182
 msgid "_Help"
 msgstr "說明(_H)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: settings/xfdesktop-settings-ui.glade:238
 msgid "_Background"
 msgstr "背景(_B)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: settings/xfdesktop-settings-ui.glade:271
 msgid "Include applications menu on _desktop right click"
 msgstr "在桌面的右鍵清單包含應用程式選單(_D)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: settings/xfdesktop-settings-ui.glade:304
 msgid "_Button:"
 msgstr "按鈕(_B)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: settings/xfdesktop-settings-ui.glade:338
 msgid "Mo_difier:"
 msgstr "修飾符(_D)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: settings/xfdesktop-settings-ui.glade:376
 msgid "Show _application icons in menu"
 msgstr "在選單內顯示應用程式圖示(_A)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: settings/xfdesktop-settings-ui.glade:398
 msgid "_Edit desktop menu"
 msgstr "編輯桌面選單(_E)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: settings/xfdesktop-settings-ui.glade:432
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>桌面選單</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: settings/xfdesktop-settings-ui.glade:461
 msgid "Show _window list menu on desktop middle click"
 msgstr "在桌面按下中鍵時顯示視窗清單(_W)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: settings/xfdesktop-settings-ui.glade:494
 msgid "B_utton:"
 msgstr "按鈕(_U)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: settings/xfdesktop-settings-ui.glade:528
 msgid "Modi_fier:"
 msgstr "修飾符(_F)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: settings/xfdesktop-settings-ui.glade:566
 msgid "Sh_ow application icons in menu"
 msgstr "在選單內顯示應用程式圖示(_O)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: settings/xfdesktop-settings-ui.glade:583
 msgid "List windows on a_ll workspaces"
 msgstr "列出所有工作區的視窗(_L)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: settings/xfdesktop-settings-ui.glade:600
 msgid "Show workspace _names in list"
 msgstr "顯示工作區名稱清單(_N)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: settings/xfdesktop-settings-ui.glade:623
 msgid "Use _submenus for the windows in each workspace"
 msgstr "在每個工作區內使用視窗子選單(_S)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: settings/xfdesktop-settings-ui.glade:646
 msgid "Show s_ticky windows only in active workspace"
 msgstr "只在活動中的工作區顯示貼黏視窗(_T)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: settings/xfdesktop-settings-ui.glade:662
 msgid "Show a section listing all _urgent windows on other workspaces"
 msgstr "顯示其他所有工作區域中的緊急視窗清單(_U)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: settings/xfdesktop-settings-ui.glade:678
 msgid "Show a_dd and remove workspace options in list"
 msgstr "以清單顯示加入與移除工作區選項(_D)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: settings/xfdesktop-settings-ui.glade:707
 msgid "<b>Window List Menu</b>"
 msgstr "<b>視窗清單選單</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: settings/xfdesktop-settings-ui.glade:728
 msgid "_Menus"
 msgstr "選單(_M)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: settings/xfdesktop-settings-ui.glade:753
 msgid "Icon _type:"
 msgstr "圖示大小(_I)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: settings/xfdesktop-settings-ui.glade:813
 msgid "Icon _size:"
 msgstr "圖示大小(_S)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: settings/xfdesktop-settings-ui.glade:829
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: settings/xfdesktop-settings-ui.glade:840
 msgid "Fo_nt size:"
 msgstr "字型大小(_N)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: settings/xfdesktop-settings-ui.glade:871
 msgid "Show icon toolt_ips. Size:"
 msgstr "顯示圖示工具提示(_I)。大小："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
 msgstr "工具提示預覽圖像的大小。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: settings/xfdesktop-settings-ui.glade:892
 msgid "64"
 msgstr "64"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: settings/xfdesktop-settings-ui.glade:903
 msgid "Font co_lor:"
 msgstr "字型色彩(_L)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:49
+#: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
 msgstr "標籤背景色彩(_K)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
 msgstr "<b>外觀</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
+#: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
 msgstr "放置方向(_D)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
 msgstr "僅在主要顯示器上顯示圖示"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
 msgstr "單擊以啟用項目(_A)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:54
+#: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
 msgstr "滑鼠游標懸停其上時為文字加上底線(_U)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:55
+#: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
 msgstr "在排列圖示前顯示確認對話方塊"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:56
+#: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
 msgstr "行為"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:57
+#: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
 msgstr "桌面圖示(_I)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:58
+#: settings/xfdesktop-settings-ui.glade:1204
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "檔案/啟動器圖示未啟用。您可以從「桌面圖示」分頁啟用。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:59
+#: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
 msgstr "在桌面顯示隱藏檔案"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:60
+#: settings/xfdesktop-settings-ui.glade:1266
 msgid "Show t_humbnails"
 msgstr "顯示縮圖(_H)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:61
+#: settings/xfdesktop-settings-ui.glade:1271
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "選取此選項將桌面上可預覽的檔案顯示為自動產生的縮圖圖示。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:62
+#: settings/xfdesktop-settings-ui.glade:1283
 msgid "Show \"Delete\" option in file context menu"
 msgstr "在檔案右鍵選單顯示「刪除」選項"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:63
+#: settings/xfdesktop-settings-ui.glade:1300
 msgid "_Arrange folders before files"
 msgstr "將資料夾排列在檔案前(_A)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:64
+#: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
 msgstr "一般"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:65
+#: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
 msgstr "預設圖示"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:66
+#: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
 msgstr "檔案/啟動器圖示(_F)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:67
+#: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
 msgstr "鍵盤快捷鍵(_K)"
 
-#: ../src/menu.c:82
+#: src/menu.c:82
 msgid "_Applications"
 msgstr "應用程式(_A)"
 
-#: ../src/windowlist.c:79
+#: src/windowlist.c:79
 msgid "Window List"
 msgstr "視窗清單"
 
-#: ../src/xfdesktop-application.c:274
+#: src/xfdesktop-application.c:274
 msgid "Display version information"
 msgstr "顯示版本資訊"
 
-#: ../src/xfdesktop-application.c:275
+#: src/xfdesktop-application.c:275
 msgid "Reload all settings"
 msgstr "重新載入所有設定值"
 
-#: ../src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:276
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "在目前工作區前進至下個桌布"
 
-#: ../src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:277
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "彈出選單 (於目前滑鼠位置)"
 
-#: ../src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:278
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "彈出視窗清單 (於目前滑鼠位置)"
 
-#: ../src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:280
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "自動排列桌面上的所有圖示"
 
-#: ../src/xfdesktop-application.c:283
+#: src/xfdesktop-application.c:283
 msgid "Disable debug messages"
 msgstr "停用除錯訊息"
 
-#: ../src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:285
 msgid "Do not wait for a window manager on startup"
 msgstr "初始啟動時不要等待視窗管理員"
 
-#: ../src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:287
 msgid "Cause xfdesktop to quit"
 msgstr "導致 xfdesktop 退出"
 
-#: ../src/xfdesktop-application.c:1191
+#: src/xfdesktop-application.c:1191
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "這是 %s 版本 %s，運行於 Xfce %s。\n"
 
-#: ../src/xfdesktop-application.c:1193
+#: src/xfdesktop-application.c:1193
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 建置，以 GTK+ %d.%d.%d 連結。"
 
-#: ../src/xfdesktop-application.c:1201
-#, c-format
+#: src/xfdesktop-application.c:1201
 msgid "Build options:\n"
 msgstr "建置選項：\n"
 
-#: ../src/xfdesktop-application.c:1202
+#: src/xfdesktop-application.c:1202
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "桌面選單：%s\n"
 
-#: ../src/xfdesktop-application.c:1204 ../src/xfdesktop-application.c:1211
-#: ../src/xfdesktop-application.c:1218
+#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
+#: src/xfdesktop-application.c:1218
 msgid "enabled"
 msgstr "已啟用"
 
-#: ../src/xfdesktop-application.c:1206 ../src/xfdesktop-application.c:1213
-#: ../src/xfdesktop-application.c:1220
+#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
+#: src/xfdesktop-application.c:1220
 msgid "disabled"
 msgstr "已停用"
 
-#: ../src/xfdesktop-application.c:1209
+#: src/xfdesktop-application.c:1209
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "桌面圖示：%s\n"
 
-#: ../src/xfdesktop-application.c:1216
+#: src/xfdesktop-application.c:1216
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "桌面檔案圖示：%s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:695 ../src/xfdesktop-file-utils.c:750
-#: ../src/xfdesktop-file-utils.c:814
+#: src/xfdesktop-file-icon-manager.c:695 src/xfdesktop-file-utils.c:750
+#: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "重新命名發生錯誤"
 
-#: ../src/xfdesktop-file-icon-manager.c:696 ../src/xfdesktop-file-utils.c:815
+#: src/xfdesktop-file-icon-manager.c:696 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "無法重新命名檔案"
 
-#: ../src/xfdesktop-file-icon-manager.c:697
+#: src/xfdesktop-file-icon-manager.c:697
 msgid "None of the icons selected support being renamed."
 msgstr "選取的圖示皆不支援重新命名功能。"
 
-#: ../src/xfdesktop-file-icon-manager.c:955
+#: src/xfdesktop-file-icon-manager.c:955
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "以「%s」開啟(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:958
+#: src/xfdesktop-file-icon-manager.c:958
 #, c-format
 msgid "Open With \"%s\""
 msgstr "以「%s」開啟"
 
-#: ../src/xfdesktop-file-icon-manager.c:1008
-#: ../src/xfdesktop-file-icon-manager.c:1056
+#: src/xfdesktop-file-icon-manager.c:1008
+#: src/xfdesktop-file-icon-manager.c:1056
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1425
+#: src/xfdesktop-file-icon-manager.c:1425
 msgid "Choose Monitor Configuration"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1427
+#: src/xfdesktop-file-icon-manager.c:1427
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "您想將現有的桌面圖示版面配置套用到螢幕 <b>%s</b> 嗎？"
 
-#: ../src/xfdesktop-file-icon-manager.c:1435
+#: src/xfdesktop-file-icon-manager.c:1435
 msgid "Monitors"
 msgstr "螢幕"
 
-#: ../src/xfdesktop-file-icon-manager.c:1721
+#: src/xfdesktop-file-icon-manager.c:1721
 msgid "_Open all"
 msgstr "開啟全部(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "建立啟動器(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1743
+#: src/xfdesktop-file-icon-manager.c:1743
 msgid "Create _URL Link..."
 msgstr "建立 URL 連結(_U)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1753
+#: src/xfdesktop-file-icon-manager.c:1753
 msgid "Create _Folder..."
 msgstr "建立資料夾(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1792
+#: src/xfdesktop-file-icon-manager.c:1792
 msgid "No templates installed"
 msgstr "未安裝模版"
 
-#: ../src/xfdesktop-file-icon-manager.c:1810
+#: src/xfdesktop-file-icon-manager.c:1810
 msgid "_Empty File"
 msgstr "空檔案(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-file-icon-manager.c:1819
 msgid "_Open All"
 msgstr "開啟全部(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1832
+#: src/xfdesktop-file-icon-manager.c:1832
 msgid "_Execute"
 msgstr "執行(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1845
+#: src/xfdesktop-file-icon-manager.c:1845
 msgid "Edit _Launcher"
 msgstr "編輯啟動器(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1893
+#: src/xfdesktop-file-icon-manager.c:1893
 msgid "Ope_n With"
 msgstr "開啟程式(_N)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1921
-#: ../src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1921
+#: src/xfdesktop-file-icon-manager.c:1938
 msgid "Ope_n With Other Application..."
 msgstr "使用其他應用程式開啟(_N)……"
 
-#: ../src/xfdesktop-file-icon-manager.c:1929
+#: src/xfdesktop-file-icon-manager.c:1929
 msgid "Set Defa_ult Application..."
 msgstr "設定預設應用程式(_U)……"
 
-#: ../src/xfdesktop-file-icon-manager.c:1985
+#: src/xfdesktop-file-icon-manager.c:1985
 msgid "Paste Into Folder"
 msgstr "貼進資料夾"
 
-#: ../src/xfdesktop-file-icon-manager.c:2016
+#: src/xfdesktop-file-icon-manager.c:2016
 msgid "_Rename..."
 msgstr "重新命名(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2067
+#: src/xfdesktop-file-icon-manager.c:2067
 msgid "_Open in New Window"
 msgstr "於新視窗內開啟(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2074
-#: ../src/xfdesktop-window-icon-manager.c:304
+#: src/xfdesktop-file-icon-manager.c:2074
+#: src/xfdesktop-window-icon-manager.c:304
 msgid "Arrange Desktop _Icons"
 msgstr "重新排列桌面圖示(_I)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2089
-#: ../src/xfdesktop-window-icon-manager.c:318
+#: src/xfdesktop-file-icon-manager.c:2089
+#: src/xfdesktop-window-icon-manager.c:318
 msgid "_Next Background"
 msgstr "下一個背景(_N)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2099
-#: ../src/xfdesktop-window-icon-manager.c:331
+#: src/xfdesktop-file-icon-manager.c:2099
+#: src/xfdesktop-window-icon-manager.c:331
 msgid "Desktop _Settings..."
 msgstr "桌面設定(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2106
-#: ../src/xfdesktop-volume-icon.c:812
+#: src/xfdesktop-file-icon-manager.c:2106 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "屬性(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3096
+#: src/xfdesktop-file-icon-manager.c:3096
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "儲存丟棄的檔案至「%s」失敗"
 
-#: ../src/xfdesktop-file-icon-manager.c:3098
+#: src/xfdesktop-file-icon-manager.c:3098
 msgid "Drop Failure"
 msgstr "丟棄失敗"
 
-#: ../src/xfdesktop-file-icon-manager.c:3102
-#: ../src/xfdesktop-icon-view-manager.c:488
+#: src/xfdesktop-file-icon-manager.c:3102
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "_OK"
 msgstr "確定(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3507
+#: src/xfdesktop-file-icon-manager.c:3507
 msgid "Copy _Here"
 msgstr "複製到這裡(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3508
+#: src/xfdesktop-file-icon-manager.c:3508
 msgid "_Move Here"
 msgstr "移動到這裡(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3509
+#: src/xfdesktop-file-icon-manager.c:3509
 msgid "_Link Here"
 msgstr "連結到這裡(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3534
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-icon-view-manager.c:487
+#: src/xfdesktop-file-icon-manager.c:3534 src/xfdesktop-file-utils.c:1149
+#: src/xfdesktop-icon-view-manager.c:487
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3627
+#: src/xfdesktop-file-icon-manager.c:3627
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "無法建立桌面資料夾「%s」"
 
-#: ../src/xfdesktop-file-icon-manager.c:3635
+#: src/xfdesktop-file-icon-manager.c:3635
 msgid "Failed to load the desktop folder"
 msgstr "無法載入桌面資料夾"
 
-#: ../src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3644
 msgid "A desktop file icon error occurred"
 msgstr "發生桌面檔案圖示錯誤"
 
-#: ../src/xfdesktop-file-icon-manager.c:3648
+#: src/xfdesktop-file-icon-manager.c:3648
 msgid "Desktop Folder Error"
 msgstr "桌面資料夾發生錯誤"
 
-#: ../src/xfdesktop-file-icon-model.c:548
+#: src/xfdesktop-file-icon-model.c:548
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "已存在相同名稱的正常檔案。請刪除或是重新命名。"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:178
+#: src/xfdesktop-file-utils.c:178
 #, c-format
 msgid "Today at %X"
 msgstr "今日 %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:182
+#: src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "Yesterday at %X"
 msgstr "昨日 %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:187
+#: src/xfdesktop-file-utils.c:187
 #, c-format
 msgid "%A at %X"
 msgstr "%A 的 %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:190
+#: src/xfdesktop-file-utils.c:190
 #, c-format
 msgid "%x at %X"
 msgstr "%x 的 %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:200 ../src/xfdesktop-file-utils.c:1731
+#: src/xfdesktop-file-utils.c:200 src/xfdesktop-file-utils.c:1731
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/xfdesktop-file-utils.c:329
+#: src/xfdesktop-file-utils.c:329
 #, c-format
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: ../src/xfdesktop-file-utils.c:580
+#: src/xfdesktop-file-utils.c:580
 msgid "The folder could not be opened"
 msgstr "無法開啟資料夾"
 
-#: ../src/xfdesktop-file-utils.c:696
+#: src/xfdesktop-file-utils.c:696
 msgid "Error"
 msgstr "錯誤"
 
-#: ../src/xfdesktop-file-utils.c:697
+#: src/xfdesktop-file-utils.c:697
 msgid "The requested operation could not be completed"
 msgstr "無法完成請求的操作"
 
-#: ../src/xfdesktop-file-utils.c:751
+#: src/xfdesktop-file-utils.c:751
 msgid "The file could not be renamed"
 msgstr "無法重新命名檔案"
 
-#: ../src/xfdesktop-file-utils.c:752 ../src/xfdesktop-file-utils.c:816
-#: ../src/xfdesktop-file-utils.c:877 ../src/xfdesktop-file-utils.c:1403
-#: ../src/xfdesktop-file-utils.c:1464 ../src/xfdesktop-file-utils.c:1599
-#: ../src/xfdesktop-file-utils.c:1663 ../src/xfdesktop-file-utils.c:1804
+#: src/xfdesktop-file-utils.c:752 src/xfdesktop-file-utils.c:816
+#: src/xfdesktop-file-utils.c:877 src/xfdesktop-file-utils.c:1403
+#: src/xfdesktop-file-utils.c:1464 src/xfdesktop-file-utils.c:1599
+#: src/xfdesktop-file-utils.c:1663 src/xfdesktop-file-utils.c:1804
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "這項功能需要檔案管理員服務才能呈現 (例如 Thunar 所提供的)。"
 
-#: ../src/xfdesktop-file-utils.c:875
+#: src/xfdesktop-file-utils.c:875
 msgid "Delete Error"
 msgstr "刪除發生錯誤"
 
-#: ../src/xfdesktop-file-utils.c:876
+#: src/xfdesktop-file-utils.c:876
 msgid "The selected files could not be deleted"
 msgstr "無法刪除所選的檔案"
 
-#: ../src/xfdesktop-file-utils.c:936 ../src/xfdesktop-file-utils.c:984
+#: src/xfdesktop-file-utils.c:936 src/xfdesktop-file-utils.c:984
 msgid "Trash Error"
 msgstr "垃圾桶發生錯誤"
 
-#: ../src/xfdesktop-file-utils.c:937
+#: src/xfdesktop-file-utils.c:937
 msgid "The selected files could not be moved to the trash"
 msgstr "所選的檔案無法丟到垃圾桶"
 
-#: ../src/xfdesktop-file-utils.c:938 ../src/xfdesktop-file-utils.c:986
+#: src/xfdesktop-file-utils.c:938 src/xfdesktop-file-utils.c:986
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "這項功能需要垃圾桶服務才能呈現 (例如 Thunar 所提供的垃圾桶)。"
 
-#: ../src/xfdesktop-file-utils.c:985
+#: src/xfdesktop-file-utils.c:985
 msgid "Could not empty the trash"
 msgstr "無法清空垃圾桶"
 
-#: ../src/xfdesktop-file-utils.c:995
+#: src/xfdesktop-file-utils.c:995
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "無法從範本檔「%2$s」建立新檔案「%1$s」：%3$s"
 
-#: ../src/xfdesktop-file-utils.c:1001 ../src/xfdesktop-file-utils.c:1115
-#: ../src/xfdesktop-file-utils.c:1211
+#: src/xfdesktop-file-utils.c:1001 src/xfdesktop-file-utils.c:1115
+#: src/xfdesktop-file-utils.c:1211
 msgid "Create File Error"
 msgstr "建立檔案發生錯誤"
 
-#: ../src/xfdesktop-file-utils.c:1003 ../src/xfdesktop-file-utils.c:1277
+#: src/xfdesktop-file-utils.c:1003 src/xfdesktop-file-utils.c:1277
 msgid "Could not create a new file"
 msgstr "無法建立新檔案"
 
-#: ../src/xfdesktop-file-utils.c:1016
+#: src/xfdesktop-file-utils.c:1016
 msgid "New Empty File"
 msgstr "新建空白文件"
 
-#: ../src/xfdesktop-file-utils.c:1111
+#: src/xfdesktop-file-utils.c:1111
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "無法建立新資料夾「%1$s」：%2$s"
 
-#: ../src/xfdesktop-file-utils.c:1117 ../src/xfdesktop-file-utils.c:1310
+#: src/xfdesktop-file-utils.c:1117 src/xfdesktop-file-utils.c:1310
 msgid "Could not create a new folder"
 msgstr "無法建立新資料夾"
 
-#: ../src/xfdesktop-file-utils.c:1151
+#: src/xfdesktop-file-utils.c:1151
 msgid "C_reate"
 msgstr "建立(_R)"
 
-#: ../src/xfdesktop-file-utils.c:1209
+#: src/xfdesktop-file-utils.c:1209
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "無法將檔名「%s」轉成本地編碼"
 
-#: ../src/xfdesktop-file-utils.c:1271
+#: src/xfdesktop-file-utils.c:1271
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "從模板「%s」中建立新的文件"
 
-#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1307
+#: src/xfdesktop-file-utils.c:1274 src/xfdesktop-file-utils.c:1307
 msgid "Enter the name:"
 msgstr "輸入名字："
 
-#: ../src/xfdesktop-file-utils.c:1299
+#: src/xfdesktop-file-utils.c:1299
 msgid "New Folder"
 msgstr "新資料夾"
 
-#: ../src/xfdesktop-file-utils.c:1305
+#: src/xfdesktop-file-utils.c:1305
 msgid "Create New Folder"
 msgstr "建立新資料夾"
 
-#: ../src/xfdesktop-file-utils.c:1401
+#: src/xfdesktop-file-utils.c:1401
 msgid "File Properties Error"
 msgstr "檔案屬性錯誤"
 
-#: ../src/xfdesktop-file-utils.c:1402
+#: src/xfdesktop-file-utils.c:1402
 msgid "The file properties dialog could not be opened"
 msgstr "無法開啟檔案屬性對話窗"
 
-#: ../src/xfdesktop-file-utils.c:1463
+#: src/xfdesktop-file-utils.c:1463
 msgid "The file could not be opened"
 msgstr "無法開啟檔案"
 
-#: ../src/xfdesktop-file-utils.c:1484 ../src/xfdesktop-file-utils.c:1594
+#: src/xfdesktop-file-utils.c:1484 src/xfdesktop-file-utils.c:1594
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "無法執行「%s」"
 
-#: ../src/xfdesktop-file-utils.c:1662
+#: src/xfdesktop-file-utils.c:1662
 msgid "The application chooser could not be opened"
 msgstr "無法開啟應用程式選擇器"
 
-#: ../src/xfdesktop-file-utils.c:1733 ../src/xfdesktop-file-utils.c:1802
+#: src/xfdesktop-file-utils.c:1733 src/xfdesktop-file-utils.c:1802
 msgid "Transfer Error"
 msgstr "傳輸發生錯誤"
 
-#: ../src/xfdesktop-file-utils.c:1734 ../src/xfdesktop-file-utils.c:1803
+#: src/xfdesktop-file-utils.c:1734 src/xfdesktop-file-utils.c:1803
 msgid "The file transfer could not be performed"
 msgstr "無法執行檔案傳輸"
 
-#: ../src/xfdesktop-icon-view-manager.c:484
+#: src/xfdesktop-icon-view-manager.c:484
 msgid "Arrange Icons"
 msgstr "排列圖示"
 
-#: ../src/xfdesktop-icon-view-manager.c:505
+#: src/xfdesktop-icon-view-manager.c:505
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "這會重新排序所有桌面項目，將它們放在螢幕不同的位置。\n您確定嗎？"
 
-#: ../src/xfdesktop-icon-view-manager.c:509
+#: src/xfdesktop-icon-view-manager.c:509
 msgid "Do _not ask me again"
 msgstr "不用再問我(_N)"
 
-#: ../src/xfdesktop-monitor-chooser-ui.glade.h:2
+#: src/xfdesktop-monitor-chooser-ui.glade:77
 msgid "Allow Xfce to auto-assign the best match"
 msgstr ""
 
-#: ../src/xfdesktop-monitor-chooser-ui.glade.h:3
+#: src/xfdesktop-monitor-chooser-ui.glade:92
 msgid "Select from existing monitor configurations:"
 msgstr ""
 
-#: ../src/xfdesktop-monitor-chooser-ui.glade.h:4
+#: src/xfdesktop-monitor-chooser-ui.glade:126
 msgid "Always auto-assign"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:148
+#: src/xfdesktop-notify.c:148
 msgid "Unmounting device"
 msgstr "正在卸載裝置"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:151
+#: src/xfdesktop-notify.c:151
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1254,43 +1264,43 @@ msgid ""
 msgstr "裝置「%s」正被系統卸載。請不要移除該媒體，或是斷開該磁碟的連接"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:158 ../src/xfdesktop-notify.c:237
+#: src/xfdesktop-notify.c:158 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "正在將資料寫入裝置"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:161 ../src/xfdesktop-notify.c:240
+#: src/xfdesktop-notify.c:161 src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "在裝置「%s」移除前，有資料需要寫入其中。請不要移除該媒體，或是斷開該磁碟的連接"
 
-#: ../src/xfdesktop-notify.c:207
+#: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "卸載完成"
 
-#: ../src/xfdesktop-notify.c:208 ../src/xfdesktop-notify.c:351
+#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:351
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "裝置「%s」已從系統安全移除。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:230
+#: src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "正在退出裝置"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:233
+#: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "裝置「%s」正在退出。這可能會花上一些時間"
 
-#: ../src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:350
 msgid "Eject Finished"
 msgstr "退出完成"
 
-#: ../src/xfdesktop-regular-file-icon.c:723
+#: src/xfdesktop-regular-file-icon.c:723
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1299,20 +1309,20 @@ msgid ""
 "Last modified: %s"
 msgstr "名稱：%s\n類型：%s\n大小：%s\n上次修改：%s"
 
-#: ../src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:254
 msgid "Trash is empty"
 msgstr "空的垃圾桶"
 
-#: ../src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:257
 msgid "Trash contains one item"
 msgstr "垃圾桶含有一個項目"
 
-#: ../src/xfdesktop-special-file-icon.c:258
+#: src/xfdesktop-special-file-icon.c:258
 #, c-format
 msgid "Trash contains %d items"
 msgstr "垃圾桶含有 %d 個項目"
 
-#: ../src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:286
 #, c-format
 msgid ""
 "%s\n"
@@ -1320,15 +1330,15 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\n大小：%s\n上次修改：%s"
 
-#: ../src/xfdesktop-volume-icon.c:328
+#: src/xfdesktop-volume-icon.c:328
 msgid "(not mounted)"
 msgstr "（未掛載）"
 
-#: ../src/xfdesktop-volume-icon.c:329 ../src/xfdesktop-volume-icon.c:330
+#: src/xfdesktop-volume-icon.c:329 src/xfdesktop-volume-icon.c:330
 msgid "(unknown)"
 msgstr "(不明)"
 
-#: ../src/xfdesktop-volume-icon.c:334
+#: src/xfdesktop-volume-icon.c:334
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1338,56 +1348,56 @@ msgid ""
 "Free Space: %s"
 msgstr "名稱：%s\n類型：%s\n掛載於：%s\n大小：%s\n可用空間：%s"
 
-#: ../src/xfdesktop-volume-icon.c:336
+#: src/xfdesktop-volume-icon.c:336
 msgid "Removable Volume"
 msgstr "可移除式儲存裝置"
 
-#: ../src/xfdesktop-volume-icon.c:383 ../src/xfdesktop-volume-icon.c:430
+#: src/xfdesktop-volume-icon.c:383 src/xfdesktop-volume-icon.c:430
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "無法退出「%s」"
 
-#: ../src/xfdesktop-volume-icon.c:387 ../src/xfdesktop-volume-icon.c:435
+#: src/xfdesktop-volume-icon.c:387 src/xfdesktop-volume-icon.c:435
 msgid "Eject Failed"
 msgstr "退出失敗"
 
-#: ../src/xfdesktop-volume-icon.c:514
+#: src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "無法掛載「%s」"
 
-#: ../src/xfdesktop-volume-icon.c:517
+#: src/xfdesktop-volume-icon.c:517
 msgid "Mount Failed"
 msgstr "掛載失敗"
 
-#: ../src/xfdesktop-volume-icon.c:774
+#: src/xfdesktop-volume-icon.c:774
 msgid "Safely _Remove Volume"
 msgstr "安全移除磁碟區(_R)"
 
-#: ../src/xfdesktop-volume-icon.c:777
+#: src/xfdesktop-volume-icon.c:777
 msgid "_Disconnect Volume"
 msgstr "儲存裝置中斷連線(_D)"
 
-#: ../src/xfdesktop-volume-icon.c:780
+#: src/xfdesktop-volume-icon.c:780
 msgid "Stop the _Multi-Disk Drive"
 msgstr "停止多碟片磁碟機"
 
-#: ../src/xfdesktop-volume-icon.c:783
+#: src/xfdesktop-volume-icon.c:783
 msgid "_Lock Volume"
 msgstr "鎖定儲存裝置(_L)"
 
-#: ../src/xfdesktop-volume-icon.c:786
+#: src/xfdesktop-volume-icon.c:786
 msgid "_Eject Volume"
 msgstr "退出磁碟區(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:795
+#: src/xfdesktop-volume-icon.c:795
 msgid "_Unmount Volume"
 msgstr "卸載儲存裝置(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:802
+#: src/xfdesktop-volume-icon.c:802
 msgid "_Mount Volume"
 msgstr "掛載儲存裝置(_M)"
 
-#: ../src/xfdesktop-window-icon-manager.c:292
+#: src/xfdesktop-window-icon-manager.c:292
 msgid "_Run Program..."
 msgstr "執行程式……(_R)"
