@@ -35,7 +35,7 @@ xfdesktop_keyboard_shortcut_settings_init(XfdesktopSettings *settings) {
     gsize n_desktop_action_entries;
     XfceGtkActionEntry *desktop_action_entries = xfdesktop_get_desktop_actions(NULL, &n_desktop_action_entries);
     XfceShortcutsEditorSection section = {
-        .section_name = N_("Desktop"),
+        .section_name = _("Desktop"),
         .entries = desktop_action_entries,
         .size = n_desktop_action_entries,
     };
@@ -45,7 +45,7 @@ xfdesktop_keyboard_shortcut_settings_init(XfdesktopSettings *settings) {
     gsize n_icon_view_entries;
     XfceGtkActionEntry *icon_view_action_entries = xfdesktop_get_icon_view_actions(NULL, &n_icon_view_entries);
     section = (XfceShortcutsEditorSection){
-        .section_name = N_("Icons"),
+        .section_name = _("Icons"),
         .entries = icon_view_action_entries,
         .size = n_icon_view_entries,
     };
@@ -54,7 +54,7 @@ xfdesktop_keyboard_shortcut_settings_init(XfdesktopSettings *settings) {
     gsize n_window_icon_manager_entries;
     XfceGtkActionEntry *window_icon_manager_action_entries = xfdesktop_get_window_icon_manager_actions(NULL, &n_window_icon_manager_entries);
     section = (XfceShortcutsEditorSection){
-        .section_name = N_("Window Icons"),
+        .section_name = _("Window Icons"),
         .entries = window_icon_manager_action_entries,
         .size = n_window_icon_manager_entries,
     };
@@ -64,7 +64,7 @@ xfdesktop_keyboard_shortcut_settings_init(XfdesktopSettings *settings) {
     gsize n_file_icon_manager_entries;
     XfceGtkActionEntry *file_icon_manager_entries = xfdesktop_get_file_icon_manager_actions(NULL, &n_file_icon_manager_entries);
     section = (XfceShortcutsEditorSection){
-        .section_name = N_("File Icons"),
+        .section_name = _("File Icons"),
         .entries = file_icon_manager_entries,
         .size = n_file_icon_manager_entries,
     };
