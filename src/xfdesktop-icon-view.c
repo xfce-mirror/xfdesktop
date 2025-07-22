@@ -2974,7 +2974,7 @@ xfdesktop_icon_view_unplace_item(XfdesktopIconView *icon_view,
 
     if (icon_view->grid_layout != NULL
         && row >= 0 && row < icon_view->nrows
-        && col >= 0 && row < icon_view->ncols
+        && col >= 0 && col < icon_view->ncols
         && xfdesktop_icon_view_item_in_slot(icon_view, row, col) == item)
     {
         icon_view->grid_layout[col * icon_view->nrows + row] = NULL;
