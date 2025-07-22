@@ -1489,7 +1489,7 @@ context_menu_drag_timeout_destroy(XfdesktopIconView *icon_view) {
 
 static void
 xfdesktop_icon_view_set_cursor(XfdesktopIconView *icon_view, ViewItem *item, gboolean from_keyboard) {
-    if (icon_view->cursor != NULL && icon_view->draw_focus) {
+    if (icon_view->cursor != NULL && icon_view->cursor->placed && icon_view->draw_focus) {
         xfdesktop_icon_view_invalidate_item(icon_view, icon_view->cursor, FALSE);
     }
     icon_view->cursor = item;
