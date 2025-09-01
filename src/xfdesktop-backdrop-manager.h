@@ -31,6 +31,8 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
+#include "xfdesktop-backdrop-media.h"
+
 G_BEGIN_DECLS
 
 /**
@@ -46,7 +48,7 @@ G_BEGIN_DECLS
  * Only one of @surface+@surface_region+@image_filename or @error will be
  * non-%NULL.
  **/
-typedef void (*GetImageSurfaceCallback)(cairo_surface_t *surface,
+typedef void (*GetImageSurfaceCallback)(XfdesktopBackdropMedia *bmedia,
                                         GdkRectangle *surface_region,
                                         GFile *image_file,
                                         GError *error,

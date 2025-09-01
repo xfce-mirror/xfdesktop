@@ -119,8 +119,7 @@ desktop_monitor_changed(XfdesktopIconViewHolder *holder) {
 static void
 init_for_x11(XfdesktopIconViewHolder *holder) {
     holder->container = gtk_fixed_new();
-    gtk_container_add(GTK_CONTAINER(holder->desktop), holder->container);
-    gtk_widget_show(holder->container);
+    xfce_desktop_put_to_layer(holder->desktop, XFCE_DESKTOP_LAYER_ICONS, holder->container);
 
     gtk_container_add(GTK_CONTAINER(holder->container), GTK_WIDGET(holder->icon_view));
     update_x11_icon_view_geometry(holder);

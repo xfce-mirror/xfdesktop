@@ -200,10 +200,6 @@ gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget,
 
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
-gboolean xfdesktop_image_file_is_valid(GFile *file);
-
-gchar *xfdesktop_get_file_mimetype(GFile *file);
-
 gint xfce_translate_image_styles(gint input);
 
 gchar* xfdesktop_remove_whitspaces(gchar* str);
