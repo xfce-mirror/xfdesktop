@@ -27,6 +27,7 @@ dependency_versions = {
   'libxfce4ui': '>= 4.21.0',
   'xfconf': '>= 4.19.3',
   'gtk-layer-shell': '>= 0.7.0',
+  'gstreamer': '>= 1.18.0',
 }
 
 # Required
@@ -62,6 +63,9 @@ gtk_layer_shell = dependency('gtk-layer-shell-0', version: dependency_versions['
 
 # Feature file-icons
 libyaml = dependency('yaml-0.1', version: dependency_versions['libyaml'], required: get_option('desktop-icons') and get_option('file-icons'))
+
+# Feature video-backdrop
+gstreamer = dependency('gstreamer-1.0', version: dependency_versions['gstreamer'], required: get_option('video-backdrop'))
 
 feature_cflags = []
 
@@ -105,6 +109,13 @@ wayland_deps = []
 if enable_wayland
   feature_cflags += '-DENABLE_WAYLAND=1'
   wayland_deps += [gdk_wayland, gtk_layer_shell]
+endif
+
+enable_video_backdrop = get_option('video-backdrop')
+video_backdrop_deps = []
+if enable_video_backdrop
+  feature_cflags += '-DENABLE_VIDEO_BACKDROP=1'
+  video_backdrop_deps += [gstreamer]
 endif
 
 file_manager_fallback = get_option('file-manager-fallback')

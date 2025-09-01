@@ -26,6 +26,7 @@ xfdesktop_sources = [
   'xfdesktop-backdrop-cycler.c',
   'xfdesktop-backdrop-manager.c',
   'xfdesktop-backdrop-renderer.c',
+  'xfdesktop-backdrop-media.c',
 ]
 
 xfdesktop_sources += xfdesktop_generated_sources
@@ -104,6 +105,7 @@ executable(
     x11_deps,
     wayland_deps,
     libm,
+    video_backdrop_deps,
   ],
   link_with: [
     libxfdesktop,

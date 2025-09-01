@@ -70,12 +70,17 @@
 #endif
 
 #include "xfdesktop-backdrop-manager.h"
+#include "xfdesktop-backdrop-media.h"
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
 
 #ifdef ENABLE_X11
 #include "xfdesktop-x11.h"
 #endif
+
+#ifdef ENABLE_VIDEO_BACKDROP
+#include <gst/gst.h>
+#endif /* ENABLE_VIDEO_BACKDROP */
 
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
@@ -112,6 +117,14 @@ struct _XfceDesktop {
 #ifdef ENABLE_DESKTOP_ICONS
     gint style_refresh_timer;
 #endif
+
+    XfdesktopBackdropMedia *bmedia;
+    GtkWidget *overlay;
+    GtkWidget *overlay_child[N_XFCE_DESKTOP_LAYER];
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    GstElement *playbin;
+#endif /* ENABLE_VIDEO_BACKDROP */
 };
 
 enum
@@ -157,6 +170,35 @@ static void xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
 
 static gboolean update_backdrop_workspace(XfceDesktop *desktop);
 
+static gboolean draw_backdrop_media(XfceDesktop *desktop,
+                                    cairo_t *cr);
+
+static void clear_old_backdrop_media(XfceDesktop *desktop);
+
+static void replace_backdrop_media(XfceDesktop *desktop,
+                                   XfdesktopBackdropMedia *bmedia);
+
+#ifdef ENABLE_VIDEO_BACKDROP
+static gboolean backdrop_overlapped_by_window(XfwWindow *window);
+
+static void handle_overlap_by_window(XfceDesktop *desktop,
+                                     XfwWindow *window);
+
+static void screen_active_window_cb(XfwScreen *screen,
+                                    XfwWindow *old_window,
+                                    gpointer user_data);
+
+static void playbin_eos_cb(GstBus *bus,
+                           GstMessage *msg,
+                           gpointer user_data);
+
+static void playbin_state_cb(GstBus *bus,
+                             GstMessage *msg,
+                             gpointer user_data);
+
+static void create_playbin(XfceDesktop *desktop,
+                           XfdesktopBackdropMedia *bmedia);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
 static struct
 {
@@ -256,11 +298,15 @@ set_accountsservice_user_bg(const gchar *background)
 }
 
 static void
-backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_file, GError *error, gpointer user_data) {
+backdrop_loaded(XfdesktopBackdropMedia *bmedia,
+                GdkRectangle *region,
+                GFile *image_file,
+                GError *error,
+                gpointer user_data) {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
 
-    DBG("entering, surface=%p, dims=%dx%d+%d+%d",
-        surface,
+    DBG("entering, media=%p, dims=%dx%d+%d+%d",
+        bmedia,
         region != NULL ? region->width : 0,
         region != NULL ? region->height : 0,
         region != NULL ? region->x : 0,
@@ -275,15 +321,16 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
                       xfw_monitor_get_connector(desktop->monitor),
                       error->message);
         }
-    } else if (surface != NULL) {
-        g_clear_object(&desktop->backdrop_load_cancellable);
+        return;
+    }
 
-        if (desktop->bg_surface != surface) {
-            if (desktop->bg_surface != NULL) {
-                cairo_surface_destroy(desktop->bg_surface);
-            }
-            desktop->bg_surface = cairo_surface_reference(surface);
-        }
+    g_return_if_fail(bmedia != NULL);
+
+    g_clear_object(&desktop->backdrop_load_cancellable);
+
+    switch (xfdesktop_backdrop_media_get_kind(bmedia)) {
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
+        replace_backdrop_media(desktop, bmedia);
         desktop->bg_surface_region = *region;
 
 #ifdef ENABLE_X11
@@ -302,7 +349,8 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
             }
 
             /* do this again so apps watching the root win notice the update */
-            xfdesktop_x11_set_root_image_surface(desktop->gscreen, surface);
+            xfdesktop_x11_set_root_image_surface(desktop->gscreen,
+                                                 xfdesktop_backdrop_media_get_image_surface(desktop->bmedia));
             xfdesktop_x11_set_compat_properties(GTK_WIDGET(desktop));
         }
 #endif  /* ENABLE_X11 */
@@ -312,6 +360,12 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
         }
 
         gtk_widget_queue_draw(GTK_WIDGET(desktop));
+        break;
+#ifdef ENABLE_VIDEO_BACKDROP
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+        replace_backdrop_media(desktop, bmedia);
+        break;
+#endif /* ENABLE_VIDEO_BACKDROP */
     }
 }
 
@@ -579,6 +633,9 @@ xfce_desktop_constructed(GObject *obj)
     workspace_manager = xfw_screen_get_workspace_manager(desktop->xfw_screen);
     desktop->workspace_manager = workspace_manager;
 
+    desktop->overlay = gtk_overlay_new();
+    gtk_container_add(GTK_CONTAINER(desktop), desktop->overlay);
+
     /* watch for workspace changes */
     for (GList *gl = xfw_workspace_manager_list_workspace_groups(workspace_manager);
          gl != NULL;
@@ -633,6 +690,10 @@ xfce_desktop_finalize(GObject *object)
 
     g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
     g_object_unref(desktop->monitor);
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    g_signal_handlers_disconnect_by_data(desktop->xfw_screen, desktop);
+#endif
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
@@ -796,10 +857,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
      }
 #endif
 
-    if (desktop->bg_surface != NULL) {
-        cairo_surface_destroy(desktop->bg_surface);
-        desktop->bg_surface = NULL;
-    }
+    g_clear_object(&desktop->bmedia);
 
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->unrealize(widget);
 }
@@ -810,29 +868,10 @@ xfce_desktop_draw(GtkWidget *w,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 
-    cairo_save(cr);
-
-    cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
-
-    if (desktop->bg_surface != NULL) {
-        gdouble scale = xfw_monitor_get_fractional_scale(desktop->monitor);
-        cairo_scale(cr, 1.0 / scale, 1.0 / scale);
-        cairo_set_source_surface(cr,
-                                 desktop->bg_surface,
-                                 0 - desktop->bg_surface_region.x,
-                                 0 - desktop->bg_surface_region.y);
-        cairo_rectangle(cr,
-                        0,
-                        0,
-                        desktop->bg_surface_region.width,
-                        desktop->bg_surface_region.height);
-        cairo_fill(cr);
-    } else {
+    if (desktop->bmedia == NULL || !draw_backdrop_media(desktop, cr)) {
         cairo_set_source_rgba(cr, 0.0, 0.0, 0.0, 1.0);
         cairo_paint(cr);
     }
-
-    cairo_restore(cr);
 
     GList *children = gtk_container_get_children(GTK_CONTAINER(w));
     for (GList *l = children; l; l = l->next) {
@@ -973,13 +1012,221 @@ update_backdrop_workspace(XfceDesktop *desktop) {
              desktop->active_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->active_workspace) : -1,
              desktop->backdrop_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->backdrop_workspace) : -1);
 
-    if (desktop->backdrop_workspace != old_backdrop_workspace || desktop->bg_surface == NULL) {
+    if (desktop->backdrop_workspace != old_backdrop_workspace || desktop->bmedia == NULL) {
         fetch_backdrop(desktop, FALSE);
         return TRUE;
     } else {
         return FALSE;
     }
 }
+
+static gboolean draw_backdrop_media(XfceDesktop *desktop,
+                                    cairo_t *cr) {
+    XfdesktopBackdropMedia *bmedia = desktop->bmedia;
+    cairo_surface_t *surface;
+    gdouble scale;
+    
+    switch (xfdesktop_backdrop_media_get_kind(bmedia)) {
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:    
+        surface = xfdesktop_backdrop_media_get_image_surface(bmedia);
+        if (surface == NULL)
+            return FALSE;
+
+        cairo_save(cr);
+        cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
+        scale = xfw_monitor_get_fractional_scale(desktop->monitor);
+        cairo_scale(cr, 1.0 / scale, 1.0 / scale);
+        cairo_set_source_surface(cr,
+                                 surface,
+                                 0 - desktop->bg_surface_region.x,
+                                 0 - desktop->bg_surface_region.y);
+        cairo_rectangle(cr,
+                        0,
+                        0,
+                        desktop->bg_surface_region.width,
+                        desktop->bg_surface_region.height);
+        cairo_fill(cr);
+        cairo_restore(cr);
+        return TRUE;
+#ifdef ENABLE_VIDEO_BACKDROP
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+        return TRUE;
+#endif /* ENABLE_VIDEO_BACKDROP */
+    }
+
+    g_return_val_if_reached(FALSE);
+}
+
+static void
+clear_old_backdrop_media(XfceDesktop *desktop) {
+#ifdef ENABLE_VIDEO_BACKDROP
+    if (desktop->playbin) {
+        g_signal_handlers_disconnect_by_func(desktop->xfw_screen, screen_active_window_cb, desktop);
+        gst_element_set_state(desktop->playbin, GST_STATE_NULL);
+        g_clear_object(&desktop->playbin);
+        xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, NULL);
+    }
+#endif /* ENABLE_VIDEO_BACKDROP */
+    g_clear_object(&desktop->bmedia);    
+}
+
+static void
+replace_backdrop_media(XfceDesktop *desktop,
+                       XfdesktopBackdropMedia *bmedia) {
+    XfdesktopBackdropMediaKind bmedia_kind;
+                           
+    if (xfdesktop_backdrop_media_equal(desktop->bmedia, bmedia))
+        return;
+
+    clear_old_backdrop_media(desktop);
+
+    if (bmedia == NULL) 
+        return;
+
+    bmedia_kind = xfdesktop_backdrop_media_get_kind(bmedia);
+    switch (bmedia_kind) {
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
+        desktop->bmedia = bmedia;
+        g_object_ref(desktop->bmedia);
+        break;
+#ifdef ENABLE_VIDEO_BACKDROP
+    case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+        desktop->bmedia = bmedia;
+        g_object_ref(desktop->bmedia);
+        create_playbin(desktop, bmedia);
+        break;
+#endif /* ENABLE_VIDEO_BACKDROP */
+    }
+}
+
+#ifdef ENABLE_VIDEO_BACKDROP
+static gboolean
+backdrop_overlapped_by_window(XfwWindow *window) {
+    if (xfw_window_get_window_type(window) != XFW_WINDOW_TYPE_NORMAL)
+        return FALSE;
+
+    if (xfw_window_is_maximized(window))
+        return TRUE;
+
+    if (xfw_window_is_fullscreen(window))
+        return TRUE;
+
+    return FALSE;
+}
+
+static void
+handle_overlap_by_window(XfceDesktop *desktop,
+                         XfwWindow *window) {
+    g_return_if_fail(desktop->playbin != NULL);
+
+    if (window == NULL || !backdrop_overlapped_by_window(window)) 
+        gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    else
+        gst_element_set_state(desktop->playbin, GST_STATE_PAUSED);
+}
+
+static void
+screen_active_window_cb(XfwScreen *screen,
+                        XfwWindow *old_window,
+                        gpointer user_data) {
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    XfwWindow *active_window = xfw_screen_get_active_window(screen);
+    
+    handle_overlap_by_window(desktop, active_window);
+}
+
+static void
+playbin_eos_cb(GstBus *bus,
+               GstMessage *msg,
+               gpointer user_data) {
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    
+    g_return_if_fail(desktop->playbin != NULL);
+    
+    gst_element_set_state(desktop->playbin, GST_STATE_READY);
+}
+
+static void
+playbin_state_cb(GstBus *bus,
+                 GstMessage *msg,
+                 gpointer user_data) {
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    GstState old_state, new_state, pending_state;
+
+    g_return_if_fail(desktop->playbin != NULL);
+    
+    gst_message_parse_state_changed(msg, &old_state, &new_state, &pending_state);
+    if (new_state == GST_STATE_NULL && pending_state != GST_STATE_PLAYING) 
+        gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+}
+
+static void
+create_playbin(XfceDesktop *desktop,
+               XfdesktopBackdropMedia *bmedia) {
+    GstElement *videosink, *gtkglsink;
+    GtkWidget *sink_widget;
+    gboolean nogl_fallback;
+    GstBus *bus;
+    
+    /* https://gstreamer.freedesktop.org/documentation/playback/playsink.html?gi-language=c#named-constants */
+    const guint gst_flag_soft_colorbalance = 0x00000400;
+    const guint gst_flag_deinterlace = 0x00000200;
+    const guint gst_flag_buffering = 0x00000100;
+    const guint gst_flag_video = 0x00000001;
+    const guint gst_flags = gst_flag_soft_colorbalance |
+                            gst_flag_deinterlace |
+                            gst_flag_buffering |
+                            gst_flag_video;
+    
+    g_return_if_fail(bmedia != NULL);
+    g_warn_if_fail(desktop->playbin == NULL);
+
+    desktop->playbin = gst_element_factory_make("playbin", "playbin");
+    g_return_if_fail(desktop->playbin != NULL);
+
+    g_object_set(desktop->playbin, "flags", gst_flags, NULL);
+
+    videosink = gst_element_factory_make("glsinkbin", "glsinkbin");
+    gtkglsink = gst_element_factory_make("gtkglsink", "gtkglsink");
+
+    nogl_fallback = gtkglsink == NULL || videosink == NULL;
+    if (nogl_fallback) {
+        g_printerr("Failed to create gstreamer gtkglsink/glsinkbin\n");
+        g_clear_object(&gtkglsink);
+        g_clear_object(&videosink);
+        videosink = gst_element_factory_make("gtksink", "gtksink");
+        g_object_get(videosink, "widget", &sink_widget, NULL);
+    } else {
+        g_object_set(videosink, "sink", gtkglsink, NULL);
+        g_object_get(gtkglsink, "widget", &sink_widget, NULL);
+    }
+
+    if (videosink == NULL) {
+        g_clear_object(&sink_widget);
+        g_clear_object(&gtkglsink);
+        g_clear_object(&videosink);
+        g_clear_object(&desktop->playbin);
+        g_printerr("Failed to create gstreamer videosink\n");
+        return;
+    }
+
+    xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, sink_widget);
+
+    g_object_set(desktop->playbin,
+                 "uri", xfdesktop_backdrop_media_get_video_uri(bmedia),
+                 "video-sink", videosink,
+                 NULL);
+
+    bus = gst_element_get_bus(desktop->playbin);
+    gst_bus_add_signal_watch(bus);
+    g_signal_connect(G_OBJECT(bus), "message::eos", G_CALLBACK(playbin_eos_cb), desktop);
+    g_signal_connect(G_OBJECT(bus), "message::state-changed", G_CALLBACK(playbin_state_cb), desktop);
+    gst_object_unref(bus);
+
+    gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    g_signal_connect(desktop->xfw_screen, "active-window-changed", G_CALLBACK(screen_active_window_cb), desktop);
+}
+#endif /* ENABLE_VIDEO_BACKDROP */
 
 /* public api */
 
@@ -1133,4 +1380,27 @@ xfce_desktop_cycle_backdrop(XfceDesktop *desktop) {
                                                   desktop->monitor,
                                                   desktop->backdrop_workspace);
     }
+}
+
+void xfce_desktop_put_to_layer(XfceDesktop *desktop,
+                               XfceDesktopLayer n,
+                               GtkWidget *child) {
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    g_return_if_fail(n >= 0 && n <= N_XFCE_DESKTOP_LAYER);
+
+    if (desktop->overlay_child[n] != NULL) {
+        gtk_container_remove(GTK_CONTAINER(desktop->overlay), desktop->overlay_child[n]);
+        desktop->overlay_child[n] = NULL;
+    }
+
+    if (child == NULL)
+        return;
+
+    gtk_overlay_add_overlay(GTK_OVERLAY(desktop->overlay), child);
+    if (n == XFCE_DESKTOP_LAYER_BACKDROP)
+        gtk_overlay_set_overlay_pass_through(GTK_OVERLAY(desktop->overlay), child, TRUE);
+
+    gtk_overlay_reorder_overlay(GTK_OVERLAY(desktop->overlay), child, n);
+    desktop->overlay_child[n] = child;
+    gtk_widget_show(child);
 }

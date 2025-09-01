@@ -29,6 +29,7 @@
 #include <stdlib.h>
 
 #include "xfdesktop-common.h"
+#include "xfdesktop-mime-type.h"
 #include "xfdesktop-backdrop-cycler.h"
 #include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-backdrop-renderer.h"
@@ -76,7 +77,7 @@ typedef struct {
 
 typedef struct {
     XfdesktopBackdropManager *manager;
-    cairo_surface_t *surface;
+    XfdesktopBackdropMedia *bmedia;
     gint width;
     gint height;
     GFile *image_file;
@@ -236,7 +237,7 @@ monitor_get_from_identifier(GPtrArray *monitors, const gchar *identifier) {
 
 static void
 backdrop_free(Backdrop *backdrop) {
-    cairo_surface_destroy(backdrop->surface);
+    g_clear_object(&backdrop->bmedia);
     if (backdrop->image_file_monitor != NULL) {
         g_file_monitor_cancel(backdrop->image_file_monitor);
         g_object_unref(backdrop->image_file_monitor);
@@ -584,10 +585,7 @@ static void
 invalidate_backdrops_for_property_prefix(XfdesktopBackdropManager *manager, const gchar *property_prefix) {
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
     if (backdrop != NULL) {
-        if (backdrop->surface != NULL) {
-            cairo_surface_destroy(backdrop->surface);
-            backdrop->surface = NULL;
-        }
+        g_clear_object(&backdrop->bmedia);
         emit_backdrop_changed(manager, property_prefix, backdrop);
     }
 }
@@ -619,10 +617,7 @@ backdrops_ht_invalidate(gpointer key, gpointer value, gpointer data) {
 
     if (g_str_has_prefix(property_prefix, bifd->property_prefix_prefix)) {
         Backdrop *backdrop = value;
-        if (backdrop->surface != NULL) {
-            cairo_surface_destroy(backdrop->surface);
-            backdrop->surface = NULL;
-        }
+        g_clear_object(&backdrop->bmedia);
         emit_backdrop_changed(bifd->manager, property_prefix, backdrop);
     }
 }
@@ -717,14 +712,14 @@ screen_monitor_removed(XfwScreen *screen, XfwMonitor *xfwmonitor, XfdesktopBackd
 }
 
 static void
-notify_complete(cairo_surface_t *surface,
+notify_complete(XfdesktopBackdropMedia *bmedia,
                 Monitor *monitor,
                 gboolean is_spanning,
                 GFile *image_file,
                 GetImageSurfaceCallback callback,
                 gpointer callback_user_data)
 {
-    g_return_if_fail(surface != NULL);
+    g_return_if_fail(bmedia != NULL);
     g_return_if_fail(monitor != NULL);
     g_return_if_fail(callback != NULL);
 
@@ -733,7 +728,7 @@ notify_complete(cairo_surface_t *surface,
         region.x = region.y = 0;
     }
 
-    callback(surface, &region, image_file, NULL, callback_user_data);
+    callback(bmedia, &region, image_file, NULL, callback_user_data);
 }
 
 static void
@@ -788,7 +783,11 @@ backdrop_image_file_changed(GFileMonitor *fmonitor,
 }
 
 static void
-render_finished(cairo_surface_t *surface, gint width, gint height, GError *error, gpointer user_data) {
+render_finished(XfdesktopBackdropMedia *bmedia,
+                gint width,
+                gint height,
+                GError *error,
+                gpointer user_data) {
     RenderData *rdata = user_data;
     const gchar *property_prefix = rdata->property_prefix;
 
@@ -796,7 +795,7 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
         g_message("Failed to load image file '%s': %s", g_file_peek_path(rdata->image_file), error->message);
     }
 
-    if (surface != NULL) {
+    if (bmedia != NULL) {
         if (rdata->manager != NULL) {
             Backdrop *backdrop = g_hash_table_lookup(rdata->manager->backdrops, rdata->property_prefix);
             if (backdrop == NULL) {
@@ -807,12 +806,12 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
                 g_hash_table_insert(rdata->manager->backdrops, rdata->property_prefix, backdrop);
                 rdata->property_prefix = NULL;
             } else {
-                g_clear_pointer(&backdrop->surface, cairo_surface_destroy);
+                g_clear_object(&backdrop->bmedia);
                 g_clear_object(&backdrop->image_file);
             }
 
             // XXX: maybe we shouldn't cache if error is non-null
-            backdrop->surface = surface;
+            backdrop->bmedia = bmedia;
             backdrop->width = width;
             backdrop->height = height;
             if (rdata->image_file != NULL) {
@@ -838,7 +837,7 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
 
         for (GList *l = rdata->instances; l != NULL; l = l->next) {
             RenderInstanceData *ridata = l->data;
-            notify_complete(surface,
+            notify_complete(bmedia,
                             ridata->monitor,
                             rdata->is_spanning,
                             error == NULL ? rdata->image_file : NULL,
@@ -862,6 +861,21 @@ static void
 forward_cancellation(GCancellable *cancellable, GCancellable *main_cancellable) {
     g_cancellable_cancel(main_cancellable);
 }
+
+#ifdef ENABLE_VIDEO_BACKDROP
+static void
+create_video_backdrop(GFile *video_file,
+                      gint geom_width,
+                      gint geom_height,
+                      GetImageSurfaceCallback callback,
+                      gpointer rdata)
+{
+    gchar *file_uri = g_file_get_uri(video_file);
+    XfdesktopBackdropMedia *bmedia = xfdesktop_backdrop_media_new_from_video_uri(file_uri);
+    g_free(file_uri);
+    render_finished(bmedia, geom_width, geom_height, NULL, rdata);
+}
+#endif /* ENABLE_VIDEO_BACKDROP */
 
 static void
 create_backdrop(XfdesktopBackdropManager *manager,
@@ -927,6 +941,13 @@ create_backdrop(XfdesktopBackdropManager *manager,
 
     g_hash_table_insert(manager->in_progress_rendering, g_strdup(property_prefix), rdata);
 
+#ifdef ENABLE_VIDEO_BACKDROP
+    if (image_file != NULL && xfdesktop_file_has_video_mime_type(image_file)) {
+        create_video_backdrop(image_file, geom->width, geom->height, callback, rdata);
+        return;
+    }
+#endif /* ENABLE_VIDEO_BACKDROP */
+
     xfdesktop_backdrop_render(rdata->main_cancellable,
                               color_style,
                               &color1,
@@ -971,9 +992,9 @@ xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
     }
 
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
-    if (backdrop != NULL && backdrop->surface != NULL) {
+    if (backdrop != NULL && backdrop->bmedia != NULL) {
         g_free(property_prefix);
-        notify_complete(backdrop->surface,
+        notify_complete(backdrop->bmedia,
                         monitor,
                         is_spanning,
                         backdrop->image_file,

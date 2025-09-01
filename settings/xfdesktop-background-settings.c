@@ -38,6 +38,7 @@
 #endif  /* ENABLE_X11 */
 
 #include "common/xfdesktop-common.h"
+#include "common/xfdesktop-mime-type.h"
 #include "xfdesktop-settings.h"
 #include "xfdesktop-thumbnailer.h"
 
@@ -427,7 +428,7 @@ xfdesktop_settings_image_iconview_add(GtkListStore *model,
     gboolean added = FALSE;
     GtkTreeIter iter;
 
-    if (xfdesktop_image_file_is_valid(file)) {
+    if (xfdesktop_file_has_media_mime_type(file)) {
         gchar *name = g_file_get_basename(file);
         if (name != NULL) {
             guint name_length = strlen(name);
@@ -1898,7 +1899,7 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
 
     GtkFileFilter *filter = gtk_file_filter_new();
     gtk_file_filter_set_name(filter, _("Image files"));
-    gtk_file_filter_add_pixbuf_formats(filter);
+    xfdesktop_media_mime_type_to_filter(filter);
     gtk_file_filter_add_mime_type(filter, "inode/directory");
     gtk_file_filter_add_mime_type(filter, "application/x-directory");
     gtk_file_filter_add_mime_type(filter, "text/directory");
