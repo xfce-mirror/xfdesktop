@@ -33,6 +33,12 @@ G_BEGIN_DECLS
 #define XFCE_TYPE_DESKTOP (xfce_desktop_get_type())
 G_DECLARE_FINAL_TYPE(XfceDesktop, xfce_desktop, XFCE, DESKTOP, GtkWindow)
 
+typedef enum {
+    XFCE_DESKTOP_LAYER_BACKDROP,
+    XFCE_DESKTOP_LAYER_ICONS,
+    N_XFCE_DESKTOP_LAYER
+} XfceDesktopLayer;
+
 typedef void (*SessionLogoutFunc)();
 
 GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
@@ -54,6 +60,10 @@ void xfce_desktop_refresh(XfceDesktop *desktop);
 void xfce_desktop_cycle_backdrop(XfceDesktop *desktop);
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop);
+
+void xfce_desktop_put_to_layer(XfceDesktop *desktop,
+                               XfceDesktopLayer layer,
+                               GtkWidget *child);
 
 G_END_DECLS
 

@@ -67,3 +67,10 @@ option(
   value: true,
   description: 'Whether or not to build test programs',
 )
+
+option(
+  'video-backdrop',
+  type: 'boolean',
+  value: true,
+  description: 'Support for setting video as backdrop'
+)

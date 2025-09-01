@@ -23,6 +23,7 @@ libxfdesktop = static_library(
     'xfdesktop-extensions.c',
     'xfdesktop-keyboard-shortcuts.c',
     'xfdesktop-thumbnailer.c',
+    'xfdesktop-mime-type.c',
   ] + common_generated_sources,
   c_args: [
     '-DBACKGROUNDS_DIR="@0@/backgrounds/xfce"'.format(get_option('prefix') / get_option('datadir')),
