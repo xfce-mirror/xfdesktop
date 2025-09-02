@@ -36,10 +36,6 @@
 #include "xfdesktop-monitor-chooser-ui.h"
 #endif
 
-#ifdef ENABLE_VIDEO_BACKDROP
-#include <gst/gst.h>
-#endif
-
 int
 main(int argc, char **argv)
 {
@@ -56,10 +52,6 @@ main(int argc, char **argv)
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     gtk_init(&argc, &argv);
-
-#ifdef ENABLE_VIDEO_BACKDROP
-    gst_init(&argc, &argv);
-#endif
 
 #ifdef ENABLE_FILE_ICONS
     xfdesktop_monitor_chooser_ui_register_resource();
