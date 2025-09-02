@@ -938,7 +938,7 @@ create_backdrop(XfdesktopBackdropManager *manager,
     g_hash_table_insert(manager->in_progress_rendering, g_strdup(property_prefix), rdata);
 
 #ifdef ENABLE_VIDEO_BACKDROP
-    if (image_file != NULL && xfdesktop_file_has_video_mime_type(image_file)) {
+    if (image_file != NULL && image_style != XFCE_BACKDROP_IMAGE_NONE && xfdesktop_file_has_video_mime_type(image_file)) {
         create_video_backdrop(image_file, geom->width, geom->height, callback, rdata);
         return;
     }
