@@ -783,11 +783,7 @@ backdrop_image_file_changed(GFileMonitor *fmonitor,
 }
 
 static void
-render_finished(XfdesktopBackdropMedia *bmedia,
-                gint width,
-                gint height,
-                GError *error,
-                gpointer user_data) {
+render_finished(XfdesktopBackdropMedia *bmedia, gint width, gint height, GError *error, gpointer user_data) {
     RenderData *rdata = user_data;
     const gchar *property_prefix = rdata->property_prefix;
 
