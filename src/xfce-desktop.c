@@ -175,7 +175,7 @@ static gboolean update_backdrop_workspace(XfceDesktop *desktop);
 static gboolean draw_backdrop_media(XfceDesktop *desktop,
                                     cairo_t *cr);
 
-static void clear_old_backdrop_media(XfceDesktop *desktop);
+static void clear_backdrop_media(XfceDesktop *desktop);
 
 static void replace_backdrop_media(XfceDesktop *desktop,
                                    XfdesktopBackdropMedia *bmedia);
@@ -185,6 +185,8 @@ static gboolean backdrop_overlapped_by_window(XfwWindow *window);
 
 static void handle_overlap_by_window(XfceDesktop *desktop,
                                      XfwWindow *window);
+
+static void screen_handlers_disconnect(XfceDesktop *desktop);
 
 static void screen_active_window_cb(XfwScreen *screen,
                                     XfwWindow *old_window,
@@ -858,7 +860,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
      }
 #endif
 
-    g_clear_object(&desktop->bmedia);
+    clear_backdrop_media(desktop);
 
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->unrealize(widget);
 }
@@ -1057,10 +1059,10 @@ draw_backdrop_media(XfceDesktop *desktop, cairo_t *cr) {
 }
 
 static void
-clear_old_backdrop_media(XfceDesktop *desktop) {
+clear_backdrop_media(XfceDesktop *desktop) {
 #ifdef ENABLE_VIDEO_BACKDROP
     if (desktop->playbin != NULL) {
-        g_signal_handlers_disconnect_by_func(desktop->xfw_screen, screen_active_window_cb, desktop);
+        screen_handlers_disconnect(desktop);
         gst_element_set_state(desktop->playbin, GST_STATE_NULL);
         g_clear_object(&desktop->playbin);
         xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, NULL);
@@ -1072,7 +1074,7 @@ clear_old_backdrop_media(XfceDesktop *desktop) {
 static void
 replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
     if (!xfdesktop_backdrop_media_equal(desktop->bmedia, bmedia)) {
-        clear_old_backdrop_media(desktop);
+        clear_backdrop_media(desktop);
 
         if (bmedia != NULL) {
             XfdesktopBackdropMediaKind bmedia_kind = xfdesktop_backdrop_media_get_kind(bmedia);
@@ -1097,7 +1099,7 @@ replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
 #ifdef ENABLE_VIDEO_BACKDROP
 static gboolean
 backdrop_overlapped_by_window(XfwWindow *window) {
-    return (xfw_window_get_window_type(window) == XFW_WINDOW_TYPE_NORMAL) ||
+    return (xfw_window_get_window_type(window) == XFW_WINDOW_TYPE_NORMAL) &&
            (xfw_window_is_maximized(window) || xfw_window_is_fullscreen(window));
 }
 
@@ -1105,10 +1107,38 @@ static void
 handle_overlap_by_window(XfceDesktop *desktop, XfwWindow *window) {
     g_return_if_fail(desktop->playbin != NULL);
 
-    if (window == NULL || !backdrop_overlapped_by_window(window)) {
-        gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    if (window != NULL && !xfw_window_is_active(window)) {
+        DBG("Skip setting video state, window(%p) is not active", window);
     } else {
-        gst_element_set_state(desktop->playbin, GST_STATE_PAUSED);
+        if (window == NULL || !backdrop_overlapped_by_window(window)) {
+            DBG("Video set state: PLAYING, window(%p)", window);
+            gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+        } else {
+            DBG("Video set state: PAUSED, window(%p)", window);
+            gst_element_set_state(desktop->playbin, GST_STATE_PAUSED);
+        }
+    }
+}
+
+static void
+window_geometry_cb(XfwWindow *window, gpointer user_data) {
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    handle_overlap_by_window(desktop, window);
+}
+
+static void
+window_state_cb(XfwWindow *window, XfwWindowState changed_mask, XfwWindowState new_state, gpointer user_data) {
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    handle_overlap_by_window(desktop, window);
+}
+
+static void
+screen_handlers_disconnect(XfceDesktop *desktop) {
+    g_signal_handlers_disconnect_by_func(desktop->xfw_screen, screen_active_window_cb, desktop);
+    XfwWindow *active_window = xfw_screen_get_active_window(desktop->xfw_screen);
+    if (active_window != NULL) {
+        g_signal_handlers_disconnect_by_func(active_window, window_geometry_cb, desktop);
+        g_signal_handlers_disconnect_by_func(active_window, window_state_cb, desktop);
     }
 }
 
@@ -1118,6 +1148,16 @@ screen_active_window_cb(XfwScreen *screen, XfwWindow *old_window, gpointer user_
     XfwWindow *active_window = xfw_screen_get_active_window(screen);
     
     handle_overlap_by_window(desktop, active_window);
+
+    if (active_window != NULL) {
+        g_signal_connect(active_window, "geometry-changed", G_CALLBACK(window_geometry_cb), desktop);
+        g_signal_connect(active_window, "state-changed", G_CALLBACK(window_state_cb), desktop);
+    }
+
+    if (old_window != NULL) {
+        g_signal_handlers_disconnect_by_func(old_window, window_geometry_cb, desktop);
+        g_signal_handlers_disconnect_by_func(old_window, window_state_cb, desktop);
+    }
 }
 
 static void
