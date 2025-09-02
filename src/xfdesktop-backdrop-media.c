@@ -37,13 +37,13 @@ xfdesktop_backdrop_media_finalize(GObject *gobject) {
     XfdesktopBackdropMedia *bmedia = XFDESKTOP_BACKDROP_MEDIA(gobject);
     
     switch (bmedia->kind) {
-    case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
-        cairo_surface_destroy(bmedia->image_surface);
-        break;
+        case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
+            cairo_surface_destroy(bmedia->image_surface);
+            break;
 #ifdef ENABLE_VIDEO_BACKDROP
-    case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
-        g_free(bmedia->video_uri);
-        break;
+        case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+            g_free(bmedia->video_uri);
+            break;
 #endif
     }
 }
@@ -80,27 +80,27 @@ xfdesktop_backdrop_media_get_image_surface(XfdesktopBackdropMedia *bmedia) {
 }
 
 gboolean
-xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a,
-                               XfdesktopBackdropMedia *b) {
-    XfdesktopBackdropMediaKind akind, bkind;
-    
-    if (a == NULL && b == NULL)
+xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a, XfdesktopBackdropMedia *b) {
+    if (a == NULL && b == NULL) {
         return TRUE;
+    }
 
-    if (a == NULL || b == NULL)
+    if (a == NULL || b == NULL) {
         return FALSE;
+    }
 
-    akind = xfdesktop_backdrop_media_get_kind(a);
-    bkind = xfdesktop_backdrop_media_get_kind(b);
-    if (akind != bkind)
+    XfdesktopBackdropMediaKind akind = xfdesktop_backdrop_media_get_kind(a);
+    XfdesktopBackdropMediaKind bkind = xfdesktop_backdrop_media_get_kind(b);
+    if (akind != bkind) {
         return FALSE;
+    }
 
     switch (akind) {
-    case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
-        return a->image_surface == b->image_surface;
+        case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
+            return a->image_surface == b->image_surface;
 #ifdef ENABLE_VIDEO_BACKDROP
-    case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
-        return g_strcmp0(a->video_uri, b->video_uri) == 0;
+        case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+            return g_strcmp0(a->video_uri, b->video_uri) == 0;
 #endif
     }
 
