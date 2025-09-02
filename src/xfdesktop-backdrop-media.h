@@ -24,6 +24,10 @@
 #include <gtk/gtk.h>
 #include <cairo.h>
 
+#ifdef ENABLE_VIDEO_BACKDROP
+#include <gst/gst.h>
+#endif /* ENABLE_VIDEO_BACKDROP */
+
 G_BEGIN_DECLS
 
 typedef enum {
@@ -49,6 +53,10 @@ gboolean xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a,
 XfdesktopBackdropMedia *xfdesktop_backdrop_media_new_from_video_uri(const gchar *video_uri);
 
 const gchar *xfdesktop_backdrop_media_get_video_uri(XfdesktopBackdropMedia *bmedia);
+
+GtkWidget *xfdesktop_backdrop_media_get_video_widget(XfdesktopBackdropMedia *bmedia);
+
+GstElement *xfdesktop_backdrop_media_get_video_playbin(XfdesktopBackdropMedia *bmedia);
 #endif /* ENABLE_VIDEO_BACKDROP */
 
 G_END_DECLS

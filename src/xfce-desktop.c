@@ -202,8 +202,8 @@ static void playbin_state_cb(GstBus *bus,
 
 static void init_gst(XfceDesktop *desktop);
 
-static void create_playbin(XfceDesktop *desktop,
-                           XfdesktopBackdropMedia *bmedia);
+static void configure_playbin(XfceDesktop *desktop,
+                              XfdesktopBackdropMedia *bmedia);
 #endif /* ENABLE_VIDEO_BACKDROP */
 
 static struct
@@ -1063,8 +1063,8 @@ clear_backdrop_media(XfceDesktop *desktop) {
 #ifdef ENABLE_VIDEO_BACKDROP
     if (desktop->playbin != NULL) {
         screen_handlers_disconnect(desktop);
-        gst_element_set_state(desktop->playbin, GST_STATE_NULL);
-        g_clear_object(&desktop->playbin);
+        gst_element_set_state(desktop->playbin, GST_STATE_PAUSED);
+        desktop->playbin = NULL;
         xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, NULL);
     }
 #endif /* ENABLE_VIDEO_BACKDROP */
@@ -1088,7 +1088,7 @@ replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
                     init_gst(desktop);
                     desktop->bmedia = bmedia;
                     g_object_ref(desktop->bmedia);
-                    create_playbin(desktop, bmedia);
+                    configure_playbin(desktop, bmedia);
                     break;
 #endif /* ENABLE_VIDEO_BACKDROP */
             }
@@ -1191,54 +1191,12 @@ init_gst(XfceDesktop *desktop) {
 }
 
 static void
-create_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
-    /* https://gstreamer.freedesktop.org/documentation/playback/playsink.html?gi-language=c#named-constants */
-    const guint gst_flag_soft_colorbalance = 0x00000400;
-    const guint gst_flag_deinterlace = 0x00000200;
-    const guint gst_flag_buffering = 0x00000100;
-    const guint gst_flag_video = 0x00000001;
-    const guint gst_flags = gst_flag_soft_colorbalance |
-                            gst_flag_deinterlace |
-                            gst_flag_buffering |
-                            gst_flag_video;
-    
-    g_return_if_fail(bmedia != NULL);
-    g_warn_if_fail(desktop->playbin == NULL);
+configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
+    desktop->playbin = xfdesktop_backdrop_media_get_video_playbin(bmedia);
+    GtkWidget *sink_widget = xfdesktop_backdrop_media_get_video_widget(bmedia);
 
-    desktop->playbin = gst_element_factory_make("playbin", "playbin");
-    g_return_if_fail(desktop->playbin != NULL);
-
-    g_object_set(desktop->playbin, "flags", gst_flags, NULL);
-
-    GstElement *videosink = gst_element_factory_make("glsinkbin", "glsinkbin");
-    GstElement *gtkglsink = gst_element_factory_make("gtkglsink", "gtkglsink");
-    GtkWidget *sink_widget = NULL;
-
-    gboolean nogl_fallback = gtkglsink == NULL || videosink == NULL;
-    if (nogl_fallback) {
-        g_printerr("Failed to create gstreamer gtkglsink/glsinkbin\n");
-        g_clear_object(&gtkglsink);
-        g_clear_object(&videosink);
-        videosink = gst_element_factory_make("gtksink", "gtksink");
-        g_object_get(videosink, "widget", &sink_widget, NULL);
-    } else {
-        g_object_set(videosink, "sink", gtkglsink, NULL);
-        g_object_get(gtkglsink, "widget", &sink_widget, NULL);
-    }
-
-    if (videosink == NULL) {
-        g_clear_object(&sink_widget);
-        g_clear_object(&gtkglsink);
-        g_clear_object(&videosink);
-        g_clear_object(&desktop->playbin);
-        g_printerr("Failed to create gstreamer videosink\n");
-    } else {
+    if (desktop->playbin != NULL) {
         xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, sink_widget);
-
-        g_object_set(desktop->playbin,
-                     "uri", xfdesktop_backdrop_media_get_video_uri(bmedia),
-                     "video-sink", videosink,
-                     NULL);
 
         GstBus *bus = gst_element_get_bus(desktop->playbin);
         gst_bus_add_signal_watch(bus);
@@ -1413,17 +1371,27 @@ xfce_desktop_put_to_layer(XfceDesktop *desktop, XfceDesktopLayer n, GtkWidget *c
     g_return_if_fail(n >= 0 && n <= N_XFCE_DESKTOP_LAYER);
 
     if (desktop->overlay_child[n] != NULL) {
-        gtk_container_remove(GTK_CONTAINER(desktop->overlay), desktop->overlay_child[n]);
+        if (n == XFCE_DESKTOP_LAYER_BACKDROP) {
+            /* Creating a video widget is very time consuming so we don't delete the widgets HERE,
+             * instead they are deleted in XfdesktopBackdropMedia */
+            gtk_widget_hide(desktop->overlay_child[n]);
+        } else {
+            gtk_container_remove(GTK_CONTAINER(desktop->overlay), desktop->overlay_child[n]);
+        }
+        gtk_widget_hide(desktop->overlay_child[n]);
         desktop->overlay_child[n] = NULL;
     }
 
     if (child != NULL) {
-        gtk_overlay_add_overlay(GTK_OVERLAY(desktop->overlay), child);
-        if (n == XFCE_DESKTOP_LAYER_BACKDROP) {
-            gtk_overlay_set_overlay_pass_through(GTK_OVERLAY(desktop->overlay), child, TRUE);
+        if (gtk_widget_get_parent(child) == NULL) {
+            gtk_overlay_add_overlay(GTK_OVERLAY(desktop->overlay), child);
+            if (n == XFCE_DESKTOP_LAYER_BACKDROP) {
+                /* The background should not intercept events for icons */
+                gtk_overlay_set_overlay_pass_through(GTK_OVERLAY(desktop->overlay), child, TRUE);
+            }
+            gtk_overlay_reorder_overlay(GTK_OVERLAY(desktop->overlay), child, n);
         }
 
-        gtk_overlay_reorder_overlay(GTK_OVERLAY(desktop->overlay), child, n);
         desktop->overlay_child[n] = child;
         gtk_widget_show(child);
     }
