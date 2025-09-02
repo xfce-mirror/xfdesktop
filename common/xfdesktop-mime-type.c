@@ -33,39 +33,29 @@ static GHashTable *pixbuf_mime_type_set = NULL;
 
 gchar *
 xfdesktop_get_file_mime_type(GFile *file) {
-    GFileInfo *file_info;
-    gchar *mime_type = NULL;
-
     g_return_val_if_fail(G_IS_FILE(file), NULL);
 
-    file_info = g_file_query_info(file,
-                                  "standard::content-type",
-                                  0,
-                                  NULL,
-                                  NULL);
-
+    GFileInfo *file_info = g_file_query_info(file, "standard::content-type", 0, NULL, NULL);
     if(file_info != NULL) {
-        mime_type = g_strdup(g_file_info_get_content_type(file_info));
+        gchar *mime_type = g_strdup(g_file_info_get_content_type(file_info));
         g_object_unref(file_info);
+        return mime_type;
+    } else {
+        return NULL;
     }
-
-    return mime_type;
 }
 
 static void
 build_pixbuf_mime_type_set(void) {
-    GSList *formats, *l;
-    gchar **mimetypes;
-    guint i;
-
     g_return_if_fail(pixbuf_mime_type_set == NULL);
 
     pixbuf_mime_type_set = g_hash_table_new(g_str_hash, g_str_equal);
-    formats = gdk_pixbuf_get_formats();
-    for(l = formats; l != NULL; l = g_slist_next(l)) {
-        mimetypes = gdk_pixbuf_format_get_mime_types(l->data);
-        for (i = 0; mimetypes[i] != NULL; ++i) 
+    GSList *formats = gdk_pixbuf_get_formats();
+    for(GSList *l = formats; l != NULL; l = g_slist_next(l)) {
+        gchar **mimetypes = gdk_pixbuf_format_get_mime_types(l->data);
+        for (guint i = 0; mimetypes[i] != NULL; ++i) {
             g_hash_table_insert(pixbuf_mime_type_set, mimetypes[i], NULL);
+        }
         g_free(mimetypes);
     }
     g_slist_free(formats);
@@ -75,8 +65,9 @@ static gboolean
 is_pixbuf_mimetype(const gchar *mimetype) {
     g_return_val_if_fail(mimetype != NULL, FALSE);
     
-    if (pixbuf_mime_type_set == NULL)
+    if (pixbuf_mime_type_set == NULL) {
         build_pixbuf_mime_type_set();
+    }
 
     return g_hash_table_contains(pixbuf_mime_type_set, mimetype);
 }
@@ -96,35 +87,34 @@ xfdesktop_media_mime_type_to_filter(GtkFileFilter *filter) {
 
 gboolean
 xfdesktop_file_has_media_mime_type(GFile *file) {
-    gchar *file_mimetype;
-    gboolean has = FALSE;
-
     g_return_val_if_fail(file != NULL, FALSE);
 
-    file_mimetype = xfdesktop_get_file_mime_type(file);
-    if (file_mimetype == NULL) 
+    gchar *file_mimetype = xfdesktop_get_file_mime_type(file);
+    if (file_mimetype == NULL) {
         return FALSE;
+    } else {
+        gboolean has = FALSE;
 
-    if (!has) 
-        has = is_pixbuf_mimetype(file_mimetype);
+        if (!has) {
+            has = is_pixbuf_mimetype(file_mimetype);
+        }
 
 #ifdef ENABLE_VIDEO_BACKDROP
-    if (!has)
-        has = g_strv_contains(video_mime_type_list, file_mimetype);
+        if (!has) {
+            has = g_strv_contains(video_mime_type_list, file_mimetype);
+        }
 #endif /* ENABLE_VIDEO_BACKDROP */
 
-    g_free(file_mimetype);
-    return has;
+        g_free(file_mimetype);
+        return has;
+    }
 }
 
 #ifdef ENABLE_VIDEO_BACKDROP
 gboolean
 xfdesktop_file_has_video_mime_type(GFile *file) {
-    gchar *file_mimetype;
-    gboolean has;
-    
-    file_mimetype = xfdesktop_get_file_mime_type(file);
-    has = g_strv_contains(video_mime_type_list, file_mimetype);
+    gchar *file_mimetype = xfdesktop_get_file_mime_type(file);
+    gboolean has = g_strv_contains(video_mime_type_list, file_mimetype);
     g_free(file_mimetype);
     return has;
 }
