@@ -123,6 +123,7 @@ struct _XfceDesktop {
     GtkWidget *overlay_child[N_XFCE_DESKTOP_LAYER];
 
 #ifdef ENABLE_VIDEO_BACKDROP
+    gboolean gst_initialized;
     GstElement *playbin;
 #endif /* ENABLE_VIDEO_BACKDROP */
 };
@@ -195,6 +196,8 @@ static void playbin_eos_cb(GstBus *bus,
 static void playbin_state_cb(GstBus *bus,
                              GstMessage *msg,
                              gpointer user_data);
+
+static void init_gst(XfceDesktop *desktop);
 
 static void create_playbin(XfceDesktop *desktop,
                            XfdesktopBackdropMedia *bmedia);
@@ -1053,7 +1056,7 @@ draw_backdrop_media(XfceDesktop *desktop, cairo_t *cr) {
 static void
 clear_old_backdrop_media(XfceDesktop *desktop) {
 #ifdef ENABLE_VIDEO_BACKDROP
-    if (desktop->playbin) {
+    if (desktop->playbin != NULL) {
         g_signal_handlers_disconnect_by_func(desktop->xfw_screen, screen_active_window_cb, desktop);
         gst_element_set_state(desktop->playbin, GST_STATE_NULL);
         g_clear_object(&desktop->playbin);
@@ -1077,6 +1080,7 @@ replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
                     break;
 #ifdef ENABLE_VIDEO_BACKDROP
                 case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
+                    init_gst(desktop);
                     desktop->bmedia = bmedia;
                     g_object_ref(desktop->bmedia);
                     create_playbin(desktop, bmedia);
@@ -1132,6 +1136,14 @@ playbin_state_cb(GstBus *bus, GstMessage *msg, gpointer user_data) {
     gst_message_parse_state_changed(msg, &old_state, &new_state, &pending_state);
     if (new_state == GST_STATE_NULL && pending_state != GST_STATE_PLAYING) {
         gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    }
+}
+
+static void
+init_gst(XfceDesktop *desktop) {
+    if (!desktop->gst_initialized) {
+        gst_init(NULL, NULL);
+        desktop->gst_initialized = TRUE;
     }
 }
 
