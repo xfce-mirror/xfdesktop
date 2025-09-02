@@ -119,10 +119,11 @@ struct _XfceDesktop {
 #endif
 
     XfdesktopBackdropMedia *bmedia;
+
+#ifdef ENABLE_VIDEO_BACKDROP
     GtkWidget *overlay;
     GtkWidget *overlay_child[N_XFCE_DESKTOP_LAYER];
 
-#ifdef ENABLE_VIDEO_BACKDROP
     gboolean gst_initialized;
     GstElement *playbin;
 #endif /* ENABLE_VIDEO_BACKDROP */
@@ -631,8 +632,10 @@ xfce_desktop_constructed(GObject *obj)
     workspace_manager = xfw_screen_get_workspace_manager(desktop->xfw_screen);
     desktop->workspace_manager = workspace_manager;
 
+#ifdef ENABLE_VIDEO_BACKDROP
     desktop->overlay = gtk_overlay_new();
     gtk_container_add(GTK_CONTAINER(desktop), desktop->overlay);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
     /* watch for workspace changes */
     for (GList *gl = xfw_workspace_manager_list_workspace_groups(workspace_manager);
@@ -1363,6 +1366,7 @@ xfce_desktop_cycle_backdrop(XfceDesktop *desktop) {
     }
 }
 
+#ifdef ENABLE_VIDEO_BACKDROP
 void
 xfce_desktop_put_to_layer(XfceDesktop *desktop, XfceDesktopLayer n, GtkWidget *child) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
@@ -1384,3 +1388,4 @@ xfce_desktop_put_to_layer(XfceDesktop *desktop, XfceDesktopLayer n, GtkWidget *c
         gtk_widget_show(child);
     }
 }
+#endif /* ENABLE_VIDEO_BACKDROP */
