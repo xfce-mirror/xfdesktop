@@ -1027,7 +1027,7 @@ static gboolean
 draw_backdrop_media(XfceDesktop *desktop, cairo_t *cr) {
     XfdesktopBackdropMedia *bmedia = desktop->bmedia;
     switch (xfdesktop_backdrop_media_get_kind(bmedia)) {
-        case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE:
+        case XFDESKTOP_BACKDROP_MEDIA_KIND_IMAGE: {
             cairo_surface_t *surface = xfdesktop_backdrop_media_get_image_surface(bmedia);
             if (surface == NULL) {
                 return FALSE;
@@ -1049,6 +1049,7 @@ draw_backdrop_media(XfceDesktop *desktop, cairo_t *cr) {
                 cairo_restore(cr);
                 return TRUE;
             }
+        }
 #ifdef ENABLE_VIDEO_BACKDROP
         case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
             return TRUE;
