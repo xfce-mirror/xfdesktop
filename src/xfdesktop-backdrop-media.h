@@ -26,6 +26,7 @@
 
 #ifdef ENABLE_VIDEO_BACKDROP
 #include <gst/gst.h>
+#include "xfdesktop-common.h"
 #endif /* ENABLE_VIDEO_BACKDROP */
 
 G_BEGIN_DECLS
@@ -50,7 +51,8 @@ gboolean xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a,
                                         XfdesktopBackdropMedia *b);
 
 #ifdef ENABLE_VIDEO_BACKDROP
-XfdesktopBackdropMedia *xfdesktop_backdrop_media_new_from_video_uri(const gchar *video_uri);
+XfdesktopBackdropMedia *xfdesktop_backdrop_media_new_from_video_uri(const gchar *video_uri,
+                                                                    XfceBackdropImageStyle style);
 
 const gchar *xfdesktop_backdrop_media_get_video_uri(XfdesktopBackdropMedia *bmedia);
 

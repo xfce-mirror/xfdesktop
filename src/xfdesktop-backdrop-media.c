@@ -27,6 +27,7 @@ typedef struct {
 #ifdef ENABLE_VIDEO_BACKDROP
 typedef struct {
     gchar *uri;
+    XfceBackdropImageStyle style;
     GstElement *playbin;
     GtkWidget *widget;
 } XfdesktopBackdropMediaVideoData;
@@ -118,7 +119,8 @@ xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a, XfdesktopBackdropMedia
             return a->image_data.surface == b->image_data.surface;
 #ifdef ENABLE_VIDEO_BACKDROP
         case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
-            return g_strcmp0(a->video_data.uri, b->video_data.uri) == 0;
+            return g_strcmp0(a->video_data.uri, b->video_data.uri) == 0 &&
+                   a->video_data.style == b->video_data.style;
 #endif
     }
 
@@ -127,10 +129,11 @@ xfdesktop_backdrop_media_equal(XfdesktopBackdropMedia *a, XfdesktopBackdropMedia
 
 #ifdef ENABLE_VIDEO_BACKDROP
 XfdesktopBackdropMedia *
-xfdesktop_backdrop_media_new_from_video_uri(const gchar *video_uri) {
+xfdesktop_backdrop_media_new_from_video_uri(const gchar *video_uri, XfceBackdropImageStyle style) {
     XfdesktopBackdropMedia *bmedia = g_object_new(XFDESKTOP_TYPE_BACKDROP_MEDIA, NULL);
     bmedia->kind = XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO;
     bmedia->video_data.uri = g_strdup(video_uri);
+    bmedia->video_data.style = style;
     return bmedia;
 }
 
@@ -160,7 +163,11 @@ xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia) {
                             gst_flag_buffering |
                             gst_flag_video;
 
-    g_object_set(bmedia->video_data.playbin, "flags", gst_flags, NULL);
+    gboolean force_aspect_ratio = bmedia->video_data.style != XFCE_BACKDROP_IMAGE_STRETCHED;
+    g_object_set(bmedia->video_data.playbin,
+                 "flags", gst_flags,
+                 "force-aspect-ratio", force_aspect_ratio,
+                 NULL);
 
     GstElement *videosink = gst_element_factory_make("glsinkbin", "glsinkbin");
     GstElement *gtkglsink = gst_element_factory_make("gtkglsink", "gtkglsink");
