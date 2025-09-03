@@ -861,13 +861,14 @@ forward_cancellation(GCancellable *cancellable, GCancellable *main_cancellable) 
 #ifdef ENABLE_VIDEO_BACKDROP
 static void
 create_video_backdrop(GFile *video_file,
+                      XfceBackdropImageStyle image_style,
                       gint geom_width,
                       gint geom_height,
                       GetImageSurfaceCallback callback,
                       gpointer rdata)
 {
     gchar *file_uri = g_file_get_uri(video_file);
-    XfdesktopBackdropMedia *bmedia = xfdesktop_backdrop_media_new_from_video_uri(file_uri);
+    XfdesktopBackdropMedia *bmedia = xfdesktop_backdrop_media_new_from_video_uri(file_uri, image_style);
     g_free(file_uri);
     render_finished(bmedia, geom_width, geom_height, NULL, rdata);
 }
@@ -939,7 +940,7 @@ create_backdrop(XfdesktopBackdropManager *manager,
 
 #ifdef ENABLE_VIDEO_BACKDROP
     if (image_file != NULL && image_style != XFCE_BACKDROP_IMAGE_NONE && xfdesktop_file_has_video_mime_type(image_file)) {
-        create_video_backdrop(image_file, geom->width, geom->height, callback, rdata);
+        create_video_backdrop(image_file, image_style, geom->width, geom->height, callback, rdata);
         return;
     }
 #endif /* ENABLE_VIDEO_BACKDROP */
