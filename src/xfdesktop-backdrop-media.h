@@ -56,6 +56,10 @@ XfdesktopBackdropMedia *xfdesktop_backdrop_media_new_from_video_uri(const gchar 
 
 const gchar *xfdesktop_backdrop_media_get_video_uri(XfdesktopBackdropMedia *bmedia);
 
+gboolean xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia,
+                                                    gboolean gl_enabled,
+                                                    gboolean *gl_status);
+
 GtkWidget *xfdesktop_backdrop_media_get_video_widget(XfdesktopBackdropMedia *bmedia);
 
 GstElement *xfdesktop_backdrop_media_get_video_playbin(XfdesktopBackdropMedia *bmedia);

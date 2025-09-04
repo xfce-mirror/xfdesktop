@@ -144,14 +144,15 @@ xfdesktop_backdrop_media_get_video_uri(XfdesktopBackdropMedia *bmedia) {
     return bmedia->video_data.uri;
 }
 
-static void
-xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia) {
-    g_return_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia));
-    g_return_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO);
-    g_return_if_fail(bmedia->video_data.playbin == NULL);
+gboolean
+xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia, gboolean gl_enabled, gboolean *gl_status) {
+    g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia), FALSE);
+    g_return_val_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO, FALSE);
+    g_clear_object(&bmedia->video_data.widget);
+    g_clear_object(&bmedia->video_data.playbin);
 
     bmedia->video_data.playbin = gst_element_factory_make("playbin", "playbin");
-    g_return_if_fail(bmedia->video_data.playbin != NULL);
+    g_return_val_if_fail(bmedia->video_data.playbin != NULL, FALSE);
 
      /* https://gstreamer.freedesktop.org/documentation/playback/playsink.html?gi-language=c#named-constants */
     const guint gst_flag_soft_colorbalance = 0x00000400;
@@ -169,19 +170,29 @@ xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia) {
                  "force-aspect-ratio", force_aspect_ratio,
                  NULL);
 
-    GstElement *videosink = gst_element_factory_make("glsinkbin", "glsinkbin");
-    GstElement *gtkglsink = gst_element_factory_make("gtkglsink", "gtkglsink");
+    GstElement *videosink = NULL, *gtkglsink = NULL;
 
-    gboolean nogl_fallback = gtkglsink == NULL || videosink == NULL;
-    if (nogl_fallback) {
-        g_printerr("Failed to create gstreamer gtkglsink/glsinkbin\n");
-        g_clear_object(&gtkglsink);
-        g_clear_object(&videosink);
+    if (gl_enabled) {
+        videosink = gst_element_factory_make("glsinkbin", "glsinkbin");
+        gtkglsink = gst_element_factory_make("gtkglsink", "gtkglsink");
+
+        gboolean nogl_fallback = gtkglsink == NULL || videosink == NULL;
+        if (nogl_fallback) {
+            g_printerr("Failed to create gstreamer gtkglsink/glsinkbin\n");
+            g_clear_object(&gtkglsink);
+            g_clear_object(&videosink);
+            videosink = gst_element_factory_make("gtksink", "gtksink");
+            g_object_get(videosink, "widget", &bmedia->video_data.widget, NULL);
+            *gl_status = FALSE;
+        } else {
+            g_object_set(videosink, "sink", gtkglsink, NULL);
+            g_object_get(gtkglsink, "widget", &bmedia->video_data.widget, NULL);
+            *gl_status = TRUE;
+        }
+    } else {
         videosink = gst_element_factory_make("gtksink", "gtksink");
         g_object_get(videosink, "widget", &bmedia->video_data.widget, NULL);
-    } else {
-        g_object_set(videosink, "sink", gtkglsink, NULL);
-        g_object_get(gtkglsink, "widget", &bmedia->video_data.widget, NULL);
+        *gl_status = FALSE;
     }
 
     if (videosink == NULL) {
@@ -190,11 +201,13 @@ xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia) {
         g_clear_object(&videosink);
         g_clear_object(&bmedia->video_data.playbin);
         g_printerr("Failed to create gstreamer videosink\n");
+        return FALSE;
     } else {
         g_object_set(bmedia->video_data.playbin,
                      "uri", bmedia->video_data.uri,
                      "video-sink", videosink,
                      NULL);
+        return TRUE;
     }
 }
 
@@ -202,10 +215,7 @@ GtkWidget *
 xfdesktop_backdrop_media_get_video_widget(XfdesktopBackdropMedia *bmedia) {
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia), NULL);
     g_return_val_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO, NULL);
-
-    if (bmedia->video_data.playbin == NULL) {
-        xfdesktop_backdrop_media_video_materialize(bmedia);
-    }
+    g_return_val_if_fail(bmedia->video_data.playbin != NULL, NULL);
 
     return bmedia->video_data.widget;
 }
@@ -214,10 +224,7 @@ GstElement *
 xfdesktop_backdrop_media_get_video_playbin(XfdesktopBackdropMedia *bmedia) {
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia), NULL);
     g_return_val_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO, NULL);
-
-    if (bmedia->video_data.playbin == NULL) {
-        xfdesktop_backdrop_media_video_materialize(bmedia);
-    }
+    g_return_val_if_fail(bmedia->video_data.playbin != NULL, NULL);
 
     return bmedia->video_data.playbin;
 }
