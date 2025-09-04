@@ -1227,6 +1227,9 @@ configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
 
     if (!playing) {
         g_printerr("Can't create gstreamer player with opengl support\n");
+    }
+
+    if (!playing && gl_status) {
         if (xfdesktop_backdrop_media_video_materialize(bmedia, FALSE, &gl_status)) {
             playing = playbin_initial_launch(desktop, bmedia);
         }
