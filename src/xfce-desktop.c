@@ -202,6 +202,9 @@ static void playbin_state_cb(GstBus *bus,
 
 static void init_gst(XfceDesktop *desktop);
 
+static gboolean playbin_initial_launch(XfceDesktop *desktop,
+                                       XfdesktopBackdropMedia *bmedia);
+
 static void configure_playbin(XfceDesktop *desktop,
                               XfdesktopBackdropMedia *bmedia);
 #endif /* ENABLE_VIDEO_BACKDROP */
@@ -1191,22 +1194,46 @@ init_gst(XfceDesktop *desktop) {
     }
 }
 
-static void
-configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
+static gboolean
+playbin_initial_launch(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
     desktop->playbin = xfdesktop_backdrop_media_get_video_playbin(bmedia);
     GtkWidget *sink_widget = xfdesktop_backdrop_media_get_video_widget(bmedia);
 
-    if (desktop->playbin != NULL) {
-        xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, sink_widget);
+    xfce_desktop_put_to_layer(desktop, XFCE_DESKTOP_LAYER_BACKDROP, sink_widget);
 
-        GstBus *bus = gst_element_get_bus(desktop->playbin);
-        gst_bus_add_signal_watch(bus);
-        g_signal_connect(G_OBJECT(bus), "message::eos", G_CALLBACK(playbin_eos_cb), desktop);
-        g_signal_connect(G_OBJECT(bus), "message::state-changed", G_CALLBACK(playbin_state_cb), desktop);
-        gst_object_unref(bus);
+    GstBus *bus = gst_element_get_bus(desktop->playbin);
+    gst_bus_add_signal_watch(bus);
+    g_signal_connect(G_OBJECT(bus), "message::eos", G_CALLBACK(playbin_eos_cb), desktop);
+    g_signal_connect(G_OBJECT(bus), "message::state-changed", G_CALLBACK(playbin_state_cb), desktop);
+    gst_object_unref(bus);
 
-        gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    GstStateChangeReturn status = gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+    if (status != GST_STATE_CHANGE_FAILURE) {
         g_signal_connect(desktop->xfw_screen, "active-window-changed", G_CALLBACK(screen_active_window_cb), desktop);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static void
+configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
+    gboolean gl_status, playing = FALSE;
+
+    /* The error may appear only after gst_element_set_state, let's handle this */
+    if (xfdesktop_backdrop_media_video_materialize(bmedia, TRUE, &gl_status)) {
+        playing = playbin_initial_launch(desktop, bmedia);
+    }
+
+    if (!playing) {
+        g_printerr("Can't create gstreamer player with opengl support\n");
+        if (xfdesktop_backdrop_media_video_materialize(bmedia, FALSE, &gl_status)) {
+            playing = playbin_initial_launch(desktop, bmedia);
+        }
+    }
+
+    if (!playing) {
+        g_printerr("Unable to create any gstreamer player\n");
     }
 }
 #endif /* ENABLE_VIDEO_BACKDROP */
