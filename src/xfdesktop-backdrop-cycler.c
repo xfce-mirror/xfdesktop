@@ -26,6 +26,7 @@
 
 #include "xfdesktop-backdrop-cycler.h"
 #include "xfdesktop-common.h"
+#include "xfdesktop-mime-type.h"
 
 struct _XfdesktopBackdropCycler {
     GObject parent;
@@ -446,7 +447,7 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
 
             /* If the new file is not an image then we don't have to do
              * anything */
-            if (!xfdesktop_image_file_is_valid(file)) {
+            if (!xfdesktop_file_has_media_mime_type(file)) {
                 return;
             }
 
@@ -606,7 +607,7 @@ list_image_files_in_dir(XfdesktopBackdropCycler *cycler, GFile *file) {
             }
 
             GFile *current_file = g_file_enumerator_get_child(dir, file_info);
-            if (xfdesktop_image_file_is_valid(current_file)) {
+            if (xfdesktop_file_has_media_mime_type(current_file)) {
                 files = g_list_prepend(files, current_file);
                 ++file_count;
             } else {

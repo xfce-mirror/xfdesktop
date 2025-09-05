@@ -137,64 +137,6 @@ xfdesktop_compare_paths(GFile *a, GFile *b)
     return ret;
 }
 
-gchar *
-xfdesktop_get_file_mimetype(GFile *file)
-{
-    GFileInfo *file_info;
-    gchar *mime_type = NULL;
-
-    g_return_val_if_fail(G_IS_FILE(file), NULL);
-
-    file_info = g_file_query_info(file,
-                                  "standard::content-type",
-                                  0,
-                                  NULL,
-                                  NULL);
-
-    if(file_info != NULL) {
-        mime_type = g_strdup(g_file_info_get_content_type(file_info));
-        g_object_unref(file_info);
-    }
-
-    return mime_type;
-}
-
-gboolean
-xfdesktop_image_file_is_valid(GFile *file)
-{
-    static GSList *pixbuf_formats = NULL;
-    GSList *l;
-    gboolean image_valid = FALSE;
-    gchar *file_mimetype;
-
-    g_return_val_if_fail(file != NULL, FALSE);
-
-    if(pixbuf_formats == NULL) {
-        pixbuf_formats = gdk_pixbuf_get_formats();
-    }
-
-    file_mimetype = xfdesktop_get_file_mimetype(file);
-
-    if(file_mimetype == NULL)
-        return FALSE;
-
-    /* Every pixbuf format has a list of mime types we can compare against */
-    for(l = pixbuf_formats; l != NULL && image_valid == FALSE; l = g_slist_next(l)) {
-        gint i;
-        gchar ** mimetypes = gdk_pixbuf_format_get_mime_types(l->data);
-
-        for(i = 0; mimetypes[i] != NULL && image_valid == FALSE; i++) {
-            if(g_strcmp0(file_mimetype, mimetypes[i]) == 0)
-                image_valid = TRUE;
-        }
-         g_strfreev(mimetypes);
-    }
-
-    g_free(file_mimetype);
-
-    return image_valid;
-}
-
 /* The image styles changed from versions prior to 4.11.
  * Auto isn't an option anymore, additionally we should handle invalid
  * values. Set them to the default of stretched. */

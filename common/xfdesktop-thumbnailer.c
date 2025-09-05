@@ -37,6 +37,7 @@
 
 #include "tumbler.h"
 #include "xfdesktop-common.h"
+#include "xfdesktop-mime-type.h"
 #include "xfdesktop-marshal.h"
 #include "xfdesktop-thumbnailer.h"
 
@@ -238,7 +239,7 @@ xfdesktop_thumbnailer_is_supported(XfdesktopThumbnailer *thumbnailer,
     g_return_val_if_fail(filename != NULL, FALSE);
 
     GFile *file = g_file_new_for_path(filename);
-    mime_type = xfdesktop_get_file_mimetype(file);
+    mime_type = xfdesktop_get_file_mime_type(file);
     g_object_unref(file);
 
     if(mime_type == NULL) {
@@ -394,7 +395,7 @@ xfdesktop_thumbnailer_queue_request_timer(gpointer user_data)
         if(iter->data) {
             file = g_file_new_for_path(iter->data);
             uris[i] = g_file_get_uri(file);
-            mimetypes[i] = xfdesktop_get_file_mimetype(file);
+            mimetypes[i] = xfdesktop_get_file_mime_type(file);
 
             g_object_unref(file);
         }

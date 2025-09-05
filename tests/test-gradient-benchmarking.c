@@ -4,6 +4,7 @@
 
 #include "xfdesktop-common.c"
 #include "xfdesktop-backdrop-renderer.c"
+#include "xfdesktop-backdrop-media.c"
 
 #define ITERATIONS 10
 
