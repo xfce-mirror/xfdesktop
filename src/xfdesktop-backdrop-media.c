@@ -148,8 +148,7 @@ gboolean
 xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia, gboolean gl_enabled, gboolean *gl_status) {
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia), FALSE);
     g_return_val_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO, FALSE);
-    g_clear_object(&bmedia->video_data.widget);
-    g_clear_object(&bmedia->video_data.playbin);
+    g_warn_if_fail(bmedia->video_data.playbin == NULL);
 
     bmedia->video_data.playbin = gst_element_factory_make("playbin", "playbin");
     g_return_val_if_fail(bmedia->video_data.playbin != NULL, FALSE);
@@ -209,6 +208,23 @@ xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmedia, gbool
                      NULL);
         return TRUE;
     }
+}
+
+void
+xfdesktop_backdrop_media_video_dematerialize(XfdesktopBackdropMedia *bmedia) {
+    g_return_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia));
+    g_return_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO);
+
+    g_clear_object(&bmedia->video_data.widget);
+    g_clear_object(&bmedia->video_data.playbin);
+}
+
+gboolean
+xfdesktop_backdrop_media_video_is_materialized(XfdesktopBackdropMedia *bmedia) {
+    g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MEDIA (bmedia), FALSE);
+    g_return_val_if_fail(bmedia->kind == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO, FALSE);
+
+    return bmedia->video_data.playbin != NULL;
 }
 
 GtkWidget *

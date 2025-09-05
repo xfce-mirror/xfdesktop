@@ -60,6 +60,10 @@ gboolean xfdesktop_backdrop_media_video_materialize(XfdesktopBackdropMedia *bmed
                                                     gboolean gl_enabled,
                                                     gboolean *gl_status);
 
+void xfdesktop_backdrop_media_video_dematerialize(XfdesktopBackdropMedia *bmedia);
+
+gboolean xfdesktop_backdrop_media_video_is_materialized(XfdesktopBackdropMedia *bmedia);
+
 GtkWidget *xfdesktop_backdrop_media_get_video_widget(XfdesktopBackdropMedia *bmedia);
 
 GstElement *xfdesktop_backdrop_media_get_video_playbin(XfdesktopBackdropMedia *bmedia);
