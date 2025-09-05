@@ -137,6 +137,8 @@ static void add_screen_spanning_style_if_needed(XfdesktopBackgroundSettings *bac
 
 #ifdef ENABLE_VIDEO_BACKDROP
 static gboolean last_media_file_is_video(XfdesktopBackgroundSettings *background_settings);
+
+static void reset_to_supported_options(XfdesktopBackgroundSettings *background_settings);
 #endif /* ENABLE_VIDEO_BACKDROP */
 
 static gboolean
@@ -1076,6 +1078,9 @@ cb_xfdesktop_combo_image_style_changed(GtkComboBox *combo, XfdesktopBackgroundSe
         gtk_widget_set_tooltip_text(background_settings->image_iconview,
                                     _("Image selection is unavailable while the image style is set to None."));
     } else {
+#ifdef ENABLE_VIDEO_BACKDROP
+        reset_to_supported_options(background_settings);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
         /* We are expected to provide a wallpaper so make the iconview active.
          * Additionally, if we were insensitive then we need to remove the
@@ -1185,14 +1190,7 @@ last_image_changed(XfconfChannel *channel,
     }
 
 #ifdef ENABLE_VIDEO_BACKDROP
-    if (last_media_file_is_video(background_settings)) {
-        gint active = gtk_combo_box_get_active(GTK_COMBO_BOX(background_settings->image_style_combo));
-        if (active == XFCE_BACKDROP_IMAGE_SPANNING_SCREENS) {
-            gtk_combo_box_set_active(GTK_COMBO_BOX(background_settings->image_style_combo),
-                                     XFCE_BACKDROP_IMAGE_ZOOMED);
-        }
-    }
-
+    reset_to_supported_options(background_settings);
     add_screen_spanning_style_if_needed(background_settings);
 #endif /* ENABLE_VIDEO_BACKDROP */
 }
@@ -1882,6 +1880,17 @@ last_media_file_is_video(XfdesktopBackgroundSettings *background_settings) {
         gboolean is_video = xfdesktop_file_has_video_mime_type(file);
         g_object_unref(file);
         return is_video;
+    }
+}
+
+static void
+reset_to_supported_options(XfdesktopBackgroundSettings *background_settings) {
+    if (last_media_file_is_video(background_settings)) {
+        gint active = gtk_combo_box_get_active(GTK_COMBO_BOX(background_settings->image_style_combo));
+        if (!VIDEO_BACKDROP_SUPPORT_IMAGE_STYLE(active)) {
+            gtk_combo_box_set_active(GTK_COMBO_BOX(background_settings->image_style_combo),
+                                     XFCE_BACKDROP_IMAGE_ZOOMED);
+        }
     }
 }
 #endif /* ENABLE_VIDEO_BACKDROP */
