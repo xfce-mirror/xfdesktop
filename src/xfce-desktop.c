@@ -1218,25 +1218,35 @@ playbin_initial_launch(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
 
 static void
 configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
-    gboolean gl_status, playing = FALSE;
+    if (xfdesktop_backdrop_media_video_is_materialized(bmedia)) {
+        playbin_initial_launch(desktop, bmedia);
+    } else {
+        gboolean gl_status, playing = FALSE;
 
-    /* The error may appear only after gst_element_set_state, let's handle this */
-    if (xfdesktop_backdrop_media_video_materialize(bmedia, TRUE, &gl_status)) {
-        playing = playbin_initial_launch(desktop, bmedia);
-    }
-
-    if (!playing) {
-        g_printerr("Can't create gstreamer player with opengl support\n");
-    }
-
-    if (!playing && gl_status) {
-        if (xfdesktop_backdrop_media_video_materialize(bmedia, FALSE, &gl_status)) {
+        /* The error may appear only after gst_element_set_state, let's handle this */
+        if (xfdesktop_backdrop_media_video_materialize(bmedia, TRUE, &gl_status)) {
             playing = playbin_initial_launch(desktop, bmedia);
+            if (!playing) {
+                xfdesktop_backdrop_media_video_dematerialize(bmedia);
+            }
         }
-    }
 
-    if (!playing) {
-        g_printerr("Unable to create any gstreamer player\n");
+        if (!playing) {
+            g_printerr("Can't create gstreamer player with opengl support\n");
+        }
+
+        if (!playing && gl_status) {
+            if (xfdesktop_backdrop_media_video_materialize(bmedia, FALSE, &gl_status)) {
+                playing = playbin_initial_launch(desktop, bmedia);
+                if (!playing) {
+                    xfdesktop_backdrop_media_video_dematerialize(bmedia);
+                }
+            }
+        }
+
+        if (!playing) {
+            g_printerr("Unable to create any gstreamer player\n");
+        }
     }
 }
 #endif /* ENABLE_VIDEO_BACKDROP */
