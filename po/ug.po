@@ -44,7 +44,7 @@ msgstr "ھەرىكەتچان ئۈسكۈنىلەر"
 
 #: ../settings/main.c:438
 msgid "Network Shares"
-msgstr ""
+msgstr "تور ھەمبەھىر"
 
 #: ../settings/main.c:440
 msgid "Disks and Drives"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: ../settings/main.c:442
 msgid "Other Devices"
-msgstr ""
+msgstr "باشقا ئۈسكۈنە"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:546
@@ -62,60 +62,67 @@ msgid ""
 "Type: %s\n"
 "Size: %s"
 msgstr ""
+"<b>%s</b>\n"
+"تۈرى: %s\n"
+"چوڭلۇقى: %s"
 
 #: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "%d (%s) كۆزەتكۈچنىڭ تام قەغىزى"
 
 #: ../settings/main.c:747
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "%d كۆزەتكۈچنىڭ تام قەغىزى"
 
 #: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "بۇ سۆزلەشكۈنى تەڭشىكىنى تەھرىرلىمەكچى بولغان ئېكرانغا يۆتكەيدۇ."
 
 #: ../settings/main.c:760
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "%2$d (%3$s) كۆزەتكۈچتىكى %1$s نىڭ تام قەغىزى"
 
 #: ../settings/main.c:764
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "‏‎%2$d‎‏ كۆزەتكۈچتىكى %1$s‎‏ نىڭ تام قەغىزى"
 
 #: ../settings/main.c:771
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
+"بۇ سۆزلەشكۈنى تەڭشىكىنى تەھرىرلىمەكچى بولغان ئېكران ۋە خىزمەت بوشلۇقىغا "
+"يۆتكەيدۇ."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:779
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr ""
+msgstr "ئۈستەلئۈستىنىڭ تام قەغىزى"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:785
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "%s نىڭ تام قەغىزى"
 
 #: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr ""
+"بۇ سۆزلەشكۈنى تەڭشىكىنى تەھرىرلىمەكچى بولغان خىزمەت بوشلۇقىغا يۆتكەيدۇ."
 
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
+"سۈرەت ئۇسلۇبى يوق دەپ تەڭشەلگەندە سۈرەت تاللىغۇچنى ئىشلەتكىلى بولمايدۇ."
 
 #: ../settings/main.c:1603
 msgid "Spanning screens"
-msgstr ""
+msgstr "ئېكران ئاتلاپ"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
@@ -123,11 +130,11 @@ msgstr ""
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr ""
+msgstr "تاللىغان يۆنىلىشكە ئاساسەن بارلىق مەۋجۇت سىنبەلگىنى تەرتىپلەمسىز؟"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
-msgstr ""
+msgstr "سىنبەلگىنى تەرتىپلە"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
@@ -171,7 +178,7 @@ msgstr "سۈرەت ھۆججىتى"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1969
 msgid "Select a Directory"
-msgstr ""
+msgstr "مۇندەرىجە تاللىنىدۇ"
 
 #: ../settings/main.c:2178
 msgid "Settings manager socket"
@@ -187,7 +194,7 @@ msgstr "نەشر ئۇچۇرى"
 
 #: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
-msgstr ""
+msgstr "ئۇچۇر سازلاشنى قوزغات"
 
 #: ../settings/main.c:2204
 #, c-format
@@ -242,11 +249,11 @@ msgstr "سۈزۈك"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "تام قەغەز تاللىنىدىغان قىسقۇچ تاللىنىدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Apply"
-msgstr ""
+msgstr "قوللان"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -254,7 +261,7 @@ msgstr "ئۇسلۇب(_Y):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "سۈرەتنى قانداق تەڭشەپ ئېكرانغا ماسلاشتۇرۇدىغانلىقى تاللىنىدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -283,15 +290,16 @@ msgstr "چوڭايتىلغان ياكى كىچىكلىتىلگەن"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
-msgstr ""
+msgstr "ئېكران ئاتلاپ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "تەگلىك سۈرەتنىڭ ئارقىسىدىكى رەڭ سىزمىسىنىڭ ئۇسلۇبىنى بەلگىلەيدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
+"ساپ رەڭ ياكى تەدرىجىي ئۆزگىرىشنىڭ «ئوڭ» ياكى «سول» رەڭگىنى بەلگىلەيدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Select First Color"
@@ -299,7 +307,7 @@ msgstr "تۇنجى رەڭنى تاللاش"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "تەدرىجىي ئۆزگىرىشنىڭ «ئوڭ» ياكى «ئاستى» رەڭگىنى بەلگىلەيدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
@@ -307,11 +315,11 @@ msgstr "ئىككىنچى رەڭنى تاللاش"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Apply to all _workspaces"
-msgstr ""
+msgstr "بارلىق خىزمەت بوشلۇقىغا قوللان(_W)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "_Folder:"
-msgstr ""
+msgstr "مۇندەرىجە(_F):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
@@ -319,58 +327,60 @@ msgstr "رەڭ(_o):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
-msgstr ""
+msgstr "تەگلىك ئۆزگەرت(_B) "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "نۆۋەتتىكى مۇندەرىجىدىن پەرقلىق تەگلىكنى ئۆزلۈكىدىن تاللايدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "تەگلىكنىڭ قانچىلىك ۋاقىتتا ئالماشتۇرۇلىدىغانلىقى بەلگىلىنىدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in seconds:"
-msgstr ""
+msgstr "سېكۇنتتا:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in minutes:"
-msgstr ""
+msgstr "مىنۇتتا:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "in hours:"
-msgstr ""
+msgstr "سائەتتە:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "at start up"
-msgstr ""
+msgstr "قوزغالغاندا"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every hour"
-msgstr ""
+msgstr "ھەر سائەتتە"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "every day"
-msgstr ""
+msgstr "ھەر كۈنى"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "chronologically"
-msgstr ""
+msgstr "ۋاقىت تەرتىپىدە"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "پەرقلىق تەگلىك تاللاشتىن ئىلگىرى ئارىلىقتىكى ۋاقىت."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Random Order"
-msgstr ""
+msgstr "ئىختىيارى تەرتىپ(_R)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr ""
+"تام قەغىزى دەۋرىيلەنگەندە ئوخشاش بىر مۇندەرىجىدىكى باشقا سۈرەت ئىختىيارى "
+"تاللىنىدۇ."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -406,35 +416,35 @@ msgstr "ھۆججەت/ئىجراچى سىنبەلگىلىرى"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "سول ئۈستى بويىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "سول ئۈستى توغرىسىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "ئوڭ ئۈستى بويىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "ئوڭ ئۈستى توغرىسىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "سول ئاستى بويىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "سول ئاستى توغرىسىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "ئوڭ ئاستى بويىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "ئوڭ ئاستى توغرىسىغا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
@@ -450,7 +460,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "ئۈستەلئۈستىدە چاشقىنەك ئوڭ چېكىلسە پىروگرامما تىزىملىكى ئىچىدە(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -504,6 +514,7 @@ msgstr "چاپلىشاڭغۇ كۆزنەكلەرنى ئاكتىپ خىزمەت ر
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
 msgstr ""
+"تىزىمدا خىزمەت رايونى قوشۇش ياكى چىقىرىۋېتىش تاللانمىسىنى كۆرسىتىدۇ(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -523,7 +534,7 @@ msgstr "سىنبەلگە چوڭلۇقى"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
@@ -539,7 +550,7 @@ msgstr "ئىختىيارىي خەت چوڭلۇقىنى ئىشلەت(_F):"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
@@ -547,11 +558,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "كۆرسەتمە ئالدىن كۆزىتىش سۈرىتىنىڭ چوڭلۇقى."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "64"
-msgstr ""
+msgstr "64"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -567,7 +578,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr ""
+msgstr "ئۈستەلئۈستىدىكى يوشۇرۇن ھۆججەتنى كۆرسىتىدۇ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -648,11 +659,11 @@ msgstr "نەشر ئۇچۇرىنى كۆرسەت"
 
 #: ../src/xfdesktop-application.c:841
 msgid "Reload all settings"
-msgstr ""
+msgstr "ھەممە تەڭشەكنى قايتا يۈكلە"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "نۆۋەتتىكى خىزمەت رايونىدىكى كېيىنكى تام قەغىزىگە ئىلگىرىلەيدۇ"
 
 #: ../src/xfdesktop-application.c:843
 msgid "Pop up the menu (at the current mouse position)"
@@ -668,7 +679,7 @@ msgstr "ئۈستەلئۈستىدىكى بارلىق سىنبەلگىلەرنى �
 
 #: ../src/xfdesktop-application.c:849
 msgid "Disable debug messages"
-msgstr ""
+msgstr "سازلاش ئۇچۇرىنى چەكلە"
 
 #: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
@@ -747,17 +758,19 @@ msgstr "ئاتىنى ئۆزگەرتىش خاتالىقى"
 
 #: ../src/xfdesktop-file-icon-manager.c:687 ../src/xfdesktop-file-utils.c:962
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "ھۆججەتنىڭ ئاتىنى ئۆزگەرتكىلى بولمىدى"
 
 #: ../src/xfdesktop-file-icon-manager.c:688
 msgid "None of the icons selected support being renamed."
-msgstr ""
+msgstr "تاللانغان سىنبەلگىنىڭ ھېچقايسىسى ئات ئۆزگەرتىشنى قوللىمايدۇ."
 
 #: ../src/xfdesktop-file-icon-manager.c:1016
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
+"بۇ مەشغۇلات ئۈستەلئۈستىدىكى بارلىق تۈرلەرنى قايتا رەتلەپ ۋە ئۇلارنى پەرقلىق ئېكران ئورنىغا جايلاشتۇرىدۇ.\n"
+"راستمۇ؟"
 
 #: ../src/xfdesktop-file-icon-manager.c:1020
 msgid "_OK"
@@ -811,7 +824,7 @@ msgstr "قۇرۇق ھۆججەت(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "_Open All"
-msgstr ""
+msgstr "ھەممىنى ئاچ(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1640
 #: ../src/xfdesktop-special-file-icon.c:528 ../src/xfdesktop-volume-icon.c:868
@@ -877,7 +890,7 @@ msgstr "ئۈستەلئۈستى سىنبەلگىلىرىنى رەتلە(_I)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1980
 msgid "_Next Background"
-msgstr ""
+msgstr "كېيىنكى تەگلىك(_N)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1990
 msgid "Desktop _Settings..."
@@ -960,7 +973,7 @@ msgstr "خاتالىق"
 
 #: ../src/xfdesktop-file-utils.c:844
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "ئىلتىماس قىلغان مەشغۇلاتنى تاماملىيالمايدۇ"
 
 #: ../src/xfdesktop-file-utils.c:898
 msgid "The file could not be renamed"
@@ -1083,12 +1096,12 @@ msgstr ""
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "ئېگەرسىزلەش تاماملاندى"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "ئۈسكۈنە «%s» سىستېمىدىن بىخەتەر ھالدا چىقىرىۋېتىلدى. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1103,7 +1116,7 @@ msgstr "ئۈسكۈنە «%s» نى چىقىرىۋاتىدۇ. ئازراق ۋاق
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "قاڭقىتىش تاماملاندى"
 
 #: ../src/xfdesktop-regular-file-icon.c:795
 #, c-format
@@ -1113,6 +1126,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"ئاتى: %s\n"
+"تۈرى: %s\n"
+"چوڭلۇقى: %s\n"
+"ئاخىرقى ئۆزگەرتىلگەن ۋاقىت: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1144,7 +1161,7 @@ msgstr "ئەخلەتخانىنى قۇرۇقدا(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(ئېگەرلەنمىگەن)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1159,10 +1176,15 @@ msgid ""
 "Size: %s\n"
 "Free Space: %s"
 msgstr ""
+"ئاتى: %s\n"
+"تۈرى: %s\n"
+"ئېگەرلىنىشى: %s\n"
+"چوڭلۇقى: %s\n"
+"ئەركىن بوشلۇق: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "يۆتكىلىشچان دىسكا"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
@@ -1188,7 +1210,7 @@ msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
-msgstr ""
+msgstr "دىسكا باغلىنىشىنى ئۈز(_D)"
 
 #: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
@@ -1196,7 +1218,7 @@ msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
-msgstr ""
+msgstr "دىسكا قۇلۇپلا(_L)"
 
 #: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
@@ -1204,7 +1226,7 @@ msgstr "دىسكىنى چىقار(_J)"
 
 #: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "دىسكىنى ئېگەرسىزلە(_U)"
 
 #: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
