@@ -124,6 +124,11 @@ enum {
     N_COLS,
 };
 
+enum {
+    IMAGE_STYLE_COL_TITLE = 0,
+    IMAGE_STYLE_COL_SENSITIVE,
+};
+
 static gchar *xfdesktop_settings_generate_per_workspace_binding_string(XfdesktopBackgroundSettings *background_settings,
                                                                        const gchar *property);
 static gchar *xfdesktop_settings_get_backdrop_image(XfdesktopBackgroundSettings *background_settings);
@@ -133,7 +138,7 @@ static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
 
 static gboolean update_icon_view_model(XfdesktopBackgroundSettings *background_settings);
 
-static void add_screen_spanning_style_if_needed(XfdesktopBackgroundSettings *background_settings);
+static void combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *background_settings);
 
 #ifdef ENABLE_VIDEO_BACKDROP
 static gboolean last_media_file_is_video(XfdesktopBackgroundSettings *background_settings);
@@ -1191,7 +1196,7 @@ last_image_changed(XfconfChannel *channel,
 
 #ifdef ENABLE_VIDEO_BACKDROP
     reset_to_supported_options(background_settings);
-    add_screen_spanning_style_if_needed(background_settings);
+    combobox_allow_only_supported_image_styles(background_settings);
 #endif /* ENABLE_VIDEO_BACKDROP */
 }
 
@@ -1465,27 +1470,40 @@ xfdesktop_settings_get_active_workspace(XfdesktopBackgroundSettings *background_
 }
 
 static void
-add_screen_spanning_style_if_needed(XfdesktopBackgroundSettings *background_settings) {
-    /* The first monitor has the option of doing the "spanning screens" style,
-     * but only if there's multiple monitors attached. Remove it in all other cases.
-     *
-     * Remove the spanning screens option before we potentially add it again
-     */
-    gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(background_settings->image_style_combo),
-                              XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
+combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *background_settings) {
+    gboolean sensitive[] = {
+        [XFCE_BACKDROP_IMAGE_NONE] = TRUE,
+        [XFCE_BACKDROP_IMAGE_CENTERED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_TILED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_STRETCHED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_SCALED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_ZOOMED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = TRUE,
+    };
 
-    gboolean needed = background_settings->monitor == 0
-                      && gdk_display_get_n_monitors(gtk_widget_get_display(background_settings->image_style_combo)) > 1;
+    GtkTreeModel *model = gtk_combo_box_get_model(GTK_COMBO_BOX(background_settings->image_style_combo));
+
+    guint n_monitors = gdk_display_get_n_monitors(gtk_widget_get_display(background_settings->image_style_combo));
+    sensitive[XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = background_settings->monitor == 0 && n_monitors > 1;
 
 #ifdef ENABLE_VIDEO_BACKDROP
     if (last_media_file_is_video(background_settings)) {
-        needed = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_CENTERED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_TILED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_SCALED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = FALSE;
     }
 #endif /* ENABLE_VIDEO_BACKDROP */
 
-    if (needed) {
-        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(background_settings->image_style_combo),
-                                       _("Spanning screens"));
+    gint n_children = gtk_tree_model_iter_n_children(model, NULL);
+    g_warn_if_fail(G_N_ELEMENTS(sensitive) == n_children);
+
+    for (gint i = 0; i < n_children; ++i) {
+        GtkTreeIter iter;
+        g_return_if_fail(gtk_tree_model_iter_nth_child(model, &iter, NULL, i));
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                           IMAGE_STYLE_COL_SENSITIVE, sensitive[i],
+                           -1);
     }
 }
 
@@ -1538,7 +1556,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_free(background_settings->monitor_name);
     background_settings->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
 
-    add_screen_spanning_style_if_needed(background_settings);
+    combobox_allow_only_supported_image_styles(background_settings);
 
     /* connect the new bindings */
     xfdesktop_settings_background_tab_change_bindings(background_settings, FALSE);
