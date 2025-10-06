@@ -26,6 +26,7 @@ if get_option('tests')
         libxfce4util,
         libxfce4windowing,
         xfconf,
+        video_backdrop_deps
       ],
       install: false,
     )
