@@ -192,17 +192,62 @@ xfce_desktop_place_on_monitor(XfceDesktop *desktop) {
     // corner of the monitor, so no need to change the position.
 }
 
+static gboolean
+accountsservice_supports_backgroundfile(const gchar *xml_data)
+{
+    GError             *error = NULL;
+    GDBusNodeInfo      *node_info;
+    GDBusInterfaceInfo *iface;
+    gboolean            found = FALSE;
+    gint                i, j;
+
+    node_info = g_dbus_node_info_new_for_xml(xml_data, &error);
+    if (!node_info) {
+        g_warning ("AccountsService: Failed to parse introspection XML: %s",
+                error ? error->message : "unknown error");
+        g_clear_error(&error);
+        return FALSE;
+    }
+
+    if (!node_info->interfaces) {
+        g_dbus_node_info_unref(node_info);
+        return FALSE;
+    }
+
+    for (i = 0; node_info->interfaces[i] != NULL; i++) {
+        iface = node_info->interfaces[i];
+
+        if (g_strcmp0(iface->name, "org.freedesktop.DisplayManager.AccountsService") != 0)
+            continue;
+
+        if (!iface->properties)
+            continue;
+
+        for (j = 0; iface->properties[j] != NULL; j++) {
+            if (g_strcmp0(iface->properties[j]->name, "BackgroundFile") == 0) {
+                found = TRUE;
+                break;
+            }
+        }
+        if (found)
+            break;
+    }
+
+    g_dbus_node_info_unref(node_info);
+    return found;
+}
+
 static void
 set_accountsservice_user_bg(const gchar *background)
 {
-    GDBusConnection *bus;
-    GVariant *variant;
+    GDBusConnection *bus = NULL;
     GError *error = NULL;
     gchar *object_path = NULL;
+    GVariant *variant = NULL;
 
     bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
     if (bus == NULL) {
-        g_warning ("Failed to get system bus: %s", error->message);
+        g_warning ("Failed to get system bus: %s", error ? error->message : "unknown");
         g_error_free (error);
         return;
     }
@@ -229,25 +274,53 @@ set_accountsservice_user_bg(const gchar *background)
 
     g_variant_get(variant, "(o)", &object_path);
     g_variant_unref(variant);
+    variant = NULL;
 
     variant = g_dbus_connection_call_sync (bus,
                                            "org.freedesktop.Accounts",
                                            object_path,
-                                           "org.freedesktop.DBus.Properties",
-                                           "Set",
-                                           g_variant_new ("(ssv)",
-                                                          "org.freedesktop.DisplayManager.AccountsService",
-                                                          "BackgroundFile",
-                                                          g_variant_new_string (background ? background : "")),
-                                           G_VARIANT_TYPE ("()"),
+                                           "org.freedesktop.DBus.Introspectable",
+                                           "Introspect",
+                                           NULL,
+                                           G_VARIANT_TYPE ("(s)"),
                                            G_DBUS_CALL_FLAGS_NONE,
-                                           -1,
+                                           500,
                                            NULL,
                                            &error);
+
     if (variant != NULL) {
+        const gchar *xml = NULL;
+        g_variant_get(variant, "(&s)", &xml);
+
+        if (accountsservice_supports_backgroundfile(xml)) {
+
+            g_clear_error (&error);
+            variant = g_dbus_connection_call_sync (bus,
+                                                   "org.freedesktop.Accounts",
+                                                   object_path,
+                                                   "org.freedesktop.DBus.Properties",
+                                                   "Set",
+                                                   g_variant_new("(ssv)",
+                                                                 "org.freedesktop.DisplayManager.AccountsService",
+                                                                 "BackgroundFile",
+                                                                 g_variant_new_string(background ? background : "")),
+                                                   G_VARIANT_TYPE("()"),
+                                                   G_DBUS_CALL_FLAGS_NONE,
+                                                   -1,
+                                                   NULL,
+                                                   &error);
+
+            if (variant != NULL) {
+                g_variant_unref (variant);
+            } else {
+                g_warning ("Failed to register the newly set background with AccountsService '%s': %s",
+                           background, error->message);
+                g_clear_error (&error);
+            }
+        }
+
         g_variant_unref (variant);
     } else {
-        g_warning ("Failed to register the newly set background with AccountsService '%s': %s", background, error->message);
         g_clear_error (&error);
     }
 
