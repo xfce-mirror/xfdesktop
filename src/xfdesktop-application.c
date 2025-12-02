@@ -50,6 +50,7 @@
 #include <libxfce4windowing/libxfce4windowing.h>
 
 #include "common/xfdesktop-keyboard-shortcuts.h"
+#include "xfdesktop-application.h"
 #include "menu.h"
 #include "windowlist.h"
 #include "xfce-desktop.h"
@@ -1086,6 +1087,8 @@ xfdesktop_application_start(XfdesktopApplication *app)
         xfdesktop_application_set_icon_style(app, icon_style);
     }
 
+    xfdesktop_accounts_service_init();
+
     // Put a hold on the app, because at times we may have no monitors
     // (suspend/resume, etc.), which will cause us to destroy all our
     // toplevels, which will cause GApplication to quit.
@@ -1152,6 +1155,7 @@ xfdesktop_application_shutdown(GApplication *g_application)
     }
 
     xfconf_shutdown();
+    xfdesktop_accounts_service_shutdown();
 
 #ifdef ENABLE_X11
     if (app->sm_client != NULL) {

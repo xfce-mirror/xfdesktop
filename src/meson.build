@@ -26,6 +26,7 @@ xfdesktop_sources = [
   'xfdesktop-backdrop-cycler.c',
   'xfdesktop-backdrop-manager.c',
   'xfdesktop-backdrop-renderer.c',
+  'dbus-accounts-service.c',
 ]
 
 xfdesktop_sources += xfdesktop_generated_sources
