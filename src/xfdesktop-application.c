@@ -56,6 +56,7 @@
 #include "xfce-desktop.h"
 #include "xfdesktop-common.h"
 #include "xfdesktop-backdrop-manager.h"
+#include "dbus-accounts-service.h"
 
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view-manager.h"
