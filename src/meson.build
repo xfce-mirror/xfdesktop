@@ -18,6 +18,7 @@ foreach prefix, interface : dbus_codegen
 endforeach
 
 xfdesktop_sources = [
+  'dbus-accounts-service.c',
   'main.c',
   'menu.c',
   'windowlist.c',
