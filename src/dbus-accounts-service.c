@@ -80,21 +80,15 @@ xfce_accountsservice_handle_error(GError **error_ptr, const gchar *call_name)
 
     error_occurred = TRUE;
 
-    /* Assume warning is needed unless we find a suppression condition */
     if (g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
-        /* Expected cancellation: do nothing */
-    } 
-    else if (g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_NAME_HAS_NO_OWNER) ||
-             g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN)) {
-        /* Expected missing service: log as debug (DBG), not warning */
+       /* Expected cancellation: do nothing */
+    } else if (g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_NAME_HAS_NO_OWNER) ||
+               g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN)) {
         DBG("dbus-accounts-service: %s failed: Service not available. Not critical.", call_name);
-    } 
-    else {
-        /* All other errors are unexpected and should be warned about */
+    } else {
         g_warning("dbus-accounts-service: %s failed: %s", call_name, error->message);
     }
 
-    /* Cleanup happens regardless of whether a warning was logged */
     g_clear_error(error_ptr);
     return error_occurred;
 }
@@ -124,7 +118,6 @@ xfce_accountsservice_supports_backgroundfile(const gchar *xml_data)
         for (guint i = 0; node_info->interfaces[i] != NULL; i++) {
             GDBusInterfaceInfo *iface = node_info->interfaces[i];
 
-            /* Target Interface: org.freedesktop.DisplayManager.AccountsService */
             if (g_strcmp0(iface->name, "org.freedesktop.DisplayManager.AccountsService") != 0) {
                 continue;
             }
@@ -134,7 +127,6 @@ xfce_accountsservice_supports_backgroundfile(const gchar *xml_data)
             }
 
             for (guint j = 0; iface->properties[j] != NULL; j++) {
-                /* Target Property: BackgroundFile */
                 if (g_strcmp0(iface->properties[j]->name, "BackgroundFile") == 0) {
                     found = TRUE;
                     break;
@@ -160,12 +152,8 @@ xfce_accountsservice_supports_backgroundfile(const gchar *xml_data)
 static void
 xfce_accountsservice_clear_request(void)
 {
-    if (ctx.background_path != NULL) {
-        g_free(ctx.background_path);
-        ctx.background_path = NULL;
-    }
+    g_clear_pointer(&ctx.background_path, g_free);
 
-    /* Cancel the object before unref to ensure operations are aborted */
     if (ctx.cancellable != NULL) {
         g_cancellable_cancel(ctx.cancellable);
         g_object_unref(ctx.cancellable);
@@ -189,7 +177,6 @@ on_set_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
         g_variant_unref(ret);
     }
 
-    /* Clear the request and finalize the chain */
     xfce_accountsservice_clear_request();
 }
 
@@ -208,7 +195,6 @@ on_introspect_finished(GObject *source_object, GAsyncResult *res, gpointer user_
     g_variant_get(variant, "(&s)", &xml);
 
     if (!xfce_accountsservice_supports_backgroundfile(xml)) {
-        /* Not supported: silent no-op */
         DBG("dbus-accounts-service: AccountsService object does not support BackgroundFile. Request cancelled.");
         g_variant_unref(variant);
         xfce_accountsservice_clear_request();
@@ -276,6 +262,7 @@ on_find_user_finished(GObject *source_object, GAsyncResult *res, gpointer user_d
     g_variant_unref(variant);
 
     if (object_path == NULL) {
+        DBG("dbus-accounts-service: FindUserById returned NULL path.");
         xfce_accountsservice_clear_request();
         return;
     }
@@ -308,14 +295,8 @@ xfdesktop_accounts_service_init(void)
 {
     GError *error = NULL;
 
-    /* Check if the proxy has already been successfully created */
-    if (ctx.manager_proxy != NULL) {
-        return;
-    }
+    g_return_if_fail(ctx.manager_proxy == NULL);
 
-    /* Synchronously create the Accounts Manager Proxy.
-     * Flags ensure the call returns almost immediately, preventing startup slowdowns.
-     */
     ctx.manager_proxy = g_dbus_proxy_new_for_bus_sync(
                             G_BUS_TYPE_SYSTEM,
                             G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES | G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS,
@@ -326,9 +307,7 @@ xfdesktop_accounts_service_init(void)
                             NULL, 
                             &error);
     
-    if (xfce_accountsservice_handle_error(&error, "optimized synchronous manager proxy creation")) {
-        /* Proxy failed to create, leave ctx.manager_proxy as NULL */
-    }
+    xfce_accountsservice_handle_error(&error, "optimized synchronous manager proxy creation");
 }
 
 /**
@@ -344,7 +323,6 @@ xfdesktop_accounts_service_set_background(const gchar *path)
         return;
     }
 
-    /* Check if proxy was successfully created at init */
     if (ctx.manager_proxy == NULL) {
         DBG("dbus-accounts-service: Manager proxy is NULL (service unavailable at init?)");
         return;
@@ -372,14 +350,6 @@ xfdesktop_accounts_service_set_background(const gchar *path)
 void
 xfdesktop_accounts_service_shutdown(void)
 {
-    /* 1. Cancel and clear the active request state. 
-     * This handles ctx.cancellable, ctx.background_path, and sets ctx.in_flight = FALSE.
-     */
     xfce_accountsservice_clear_request();
-
-    /* 2. Free the manager proxy (if it was created). */
-    if (ctx.manager_proxy != NULL) {
-        g_object_unref(ctx.manager_proxy);
-        ctx.manager_proxy = NULL;
-    }
+    g_clear_object(&ctx.manager_proxy);
 }
