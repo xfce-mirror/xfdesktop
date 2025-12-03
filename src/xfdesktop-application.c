@@ -49,14 +49,14 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
+#include "dbus-accounts-service.h"
 #include "common/xfdesktop-keyboard-shortcuts.h"
-#include "xfdesktop-application.h"
 #include "menu.h"
 #include "windowlist.h"
 #include "xfce-desktop.h"
+#include "xfdesktop-application.h"
 #include "xfdesktop-common.h"
 #include "xfdesktop-backdrop-manager.h"
-#include "dbus-accounts-service.h"
 
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view-manager.h"

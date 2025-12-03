@@ -8,9 +8,10 @@ G_BEGIN_DECLS
 /**
  * xfdesktop_accounts_service_init:
  *
- * Initializes the D-Bus helper module state. Must be called after GLib/GIO
- * systems are ready. **This function performs no D-Bus communication** and
- * simply prepares the module's static variables and context flags.
+ * Initializes the D-Bus helper module state. Performs a blocking call to
+ * create the Accounts Manager proxy, but uses flags to minimize blocking time.
+ * This function guarantees the module's static state is set up and the
+ * manager proxy creation has been attempted exactly once.
  */
 void xfdesktop_accounts_service_init(void);
 

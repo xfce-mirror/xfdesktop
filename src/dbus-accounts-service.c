@@ -1,19 +1,18 @@
 /*
  * dbus-accounts-service.c
  *
- * Asynchronous D-Bus helper module to communicate with AccountsService for
- * setting the login screen background image. It uses a static context
- * and GCancellable for efficient management of a single active asynchronous chain.
- *
- * NOTE: This uses FULLY ASYNCHRONOUS (On-Demand) initialization.
+ * D-Bus helper module to communicate with AccountsService for
+ * setting the login screen background image. It uses a synchronous,
+ * optimized initialization and an asynchronous chain for setting properties.
  */
 
 #include "dbus-accounts-service.h"
 
 #include <gio/gio.h>
 #include <glib.h>
-#include <unistd.h> /* getuid() */
 #include <libxfce4util/libxfce4util.h> /* DBG() */
+#include <sys/types.h> /* uid_t */
+#include <unistd.h> /* getuid() */
 
 /* D-Bus Constants */
 static const gint ACCOUNTS_TIMEOUT = 500; /* Timeout for D-Bus calls in milliseconds */
@@ -22,23 +21,20 @@ static const gint ACCOUNTS_TIMEOUT = 500; /* Timeout for D-Bus calls in millisec
 
 typedef struct
 {
-    GDBusProxy *manager_proxy;    /* Proxy for /org/freedesktop/Accounts (created ASYNCHRONOUSLY on demand) */
-    GCancellable *cancellable;    /* Active GCancellable for the current asynchronous chain */
-    gchar *background_path;       /* Duplicated path for the current request */
-    gboolean in_flight;           /* Indicator: Is an asynchronous chain currently active? */
-    gboolean initialized;         /* Indicator: Has the module been initialized (state ready)? */
-    gboolean shutting_down;       /* Indicator: Is the module in the process of shutting down? */
+    GDBusProxy *manager_proxy;     /* Proxy for /org/freedesktop/Accounts (created SYNCHRONOUSLY at init) */
+    GCancellable *cancellable;     /* Active GCancellable for the current asynchronous chain */
+    gchar *background_path;        /* Duplicated path for the current request */
+    gboolean in_flight;            /* Indicator: Is an asynchronous chain currently active? */
 } AccountsServiceCtx;
 
 static AccountsServiceCtx ctx = { 0 };
 
 /* Forward Declarations of Callbacks */
 
-static void on_manager_proxy_new_finished (GObject *source_object, GAsyncResult *res, gpointer user_data);
-static void on_find_user_finished         (GObject *source_object, GAsyncResult *res, gpointer user_data);
-static void on_user_proxy_new_finished    (GObject *source_object, GAsyncResult *res, gpointer user_data);
-static void on_introspect_finished        (GObject *source_object, GAsyncResult *res, gpointer user_data);
-static void on_set_finished               (GObject *source_object, GAsyncResult *res, gpointer user_data);
+static void on_find_user_finished           (GObject *source_object, GAsyncResult *res, gpointer user_data);
+static void on_user_proxy_new_finished      (GObject *source_object, GAsyncResult *res, gpointer user_data);
+static void on_introspect_finished          (GObject *source_object, GAsyncResult *res, gpointer user_data);
+static void on_set_finished                 (GObject *source_object, GAsyncResult *res, gpointer user_data);
 
 /* Helper Functions */
 
@@ -67,8 +63,8 @@ xfce_accountsservice_start_find_user(void)
  * @error_ptr: Pointer to the GError object.
  * @call_name: Name of the D-Bus call that failed.
  *
- * Checks if an error occurred and whether it was an expected G_IO_ERROR_CANCELLED.
- * Logs a warning for unexpected errors and clears the error.
+ * Checks if an error occurred and whether it was an expected G_IO_ERROR_CANCELLED
+ * or an expected missing service error. Logs a warning for unexpected errors.
  *
  * Returns: TRUE if an error was present, FALSE otherwise.
  */
@@ -76,15 +72,31 @@ static gboolean
 xfce_accountsservice_handle_error(GError **error_ptr, const gchar *call_name)
 {
     GError *error = *error_ptr;
+    gboolean error_occurred = FALSE;
+
     if (error == NULL) {
         return FALSE;
     }
 
-    if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+    error_occurred = TRUE;
+
+    /* Assume warning is needed unless we find a suppression condition */
+    if (g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+        /* Expected cancellation: do nothing */
+    } 
+    else if (g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_NAME_HAS_NO_OWNER) ||
+             g_error_matches(error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN)) {
+        /* Expected missing service: log as debug (DBG), not warning */
+        DBG("dbus-accounts-service: %s failed: Service not available. Not critical.", call_name);
+    } 
+    else {
+        /* All other errors are unexpected and should be warned about */
         g_warning("dbus-accounts-service: %s failed: %s", call_name, error->message);
     }
+
+    /* Cleanup happens regardless of whether a warning was logged */
     g_clear_error(error_ptr);
-    return TRUE;
+    return error_occurred;
 }
 
 /**
@@ -112,6 +124,7 @@ xfce_accountsservice_supports_backgroundfile(const gchar *xml_data)
         for (guint i = 0; node_info->interfaces[i] != NULL; i++) {
             GDBusInterfaceInfo *iface = node_info->interfaces[i];
 
+            /* Target Interface: org.freedesktop.DisplayManager.AccountsService */
             if (g_strcmp0(iface->name, "org.freedesktop.DisplayManager.AccountsService") != 0) {
                 continue;
             }
@@ -121,6 +134,7 @@ xfce_accountsservice_supports_backgroundfile(const gchar *xml_data)
             }
 
             for (guint j = 0; iface->properties[j] != NULL; j++) {
+                /* Target Property: BackgroundFile */
                 if (g_strcmp0(iface->properties[j]->name, "BackgroundFile") == 0) {
                     found = TRUE;
                     break;
@@ -207,9 +221,9 @@ on_introspect_finished(GObject *source_object, GAsyncResult *res, gpointer user_
     g_dbus_proxy_call(G_DBUS_PROXY(source_object),
                       "org.freedesktop.DBus.Properties.Set",
                       g_variant_new("(ssv)",
-                                    "org.freedesktop.DisplayManager.AccountsService",
-                                    "BackgroundFile",
-                                    g_variant_new_string(ctx.background_path)),
+                                     "org.freedesktop.DisplayManager.AccountsService",
+                                     "BackgroundFile",
+                                     g_variant_new_string(ctx.background_path)),
                       G_DBUS_CALL_FLAGS_NONE, 
                       -1, /* No additional timeout, rely on system default */
                       ctx.cancellable,
@@ -243,7 +257,7 @@ on_user_proxy_new_finished(GObject *source_object, GAsyncResult *res, gpointer u
                       on_introspect_finished,
                       NULL);
 
-    g_object_unref(user_proxy);
+    g_object_unref(user_proxy); 
 }
 
 static void
@@ -280,70 +294,59 @@ on_find_user_finished(GObject *source_object, GAsyncResult *res, gpointer user_d
     g_free(object_path);
 }
 
-static void
-on_manager_proxy_new_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
-    GError *error = NULL;
-
-    /* If res is not NULL, the proxy was created async; finish the call */
-    if (res != NULL) {
-        ctx.manager_proxy = g_dbus_proxy_new_for_bus_finish(res, &error);
-
-        if (xfce_accountsservice_handle_error(&error, "creating manager proxy")) {
-            xfce_accountsservice_clear_request();
-            return;
-        }
-    }
-    
-    if (ctx.manager_proxy == NULL) {
-        DBG("dbus-accounts-service: Manager proxy is NULL (service unavailable?)");
-        xfce_accountsservice_clear_request();
-        return;
-    }
-
-    /* Manager Proxy is now ready. Start the next asynchronous call: FindUserById */
-    xfce_accountsservice_start_find_user();
-}
 
 /* Public API Functions */
 
 /**
  * xfdesktop_accounts_service_init:
  *
- * Initializes the D-Bus helper module state. Does NOT perform D-Bus calls.
+ * Initializes the D-Bus helper module state. Performs a BLOCKING call to
+ * create the Accounts Manager proxy, but uses flags to minimize blocking time.
  */
 void
 xfdesktop_accounts_service_init(void)
 {
-    if (ctx.initialized) {
+    GError *error = NULL;
+
+    /* Check if the proxy has already been successfully created */
+    if (ctx.manager_proxy != NULL) {
         return;
     }
 
-    /* Initialize static context fields */
-    ctx.manager_proxy = NULL;
-    ctx.cancellable = NULL;
-    ctx.background_path = NULL;
-    ctx.in_flight = FALSE;
-    ctx.shutting_down = FALSE;
+    /* Synchronously create the Accounts Manager Proxy.
+     * Flags ensure the call returns almost immediately, preventing startup slowdowns.
+     */
+    ctx.manager_proxy = g_dbus_proxy_new_for_bus_sync(
+                            G_BUS_TYPE_SYSTEM,
+                            G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES | G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS,
+                            NULL,
+                            "org.freedesktop.Accounts",
+                            "/org/freedesktop/Accounts",
+                            "org.freedesktop.Accounts",
+                            NULL, 
+                            &error);
     
-    ctx.initialized = TRUE; 
+    if (xfce_accountsservice_handle_error(&error, "optimized synchronous manager proxy creation")) {
+        /* Proxy failed to create, leave ctx.manager_proxy as NULL */
+    }
 }
 
 /**
  * xfdesktop_accounts_service_set_background:
  * @path: The path to the background image.
  *
- * Starts the asynchronous D-Bus communication chain, including proxy creation
- * if the manager proxy doesn't already exist.
+ * Starts the asynchronous D-Bus communication chain.
  */
 void
 xfdesktop_accounts_service_set_background(const gchar *path)
 {
-    if (!ctx.initialized || ctx.shutting_down) {
+    if (path == NULL || *path == '\0') {
         return;
     }
 
-    if (path == NULL || *path == '\0') {
+    /* Check if proxy was successfully created at init */
+    if (ctx.manager_proxy == NULL) {
+        DBG("dbus-accounts-service: Manager proxy is NULL (service unavailable at init?)");
         return;
     }
 
@@ -357,22 +360,8 @@ xfdesktop_accounts_service_set_background(const gchar *path)
     ctx.background_path = g_strdup(path);
     ctx.in_flight = TRUE;
 
-    if (ctx.manager_proxy != NULL) {
-        /* Proxy exists: skip creation and go straight to FindUserById */
-        xfce_accountsservice_start_find_user();
-        return;
-    }
-
-    /* 3. Proxy does NOT exist: Start ASYNCHRONOUS proxy creation */
-    g_dbus_proxy_new_for_bus(G_BUS_TYPE_SYSTEM,
-                             G_DBUS_PROXY_FLAGS_NONE,
-                             NULL,
-                             "org.freedesktop.Accounts",
-                             "/org/freedesktop/Accounts",
-                             "org.freedesktop.Accounts",
-                             ctx.cancellable,
-                             on_manager_proxy_new_finished,
-                             NULL);
+    /* 3. Proxy exists: Start the asynchronous FindUserById call */
+    xfce_accountsservice_start_find_user();
 }
 
 /**
@@ -383,23 +372,14 @@ xfdesktop_accounts_service_set_background(const gchar *path)
 void
 xfdesktop_accounts_service_shutdown(void)
 {
-    if (!ctx.initialized) {
-        return;
-    }
-
-    ctx.shutting_down = TRUE;
-
-    /* 1. Cancel and clear the active request state */
+    /* 1. Cancel and clear the active request state. 
+     * This handles ctx.cancellable, ctx.background_path, and sets ctx.in_flight = FALSE.
+     */
     xfce_accountsservice_clear_request();
 
-    /* 2. Free the manager proxy (if it was created) */
+    /* 2. Free the manager proxy (if it was created). */
     if (ctx.manager_proxy != NULL) {
         g_object_unref(ctx.manager_proxy);
         ctx.manager_proxy = NULL;
     }
-
-    /* Reset module state flags */
-    ctx.in_flight = FALSE;
-    ctx.initialized = FALSE;
-    ctx.shutting_down = FALSE;
 }
