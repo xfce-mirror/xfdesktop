@@ -69,6 +69,7 @@
 #include <gtk-layer-shell.h>
 #endif
 
+#include "dbus-accounts-service.h"
 #include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
@@ -193,69 +194,6 @@ xfce_desktop_place_on_monitor(XfceDesktop *desktop) {
 }
 
 static void
-set_accountsservice_user_bg(const gchar *background)
-{
-    GDBusConnection *bus;
-    GVariant *variant;
-    GError *error = NULL;
-    gchar *object_path = NULL;
-
-    bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
-    if (bus == NULL) {
-        g_warning ("Failed to get system bus: %s", error->message);
-        g_error_free (error);
-        return;
-    }
-
-    variant = g_dbus_connection_call_sync (bus,
-                                           "org.freedesktop.Accounts",
-                                           "/org/freedesktop/Accounts",
-                                           "org.freedesktop.Accounts",
-                                           "FindUserByName",
-                                           g_variant_new ("(s)", g_get_user_name ()),
-                                           G_VARIANT_TYPE ("(o)"),
-                                           G_DBUS_CALL_FLAGS_NONE,
-                                           -1,
-                                           NULL,
-                                           &error);
-
-    if (variant == NULL) {
-        DBG("Could not contact accounts service to look up '%s': %s",
-            g_get_user_name (), error->message);
-        g_error_free(error);
-        g_object_unref (bus);
-        return;
-    }
-
-    g_variant_get(variant, "(o)", &object_path);
-    g_variant_unref(variant);
-
-    variant = g_dbus_connection_call_sync (bus,
-                                           "org.freedesktop.Accounts",
-                                           object_path,
-                                           "org.freedesktop.DBus.Properties",
-                                           "Set",
-                                           g_variant_new ("(ssv)",
-                                                          "org.freedesktop.DisplayManager.AccountsService",
-                                                          "BackgroundFile",
-                                                          g_variant_new_string (background ? background : "")),
-                                           G_VARIANT_TYPE ("()"),
-                                           G_DBUS_CALL_FLAGS_NONE,
-                                           -1,
-                                           NULL,
-                                           &error);
-    if (variant != NULL) {
-        g_variant_unref (variant);
-    } else {
-        g_warning ("Failed to register the newly set background with AccountsService '%s': %s", background, error->message);
-        g_clear_error (&error);
-    }
-
-    g_free (object_path);
-    g_object_unref (bus);
-}
-
-static void
 backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_file, GError *error, gpointer user_data) {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
 
@@ -308,7 +246,7 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
 #endif  /* ENABLE_X11 */
 
         if (xfw_monitor_is_primary(desktop->monitor)) {
-            set_accountsservice_user_bg(image_file != NULL ? g_file_peek_path(image_file) : NULL);
+            xfdesktop_accounts_service_set_background(image_file != NULL ? g_file_peek_path(image_file) : NULL);
         }
 
         gtk_widget_queue_draw(GTK_WIDGET(desktop));
