@@ -28,6 +28,7 @@
 #include <gdk/gdk.h>
 
 #include "xfdesktop-common.h"
+#include "xfdesktop-backdrop-media.h"
 
 G_BEGIN_DECLS
 
@@ -45,7 +46,7 @@ G_BEGIN_DECLS
  *
  * If @error is %G_IO_ERROR_CANCELLED, @surface will always be %NULL.
  **/
-typedef void (*RenderCompleteCallback)(cairo_surface_t *surface,
+typedef void (*RenderCompleteCallback)(XfdesktopBackdropMedia *bmedia,
                                        gint width,
                                        gint height,
                                        GError *error,

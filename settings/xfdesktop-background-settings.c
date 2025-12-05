@@ -38,6 +38,7 @@
 #endif  /* ENABLE_X11 */
 
 #include "common/xfdesktop-common.h"
+#include "common/xfdesktop-mime-type.h"
 #include "xfdesktop-settings.h"
 #include "xfdesktop-thumbnailer.h"
 
@@ -123,6 +124,11 @@ enum {
     N_COLS,
 };
 
+enum {
+    IMAGE_STYLE_COL_TITLE = 0,
+    IMAGE_STYLE_COL_SENSITIVE,
+};
+
 static gchar *xfdesktop_settings_generate_per_workspace_binding_string(XfdesktopBackgroundSettings *background_settings,
                                                                        const gchar *property);
 static gchar *xfdesktop_settings_get_backdrop_image(XfdesktopBackgroundSettings *background_settings);
@@ -131,6 +137,14 @@ static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
                                           XfdesktopBackgroundSettings *background_settings);
 
 static gboolean update_icon_view_model(XfdesktopBackgroundSettings *background_settings);
+
+static void combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *background_settings);
+
+#ifdef ENABLE_VIDEO_BACKDROP
+static gboolean last_media_file_is_video(XfdesktopBackgroundSettings *background_settings);
+
+static void reset_to_supported_options(XfdesktopBackgroundSettings *background_settings);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
 static gboolean
 path_has_image_files(GFile *dir) {
@@ -427,7 +441,7 @@ xfdesktop_settings_image_iconview_add(GtkListStore *model,
     gboolean added = FALSE;
     GtkTreeIter iter;
 
-    if (xfdesktop_image_file_is_valid(file)) {
+    if (xfdesktop_file_has_media_mime_type(file)) {
         gchar *name = g_file_get_basename(file);
         if (name != NULL) {
             guint name_length = strlen(name);
@@ -1069,6 +1083,9 @@ cb_xfdesktop_combo_image_style_changed(GtkComboBox *combo, XfdesktopBackgroundSe
         gtk_widget_set_tooltip_text(background_settings->image_iconview,
                                     _("Image selection is unavailable while the image style is set to None."));
     } else {
+#ifdef ENABLE_VIDEO_BACKDROP
+        reset_to_supported_options(background_settings);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
         /* We are expected to provide a wallpaper so make the iconview active.
          * Additionally, if we were insensitive then we need to remove the
@@ -1176,6 +1193,11 @@ last_image_changed(XfconfChannel *channel,
             }
         }
     }
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    reset_to_supported_options(background_settings);
+    combobox_allow_only_supported_image_styles(background_settings);
+#endif /* ENABLE_VIDEO_BACKDROP */
 }
 
 /* This function is to add or remove all the bindings for the background
@@ -1448,6 +1470,44 @@ xfdesktop_settings_get_active_workspace(XfdesktopBackgroundSettings *background_
 }
 
 static void
+combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *background_settings) {
+    gboolean sensitive[] = {
+        [XFCE_BACKDROP_IMAGE_NONE] = TRUE,
+        [XFCE_BACKDROP_IMAGE_CENTERED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_TILED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_STRETCHED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_SCALED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_ZOOMED] = TRUE,
+        [XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = TRUE,
+    };
+
+    GtkTreeModel *model = gtk_combo_box_get_model(GTK_COMBO_BOX(background_settings->image_style_combo));
+
+    guint n_monitors = gdk_display_get_n_monitors(gtk_widget_get_display(background_settings->image_style_combo));
+    sensitive[XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = background_settings->monitor == 0 && n_monitors > 1;
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    if (last_media_file_is_video(background_settings)) {
+        sensitive[XFCE_BACKDROP_IMAGE_CENTERED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_TILED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_SCALED] = FALSE;
+        sensitive[XFCE_BACKDROP_IMAGE_SPANNING_SCREENS] = FALSE;
+    }
+#endif /* ENABLE_VIDEO_BACKDROP */
+
+    gint n_children = gtk_tree_model_iter_n_children(model, NULL);
+    g_warn_if_fail(G_N_ELEMENTS(sensitive) == n_children);
+
+    for (gint i = 0; i < n_children; ++i) {
+        GtkTreeIter iter;
+        g_return_if_fail(gtk_tree_model_iter_nth_child(model, &iter, NULL, i));
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                           IMAGE_STYLE_COL_SENSITIVE, sensitive[i],
+                           -1);
+    }
+}
+
+static void
 cb_update_background_tab(XfwWindow *xfw_window, XfdesktopBackgroundSettings *background_settings) {
     /* If we haven't found our window return now and wait for that */
     if (background_settings->xfw_window == NULL) {
@@ -1496,20 +1556,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_free(background_settings->monitor_name);
     background_settings->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
 
-    /* The first monitor has the option of doing the "spanning screens" style,
-     * but only if there's multiple monitors attached. Remove it in all other cases.
-     *
-     * Remove the spanning screens option before we potentially add it again
-     */
-    gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(background_settings->image_style_combo),
-                              XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
-
-    if (background_settings->monitor == 0
-        && gdk_display_get_n_monitors(gtk_widget_get_display(background_settings->image_style_combo)) > 1)
-    {
-        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(background_settings->image_style_combo),
-                                       _("Spanning screens"));
-    }
+    combobox_allow_only_supported_image_styles(background_settings);
 
     /* connect the new bindings */
     xfdesktop_settings_background_tab_change_bindings(background_settings, FALSE);
@@ -1837,6 +1884,35 @@ workspace_tracking_init(XfdesktopBackgroundSettings *background_settings) {
 
 }
 
+#ifdef ENABLE_VIDEO_BACKDROP
+static gboolean
+last_media_file_is_video(XfdesktopBackgroundSettings *background_settings) {
+    gchar *buf = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "last-image");
+    gchar *filepath = xfconf_channel_get_string(background_settings->settings->channel, buf, NULL);
+    g_free(buf);
+    if (filepath == NULL) {
+        return FALSE;
+    } else {
+        GFile *file = g_file_new_for_path(filepath);
+        g_free(filepath);
+        gboolean is_video = xfdesktop_file_has_video_mime_type(file);
+        g_object_unref(file);
+        return is_video;
+    }
+}
+
+static void
+reset_to_supported_options(XfdesktopBackgroundSettings *background_settings) {
+    if (last_media_file_is_video(background_settings)) {
+        gint active = gtk_combo_box_get_active(GTK_COMBO_BOX(background_settings->image_style_combo));
+        if (!VIDEO_BACKDROP_SUPPORT_IMAGE_STYLE(active)) {
+            gtk_combo_box_set_active(GTK_COMBO_BOX(background_settings->image_style_combo),
+                                     XFCE_BACKDROP_IMAGE_ZOOMED);
+        }
+    }
+}
+#endif /* ENABLE_VIDEO_BACKDROP */
+
 XfdesktopBackgroundSettings *
 xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     g_return_val_if_fail(settings != NULL, NULL);
@@ -1898,7 +1974,7 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
 
     GtkFileFilter *filter = gtk_file_filter_new();
     gtk_file_filter_set_name(filter, _("Image files"));
-    gtk_file_filter_add_pixbuf_formats(filter);
+    xfdesktop_media_mime_type_to_filter(filter);
     gtk_file_filter_add_mime_type(filter, "inode/directory");
     gtk_file_filter_add_mime_type(filter, "application/x-directory");
     gtk_file_filter_add_mime_type(filter, "text/directory");
