@@ -459,7 +459,7 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
      * drive that isn't mounted.
      */
     enumerator = g_file_enumerate_children(special_file_icon->file,
-                                           G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE,
+                                           G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE "," G_FILE_ATTRIBUTE_STANDARD_NAME,
                                            G_FILE_QUERY_INFO_NONE,
                                            NULL,
                                            NULL);
