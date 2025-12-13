@@ -200,7 +200,7 @@ static void playbin_state_cb(GstBus *bus,
                              GstMessage *msg,
                              gpointer user_data);
 
-static void init_gst(XfceDesktop *desktop);
+static gboolean init_gst(XfceDesktop *desktop);
 
 static gboolean playbin_initial_launch(XfceDesktop *desktop,
                                        XfdesktopBackdropMedia *bmedia);
@@ -1078,6 +1078,13 @@ clear_backdrop_media(XfceDesktop *desktop) {
 static void
 replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
     if (!xfdesktop_backdrop_media_equal(desktop->bmedia, bmedia)) {
+#ifdef ENABLE_VIDEO_BACKDROP
+        if (bmedia != NULL &&
+            xfdesktop_backdrop_media_get_kind(bmedia) == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO &&
+            !init_gst(desktop)) {
+          return;
+        }
+#endif /* ENABLE_VIDEO_BACKDROP */
         clear_backdrop_media(desktop);
 
         if (bmedia != NULL) {
@@ -1089,7 +1096,6 @@ replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
                     break;
 #ifdef ENABLE_VIDEO_BACKDROP
                 case XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO:
-                    init_gst(desktop);
                     desktop->bmedia = bmedia;
                     g_object_ref(desktop->bmedia);
                     configure_playbin(desktop, bmedia);
@@ -1186,12 +1192,23 @@ playbin_state_cb(GstBus *bus, GstMessage *msg, gpointer user_data) {
     }
 }
 
-static void
+static gboolean
 init_gst(XfceDesktop *desktop) {
     if (!desktop->gst_initialized) {
         gst_init(NULL, NULL);
-        desktop->gst_initialized = TRUE;
+        GstPlugin *plugin = gst_registry_find_plugin(gst_registry_get(), "gtk");
+        if (plugin != NULL) {
+            desktop->gst_initialized = TRUE;
+        } else {
+            xfce_dialog_show_error(GTK_WINDOW (desktop),
+                                   NULL,
+                                   "%s",
+                                   _("The \"gtk\" plugin for gstreamer required for video playback was not found"));
+        }
+        gst_object_unref(plugin);
     }
+
+    return desktop->gst_initialized;
 }
 
 static gboolean
@@ -1232,7 +1249,7 @@ configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
         }
 
         if (!playing) {
-            g_printerr("Can't create gstreamer player with opengl support\n");
+            g_printerr("Can't create gstreamer video player with opengl support\n");
         }
 
         if (!playing && gl_status) {
@@ -1245,7 +1262,10 @@ configure_playbin(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
         }
 
         if (!playing) {
-            g_printerr("Unable to create any gstreamer player\n");
+            xfce_dialog_show_error(GTK_WINDOW (desktop),
+                                   NULL,
+                                   "%s",
+                                   _("Unable to create gstreamer video player"));
         }
     }
 }
