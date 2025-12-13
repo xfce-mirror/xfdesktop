@@ -72,6 +72,10 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#ifdef ENABLE_VIDEO_BACKDROP
+#define SMART_PAUSE_VIDEO "/backdrop/smart-pause-video"
+#endif /* ENABLE_VIDEO_BACKDROP */
+
 #define DESKTOP_MENU_SHOW_PROP "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP "/desktop-menu/show-icons"
 

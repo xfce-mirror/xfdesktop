@@ -73,6 +73,9 @@ struct _XfdesktopBackgroundSettings {
     GtkWidget *btn_folder;
     GtkWidget *btn_folder_apply;
     GtkWidget *chk_apply_to_all;
+#ifdef ENABLE_VIDEO_BACKDROP
+    GtkWidget *chk_smart_pause_video;
+#endif /* ENABLE_VIDEO_BACKDROP */
     GtkWidget *image_style_combo;
     GtkWidget *color_style_combo;
     GtkWidget *color1_btn;
@@ -140,7 +143,12 @@ static gboolean update_icon_view_model(XfdesktopBackgroundSettings *background_s
 
 static void combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *background_settings);
 
+static void show_only_supported_settings(XfdesktopBackgroundSettings *background_settings);
+
 #ifdef ENABLE_VIDEO_BACKDROP
+static void cb_xfdesktop_chk_smart_pause_video(GtkCheckButton *button,
+                                               XfdesktopBackgroundSettings *background_settings);
+
 static gboolean last_media_file_is_video(XfdesktopBackgroundSettings *background_settings);
 
 static void reset_to_supported_options(XfdesktopBackgroundSettings *background_settings);
@@ -1196,7 +1204,7 @@ last_image_changed(XfconfChannel *channel,
 
 #ifdef ENABLE_VIDEO_BACKDROP
     reset_to_supported_options(background_settings);
-    combobox_allow_only_supported_image_styles(background_settings);
+    show_only_supported_settings(background_settings);
 #endif /* ENABLE_VIDEO_BACKDROP */
 }
 
@@ -1508,6 +1516,16 @@ combobox_allow_only_supported_image_styles(XfdesktopBackgroundSettings *backgrou
 }
 
 static void
+show_only_supported_settings(XfdesktopBackgroundSettings *background_settings) {
+    combobox_allow_only_supported_image_styles(background_settings);
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    gtk_widget_set_visible(background_settings->chk_smart_pause_video,
+                           last_media_file_is_video(background_settings));
+#endif /* ENABLE_VIDEO_BACKDROP*/
+}
+
+static void
 cb_update_background_tab(XfwWindow *xfw_window, XfdesktopBackgroundSettings *background_settings) {
     /* If we haven't found our window return now and wait for that */
     if (background_settings->xfw_window == NULL) {
@@ -1556,7 +1574,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_free(background_settings->monitor_name);
     background_settings->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
 
-    combobox_allow_only_supported_image_styles(background_settings);
+    show_only_supported_settings(background_settings);
 
     /* connect the new bindings */
     xfdesktop_settings_background_tab_change_bindings(background_settings, FALSE);
@@ -1885,6 +1903,12 @@ workspace_tracking_init(XfdesktopBackgroundSettings *background_settings) {
 }
 
 #ifdef ENABLE_VIDEO_BACKDROP
+static void
+cb_xfdesktop_chk_smart_pause_video(GtkCheckButton *button, XfdesktopBackgroundSettings *background_settings) {
+    gboolean active = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button));
+    xfconf_channel_set_bool(background_settings->settings->channel, SMART_PAUSE_VIDEO, active);
+}
+
 static gboolean
 last_media_file_is_video(XfdesktopBackgroundSettings *background_settings) {
     gchar *buf = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "last-image");
@@ -2017,6 +2041,15 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     g_signal_connect(G_OBJECT(background_settings->chk_apply_to_all), "toggled",
                     G_CALLBACK(cb_xfdesktop_chk_apply_to_all),
                     background_settings);
+#ifdef ENABLE_VIDEO_BACKDROP
+    background_settings->chk_smart_pause_video = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "chk_smart_pause_video"));
+    if (xfconf_channel_get_bool(background_settings->settings->channel, SMART_PAUSE_VIDEO, FALSE)) {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(background_settings->chk_smart_pause_video), TRUE);
+    }
+    g_signal_connect(G_OBJECT(background_settings->chk_smart_pause_video), "toggled",
+                     G_CALLBACK(cb_xfdesktop_chk_smart_pause_video),
+                     background_settings);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
     /* background cycle timer */
     background_settings->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
