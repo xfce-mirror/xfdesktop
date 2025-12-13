@@ -125,6 +125,7 @@ struct _XfceDesktop {
     GtkWidget *overlay_child[N_XFCE_DESKTOP_LAYER];
 
     gboolean gst_initialized;
+    gboolean smart_pause_video;
     GstElement *playbin;
 #endif /* ENABLE_VIDEO_BACKDROP */
 };
@@ -140,6 +141,9 @@ enum
     PROP_SINGLE_WORKSPACE_MODE,
     PROP_SINGLE_WORKSPACE_NUMBER,
     PROP_ACTIVE,
+#ifdef ENABLE_VIDEO_BACKDROP
+    PROP_SMART_PAUSE_VIDEO,
+#endif /* ENABLE_VIDEO_BACKDROP */
 };
 
 
@@ -181,10 +185,15 @@ static void replace_backdrop_media(XfceDesktop *desktop,
                                    XfdesktopBackdropMedia *bmedia);
 
 #ifdef ENABLE_VIDEO_BACKDROP
+static void set_smart_pause_video(XfceDesktop *desktop,
+                                  gboolean value);
+
 static gboolean backdrop_overlapped_by_window(XfwWindow *window);
 
 static void handle_overlap_by_window(XfceDesktop *desktop,
                                      XfwWindow *window);
+
+static void screen_handlers_connect(XfceDesktop *desktop);
 
 static void screen_handlers_disconnect(XfceDesktop *desktop);
 
@@ -217,6 +226,9 @@ static struct
 } setting_bindings[] = {
     { SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN, "single-workspace-mode" },
     { SINGLE_WORKSPACE_NUMBER, G_TYPE_INT, "single-workspace-number" },
+#ifdef ENABLE_VIDEO_BACKDROP
+    { SMART_PAUSE_VIDEO, G_TYPE_BOOLEAN, "smart-pause-video" },
+#endif /* ENABLE_VIDEO_BACKDROP */
 };
 
 /* private functions */
@@ -590,6 +602,16 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                          "active",
                                                          FALSE,
                                                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    g_object_class_install_property(gobject_class,
+                                    PROP_SMART_PAUSE_VIDEO,
+                                    g_param_spec_boolean("smart-pause-video",
+                                                         "smart-pause-video",
+                                                         "smart-pause-video",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+#endif /* ENABLE_VIDEO_BACKDROP */
 }
 
 static void
@@ -743,6 +765,12 @@ xfce_desktop_set_property(GObject *object,
                                                      g_value_get_int(value));
             break;
 
+#ifdef ENABLE_VIDEO_BACKDROP
+        case PROP_SMART_PAUSE_VIDEO:
+            set_smart_pause_video(desktop, g_value_get_boolean(value));
+            break;
+#endif /* ENABLE_VIDEO_BACKDROP */
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -789,6 +817,12 @@ xfce_desktop_get_property(GObject *object,
         case PROP_ACTIVE:
             g_value_set_boolean(value, xfce_desktop_is_active(desktop));
             break;
+
+#ifdef ENABLE_VIDEO_BACKDROP
+        case PROP_SMART_PAUSE_VIDEO:
+            g_value_set_boolean(value, desktop->smart_pause_video);
+            break;
+#endif /* ENABLE_VIDEO_BACKDROP */
 
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -1107,6 +1141,24 @@ replace_backdrop_media(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
 }
 
 #ifdef ENABLE_VIDEO_BACKDROP
+static void set_smart_pause_video(XfceDesktop *desktop, gboolean value) {
+    desktop->smart_pause_video = value;
+
+    if (desktop->bmedia != NULL &&
+        xfdesktop_backdrop_media_get_kind(desktop->bmedia) == XFDESKTOP_BACKDROP_MEDIA_KIND_VIDEO) {
+        if (value) {
+            screen_handlers_connect(desktop);
+        } else {
+            screen_handlers_disconnect(desktop);
+
+            /* the video may be paused, unpause it */
+            if (desktop->playbin != NULL) {
+                gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
+            }
+        }
+    }
+}
+
 static gboolean
 backdrop_overlapped_by_window(XfwWindow *window) {
     return (xfw_window_get_window_type(window) == XFW_WINDOW_TYPE_NORMAL) &&
@@ -1140,6 +1192,17 @@ static void
 window_state_cb(XfwWindow *window, XfwWindowState changed_mask, XfwWindowState new_state, gpointer user_data) {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     handle_overlap_by_window(desktop, window);
+}
+
+static void
+screen_handlers_connect(XfceDesktop *desktop) {
+    g_signal_connect(desktop->xfw_screen, "active-window-changed", G_CALLBACK(screen_active_window_cb), desktop);
+
+    /* run an overlap check without waiting for the first event */
+    XfwWindow *active_window = xfw_screen_get_active_window(desktop->xfw_screen);
+    if (active_window != NULL) {
+        handle_overlap_by_window(desktop, active_window);
+    }
 }
 
 static void
@@ -1226,7 +1289,9 @@ playbin_initial_launch(XfceDesktop *desktop, XfdesktopBackdropMedia *bmedia) {
 
     GstStateChangeReturn status = gst_element_set_state(desktop->playbin, GST_STATE_PLAYING);
     if (status != GST_STATE_CHANGE_FAILURE) {
-        g_signal_connect(desktop->xfw_screen, "active-window-changed", G_CALLBACK(screen_active_window_cb), desktop);
+        if (desktop->smart_pause_video) {
+            screen_handlers_connect(desktop);
+        }
         return TRUE;
     }
 
