@@ -70,7 +70,6 @@ icon_name_for_gicon(GIcon *icon) {
         GFile *icon_file = g_file_icon_get_file(G_FILE_ICON(icon));
         if (icon_file != NULL) {
             icon_name = g_file_get_path(icon_file);
-            g_object_unref(icon_file);
         }
     }
 
