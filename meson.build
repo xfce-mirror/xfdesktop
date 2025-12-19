@@ -116,6 +116,27 @@ video_backdrop_deps = []
 if enable_video_backdrop
   feature_cflags += '-DENABLE_VIDEO_BACKDROP=1'
   video_backdrop_deps += [gstreamer]
+
+  # the gst-plugin-gtk is required for this to work, the only way to test it is to compile a small program
+  gstgtk_test_result = meson.get_compiler('c').run(
+    '''
+    #include <gst/gst.h>
+
+    int
+    main(void) {
+      gst_init(NULL, NULL);
+      return gst_registry_find_plugin(gst_registry_get(), "gtk") != NULL ? 0 : 1;
+    }
+    ''',
+    dependencies: [gstreamer],
+    name: 'Testing the gst-plugin-gtk',
+  )
+  if not gstgtk_test_result.compiled()
+    error('error building gst-plugin-gtk test, it is impossible to continue the build with the video-backdrop feature enabled')
+  endif
+  if gstgtk_test_result.returncode() != 0
+    error('gstreamer cannot find gst-plugin-gtk, it is impossible to continue the build with the video-backdrop feature enabled')
+  endif
 endif
 
 file_manager_fallback = get_option('file-manager-fallback')
