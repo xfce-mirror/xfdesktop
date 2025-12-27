@@ -69,12 +69,16 @@ typedef struct
 
 static void
 image_data_complete(ImageData *image_data, cairo_surface_t *surface) {
-    image_data->callback(surface, image_data->width, image_data->height, NULL, image_data->callback_user_data);
+    XfdesktopBackdropMedia *bmedia = xfdesktop_backdrop_media_new_from_image(surface);
+    cairo_surface_destroy(surface);
+    image_data->callback(bmedia, image_data->width, image_data->height, NULL, image_data->callback_user_data);
 }
 
 static void
 image_data_error(ImageData *image_data, GError *error) {
     GError *cb_error;
+    XfdesktopBackdropMedia *bmedia;
+    
     if (error == NULL) {
         cb_error = g_error_new_literal(G_IO_ERROR, G_IO_ERROR_UNKNOWN, "Unknown error");
     } else {
@@ -88,7 +92,9 @@ image_data_error(ImageData *image_data, GError *error) {
         surface = gdk_cairo_surface_create_from_pixbuf(image_data->canvas, 1, NULL);
     }
 
-    image_data->callback(surface,
+    bmedia = xfdesktop_backdrop_media_new_from_image(surface);
+    cairo_surface_destroy(surface);
+    image_data->callback(bmedia,
                          surface != NULL ? cairo_image_surface_get_width(surface) : -1,
                          surface != NULL ? cairo_image_surface_get_height(surface) : -1,
                          cb_error,
@@ -610,6 +616,8 @@ xfdesktop_backdrop_render(GCancellable *cancellable,
                           RenderCompleteCallback callback,
                           gpointer callback_user_data)
 {
+    XfdesktopBackdropMedia *bmedia;
+    
     g_return_if_fail(color1 != NULL);
     g_return_if_fail(color2 != NULL);
     g_return_if_fail(width > 0);
@@ -633,7 +641,9 @@ xfdesktop_backdrop_render(GCancellable *cancellable,
         // If we aren't going to display an image then just return the canvas
         cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(canvas, 1, NULL);
         g_object_unref(canvas);
-        callback(surface, width, height, NULL, callback_user_data);
+        bmedia = xfdesktop_backdrop_media_new_from_image(surface);
+        cairo_surface_destroy(surface);
+        callback(bmedia, width, height, NULL, callback_user_data);
     } else {
         if (image_file == NULL) {
             image_file = g_file_new_for_path(DEFAULT_BACKDROP);

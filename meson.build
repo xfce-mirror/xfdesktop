@@ -27,6 +27,7 @@ dependency_versions = {
   'libxfce4ui': '>= 4.21.0',
   'xfconf': '>= 4.19.3',
   'gtk-layer-shell': '>= 0.7.0',
+  'gstreamer': '>= 1.18.0',
 }
 
 # Required
@@ -62,6 +63,9 @@ gtk_layer_shell = dependency('gtk-layer-shell-0', version: dependency_versions['
 
 # Feature file-icons
 libyaml = dependency('yaml-0.1', version: dependency_versions['libyaml'], required: get_option('desktop-icons') and get_option('file-icons'))
+
+# Feature video-backdrop
+gstreamer = dependency('gstreamer-1.0', version: dependency_versions['gstreamer'], required: get_option('video-backdrop'))
 
 feature_cflags = []
 
@@ -105,6 +109,34 @@ wayland_deps = []
 if enable_wayland
   feature_cflags += '-DENABLE_WAYLAND=1'
   wayland_deps += [gdk_wayland, gtk_layer_shell]
+endif
+
+enable_video_backdrop = get_option('video-backdrop')
+video_backdrop_deps = []
+if enable_video_backdrop
+  feature_cflags += '-DENABLE_VIDEO_BACKDROP=1'
+  video_backdrop_deps += [gstreamer]
+
+  # the gst-plugin-gtk is required for this to work, the only way to test it is to compile a small program
+  gstgtk_test_result = meson.get_compiler('c').run(
+    '''
+    #include <gst/gst.h>
+
+    int
+    main(void) {
+      gst_init(NULL, NULL);
+      return gst_registry_find_plugin(gst_registry_get(), "gtk") != NULL ? 0 : 1;
+    }
+    ''',
+    dependencies: [gstreamer],
+    name: 'Testing the gst-plugin-gtk',
+  )
+  if not gstgtk_test_result.compiled()
+    error('error building gst-plugin-gtk test, it is impossible to continue the build with the video-backdrop feature enabled')
+  endif
+  if gstgtk_test_result.returncode() != 0
+    error('gstreamer cannot find gst-plugin-gtk, it is impossible to continue the build with the video-backdrop feature enabled')
+  endif
 endif
 
 file_manager_fallback = get_option('file-manager-fallback')
