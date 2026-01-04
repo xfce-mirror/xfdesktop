@@ -45,6 +45,7 @@
 #endif
 
 #include "xfdesktop-common.h"
+#include "xfdesktop-mime-type.h"
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-regular-file-icon.h"
@@ -605,7 +606,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
     } else {
         /* If we have a thumbnail then they are enabled, use it. */
         if(regular_icon->thumbnail_file) {
-            gchar *mimetype = xfdesktop_get_file_mimetype(regular_icon->file);
+            gchar *mimetype = xfdesktop_get_file_mime_type(regular_icon->file);
 
             /* Don't use thumbnails for svg, use the file itself */
             if(g_strcmp0(mimetype, "image/svg+xml") == 0)

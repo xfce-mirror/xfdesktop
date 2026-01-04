@@ -72,6 +72,10 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#ifdef ENABLE_VIDEO_BACKDROP
+#define SMART_PAUSE_VIDEO "/backdrop/smart-pause-video"
+#endif /* ENABLE_VIDEO_BACKDROP */
+
 #define DESKTOP_MENU_SHOW_PROP "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP "/desktop-menu/show-icons"
 
@@ -152,6 +156,11 @@
 #define ICON_STYLE_DEFAULT XFCE_DESKTOP_ICON_STYLE_NONE
 #endif  /* ENABLE_DESKTOP_ICONS */
 
+#ifdef ENABLE_VIDEO_BACKDROP
+#define VIDEO_BACKDROP_SUPPORT_IMAGE_STYLE(STYLE) ((STYLE) == XFCE_BACKDROP_IMAGE_STRETCHED || \
+                                                   (STYLE) == XFCE_BACKDROP_IMAGE_ZOOMED)
+#endif /* ENABLE_VIDEO_BACKDROP */
+
 G_BEGIN_DECLS
 
 typedef enum {
@@ -199,10 +208,6 @@ gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget,
                                                   gint monitor_num);
 
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
-
-gboolean xfdesktop_image_file_is_valid(GFile *file);
-
-gchar *xfdesktop_get_file_mimetype(GFile *file);
 
 gint xfce_translate_image_styles(gint input);
 
