@@ -614,7 +614,13 @@ xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer
     GFileEnumerator *enumerator = g_file_enumerate_children_finish(new_folder,
                                                                    res,
                                                                    &error);
+    if (background_settings->selected_folder != NULL) {
+        g_object_unref(background_settings->selected_folder);
+    }
+
     if (enumerator == NULL) {
+        background_settings->selected_folder = g_object_ref(new_folder);
+
         g_object_unref(new_folder);
 
         if (background_settings->selected_folder != NULL) {
@@ -630,9 +636,6 @@ xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer
                                g_file_peek_path(background_settings->selected_folder));
         g_error_free(error);
     } else {
-        if (background_settings->selected_folder != NULL) {
-            g_object_unref(background_settings->selected_folder);
-        }
         background_settings->selected_folder = new_folder;
 
         AddDirData *dir_data = g_new0(AddDirData, 1);
