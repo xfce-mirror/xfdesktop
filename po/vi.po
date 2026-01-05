@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:10+0200\n"
+"POT-Creation-Date: 2026-01-04 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>, 2006\n"
 "Language-Team: Vietnamese (http://app.transifex.com/xfce/xfdesktop/language/vi/)\n"
@@ -186,7 +186,7 @@ msgstr "Thoát"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:560
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
 msgid "Desktop"
 msgstr "Màn hình nền"
 
@@ -198,11 +198,11 @@ msgstr "Đặt nền màn hình, menu và hành vi biểu tượng"
 msgid "desktop;background;wallpaper;settings;xfce;"
 msgstr "desktop;background;wallpaper;settings;xfce;"
 
-#: settings/xfdesktop-background-settings.c:223
+#: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
 msgstr "Chọn thư mục để chọn hình nền."
 
-#: settings/xfdesktop-background-settings.c:441
+#: settings/xfdesktop-background-settings.c:463
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -210,71 +210,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nLoại: %s\nKích thước: %s"
 
-#: settings/xfdesktop-background-settings.c:525
-#: settings/xfdesktop-background-settings.c:607
+#: settings/xfdesktop-background-settings.c:547
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Không thể tải hình ảnh từ thư mục \"%s\""
 
-#: settings/xfdesktop-background-settings.c:708
+#: settings/xfdesktop-background-settings.c:730
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Hình nền cho Màn hình %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:712
+#: settings/xfdesktop-background-settings.c:734
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Hình nền cho màn hình %d"
 
-#: settings/xfdesktop-background-settings.c:718
+#: settings/xfdesktop-background-settings.c:740
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Di chuyển hộp thoại này đến màn hình mà bạn muốn chỉnh chỉnh sửa cài đặt."
 
-#: settings/xfdesktop-background-settings.c:723
+#: settings/xfdesktop-background-settings.c:745
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Hình nền cho %s trên màn hình %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:728
+#: settings/xfdesktop-background-settings.c:750
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Hình nền cho %s trên màn hình %d"
 
-#: settings/xfdesktop-background-settings.c:736
+#: settings/xfdesktop-background-settings.c:758
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Di chuyển hộp thoại này đến màn hình và không gian làm việc mà bạn muốn chỉnh chỉnh sửa cài đặt."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:767
 msgid "Wallpaper for my desktop"
 msgstr "Hình nền cho máy tính để bàn của tôi"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:751
+#: settings/xfdesktop-background-settings.c:773
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Hình nền cho %s"
 
-#: settings/xfdesktop-background-settings.c:756
+#: settings/xfdesktop-background-settings.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Di chuyển hộp thoại này đến không gian làm việc mà bạn muốn chỉnh chỉnh sửa cài đặt."
 
-#: settings/xfdesktop-background-settings.c:1070
+#: settings/xfdesktop-background-settings.c:1092
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Lựa chọn hình ảnh Không có khả dụng khi kiểu hình ảnh được đặt thành Không có có."
 
-#: settings/xfdesktop-background-settings.c:1511
-msgid "Spanning screens"
-msgstr "Màn hình kéo dài"
-
-#: settings/xfdesktop-background-settings.c:1900
+#: settings/xfdesktop-background-settings.c:2000
 msgid "Image files"
 msgstr "Tập tin hình ảnh"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1908
+#: settings/xfdesktop-background-settings.c:2008
 msgid "Select a Directory"
 msgstr "Chọn một Thư mục"
 
@@ -389,136 +385,140 @@ msgstr "Độ dốc dọc"
 msgid "Transparent"
 msgstr "Trong suốt"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:134
-#: src/xfdesktop-monitor-chooser-ui.glade:33
-msgid "Apply"
-msgstr "Áp dụng"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
-msgid "St_yle:"
-msgstr "_Phong cách:"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:164
-msgid "Specify how the image will be resized to fit the screen."
-msgstr "Chỉ định cách thay đổi kích thước hình ảnh để vừa với màn hình."
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:166
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:41
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "Không"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:167
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:45
 msgid "Centered"
 msgstr "Giữa"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:49
 msgid "Tiled"
 msgstr "Lợp"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:169
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:53
 msgid "Stretched"
 msgstr "Trải"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:170
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:57
 msgid "Scaled"
 msgstr "Vảy"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:171
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:61
 msgid "Zoomed"
 msgstr "Đã zoom"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:65
 msgid "Spanning Screens"
 msgstr "Màn hình kéo dài"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: src/xfdesktop-monitor-chooser-ui.glade:33
+msgid "Apply"
+msgstr "Áp dụng"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:187
+msgid "St_yle:"
+msgstr "_Phong cách:"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:202
+msgid "Specify how the image will be resized to fit the screen."
+msgstr "Chỉ định cách thay đổi kích thước hình ảnh để vừa với màn hình."
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:223
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Chỉ định kiểu màu được vẽ phía sau hình nền."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:207
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Chỉ định màu đồng nhất hoặc màu \"trái\" hoặc \"trên cùng\" của dải màu."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:208
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:246
 msgid "Select First Color"
 msgstr "Chọn màu đầu tiên"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:259
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "Chỉ định màu \"phải\" hoặc \"dưới cùng\" của dải màu."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:260
 msgid "Select Second Color"
 msgstr "Chọn màu thứ hai"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:231
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:269
 msgid "Apply to all _workspaces"
 msgstr "Á_p dụng cho mọi không gian làm việc"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:249
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:287
 msgid "_Folder:"
 msgstr "_Thư mục:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:301
 msgid "C_olor:"
 msgstr "_Màu sắc:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:332
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:370
 msgid "Change the _background "
 msgstr "_Thay đổi nền "
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:337
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:375
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Tự động chọn nền khác từ thư mục hiện tại."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:353
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:391
 msgid "Specify how often the background will change."
 msgstr "Chỉ định tần suất nền sẽ thay đổi."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:355
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
 msgid "in seconds:"
 msgstr "tính bằng giây:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid "in minutes:"
 msgstr "trong vài phút:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:395
 msgid "in hours:"
 msgstr "tính bằng giờ:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:396
 msgid "at start up"
 msgstr "lúc khởi động"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:397
 msgid "every hour"
 msgstr "mỗi giờ"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:398
 msgid "every day"
 msgstr "mỗi ngày"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:399
 msgid "chronologically"
 msgstr "theo trình tự thời gian"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:376
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:414
 msgid "Amount of time before a different background is selected."
 msgstr "Khoảng thời gian trước khi nền khác được chọn."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:387
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:425
 msgid "_Random Order"
 msgstr "_Thứ tự ngẫu nhiên"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:431
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "Chọn ngẫu nhiên một hình ảnh khác từ cùng thư mục khi hình nền chuyển đổi."
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:450
+msgid "_Pause video if window overlaps desktop"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -793,6 +793,14 @@ msgstr "Ứ_ng dụng"
 #: src/windowlist.c:79
 msgid "Window List"
 msgstr "Danh sách Cửa sổ"
+
+#: src/xfce-desktop.c:1269
+msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
+msgstr ""
+
+#: src/xfce-desktop.c:1333
+msgid "Unable to create gstreamer video player"
+msgstr ""
 
 #: src/xfdesktop-application.c:274
 msgid "Display version information"
@@ -1241,12 +1249,12 @@ msgid "Always auto-assign"
 msgstr "Luôn tự động gán"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:148
+#: src/xfdesktop-notify.c:147
 msgid "Unmounting device"
 msgstr "Đang tháo gắn kết thiết bị"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:151
+#: src/xfdesktop-notify.c:150
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1254,43 +1262,43 @@ msgid ""
 msgstr "Thiết bị \"%s\" đang được tháo gắn kết, xin đừng rút hoặc ngắt thiết bị đó"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:158 src/xfdesktop-notify.c:237
+#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
 msgid "Writing data to device"
 msgstr "Đang ghi dữ liệu lên thiết bị"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:161 src/xfdesktop-notify.c:240
+#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "Còn dữ liệu cần phải ghi lên thiết bị \"%s\" trước khi có thể tháo. Xin đừng rút hoặc ngắt thiết bị"
 
-#: src/xfdesktop-notify.c:207
+#: src/xfdesktop-notify.c:206
 msgid "Unmount Finished"
 msgstr "Ngắt kết nối đã hoàn tất"
 
-#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:351
+#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Thiết bị \"%s\" đã được gỡ bỏ khỏi hệ thống một cách an toàn. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:230
+#: src/xfdesktop-notify.c:229
 msgid "Ejecting device"
 msgstr "Đang ngắt thiết bị"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:233
+#: src/xfdesktop-notify.c:232
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Đang ngắt thiết bị \"%s\". Việc này có thể tốn ít thời gian"
 
-#: src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:349
 msgid "Eject Finished"
 msgstr "Đẩy ra xong"
 
-#: src/xfdesktop-regular-file-icon.c:723
+#: src/xfdesktop-regular-file-icon.c:724
 #, c-format
 msgid ""
 "Name: %s\n"
