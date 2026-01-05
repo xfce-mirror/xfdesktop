@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:10+0200\n"
+"POT-Creation-Date: 2026-01-04 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2017-2019\n"
 "Language-Team: Norwegian Nynorsk (http://app.transifex.com/xfce/xfdesktop/language/nn/)\n"
@@ -183,7 +183,7 @@ msgstr "Avslutt"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:560
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
 msgid "Desktop"
 msgstr "Skrivebord"
 
@@ -195,11 +195,11 @@ msgstr "Set bakgrunnsbiletet og åtferda åt menyar og ikon"
 msgid "desktop;background;wallpaper;settings;xfce;"
 msgstr ""
 
-#: settings/xfdesktop-background-settings.c:223
+#: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
 msgstr "Vel ei mappe å velja bakgrunnsbilete frå."
 
-#: settings/xfdesktop-background-settings.c:441
+#: settings/xfdesktop-background-settings.c:463
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -207,71 +207,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nType: %s\nStorleik: %s"
 
-#: settings/xfdesktop-background-settings.c:525
-#: settings/xfdesktop-background-settings.c:607
+#: settings/xfdesktop-background-settings.c:547
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr ""
 
-#: settings/xfdesktop-background-settings.c:708
+#: settings/xfdesktop-background-settings.c:730
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Bakgrunnsbilete for skjerm %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:712
+#: settings/xfdesktop-background-settings.c:734
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Bakgrunnsbilete for skjerm %d"
 
-#: settings/xfdesktop-background-settings.c:718
+#: settings/xfdesktop-background-settings.c:740
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Flytt denne dialogen til den skjermen du vil endra innstillingane for."
 
-#: settings/xfdesktop-background-settings.c:723
+#: settings/xfdesktop-background-settings.c:745
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bakgrunnsbilete for %s på skjerm %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:728
+#: settings/xfdesktop-background-settings.c:750
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bakgrunnsbilete for %s på skjerm %d"
 
-#: settings/xfdesktop-background-settings.c:736
+#: settings/xfdesktop-background-settings.c:758
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Flytt denne dialogen til den skjermen og det arbeidsområdet du vil endra innstillingane for."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:767
 msgid "Wallpaper for my desktop"
 msgstr "Bakgrunnsbilete for skrivebordet mitt"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:751
+#: settings/xfdesktop-background-settings.c:773
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Bakgrunnsbilete for %s"
 
-#: settings/xfdesktop-background-settings.c:756
+#: settings/xfdesktop-background-settings.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Flytt denne dialogen til det arbeidsområdet du vil endra innstillingane for."
 
-#: settings/xfdesktop-background-settings.c:1070
+#: settings/xfdesktop-background-settings.c:1092
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Kan ikkje velja bilete når biletstilen er «Ingen»."
 
-#: settings/xfdesktop-background-settings.c:1511
-msgid "Spanning screens"
-msgstr "På tvers av skjermar"
-
-#: settings/xfdesktop-background-settings.c:1900
+#: settings/xfdesktop-background-settings.c:2000
 msgid "Image files"
 msgstr "Biletfiler"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1908
+#: settings/xfdesktop-background-settings.c:2008
 msgid "Select a Directory"
 msgstr "Vel ei mappe"
 
@@ -386,136 +382,140 @@ msgstr "Loddrett fargeovergang"
 msgid "Transparent"
 msgstr "Gjennomsiktig"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:134
-#: src/xfdesktop-monitor-chooser-ui.glade:33
-msgid "Apply"
-msgstr ""
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
-msgid "St_yle:"
-msgstr "St_il"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:164
-msgid "Specify how the image will be resized to fit the screen."
-msgstr "Vel korleis biletet skal skalerast for å passa skjermen."
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:166
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:41
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "Ingen"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:167
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:45
 msgid "Centered"
 msgstr "Midtstilt"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:49
 msgid "Tiled"
 msgstr "Flislagt"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:169
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:53
 msgid "Stretched"
 msgstr "Strekt"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:170
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:57
 msgid "Scaled"
 msgstr "Skalert"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:171
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:61
 msgid "Zoomed"
 msgstr "Zooma"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:65
 msgid "Spanning Screens"
 msgstr "På tvers av skjermar"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: src/xfdesktop-monitor-chooser-ui.glade:33
+msgid "Apply"
+msgstr ""
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:187
+msgid "St_yle:"
+msgstr "St_il"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:202
+msgid "Specify how the image will be resized to fit the screen."
+msgstr "Vel korleis biletet skal skalerast for å passa skjermen."
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:223
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Vel stilen på fargen som kjem bak bakgrunnsbiletet."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:207
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Den reine fargen, eller «venstre» eller «øvste» fargen i ein overgang."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:208
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:246
 msgid "Select First Color"
 msgstr "Vel fyrste farga"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:259
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "«Høgre» eller «nedste» farge i ein overgang."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:260
 msgid "Select Second Color"
 msgstr "Vel andre farga"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:231
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:269
 msgid "Apply to all _workspaces"
 msgstr "Bruk på alle arbeids_område"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:249
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:287
 msgid "_Folder:"
 msgstr "_Mappe:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:301
 msgid "C_olor:"
 msgstr "_Farge:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:332
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:370
 msgid "Change the _background "
 msgstr "Endra _bakgrunnen"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:337
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:375
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Vel automatisk eit anna bakgrunnsbilete frå denne mappa."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:353
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:391
 msgid "Specify how often the background will change."
 msgstr "Vel kor ofte bakgrunnsbiletet skal endrast."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:355
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
 msgid "in seconds:"
 msgstr "sekund:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid "in minutes:"
 msgstr "minutt:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:395
 msgid "in hours:"
 msgstr "timar:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:396
 msgid "at start up"
 msgstr "ved oppstart"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:397
 msgid "every hour"
 msgstr "kvar time"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:398
 msgid "every day"
 msgstr "kvar dag"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:399
 msgid "chronologically"
 msgstr "kronologisk"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:376
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:414
 msgid "Amount of time before a different background is selected."
 msgstr "Kor mykje tid før me byttar bakgrunnsbilete."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:387
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:425
 msgid "_Random Order"
 msgstr "_Tilfeldig følgje"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:431
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "Vel eit tilfeldig anna bilete frå same mappa når bakgrunnsbiletet skal endrast."
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:450
+msgid "_Pause video if window overlaps desktop"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -790,6 +790,14 @@ msgstr "Progr_am"
 #: src/windowlist.c:79
 msgid "Window List"
 msgstr "Vindaugsliste"
+
+#: src/xfce-desktop.c:1269
+msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
+msgstr ""
+
+#: src/xfce-desktop.c:1333
+msgid "Unable to create gstreamer video player"
+msgstr ""
 
 #: src/xfdesktop-application.c:274
 msgid "Display version information"
@@ -1238,12 +1246,12 @@ msgid "Always auto-assign"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:148
+#: src/xfdesktop-notify.c:147
 msgid "Unmounting device"
 msgstr "Avmonterer eininga"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:151
+#: src/xfdesktop-notify.c:150
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1251,43 +1259,43 @@ msgid ""
 msgstr "Eininga «%s» blir avmontert. Ikkje fjern ho eller kopla frå stasjonen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:158 src/xfdesktop-notify.c:237
+#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
 msgid "Writing data to device"
 msgstr "Skriv data til eininga"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:161 src/xfdesktop-notify.c:240
+#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "Det er data som må skrivast til «%s» før du kan fjerna henne. Ikkje fjern lagringseininga eller kopla frå stasjonen"
 
-#: src/xfdesktop-notify.c:207
+#: src/xfdesktop-notify.c:206
 msgid "Unmount Finished"
 msgstr "Ferdig å avmontera"
 
-#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:351
+#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Eininga «%s» er trygt fjerna frå systemet."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:230
+#: src/xfdesktop-notify.c:229
 msgid "Ejecting device"
 msgstr "Løyser ut eininga"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:233
+#: src/xfdesktop-notify.c:232
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Eininga «%s» blir kopla frå. Dette kan ta litt tid"
 
-#: src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:349
 msgid "Eject Finished"
 msgstr "Ferdig å løysa ut"
 
-#: src/xfdesktop-regular-file-icon.c:723
+#: src/xfdesktop-regular-file-icon.c:724
 #, c-format
 msgid ""
 "Name: %s\n"
