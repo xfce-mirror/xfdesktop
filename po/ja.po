@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2016-2019,2021,2023-2024
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2025
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2026
 # Yuko Iwamatsu <nigauri@gmail.com>, 2008
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:10+0200\n"
+"POT-Creation-Date: 2026-01-04 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2025\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2026\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -186,7 +186,7 @@ msgstr "終了"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:560
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -198,11 +198,11 @@ msgstr "デスクトップの背景およびメニューとアイコンの振る
 msgid "desktop;background;wallpaper;settings;xfce;"
 msgstr "デスクトップ;背景;壁紙;設定;xfce;"
 
-#: settings/xfdesktop-background-settings.c:223
+#: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
 msgstr "壁紙が保存されているフォルダーを選択します"
 
-#: settings/xfdesktop-background-settings.c:441
+#: settings/xfdesktop-background-settings.c:463
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -210,71 +210,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nタイプ: %s\nサイズ: %s"
 
-#: settings/xfdesktop-background-settings.c:525
-#: settings/xfdesktop-background-settings.c:607
+#: settings/xfdesktop-background-settings.c:547
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "フォルダ「%s」から画像を読み込めません"
 
-#: settings/xfdesktop-background-settings.c:708
+#: settings/xfdesktop-background-settings.c:730
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "モニター %d (%s) の壁紙"
 
-#: settings/xfdesktop-background-settings.c:712
+#: settings/xfdesktop-background-settings.c:734
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "モニター %d の壁紙"
 
-#: settings/xfdesktop-background-settings.c:718
+#: settings/xfdesktop-background-settings.c:740
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "設定したいディスプレイにこのダイアログを移動してください。"
 
-#: settings/xfdesktop-background-settings.c:723
+#: settings/xfdesktop-background-settings.c:745
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "モニター %2$d (%3$s) %1$s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:728
+#: settings/xfdesktop-background-settings.c:750
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "モニター %2$d %1$s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:736
+#: settings/xfdesktop-background-settings.c:758
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "設定したいディスプレイおよびワークスペースにこのダイアログを移動してください。"
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:767
 msgid "Wallpaper for my desktop"
 msgstr "デスクトップの壁紙"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:751
+#: settings/xfdesktop-background-settings.c:773
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:756
+#: settings/xfdesktop-background-settings.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "設定したいワークスペースにこのダイアログを移動してください。"
 
-#: settings/xfdesktop-background-settings.c:1070
+#: settings/xfdesktop-background-settings.c:1092
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "画像のスタイルが「なし」の時、壁紙は無効になります。"
 
-#: settings/xfdesktop-background-settings.c:1511
-msgid "Spanning screens"
-msgstr "複数画面にまたがって表示する"
-
-#: settings/xfdesktop-background-settings.c:1900
+#: settings/xfdesktop-background-settings.c:2000
 msgid "Image files"
 msgstr "画像ファイル"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1908
+#: settings/xfdesktop-background-settings.c:2008
 msgid "Select a Directory"
 msgstr "ディレクトリを選択してください"
 
@@ -389,136 +385,140 @@ msgstr "垂直グラデーション"
 msgid "Transparent"
 msgstr "透明"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:134
-#: src/xfdesktop-monitor-chooser-ui.glade:33
-msgid "Apply"
-msgstr "適用"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
-msgid "St_yle:"
-msgstr "スタイル(_Y):"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:164
-msgid "Specify how the image will be resized to fit the screen."
-msgstr "画像を画面に合わせるスタイルを指定します"
-
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:166
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:41
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "無し"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:167
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:45
 msgid "Centered"
 msgstr "中央揃え"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:49
 msgid "Tiled"
 msgstr "タイル揃え"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:169
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:53
 msgid "Stretched"
 msgstr "縦横比を維持せず全画面化"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:170
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:57
 msgid "Scaled"
 msgstr "長辺を画面に合わせる"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:171
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:61
 msgid "Zoomed"
 msgstr "短辺を画面に合わせる"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:65
 msgid "Spanning Screens"
 msgstr "複数画面にわたって表示する"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:172
+#: src/xfdesktop-monitor-chooser-ui.glade:33
+msgid "Apply"
+msgstr "適用"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:187
+msgid "St_yle:"
+msgstr "スタイル(_Y):"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:202
+msgid "Specify how the image will be resized to fit the screen."
+msgstr "画像を画面に合わせるスタイルを指定します"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:223
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:207
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:208
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:246
 msgid "Select First Color"
 msgstr "第一色の選択"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:259
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:260
 msgid "Select Second Color"
 msgstr "第二色の選択"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:231
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:269
 msgid "Apply to all _workspaces"
 msgstr "全ワークスペースに適用する(_W)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:249
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:287
 msgid "_Folder:"
 msgstr "フォルダー(_F):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:301
 msgid "C_olor:"
 msgstr "配色(_O):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:332
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:370
 msgid "Change the _background "
 msgstr "背景を自動的に切り替える(_B)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:337
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:375
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "現在のフォルダー内の壁紙を自動的に選択します。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:353
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:391
 msgid "Specify how often the background will change."
 msgstr "壁紙をどのくらいの頻度で切り替えるかを指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:355
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
 msgid "in seconds:"
 msgstr "秒単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid "in minutes:"
 msgstr "分単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:395
 msgid "in hours:"
 msgstr "時間単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:396
 msgid "at start up"
 msgstr "起動時"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:397
 msgid "every hour"
 msgstr "1 時間毎"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:398
 msgid "every day"
 msgstr "1 日毎"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:399
 msgid "chronologically"
 msgstr "古い順に"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:376
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:414
 msgid "Amount of time before a different background is selected."
 msgstr "壁紙を切り替える間隔を指定します。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:387
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:425
 msgid "_Random Order"
 msgstr "ランダム表示(_R)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:393
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:431
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "壁紙の切り替え時にフォルダー内の画像からランダムに選択します。"
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:450
+msgid "_Pause video if window overlaps desktop"
+msgstr "ウィンドウがデスクトップに重なる場合はビデオを一時停止(_P)"
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -793,6 +793,14 @@ msgstr "アプリケーション(_A)"
 #: src/windowlist.c:79
 msgid "Window List"
 msgstr "ウィンドウリスト"
+
+#: src/xfce-desktop.c:1269
+msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
+msgstr "ビデオ再生に必要な gstreamer の「gtk」プラグインが見つかりません"
+
+#: src/xfce-desktop.c:1333
+msgid "Unable to create gstreamer video player"
+msgstr "gstreamer ビデオプレーヤーを作成できません"
 
 #: src/xfdesktop-application.c:274
 msgid "Display version information"
@@ -1241,12 +1249,12 @@ msgid "Always auto-assign"
 msgstr "常に自動割り当て"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:148
+#: src/xfdesktop-notify.c:147
 msgid "Unmounting device"
 msgstr "デバイスのマウントを解除しています"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:151
+#: src/xfdesktop-notify.c:150
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1254,43 +1262,43 @@ msgid ""
 msgstr "システムはデバイス \"%s\" のマウントを解除しています。メディアを取り出したりデバイスを切り離したりしないでください。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:158 src/xfdesktop-notify.c:237
+#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
 msgid "Writing data to device"
 msgstr "デバイスへデータ書き込んでいます"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:161 src/xfdesktop-notify.c:240
+#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "デバイス \"%s\" を取り外す前に書き込まなければならないデータが存在します。メディアを取り出したりドライブを切り離したりしないでください。"
 
-#: src/xfdesktop-notify.c:207
+#: src/xfdesktop-notify.c:206
 msgid "Unmount Finished"
 msgstr "マウント解除が完了しました"
 
-#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:351
+#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "デバイス \"%s\" はシステムから正常に切り離されました。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:230
+#: src/xfdesktop-notify.c:229
 msgid "Ejecting device"
 msgstr "デバイスを取り出しています"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:233
+#: src/xfdesktop-notify.c:232
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "デバイス \"%s\" を取り出しています。少々お待ちください。"
 
-#: src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:349
 msgid "Eject Finished"
 msgstr "取り出しが完了しました"
 
-#: src/xfdesktop-regular-file-icon.c:723
+#: src/xfdesktop-regular-file-icon.c:724
 #, c-format
 msgid ""
 "Name: %s\n"
