@@ -765,6 +765,8 @@ msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
+"Ayagi ad iɛawed asmizzwer n iferdisen n tnarit, ad ten-yerr ɣef wadigen "
+"yemgaraden n ugdil. Tetḥeqqeḍ?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1020
 msgid "_OK"
@@ -997,7 +999,7 @@ msgstr "Tuccḍa deg tqecwalt"
 
 #: ../src/xfdesktop-file-utils.c:1084
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Ifuyla yettwafernen ulamek ara ttwasnekzen ɣer tqecwalt"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1133
 msgid ""
@@ -1027,37 +1029,37 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:1331
 msgid "File Properties Error"
-msgstr ""
+msgstr "Tuccḍa deg iraten n ufaylu"
 
 #: ../src/xfdesktop-file-utils.c:1332
 msgid "The file properties dialog could not be opened"
-msgstr ""
+msgstr "Iraten n tenkult udiwenni n ufaylu ulamek ara ldin"
 
 #: ../src/xfdesktop-file-utils.c:1393
 msgid "The file could not be opened"
-msgstr ""
+msgstr "Afaylu ur izmir ara ad yeldi"
 
 #: ../src/xfdesktop-file-utils.c:1414 ../src/xfdesktop-file-utils.c:1521
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr ""
+msgstr "Aselkem n \"%s\" ur yeddi ara"
 
 #: ../src/xfdesktop-file-utils.c:1589
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "Amefran n usnas ulamek ara yettwaldi"
 
 #: ../src/xfdesktop-file-utils.c:1660 ../src/xfdesktop-file-utils.c:1729
 msgid "Transfer Error"
-msgstr ""
+msgstr "Tuccḍa n usiweḍ"
 
 #: ../src/xfdesktop-file-utils.c:1661 ../src/xfdesktop-file-utils.c:1730
 msgid "The file transfer could not be performed"
-msgstr ""
+msgstr "Asiweḍ n ufaylu ulamek ara yettwag"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr ""
+msgstr "Tukksa n userkeb n yibenk"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:130
@@ -1070,7 +1072,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr ""
+msgstr "Tira n isefka ɣer yibenk"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
@@ -1079,30 +1081,32 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
+"Lan isefka ilaq ad ttwarun i yibenk \"%s\" send ad yettwakkes. Ttxil-k·m, ur"
+" tekkes ara amidya neɣ ad tessensreḍ ameɣri"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Tukksa n userkeb ifukk"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "Ibenk \"%s\" yettwakkes s tɣellist seg unagraw."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr ""
+msgstr "Aḍeqqer n yibenk"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Ibenk \"%s\" atan deg uḍeqqer. Ayagi yezmer ad yeṭṭef kra n wakud"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Aḍeqqer ifukk"
 
 #: ../src/xfdesktop-regular-file-icon.c:795
 #, c-format
@@ -1111,7 +1115,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
+msgstr "Isem: %sAnaw: %sTiddi: %sAsnifel aneggaru: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1119,12 +1123,12 @@ msgstr "Taqecwalt d tilemt"
 
 #: ../src/xfdesktop-special-file-icon.c:442
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Taqecwalt tegber yiwen n uferdis"
 
 #: ../src/xfdesktop-special-file-icon.c:443
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Taqecwalt tesɛa %d n yiferdisen"
 
 #: ../src/xfdesktop-special-file-icon.c:472
 #, c-format
@@ -1132,7 +1136,7 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
+msgstr "%sTiddi: %sAsnifel aneggaru: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:544
 msgid "_Empty Trash"
@@ -1140,7 +1144,7 @@ msgstr "_Taqecwalt d tilemt"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(ur yettwaserkeb ara)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1154,29 +1158,29 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "Isem: %sAnaw: %sYettuserkeb deg: %sTiddi: %sTallunt tilellit: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "Ableɣ izirazen"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr ""
+msgstr "Aḍeqqer n \"%s\" ur yeddi ara"
 
 #: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
-msgstr ""
+msgstr "Aḍeqqer ur yeddi ara"
 
 #: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr ""
+msgstr "Yecceḍ userkeb n \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
-msgstr ""
+msgstr "Yecceḍ userkeb"
 
 #: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
@@ -1184,7 +1188,7 @@ msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
-msgstr ""
+msgstr "_Senser ableɣ"
 
 #: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
@@ -1192,7 +1196,7 @@ msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
-msgstr ""
+msgstr "_Sekkeṛ ableɣ"
 
 #: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
@@ -1200,11 +1204,11 @@ msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_Kkes aserkeb n ubleɣ"
 
 #: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
-msgstr ""
+msgstr "_Serkeb ableɣ"
 
 #: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
