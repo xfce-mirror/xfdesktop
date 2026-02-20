@@ -254,8 +254,8 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
                 special_file_icon->tooltip = g_strdup(_("Trash is empty"));
             } else {
                 special_file_icon->tooltip = g_strdup_printf(g_dngettext(GETTEXT_PACKAGE,
-                                                                         _("Trash contains one item"),
-                                                                         _("Trash contains %d items"),
+                                                                         "Trash contains one item",
+                                                                         "Trash contains %d items",
                                                                          special_file_icon->trash_item_count),
                                                              special_file_icon->trash_item_count);
             }
