@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>, 2015\n"
 "Language-Team: Romanian (http://app.transifex.com/xfce/xfdesktop/language/ro/)\n"
@@ -1312,13 +1312,12 @@ msgid "Trash is empty"
 msgstr "Coșul este gol"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Coșul conține un element"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Coșul conține %d elemente"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] "Coșul de gunoi conține un element"
+msgstr[1] "Coșul de gunoi conține %d elemente"
+msgstr[2] "Coșul de gunoi conține %d de elemente"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
