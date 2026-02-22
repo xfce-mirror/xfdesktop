@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Seok Chae <seok.chae@gmail.com>, 2026\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfdesktop/language/ko/)\n"
@@ -1317,13 +1317,10 @@ msgid "Trash is empty"
 msgstr "휴지통이 비었습니다"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "휴지통에 항목 1개가 있습니다"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "휴지통에 항목 %d개가 있습니다"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] ""
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
