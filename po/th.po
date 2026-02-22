@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025-2026\n"
 "Language-Team: Thai (http://app.transifex.com/xfce/xfdesktop/language/th/)\n"
@@ -1314,13 +1314,10 @@ msgid "Trash is empty"
 msgstr "ถังขยะว่างเปล่า"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "ถังขยะมีสิ่งของหนึ่งรายการ"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "ถังขยะมีสิ่งของ %d รายการ"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] ""
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
