@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Marek Adamski, 2021-2026\n"
 "Language-Team: Polish (http://app.transifex.com/xfce/xfdesktop/language/pl/)\n"
@@ -1323,13 +1323,13 @@ msgid "Trash is empty"
 msgstr "Pusty"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Zawiera jeden element"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Zawiera %d elementów"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] "Kosz zawiera jeden element"
+msgstr[1] "Kosz zawiera %d elementy"
+msgstr[2] "Kosz zawiera %d elementów"
+msgstr[3] "Kosz zawiera %d elementów"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
