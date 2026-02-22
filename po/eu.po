@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Eder Etxebarria Rojo, 2024\n"
 "Language-Team: Basque (http://app.transifex.com/xfce/xfdesktop/language/eu/)\n"
@@ -1314,13 +1314,11 @@ msgid "Trash is empty"
 msgstr "Zaborrontzia hutsik dago"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Zaborrontziak elementu bat du"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Zaborrontziak %d elementu ditu"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
