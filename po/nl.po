@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2026\n"
 "Language-Team: Dutch (http://app.transifex.com/xfce/xfdesktop/language/nl/)\n"
@@ -1311,13 +1311,11 @@ msgid "Trash is empty"
 msgstr "Prullenbak is leeg"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Prullenbak bevat één bestand"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Prullenbak bevat %d bestanden"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] "Prullenbak bevat één ding"
+msgstr[1] "Prullenbak bevat %d dingen"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
