@@ -615,8 +615,6 @@ xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer
                                                                    res,
                                                                    &error);
     if (enumerator == NULL) {
-        g_object_unref(new_folder);
-
         if (background_settings->selected_folder != NULL) {
             create_file_chooser_button(background_settings);
             gtk_file_chooser_set_current_folder_file(GTK_FILE_CHOOSER(background_settings->btn_folder),
@@ -627,7 +625,9 @@ xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer
         xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
                                error,
                                _("Unable to load images from folder \"%s\""),
-                               g_file_peek_path(background_settings->selected_folder));
+                               g_file_peek_path(new_folder));
+
+        g_object_unref(new_folder);
         g_error_free(error);
     } else {
         if (background_settings->selected_folder != NULL) {
