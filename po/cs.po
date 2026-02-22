@@ -9,15 +9,15 @@
 # Libor Schejbal <libor.schejbal@gmail.com>, 2013
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003
 # b537cbea55af75c3f49fe8b21c4cf8ea_f0ce149, 2023
-# Michal Várady <miko.vaji@gmail.com>, 2014-2021,2024-2025
+# Michal Várady <miko.vaji@gmail.com>, 2014-2021,2024-2026
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-02-21 13:01+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2021,2024-2025\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2021,2024-2026\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfdesktop/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -522,7 +522,7 @@ msgstr "Náhodně vybere jiný snímek z daného adresáře."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:450
 msgid "_Pause video if window overlaps desktop"
-msgstr ""
+msgstr "_Pozastavit video, pokud okno překrývá pracovní plochu"
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -800,11 +800,11 @@ msgstr "Seznam oken"
 
 #: src/xfce-desktop.c:1269
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
-msgstr ""
+msgstr "Zásuvný modul \"gtk\" pro gstreamer požadovaný pro přehrávání videa nebyl nalezen"
 
 #: src/xfce-desktop.c:1333
 msgid "Unable to create gstreamer video player"
-msgstr ""
+msgstr "Nelze vytvořit přehrávač videa typu gstreamer"
 
 #: src/xfdesktop-application.c:274
 msgid "Display version information"
@@ -1316,13 +1316,13 @@ msgid "Trash is empty"
 msgstr "Koš je prázdný"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Koš obsahuje jednu položku"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Koš obsahuje %d položek"
+msgid "Trash contains one item"
+msgid_plural "Trash contains %d items"
+msgstr[0] "Koš obsahuje jednu položku"
+msgstr[1] "Koš obsahuje %d položky"
+msgstr[2] "Koš obsahuje %d položek"
+msgstr[3] "Koš obsahuje %d položek"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
