@@ -355,7 +355,7 @@ xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon)
         priv->gicon = klass->get_gicon(icon);
     }
 
-    return priv->gicon != NULL ? g_object_ref(priv->gicon) : NULL;
+    return priv->gicon;
 }
 
 gdouble
