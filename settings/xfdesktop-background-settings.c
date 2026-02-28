@@ -523,6 +523,9 @@ dir_data_free(AddDirData *dir_data) {
     if (dir_data->file_enumerator != NULL) {
         g_object_unref(dir_data->file_enumerator);
     }
+    if (dir_data->selected_iter != NULL) {
+        gtk_tree_iter_free(dir_data->selected_iter);
+    }
     g_free(dir_data);
 
     if (background_settings->cancel_enumeration) {
