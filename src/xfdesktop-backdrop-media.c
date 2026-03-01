@@ -65,6 +65,8 @@ xfdesktop_backdrop_media_finalize(GObject *gobject) {
             break;
 #endif
     }
+
+    G_OBJECT_CLASS(xfdesktop_backdrop_media_parent_class)->finalize(gobject);
 }
 
 static void
