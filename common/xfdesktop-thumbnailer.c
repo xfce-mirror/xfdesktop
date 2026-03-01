@@ -581,17 +581,26 @@ xfdesktop_thumbnailer_delete_thumbnail(XfdesktopThumbnailer *thumbnailer, gchar 
     file = g_file_new_for_path(src_file);
 
     if(cache) {
+        GVariant *ret;
+        gchar *uri;
+
         g_variant_builder_init(&builder, G_VARIANT_TYPE ("as"));
-        g_variant_builder_add(&builder, "s", g_file_get_uri(file));
-        g_dbus_proxy_call_sync(cache,
-                               "Delete",
-                               g_variant_new("(as)", &builder),
-                               G_DBUS_CALL_FLAGS_NONE,
-                               -1,
-                               NULL,
-                               &error);
+        uri = g_file_get_uri(file);
+        g_variant_builder_add(&builder, "s", uri);
+        g_free(uri);
+
+        ret = g_dbus_proxy_call_sync(cache,
+                                     "Delete",
+                                     g_variant_new("(as)", &builder),
+                                     G_DBUS_CALL_FLAGS_NONE,
+                                     -1,
+                                     NULL,
+                                     &error);
         if(error != NULL) {
             g_warning("DBUS-call failed:%s", error->message);
+        }
+        if(ret != NULL) {
+            g_variant_unref(ret);
         }
     }
 
