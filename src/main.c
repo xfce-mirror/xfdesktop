@@ -42,12 +42,6 @@ main(int argc, char **argv)
     XfdesktopApplication *app;
     int ret = 0;
 
-#ifdef G_ENABLE_DEBUG
-    /* do NOT remove this line. If something doesn't work,
-     * fix your code instead! */
-    g_log_set_always_fatal(G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
-#endif
-
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
