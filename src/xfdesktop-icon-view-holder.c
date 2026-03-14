@@ -253,3 +253,14 @@ xfdesktop_icon_view_holder_get_icon_view(XfdesktopIconViewHolder *holder) {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_HOLDER(holder), NULL);
     return holder->icon_view;
 }
+
+GtkWidget *
+xfdesktop_icon_view_holder_get_menu_parent(XfdesktopIconViewHolder *holder) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_HOLDER(holder), NULL);
+
+    if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND) {
+        return holder->container;
+    } else {
+        return NULL;
+    }
+}

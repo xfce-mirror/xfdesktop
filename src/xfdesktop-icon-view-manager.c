@@ -454,7 +454,8 @@ GtkMenu *
 xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                              XfceDesktop *desktop,
                                              gint popup_x,
-                                             gint popup_y)
+                                             gint popup_y,
+                                             GtkWidget **menu_parent)
 {
     XfdesktopIconViewManagerClass *klass;
 
@@ -462,7 +463,7 @@ xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->get_context_menu != NULL) {
-        return klass->get_context_menu(manager, desktop, popup_x, popup_y);
+        return klass->get_context_menu(manager, desktop, popup_x, popup_y, menu_parent);
     } else {
         return NULL;
     }

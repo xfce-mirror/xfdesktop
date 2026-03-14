@@ -1314,6 +1314,7 @@ do_menu_popup(XfdesktopApplication *app,
 {
     GdkScreen *screen;
     GtkMenu *menu = NULL;
+    GtkWidget *menu_parent = NULL;
 
     DBG("entering");
 
@@ -1330,7 +1331,7 @@ do_menu_popup(XfdesktopApplication *app,
 
 #ifdef ENABLE_DESKTOP_ICONS
     if (populate_from_icon_view && app->icon_view_manager != NULL) {
-        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, desktop, x, y);
+        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, desktop, x, y, &menu_parent);
     }
 #endif
 
@@ -1338,7 +1339,7 @@ do_menu_popup(XfdesktopApplication *app,
 
     if (menu != NULL) {
         gtk_menu_set_screen(menu, screen);
-        gtk_menu_attach_to_widget(menu, GTK_WIDGET(desktop), NULL);
+        gtk_menu_attach_to_widget(menu, menu_parent != NULL ? menu_parent : GTK_WIDGET(desktop), NULL);
         /* if the toplevel is the garcon menu, it loads items asynchronously; calling _show() forces
          * loading to complete.  otherwise, the _get_children() call would return NULL */
         gtk_widget_show(GTK_WIDGET(menu));

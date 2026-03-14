@@ -38,6 +38,7 @@ XfdesktopIconViewHolder *xfdesktop_icon_view_holder_new(XfwScreen *screen,
 
 XfceDesktop *xfdesktop_icon_view_holder_get_desktop(XfdesktopIconViewHolder *holder);
 XfdesktopIconView *xfdesktop_icon_view_holder_get_icon_view(XfdesktopIconViewHolder *holder);
+GtkWidget *xfdesktop_icon_view_holder_get_menu_parent(XfdesktopIconViewHolder *holder);
 
 G_END_DECLS
 
