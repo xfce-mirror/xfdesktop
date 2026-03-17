@@ -1020,8 +1020,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 
     icon_view->draw_focus = TRUE;
 
-    icon_view->icon_renderer = gtk_cell_renderer_pixbuf_new();
-    icon_view->text_renderer = xfdesktop_cell_renderer_icon_label_new();
+    icon_view->icon_renderer = g_object_ref_sink(gtk_cell_renderer_pixbuf_new());
+    icon_view->text_renderer = g_object_ref_sink(xfdesktop_cell_renderer_icon_label_new());
 
     PangoAttrList *attr_list = NULL;
 #if PANGO_VERSION_CHECK (1, 44, 0)
