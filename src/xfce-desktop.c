@@ -1504,7 +1504,6 @@ xfce_desktop_put_to_layer(XfceDesktop *desktop, XfceDesktopLayer n, GtkWidget *c
         } else {
             gtk_container_remove(GTK_CONTAINER(desktop->overlay), desktop->overlay_child[n]);
         }
-        gtk_widget_hide(desktop->overlay_child[n]);
         desktop->overlay_child[n] = NULL;
     }
 
