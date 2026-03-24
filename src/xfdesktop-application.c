@@ -183,6 +183,8 @@ struct _XfdesktopApplication
 
     GList *desktops;  // XfceDesktop
     GHashTable *monitors;  // XfwMonitor -> XfceDesktop
+    GHashTable *changed_monitors;  // XfceDesktop -> XfwMonitor
+    guint changed_monitors_idle_id;
 
     XfdesktopLocalArgs *args;
 
@@ -302,6 +304,7 @@ xfdesktop_application_init(XfdesktopApplication *app)
     app->args = args;
     app->icon_style = -1;
     app->monitors = g_hash_table_new(g_direct_hash, g_direct_equal);
+    app->changed_monitors = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, g_object_unref);
 
     g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
 
@@ -376,6 +379,11 @@ xfdesktop_application_finalize(GObject *object)
 
     g_signal_handlers_disconnect_by_data(gtk_accel_map_get(), app);
     xfdesktop_keyboard_shortcuts_shutdown();
+
+    if (app->changed_monitors_idle_id != 0) {
+        g_source_remove(app->changed_monitors_idle_id);
+    }
+    g_hash_table_destroy(app->changed_monitors);
 
     g_free(app->args);
     g_hash_table_destroy(app->monitors);
@@ -975,10 +983,46 @@ handle_monitors_changed(XfdesktopApplication *app) {
     g_list_free_full(mirror_sets, (GDestroyNotify)g_list_free);
 }
 
+static gboolean
+monitor_changed_idled(gpointer data) {
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
+
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, app->changed_monitors);
+
+    XfceDesktop *desktop = NULL;
+    XfwMonitor *monitor = NULL;
+    while (g_hash_table_iter_next(&iter, (gpointer)&desktop, (gpointer)&monitor)) {
+        xfdesktop_backdrop_manager_monitor_changed(app->backdrop_manager, monitor);
+        xfce_desktop_monitor_changed(desktop, monitor);
+    }
+
+    g_hash_table_remove_all(app->changed_monitors);
+    app->changed_monitors_idle_id = 0;
+
+    return FALSE;
+}
+
 static void
 monitor_changed(XfwMonitor *monitor, GParamSpec *pspec, XfdesktopApplication *app) {
     TRACE("entering, %s", xfw_monitor_get_description(monitor));
-    handle_monitors_changed(app);
+
+    // Since we may get several property notify events for different properties
+    // in quick succession, register an idle handler so we don't keep reloading
+    // the backdrop over and over.
+
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
+        XfwMonitor *a_monitor = xfce_desktop_get_monitor(desktop);
+        if (a_monitor == monitor) {
+            g_hash_table_insert(app->changed_monitors, g_object_ref(desktop), g_object_ref(monitor));
+            break;
+        }
+    }
+
+    if (app->changed_monitors_idle_id == 0) {
+        app->changed_monitors_idle_id = g_idle_add(monitor_changed_idled, app);
+    }
 }
 
 static void
@@ -986,6 +1030,10 @@ screen_monitor_added(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplicatio
     TRACE("entering, %s", xfw_monitor_get_description(monitor));
 
     g_signal_connect(monitor, "notify::logical-geometry",
+                     G_CALLBACK(monitor_changed), app);
+    g_signal_connect(monitor, "notify::physical-geometry",
+                     G_CALLBACK(monitor_changed), app);
+    g_signal_connect(monitor, "notify::scale",
                      G_CALLBACK(monitor_changed), app);
     g_signal_connect(monitor, "notify::is-primary",
                      G_CALLBACK(monitor_changed), app);

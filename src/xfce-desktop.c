@@ -411,12 +411,6 @@ screen_composited_changed_cb(GdkScreen *gscreen, XfceDesktop *desktop) {
 }
 
 static void
-monitor_prop_changed(XfwMonitor *monitor, GParamSpec *pspec, XfceDesktop *desktop) {
-    xfce_desktop_place_on_monitor(desktop);
-    fetch_backdrop(desktop, TRUE);
-}
-
-static void
 workspace_changed_cb(XfwWorkspaceGroup *group, XfwWorkspace *previously_active_space, XfceDesktop *desktop) {
     TRACE("entering");
     update_backdrop_workspace(desktop);
@@ -740,7 +734,7 @@ xfce_desktop_set_property(GObject *object,
             break;
 
         case PROP_MONITOR:
-            xfce_desktop_update_monitor(desktop, g_value_get_object(value));
+            xfce_desktop_monitor_changed(desktop, g_value_get_object(value));
             break;
 
         case PROP_CHANNEL:
@@ -1381,31 +1375,25 @@ xfce_desktop_get_monitor(XfceDesktop *desktop) {
 }
 
 void
-xfce_desktop_update_monitor(XfceDesktop *desktop, XfwMonitor *monitor) {
+xfce_desktop_monitor_changed(XfceDesktop *desktop, XfwMonitor *monitor) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     g_return_if_fail(XFW_IS_MONITOR(monitor));
 
-    if (desktop->monitor != monitor) {
-        if (desktop->monitor != NULL) {
-            g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
-            g_object_unref(desktop->monitor);
-        }
+    gboolean new_monitor = desktop->monitor != monitor;
 
+    if (new_monitor) {
+        g_clear_object(&desktop->monitor);
         desktop->monitor = g_object_ref(monitor);
-
-        g_signal_connect(monitor, "notify::logical-geometry",
-                         G_CALLBACK(monitor_prop_changed), desktop);
-        g_signal_connect(monitor, "notify::scale",
-                         G_CALLBACK(monitor_prop_changed), desktop);
-
-        if (gtk_widget_get_realized(GTK_WIDGET(desktop))) {
-            xfce_desktop_place_on_monitor(desktop);
-            fetch_backdrop(desktop, TRUE);
-        }
-
-        g_object_notify(G_OBJECT(desktop), "monitor");
     }
 
+    if (gtk_widget_get_realized(GTK_WIDGET(desktop))) {
+        xfce_desktop_place_on_monitor(desktop);
+        fetch_backdrop(desktop, TRUE);
+    }
+
+    if (new_monitor) {
+        g_object_notify(G_OBJECT(desktop), "monitor");
+    }
 }
 
 static void
