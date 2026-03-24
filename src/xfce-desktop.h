@@ -50,8 +50,8 @@ GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
                             XfdesktopBackdropManager *backdrop_manager);
 
 XfwMonitor *xfce_desktop_get_monitor(XfceDesktop *desktop);
-void xfce_desktop_update_monitor(XfceDesktop *desktop,
-                                 XfwMonitor *monitor);
+void xfce_desktop_monitor_changed(XfceDesktop *desktop,
+                                  XfwMonitor *monitor);
 
 void xfce_desktop_set_is_active(XfceDesktop *desktop,
                                 gboolean active);
