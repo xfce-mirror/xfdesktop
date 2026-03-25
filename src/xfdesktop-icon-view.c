@@ -516,9 +516,9 @@ static void xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_vie
 
 static void xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view);
 
-static void xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
-                                                     ViewItem *item,
-                                                     gboolean emit_signal);
+static gboolean xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
+                                                         ViewItem *item,
+                                                         gboolean emit_signal);
 static void xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_view,
                                                        ViewItem *item,
                                                        gboolean emit_signal);
@@ -3842,12 +3842,12 @@ xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view, ViewItem 
     }
 }
 
-static void
+static gboolean
 xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
                                          ViewItem *item,
                                          gboolean emit_signal)
 {
-    if (!item->selected) {
+    if (!item->selected && item->placed) {
         if (icon_view->sel_mode == GTK_SELECTION_SINGLE) {
             xfdesktop_icon_view_unselect_all(icon_view);
         }
@@ -3860,6 +3860,10 @@ xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
         if (emit_signal) {
             g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
         }
+
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }
 
@@ -4766,10 +4770,7 @@ xfdesktop_icon_view_select_all(XfdesktopIconView *icon_view)
     if (icon_view->sel_mode == GTK_SELECTION_MULTIPLE) {
         for (GList *l = icon_view->items; l != NULL; l = l->next) {
             ViewItem *item = l->data;
-            if (!item->selected) {
-                xfdesktop_icon_view_select_item_internal(icon_view, item, FALSE);
-                selected_something = TRUE;
-            }
+            selected_something |= xfdesktop_icon_view_select_item_internal(icon_view, item, FALSE);
         }
 
         if (selected_something) {
