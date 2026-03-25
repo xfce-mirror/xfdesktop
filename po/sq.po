@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2020-2026\n"
 "Language-Team: Albanian (http://app.transifex.com/xfce/xfdesktop/language/sq/)\n"
@@ -44,7 +44,7 @@ msgstr "Ikonë _Aktivizimi"
 
 #: common/xfdesktop-keyboard-shortcuts.c:89
 msgid "_Toggle Cursor Icon"
-msgstr ""
+msgstr "_Shfaq/Fshih Ikonë Kursori"
 
 #: common/xfdesktop-keyboard-shortcuts.c:91
 msgid "Select _All"
@@ -211,67 +211,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nLloj: %s\nMadhësi: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "S’arrihet të ngarkohen figura nga dosja “%s”"
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Sfond desktopi për Monitorin %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Sfond desktopi për Monitorin %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Shpjereni këtë dialog te ekrani të cilit doni t’i përpunoni rregullimet."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Sfond desktopi për %s te Monitori %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Sfond desktopi për %s te Monitori %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Shpjereni këtë dialog te ekrani dhe hapësira e punës të cilëve doni t’u përpunoni rregullimet."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Sfond desktopi për desktopin tim"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Sfond desktopi për %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Shpjereni këtë dialog te hapësira e punës të cilës doni t’i përpunoni rregullimet."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "S’bëhet dot përzgjedhje figurash kur stili i figurës është caktuar si Asnjë."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Kartela figurë"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Përzgjidhni Drejtori"
 
@@ -1314,9 +1314,9 @@ msgstr "Hedhurinat janë të zbrazëta"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] "Hedhurinat përmbajnë një objekt"
+msgstr[0] "Hedhurinat përmbajnë %d objekt"
 msgstr[1] "Hedhurinat përmbajnë %d objekte"
 
 #: src/xfdesktop-special-file-icon.c:286
