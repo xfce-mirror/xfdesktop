@@ -77,7 +77,6 @@ image_data_complete(ImageData *image_data, cairo_surface_t *surface) {
 static void
 image_data_error(ImageData *image_data, GError *error) {
     GError *cb_error;
-    XfdesktopBackdropMedia *bmedia;
     
     if (error == NULL) {
         cb_error = g_error_new_literal(G_IO_ERROR, G_IO_ERROR_UNKNOWN, "Unknown error");
@@ -85,20 +84,25 @@ image_data_error(ImageData *image_data, GError *error) {
         cb_error = error;
     }
 
-    cairo_surface_t *surface = NULL;
+    XfdesktopBackdropMedia *bmedia;
+    gint width;
+    gint height;
     if (!g_error_matches(cb_error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
         // If there was an error loading the image file, at least return the
         // canvas, which has the solid/gradient color the user has chosen.
-        surface = gdk_cairo_surface_create_from_pixbuf(image_data->canvas, 1, NULL);
+        cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(image_data->canvas, 1, NULL);
+        width = cairo_image_surface_get_width(surface);
+        height = cairo_image_surface_get_height(surface);
+
+        bmedia = xfdesktop_backdrop_media_new_from_image(surface);
+        cairo_surface_destroy(surface);
+    } else {
+        bmedia = NULL;
+        width = -1;
+        height = -1;
     }
 
-    bmedia = xfdesktop_backdrop_media_new_from_image(surface);
-    cairo_surface_destroy(surface);
-    image_data->callback(bmedia,
-                         surface != NULL ? cairo_image_surface_get_width(surface) : -1,
-                         surface != NULL ? cairo_image_surface_get_height(surface) : -1,
-                         cb_error,
-                         image_data->callback_user_data);
+    image_data->callback(bmedia, width, height, cb_error, image_data->callback_user_data);
 
     if (error == NULL) {
         g_error_free(cb_error);
