@@ -2153,6 +2153,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
                 ViewItem *item = l->data;
 
                 if (!item->selected
+                    && item->placed
                     && cairo_region_contains_rectangle(item->icon_slot_region, new_rect) != CAIRO_REGION_OVERLAP_OUT)
                 {
                     /* since _select_item() prepends to the list, we
