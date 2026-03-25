@@ -148,6 +148,7 @@ enum
 
 
 static void xfce_desktop_constructed(GObject *object);
+static void xfce_desktop_dispose(GObject *object);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_set_property(GObject *object,
                                       guint property_id,
@@ -527,6 +528,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
 
     gobject_class->constructed = xfce_desktop_constructed;
+    gobject_class->dispose = xfce_desktop_dispose;
     gobject_class->finalize = xfce_desktop_finalize;
     gobject_class->set_property = xfce_desktop_set_property;
     gobject_class->get_property = xfce_desktop_get_property;
@@ -679,9 +681,21 @@ xfce_desktop_constructed(GObject *obj)
 }
 
 static void
-xfce_desktop_finalize(GObject *object)
-{
+xfce_desktop_dispose(GObject *object) {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
+
+#ifdef ENABLE_DESKTOP_ICONS
+    if (desktop->style_refresh_timer != 0) {
+        g_source_remove(desktop->style_refresh_timer);
+        desktop->style_refresh_timer = 0;
+    }
+#endif
+
+#ifdef ENABLE_VIDEO_BACKDROP
+    g_signal_handlers_disconnect_by_data(desktop->xfw_screen, desktop);
+#endif
+
+    g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
 
     g_signal_handlers_disconnect_by_data(desktop->backdrop_manager, desktop);
     g_signal_handlers_disconnect_by_data(desktop->workspace_manager, desktop);
@@ -694,8 +708,16 @@ xfce_desktop_finalize(GObject *object)
 
     if (desktop->backdrop_load_cancellable != NULL) {
         g_cancellable_cancel(desktop->backdrop_load_cancellable);
-        g_object_unref(desktop->backdrop_load_cancellable);
+        g_clear_object(&desktop->backdrop_load_cancellable);
     }
+
+    G_OBJECT_CLASS(xfce_desktop_parent_class)->dispose(object);
+}
+
+static void
+xfce_desktop_finalize(GObject *object)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(object);
 
     g_list_free(desktop->workspaces);
     g_object_unref(desktop->xfw_screen);
@@ -705,17 +727,7 @@ xfce_desktop_finalize(GObject *object)
     }
     g_free(desktop->property_prefix);
 
-#ifdef ENABLE_DESKTOP_ICONS
-    if(desktop->style_refresh_timer != 0)
-        g_source_remove(desktop->style_refresh_timer);
-#endif
-
-    g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
     g_object_unref(desktop->monitor);
-
-#ifdef ENABLE_VIDEO_BACKDROP
-    g_signal_handlers_disconnect_by_data(desktop->xfw_screen, desktop);
-#endif
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
