@@ -1806,45 +1806,47 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
 
     for (GList *l = icon_view->items; l != NULL && !found_match; l = l->next) {
         ViewItem *item = l->data;
-        GtkTreeIter iter;
-        gchar *label = NULL;
 
-        if (view_item_get_iter(item, icon_view->model, &iter)) {
-            gtk_tree_model_get(icon_view->model, &iter,
-                               icon_view->search_column, &label,
-                               -1);
-        }
-
-        if (label != NULL && g_utf8_validate(label, -1, NULL)) {
-            gchar *p = label;
-            gboolean matches = TRUE;
-
-            for (guint i = 0; i < icon_view->keyboard_navigation_state->len; ++i) {
-                gunichar label_char;
-
-                if (*p == '\0') {
-                    matches = FALSE;
-                    break;
-                }
-
-                label_char = g_unichar_tolower(g_utf8_get_char(p));
-                if (label_char != g_array_index(icon_view->keyboard_navigation_state, gunichar, i)) {
-                    matches = FALSE;
-                    break;
-                }
-
-                p = g_utf8_find_next_char(p, NULL);
+        if (item->placed) {
+            GtkTreeIter iter;
+            gchar *label = NULL;
+            if (view_item_get_iter(item, icon_view->model, &iter)) {
+                gtk_tree_model_get(icon_view->model, &iter,
+                                   icon_view->search_column, &label,
+                                   -1);
             }
 
-            if (matches) {
-                xfdesktop_icon_view_unselect_all(icon_view);
-                xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
-                xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
-                found_match = TRUE;
-            }
-        }
+            if (label != NULL && g_utf8_validate(label, -1, NULL)) {
+                gchar *p = label;
+                gboolean matches = TRUE;
 
-        g_free(label);
+                for (guint i = 0; i < icon_view->keyboard_navigation_state->len; ++i) {
+                    gunichar label_char;
+
+                    if (*p == '\0') {
+                        matches = FALSE;
+                        break;
+                    }
+
+                    label_char = g_unichar_tolower(g_utf8_get_char(p));
+                    if (label_char != g_array_index(icon_view->keyboard_navigation_state, gunichar, i)) {
+                        matches = FALSE;
+                        break;
+                    }
+
+                    p = g_utf8_find_next_char(p, NULL);
+                }
+
+                if (matches) {
+                    xfdesktop_icon_view_unselect_all(icon_view);
+                    xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
+                    xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
+                    found_match = TRUE;
+                }
+            }
+
+            g_free(label);
+        }
     }
 
     return found_match;
