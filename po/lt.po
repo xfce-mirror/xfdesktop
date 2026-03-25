@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-04 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Moo, 2023-2026\n"
 "Language-Team: Lithuanian (http://app.transifex.com/xfce/xfdesktop/language/lt/)\n"
@@ -211,67 +211,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipas: %s\nDydis: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Nepavyko įkelti paveikslų iš aplanko „%s“"
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Darbalaukio fonas monitoriui %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Darbalaukio fonas monitoriui %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Perkelkite šį dialogo langą į ekraną, kurio nustatymus norite keisti."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Darbalaukio fonas, kurį naudos %s, monitoriuje %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Darbalaukio fonas, kurį naudos %s, monitoriuje %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Perkelkite šį dialogo langą į ekraną ir darbo sritį, kurios nustatymus norite keisti."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Mano darbalaukio fonas"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Darbalaukio fonas, kurį naudos %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Perkelkite šį dialogo langą į darbo sritį, kurios nustatymus norite keisti."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Paveikslo pasirinkimas nėra prieinamas tol, kol paveikslo stilius yra nustatytas į Nėra."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Paveikslų failai"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Pasirinkti katalogą"
 
@@ -1313,13 +1313,13 @@ msgid "Trash is empty"
 msgstr "Šiukšlinė tuščia"
 
 #: src/xfdesktop-special-file-icon.c:257
-msgid "Trash contains one item"
-msgstr "Šiukšlinėje yra vienas elementas"
-
-#: src/xfdesktop-special-file-icon.c:258
 #, c-format
-msgid "Trash contains %d items"
-msgstr "Šiukšlinėje yra %d elementų(-ai)"
+msgid "Trash contains %d item"
+msgid_plural "Trash contains %d items"
+msgstr[0] "Šiukšlinėje yra %d elementas"
+msgstr[1] "Šiukšlinėje yra %d elementai"
+msgstr[2] "Šiukšlinėje yra %d elementų"
+msgstr[3] "Šiukšlinėje yra %d elementas"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
