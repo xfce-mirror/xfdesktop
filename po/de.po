@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2018-2026\n"
 "Language-Team: German (http://app.transifex.com/xfce/xfdesktop/language/de/)\n"
@@ -218,67 +218,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTyp: %s\nGröße: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Es können keine Bilder aus dem Ordner \"%s\" geladen werden"
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Hintergrundbild für den Bildschirm %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Hintergrundbild für den Bildschirm %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Diesen Dialog auf den Bildschirm verschieben, für den Sie die Einstellungen bearbeiten wollen."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Hintergrundbild für %s auf Bildschirm %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Hintergrundbild für %s auf Bildschirm %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Diesen Dialog auf den Bildschirm und die Arbeitsfläche verschieben, für die Sie die Einstellungen bearbeiten wollen."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Hintergrundbild für meinen Schreibtisch"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Hintergrundbild für %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Diesen Dialog auf die Arbeitsfläche verschieben, für die Sie die Einstellungen bearbeiten wollen."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Bildauswahl ist nicht verfügbar, während Stil auf »Kein Bild« eingestellt ist."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Bilddateien"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Verzeichnis auswählen"
 
@@ -1321,10 +1321,10 @@ msgstr "Der Papierkorb ist leer."
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] "Der Papierkorb enthält eine Datei."
-msgstr[1] "Der Papierkorb enthält %d Dateien."
+msgstr[0] "Der Papierkorb enthält %d Element"
+msgstr[1] "Der Papierkorb enthält %d Elemente"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
