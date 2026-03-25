@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Саша Петровић <salepetronije@gmail.com>, 2012-2013
-# Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019,2024-2025
+# Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019,2024-2026
 # Саша Петровић <salepetronije@gmail.com>, 2014-2015
 # Саша Петровић <salepetronije@gmail.com>, 2017-2018
 # Саша Петровић <salepetronije@gmail.com>, 2018-2019
@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019,2024-2025\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019,2024-2026\n"
 "Language-Team: Serbian (http://app.transifex.com/xfce/xfdesktop/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -212,67 +212,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nВрста: %s\nВеличина: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Нисам успео да учитам слике из омота „%s“"
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Позадинска слика за приказ %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Позадинска слика за приказ %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Преместите ово прозорче на радни простор којем желите да уредите поставке."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Позадинска слика %s за приказ %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Позадинска слика за %s на приказу %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Преместите ово прозорче на приказ и радну површ којој желите да уредите поставке."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Позадинска слика за моју радну површ"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Позадинска слика за %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Преместите ово прозорче на радну површ којој желите да уредите поставке."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Одабир слика није доступан ако је начин приказа подешен на „Ништа“."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Датотеке слика"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Означите омот"
 
@@ -1315,11 +1315,11 @@ msgstr "Нема смећа"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Корпа смећа садржи %d ставку"
+msgstr[1] "Корпа смећа садржи %d ставке"
+msgstr[2] "Корпа смећа садржи %d ставки"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
