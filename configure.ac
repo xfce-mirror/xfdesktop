@@ -23,7 +23,7 @@ m4_define([libyaml_minimum_version], [0.2.5])
 m4_define([copyright_year], [2026])
 
 dnl version info
-XDT_VERSION_INIT([4.20.2])
+XDT_VERSION_INIT([4.20.2], [git])
 m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
