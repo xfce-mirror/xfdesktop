@@ -1,3 +1,31 @@
+4.20.2 (2026-03-27)
+======
+- I18n: Update po/LINGUAS list
+- Fix criticals in g_file_info_get_name with trashed files
+- I18n: Update po/LINGUAS list
+- Fix a use-after-free crash in the icon unplace/removal code
+- Fix column boundary check in xfdesktop_icon_view_unplace_item
+- Mark shortcut editor group names as translatable
+- Ensure src icon & parent are writable and can be moved more thoroughly
+- autotools: ensure xfdesktop-settings links with libxfce4util
+- Don't limit number of templates shown in the 'Create Document' menu
+- Add gradient benchmarking test binary to .gitignore
+- Add test-gradient-benchmarking to autotools build
+- Set up for new machinery to automatically update copyright year
+- I18n: Update po/LINGUAS list
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Kabyle, Kazakh, Korean, Lithuanian,
+  Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500),
+  Persian (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian,
+  Russian, Serbian, Slovenian, Spanish, Swedish, Tatar, Thai, Turkish,
+  Ukrainian, Uyghur, Venetian, Vietnamese
+
 4.20.1 (2025-02-17)
 ======
 - Fix another gcc-analyzer warning
