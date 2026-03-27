@@ -27,6 +27,7 @@
 #include <libnotify/notify.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <string.h>
 
 #include "xfdesktop-notify.h"
 
@@ -109,70 +110,70 @@ show_notification(const gchar *summary, const gchar *message, GIcon *icon, Notif
     }
 }
 
+static void
+file_info_loaded_for_unmount(GObject *source, GAsyncResult *result, gpointer data) {
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, NULL);
+
+    gboolean read_only;
+    if (info != NULL) {
+        read_only = !g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+        g_object_unref (info);
+    } else {
+        read_only = FALSE;
+    }
+
+    GMount *mount = G_MOUNT(data);
+    gchar *name = g_mount_get_name(mount);
+    GIcon *icon = g_mount_get_icon(mount);
+
+    const gchar *summary;
+    gchar *message;
+    if (read_only) {
+        /* TRANSLATORS: Please use the same translation here as in Thunar */
+        summary = _("Unmounting device");
+
+        /* TRANSLATORS: Please use the same translation here as in Thunar */
+        message = g_strdup_printf(_("The device \"%s\" is being unmounted by the system. "
+                                            "Please do not remove the media or disconnect the drive"), name);
+    } else {
+        /* TRANSLATORS: Please use the same translation here as in Thunar */
+        summary = _("Writing data to device");
+
+        /* TRANSLATORS: Please use the same translation here as in Thunar */
+        message = g_strdup_printf(_("There is data that needs to be written to the "
+                                            "device \"%s\" before it can be removed. Please "
+                                            "do not remove the media or disconnect the drive"),
+                                  name);
+    }
+
+    NotifyNotification *notification = show_notification(summary, message, icon, NOTIFY_URGENCY_CRITICAL, NOTIFY_EXPIRES_NEVER);
+    if (notification != NULL) {
+        g_object_set_data_full(G_OBJECT(mount), "xfdesktop-notification", notification, g_object_unref);
+    }
+
+    g_free(message);
+    g_free(name);
+    if (icon != NULL) {
+        g_object_unref(icon);
+    }
+
+    g_object_unref(source);
+    g_object_unref(mount);
+}
+
 void
-xfdesktop_notify_unmount (GMount *mount)
-{
-  NotifyNotification  *notification = NULL;
-  const gchar         *summary;
-  GFileInfo           *info;
-  gboolean             read_only = FALSE;
-  GFile               *mount_point;
-  GIcon               *icon;
-  gchar               *message;
-  gchar               *name;
+xfdesktop_notify_unmount(GMount *mount) {
+    g_return_if_fail(G_IS_MOUNT(mount));
 
-  g_return_if_fail (G_IS_MOUNT (mount));
+    GFile *mount_point = g_mount_get_root(mount);
 
-  mount_point = g_mount_get_root (mount);
-
-  info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-                            G_FILE_QUERY_INFO_NONE, NULL, NULL);
-
-  if (info != NULL)
-    {
-      read_only = !g_file_info_get_attribute_boolean (info,
-                                                      G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-
-      g_object_unref (info);
-    }
-
-  g_object_unref (mount_point);
-
-  name = g_mount_get_name (mount);
-  icon = g_mount_get_icon (mount);
-
-  if (read_only)
-    {
-      /* TRANSLATORS: Please use the same translation here as in Thunar */
-      summary = _("Unmounting device");
-
-      /* TRANSLATORS: Please use the same translation here as in Thunar */
-      message = g_strdup_printf (_("The device \"%s\" is being unmounted by the system. "
-                                   "Please do not remove the media or disconnect the "
-                                   "drive"), name);
-    }
-  else
-    {
-      /* TRANSLATORS: Please use the same translation here as in Thunar */
-      summary = _("Writing data to device");
-
-      /* TRANSLATORS: Please use the same translation here as in Thunar */
-      message = g_strdup_printf (_("There is data that needs to be written to the "
-                                   "device \"%s\" before it can be removed. Please "
-                                   "do not remove the media or disconnect the drive"),
-                                   name);
-    }
-
-  notification = show_notification(summary, message, icon, NOTIFY_URGENCY_CRITICAL, NOTIFY_EXPIRES_NEVER);
-  if (notification != NULL) {
-      g_object_set_data_full(G_OBJECT(mount), "xfdesktop-notification", notification, g_object_unref);
-  }
-
-  g_free (message);
-  g_free (name);
-  if (icon != NULL) {
-      g_object_unref(icon);
-  }
+    g_file_query_info_async(mount_point,
+                            G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+                            G_FILE_QUERY_INFO_NONE,
+                            G_PRIORITY_DEFAULT,
+                            NULL,
+                            file_info_loaded_for_unmount,
+                            g_object_ref(mount));
 }
 
 
@@ -254,30 +255,19 @@ do_notify_eject(GObject *volume_or_mount, const gchar *name, GIcon *icon, gboole
     g_free(message);
 }
 
-void
-xfdesktop_notify_eject_mount(GMount *mount) {
-    g_return_if_fail(G_IS_MOUNT(mount));
+static void
+file_info_loaded_for_eject_mount(GObject *source, GAsyncResult *result, gpointer data) {
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, NULL);
 
-    GFile *mount_point = g_mount_get_root(mount);
     gboolean read_only;
-    if (mount_point != NULL) {
-        GFileInfo *info = g_file_query_info(mount_point,
-                                            G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-                                            G_FILE_QUERY_INFO_NONE,
-                                            NULL,
-                                            NULL);
-
-        if (info != NULL) {
-            read_only = !g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-            g_object_unref(info);
-        } else {
-            read_only = FALSE;
-        }
-        g_object_unref(mount_point);
+    if (info != NULL) {
+        read_only = !g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+        g_object_unref(info);
     } else {
-        read_only = TRUE;
+        read_only = FALSE;
     }
 
+    GMount *mount = G_MOUNT(data);
     gchar *name = g_mount_get_name(mount);
     GIcon *icon = g_mount_get_icon(mount);
 
@@ -287,47 +277,101 @@ xfdesktop_notify_eject_mount(GMount *mount) {
     if (icon != NULL) {
         g_object_unref(icon);
     }
+    g_object_unref(source);
+    g_object_unref(mount);
+}
+
+void
+xfdesktop_notify_eject_mount(GMount *mount) {
+    g_return_if_fail(G_IS_MOUNT(mount));
+
+    GFile *mount_point = g_mount_get_root(mount);
+    if (mount_point != NULL) {
+        g_file_query_info_async(mount_point,
+                                G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+                                G_FILE_QUERY_INFO_NONE,
+                                G_PRIORITY_DEFAULT,
+                                NULL,
+                                file_info_loaded_for_eject_mount,
+                                g_object_ref(mount));
+    } else {
+        gchar *name = g_mount_get_name(mount);
+        GIcon *icon = g_mount_get_icon(mount);
+
+        do_notify_eject(G_OBJECT(mount), name, icon, TRUE);
+
+        g_free(name);
+        if (icon != NULL) {
+            g_object_unref(icon);
+        }
+    }
+}
+
+static void
+file_info_loaded_for_eject_volume(GObject *source, GAsyncResult *result, gpointer data) {
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, NULL);
+
+    gboolean read_only;
+    if (info != NULL) {
+        read_only = !g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+        g_object_unref(info);
+    } else {
+        read_only = FALSE;
+    }
+
+    GVolume *volume = G_VOLUME(data);
+    gchar *name = g_volume_get_name(volume);
+    GIcon *icon = g_volume_get_icon(volume);
+
+    do_notify_eject(G_OBJECT(volume), name, icon, read_only);
+
+    g_free(name);
+    if (icon != NULL) {
+        g_object_unref(icon);
+    }
+    g_object_unref(source);
+    g_object_unref(volume);
 }
 
 void
 xfdesktop_notify_eject_volume(GVolume *volume) {
-  GFileInfo           *info;
-  gboolean             read_only = FALSE;
-  GMount              *mount;
-  GFile               *mount_point;
-  GIcon               *icon;
-  gchar               *name;
+    g_return_if_fail(G_IS_VOLUME(volume));
 
-  g_return_if_fail (G_IS_VOLUME (volume));
+    GMount *mount = g_volume_get_mount(volume);
+    if (mount != NULL) {
+        GFile *mount_point = g_mount_get_root(mount);
+        g_object_unref(mount);
 
-  mount = g_volume_get_mount (volume);
-  if (mount != NULL)
-    {
-      mount_point = g_mount_get_root (mount);
+        if (mount_point != NULL) {
+            g_file_query_info_async(mount_point,
+                                    G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+                                    G_FILE_QUERY_INFO_NONE,
+                                    G_PRIORITY_DEFAULT,
+                                    NULL,
+                                    file_info_loaded_for_eject_volume,
+                                    g_object_ref(volume));
+        } else {
+            gchar *name = g_volume_get_name(volume);
+            GIcon *icon = g_volume_get_icon(volume);
 
-      info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-                                G_FILE_QUERY_INFO_NONE, NULL, NULL);
+            do_notify_eject(G_OBJECT(volume), name, icon, FALSE);
 
-      if (info != NULL)
-        {
-          read_only =
-            !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-
-          g_object_unref (info);
+            g_free(name);
+            if (icon != NULL) {
+                g_object_unref(icon);
+            }
         }
+    } else {
+        gchar *name = g_volume_get_name(volume);
+        GIcon *icon = g_volume_get_icon(volume);
 
-      g_object_unref (mount_point);
+        do_notify_eject(G_OBJECT(volume), name, icon, FALSE);
+
+        g_free(name);
+        if (icon != NULL) {
+            g_object_unref(icon);
+        }
     }
-
-  name = g_volume_get_name (volume);
-  icon = g_volume_get_icon (volume);
-
-  do_notify_eject(G_OBJECT(volume), name, icon, read_only);
-
-  g_free(name);
-  if (icon != NULL) {
-      g_object_unref(icon);
-  }
 }
 
 static void
