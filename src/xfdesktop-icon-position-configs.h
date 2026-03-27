@@ -32,7 +32,7 @@ typedef enum {
     XFDESKTOP_ICON_POSITION_LEVEL_INVALID = -1,
     XFDESKTOP_ICON_POSITION_LEVEL_PRIMARY = 0,
     XFDESKTOP_ICON_POSITION_LEVEL_SECONDARY = 1,
-    XFDESKTOP_ICON_POSITION_LEVEL_OTHER = 1,
+    XFDESKTOP_ICON_POSITION_LEVEL_OTHER = 2,
 } XfdesktopIconPositionLevel;
 
 XfdesktopIconPositionConfigs *xfdesktop_icon_position_configs_new(GFile *file);
