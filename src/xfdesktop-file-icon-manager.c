@@ -106,6 +106,8 @@ struct _XfdesktopFileIconManager
     GHashTable *monitor_data;  // XfwMonitor (owner) -> MonitorData (owner)
     XfdesktopIconPositionConfigs *position_configs;
 
+    GList *monitor_config_datas;
+
     GdkScreen *gscreen;
 
     GFile *folder;
@@ -175,6 +177,7 @@ monitor_data_free(MonitorData *mdata) {
 typedef struct {
     XfdesktopFileIconManager *fmanager;
     XfceDesktop *desktop;
+    GtkWidget *dialog;
     GtkWidget *radio_select_monitor;
     GtkWidget *monitor_list_view;
     GtkListStore *monitor_list;
@@ -182,7 +185,8 @@ typedef struct {
 } MonitorConfigurationResponseData;
 
 static void
-monitor_configuration_response_data_free_closure(MonitorConfigurationResponseData *mcrdata, GClosure *closure) {
+monitor_configuration_response_data_free(MonitorConfigurationResponseData *mcrdata) {
+    mcrdata->fmanager->monitor_config_datas = g_list_remove(mcrdata->fmanager->monitor_config_datas, mcrdata);
     g_object_unref(mcrdata->desktop);
     g_object_unref(mcrdata->fmanager);
     g_free(mcrdata);
@@ -603,6 +607,11 @@ static void
 xfdesktop_file_icon_manager_dispose(GObject *obj)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
+
+    while (fmanager->monitor_config_datas != NULL) {
+        MonitorConfigurationResponseData *mcrdata = fmanager->monitor_config_datas->data;
+        gtk_widget_destroy(mcrdata->dialog);
+    }
 
     g_signal_handlers_disconnect_by_func(gtk_accel_map_get(), accel_map_changed, fmanager);
 
@@ -1479,6 +1488,11 @@ config_chooser_dialog_response(GtkWidget *dialog, GtkResponseType response, Moni
 }
 
 static void
+monitor_configuration_response_data_free_closure(MonitorConfigurationResponseData *mcrdata, GClosure *closure) {
+    monitor_configuration_response_data_free(mcrdata);
+}
+
+static void
 begin_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
@@ -1557,10 +1571,13 @@ begin_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop)
             MonitorConfigurationResponseData *mcrdata = g_new0(MonitorConfigurationResponseData, 1);
             mcrdata->fmanager = g_object_ref(fmanager);
             mcrdata->desktop = g_object_ref(desktop);
+            mcrdata->dialog = dialog;
             mcrdata->radio_select_monitor = radio_select_monitor;
             mcrdata->monitor_list_view = monitor_list_view;
             mcrdata->monitor_list = monitor_list;
             mcrdata->fallback = candidates->data;
+            fmanager->monitor_config_datas = g_list_append(fmanager->monitor_config_datas, mcrdata);
+
             g_signal_connect_data(dialog,
                                   "response",
                                   G_CALLBACK(config_chooser_dialog_response),
@@ -1612,6 +1629,14 @@ xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, X
         }
 
         g_hash_table_remove(fmanager->monitor_data, monitor);
+    } else {
+        for (GList *l = fmanager->monitor_config_datas; l != NULL; l = l->next) {
+            MonitorConfigurationResponseData *mcrdata = l->data;
+            if (mcrdata->desktop == desktop) {
+                gtk_widget_destroy(mcrdata->dialog);
+                break;
+            }
+        }
     }
 }
 
