@@ -1199,8 +1199,21 @@ xfdesktop_icon_position_configs_remove_icon(XfdesktopIconPositionConfigs *config
     g_return_if_fail(config != NULL);
     g_return_if_fail(icon_id != NULL);
 
-    g_hash_table_remove(config->icon_positions, icon_id);
-    schedule_save(configs);
+    if (g_hash_table_remove(config->icon_positions, icon_id)) {
+        schedule_save(configs);
+    }
+}
+
+void
+xfdesktop_icon_position_configs_remove_icon_from_all(XfdesktopIconPositionConfigs *configs,
+                                                     const gchar *icon_id)
+{
+    g_return_if_fail(configs != NULL);
+    g_return_if_fail(icon_id != NULL);
+
+    for (GList *l = configs->configs; l != NULL; l = l->next) {
+        xfdesktop_icon_position_configs_remove_icon(configs, l->data, icon_id);
+    }
 }
 
 void

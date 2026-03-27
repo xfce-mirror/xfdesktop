@@ -48,6 +48,8 @@ gboolean xfdesktop_icon_position_configs_lookup(XfdesktopIconPositionConfigs *co
 void xfdesktop_icon_position_configs_remove_icon(XfdesktopIconPositionConfigs *configs,
                                                  XfdesktopIconPositionConfig *config,
                                                  const gchar *icon_id);
+void xfdesktop_icon_position_configs_remove_icon_from_all(XfdesktopIconPositionConfigs *configs,
+                                                          const gchar *icon_id);
 
 void xfdesktop_icon_position_configs_set_icon_position(XfdesktopIconPositionConfigs *configs,
                                                        XfdesktopIconPositionConfig *config,

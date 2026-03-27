@@ -120,6 +120,7 @@ enum {
     SIG_READY,
     SIG_ERROR,
     SIG_ICON_POSITION_REQUEST,
+    SIG_ICON_REMOVED,
     N_SIGS,
 };
 
@@ -278,6 +279,17 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                       XFDESKTOP_TYPE_FILE_ICON,
                                                       G_TYPE_POINTER,
                                                       G_TYPE_POINTER);
+
+    signals[SIG_ICON_REMOVED] = g_signal_new("icon-removed",
+                                             XFDESKTOP_TYPE_FILE_ICON_MODEL,
+                                             G_SIGNAL_RUN_LAST,
+                                             0,
+                                             NULL,
+                                             NULL,
+                                             g_cclosure_marshal_VOID__OBJECT,
+                                             G_TYPE_NONE,
+                                             1,
+                                             XFDESKTOP_TYPE_FILE_ICON);
 }
 
 static void
@@ -635,9 +647,15 @@ remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
         g_hash_table_remove(fmodel->volume_icons, xfdesktop_volume_icon_peek_mount(volume_icon));
     }
 
+    g_object_ref(icon);
+
     XF_DEBUG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
     g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
+
+    g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, icon);
+
+    g_object_unref(icon);
 }
 
 static void

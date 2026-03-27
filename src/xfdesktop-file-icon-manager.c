@@ -304,6 +304,9 @@ static void model_ready(XfdesktopFileIconModel *fmodel,
 static void model_error(XfdesktopFileIconModel *fmodel,
                         GError *error,
                         XfdesktopFileIconManager *fmanager);
+static void model_icon_removed(XfdesktopFileIconModel *fmodel,
+                               XfdesktopFileIcon *icon,
+                               XfdesktopFileIconManager *fmanager);
 
 static gboolean update_icon_position(MonitorData *mdata,
                                      XfdesktopFileIcon *icon,
@@ -515,6 +518,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                      G_CALLBACK(model_error), fmanager);
     g_signal_connect_swapped(fmanager->model, "icon-position-request",
                              G_CALLBACK(xfdesktop_file_icon_manager_get_cached_icon_position), fmanager);
+    g_signal_connect(fmanager->model, "icon-removed",
+                     G_CALLBACK(model_icon_removed), fmanager);
 
     GList *desktops = xfdesktop_icon_view_manager_get_desktops(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     for (GList *l = desktops; l != NULL; l = l->next) {
@@ -3659,6 +3664,14 @@ model_error(XfdesktopFileIconModel *fmodel, GError *error, XfdesktopFileIconMana
                         NULL);
 
     g_free(primary);
+}
+
+static void
+model_icon_removed(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon, XfdesktopFileIconManager *fmanager) {
+    if (!XFDESKTOP_IS_VOLUME_ICON(icon)) {
+        const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
+        xfdesktop_icon_position_configs_remove_icon_from_all(fmanager->position_configs, identifier);
+    }
 }
 
 static void
