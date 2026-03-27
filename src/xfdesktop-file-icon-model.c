@@ -36,6 +36,35 @@
 
 #define PENDING_NEW_FILES_TIMEOUT  (60)
 
+typedef struct {
+    XfdesktopFileIconModel *fmodel;
+    GCancellable *cancellable;
+    gint row;
+    gint col;
+    gboolean defer_if_missing;
+} AddFileData;
+
+static void
+add_file_data_free(AddFileData *afdata) {
+    g_cancellable_cancel(afdata->cancellable);
+    g_object_unref(afdata->cancellable);
+    g_free(afdata);
+}
+
+typedef struct {
+    XfdesktopFileIconModel *fmodel;
+    XfdesktopFileIcon *icon;
+    GCancellable *cancellable;
+} ChangedFileData;
+
+static void
+changed_file_data_free(ChangedFileData *cfdata) {
+    g_cancellable_cancel(cfdata->cancellable);
+    g_object_unref(cfdata->cancellable);
+    g_object_unref(cfdata->icon);
+    g_free(cfdata);
+}
+
 struct _XfdesktopFileIconModel
 {
     XfdesktopIconViewModel parent;
@@ -64,6 +93,10 @@ struct _XfdesktopFileIconModel
     //   * Special file icons: xfdesktop_file_icon_sort_key_for_file()
     //   * Volume icons: xfdesktop_volume_icon_sort_key_for_volume()
     GHashTable *icons;
+
+    GHashTable *add_file_datas;
+    GHashTable *changed_file_datas;
+    GHashTable *updating_file_datas;
 
     gboolean show_thumbnails;
     gboolean sort_folders_before_files;
@@ -262,7 +295,9 @@ xfdesktop_file_icon_model_init(XfdesktopFileIconModel *fmodel) {
                                           g_free,
                                           g_object_unref);
     fmodel->volume_icons = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, NULL);
-
+    fmodel->add_file_datas = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, (GDestroyNotify)add_file_data_free);
+    fmodel->changed_file_datas = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, (GDestroyNotify)changed_file_data_free);
+    fmodel->updating_file_datas = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, (GDestroyNotify)changed_file_data_free);
 }
 
 static void
@@ -394,6 +429,10 @@ xfdesktop_file_icon_model_finalize(GObject *object) {
     g_object_unref(fmodel->volume_monitor);
 
     g_object_unref(fmodel->thumbnailer);
+
+    g_hash_table_destroy(fmodel->add_file_datas);
+    g_hash_table_destroy(fmodel->changed_file_datas);
+    g_hash_table_destroy(fmodel->updating_file_datas);
 
     g_hash_table_destroy(fmodel->volume_icons);
     g_hash_table_destroy(fmodel->icons);
@@ -779,6 +818,52 @@ add_regular_icon(XfdesktopFileIconModel *fmodel,
 }
 
 static void
+file_info_loaded_for_add(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, &error);
+
+    if (info == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            g_message("Failed to query file info for new file (%s) on desktop: %s", g_file_peek_path(G_FILE(source)), error->message);
+            AddFileData *afdata = data;
+            g_hash_table_remove(afdata->fmodel->add_file_datas, source);
+        }
+        g_error_free(error);
+    } else {
+        AddFileData *afdata = data;
+        add_regular_icon(afdata->fmodel, G_FILE(source), info, afdata->row, afdata->col, afdata->defer_if_missing);
+        g_object_unref(info);
+        g_hash_table_remove(afdata->fmodel->add_file_datas, source);
+    }
+}
+
+static void
+file_info_loaded_for_change(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, &error);
+
+    if (info == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            g_message("Failed to query file info for changed file (%s) on desktop: %s", g_file_peek_path(G_FILE(source)), error->message);
+            ChangedFileData *cfdata = data;
+            remove_icon(cfdata->fmodel, cfdata->icon);
+            g_hash_table_remove(cfdata->fmodel->changed_file_datas, source);
+        }
+        g_error_free(error);
+    } else {
+        ChangedFileData *cfdata = data;
+
+        xfdesktop_file_icon_update_file_info(cfdata->icon, info);
+        if (XFDESKTOP_IS_REGULAR_FILE_ICON(cfdata->icon)) {
+            queue_thumbnail(cfdata->fmodel, XFDESKTOP_REGULAR_FILE_ICON(cfdata->icon));
+        }
+
+        g_hash_table_remove(cfdata->fmodel->changed_file_datas, source);
+        g_object_unref(info);
+    }
+}
+
+static void
 file_monitor_changed(GFileMonitor *monitor,
                      GFile *file,
                      GFile *other_file,
@@ -832,16 +917,21 @@ file_monitor_changed(GFileMonitor *monitor,
                     XF_DEBUG("icon moved off the desktop");
                     /* Nothing moved, this is actually a delete */
                 } else {
-                    GFileInfo *file_info = g_file_query_info(other_file,
-                                                             XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                             G_FILE_QUERY_INFO_NONE,
-                                                             NULL,
-                                                             NULL);
+                    AddFileData *afdata = g_new0(AddFileData, 1);
+                    afdata->fmodel = fmodel;
+                    afdata->cancellable = g_cancellable_new();
+                    afdata->row = row;
+                    afdata->col = col;
+                    afdata->defer_if_missing = FALSE;
+                    g_hash_table_insert(fmodel->add_file_datas, g_object_ref(other_file), afdata);
 
-                    if (file_info != NULL) {
-                        add_regular_icon(fmodel, other_file, file_info, row, col, FALSE);
-                        g_object_unref(file_info);
-                    }
+                    g_file_query_info_async(other_file,
+                                            XFDESKTOP_FILE_INFO_NAMESPACE,
+                                            G_FILE_QUERY_INFO_NONE,
+                                            G_PRIORITY_DEFAULT,
+                                            afdata->cancellable,
+                                            file_info_loaded_for_add,
+                                            afdata);
                 }
             }
 
@@ -856,22 +946,19 @@ file_monitor_changed(GFileMonitor *monitor,
             XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->icons, ht_key);
             g_free(ht_key);
             if (icon != NULL) {
-                GFileInfo *file_info = g_file_query_info(file,
-                                                         XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                         G_FILE_QUERY_INFO_NONE,
-                                                         NULL,
-                                                         NULL);
+                ChangedFileData *cfdata = g_new0(ChangedFileData, 1);
+                cfdata->fmodel = fmodel;
+                cfdata->icon = g_object_ref(icon);
+                cfdata->cancellable = g_cancellable_new();
+                g_hash_table_insert(fmodel->changed_file_datas, g_object_ref(file), cfdata);
 
-                if (file_info != NULL) {
-                    /* update the icon if the file still exists */
-                    xfdesktop_file_icon_update_file_info(icon, file_info);
-                    queue_thumbnail(fmodel, XFDESKTOP_REGULAR_FILE_ICON(icon));
-
-                    g_object_unref(file_info);
-                } else {
-                    /* Remove the icon as it doesn't seem to exist */
-                    remove_icon(fmodel, icon);
-                }
+                g_file_query_info_async(file,
+                                        XFDESKTOP_FILE_INFO_NAMESPACE,
+                                        G_FILE_QUERY_INFO_NONE,
+                                        G_PRIORITY_DEFAULT,
+                                        cfdata->cancellable,
+                                        file_info_loaded_for_change,
+                                        cfdata);
             }
             break;
         }
@@ -890,15 +977,21 @@ file_monitor_changed(GFileMonitor *monitor,
                     remove_icon(fmodel, icon);
                 }
 
-                GFileInfo *file_info = g_file_query_info(file,
-                                                         XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                         G_FILE_QUERY_INFO_NONE,
-                                                         NULL,
-                                                         NULL);
-                if (file_info != NULL) {
-                    add_regular_icon(fmodel, file, file_info, -1, -1, TRUE);
-                    g_object_unref(file_info);
-                }
+                AddFileData *afdata = g_new0(AddFileData, 1);
+                afdata->fmodel = fmodel;
+                afdata->cancellable = g_cancellable_new();
+                afdata->row = -1;
+                afdata->col = -1;
+                afdata->defer_if_missing = TRUE;
+                g_hash_table_insert(fmodel->add_file_datas, g_object_ref(file), afdata);
+
+                g_file_query_info_async(file,
+                                        XFDESKTOP_FILE_INFO_NAMESPACE,
+                                        G_FILE_QUERY_INFO_NONE,
+                                        G_PRIORITY_DEFAULT,
+                                        afdata->cancellable,
+                                        file_info_loaded_for_add,
+                                        afdata);
             }
             break;
 
@@ -933,19 +1026,46 @@ file_monitor_changed(GFileMonitor *monitor,
 }
 
 static void
+update_file_info_done(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, &error);
+
+    if (info == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            g_message("Failed to update metadata for file %s: %s", g_file_peek_path(G_FILE(source)), error->message);
+            ChangedFileData *cfdata = data;
+            g_hash_table_remove(cfdata->fmodel->updating_file_datas, source);
+        }
+        g_error_free(error);
+    } else {
+        ChangedFileData *cfdata = data;
+        xfdesktop_file_icon_update_file_info(cfdata->icon, info);
+        g_object_unref(info);
+        g_hash_table_remove(cfdata->fmodel->updating_file_datas, source);
+    }
+}
+
+static void
 update_file_info(gpointer key, gpointer value, gpointer user_data) {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
 
     if (icon != NULL && (XFDESKTOP_IS_REGULAR_FILE_ICON(icon) || XFDESKTOP_IS_SPECIAL_FILE_ICON(icon))) {
+        XfdesktopFileIconModel *fmodel = XFDESKTOP_FILE_ICON_MODEL(user_data);
         GFile *file = xfdesktop_file_icon_peek_file(icon);
-        GFileInfo *file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
-                                      G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
-        if (file_info != NULL) {
-            /* update the icon if the file still exists */
-            xfdesktop_file_icon_update_file_info(icon, file_info);
-            g_object_unref(file_info);
-        }
+        ChangedFileData *cfdata = g_new0(ChangedFileData, 1);
+        cfdata->fmodel = fmodel;
+        cfdata->icon = g_object_ref(icon);
+        cfdata->cancellable = g_cancellable_new();
+        g_hash_table_insert(fmodel->updating_file_datas, g_object_ref(file), cfdata);
+
+        g_file_query_info_async(file,
+                                XFDESKTOP_FILE_INFO_NAMESPACE,
+                                G_FILE_QUERY_INFO_NONE,
+                                G_PRIORITY_DEFAULT_IDLE,
+                                cfdata->cancellable,
+                                update_file_info_done,
+                                cfdata);
     }
 }
 
