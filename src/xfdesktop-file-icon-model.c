@@ -982,6 +982,11 @@ metadata_monitor_changed(GFileMonitor *monitor,
 }
 
 static void
+enumerator_close_done(GObject *source, GAsyncResult *result, gpointer data) {
+    g_file_enumerator_close_finish(G_FILE_ENUMERATOR(source), result, NULL);
+}
+
+static void
 enumerator_files_ready(GFileEnumerator *enumerator, GAsyncResult *result, XfdesktopFileIconModel *fmodel) {
     DBG("entering");
 
@@ -992,6 +997,7 @@ enumerator_files_ready(GFileEnumerator *enumerator, GAsyncResult *result, Xfdesk
         DBG("cancelled");
         g_error_free(error);
     } else if (files == NULL) {
+        g_file_enumerator_close_async(enumerator, G_PRIORITY_DEFAULT_IDLE, NULL, enumerator_close_done, NULL);
         g_clear_object(&fmodel->enumerator);
 
         if (error != NULL) {
