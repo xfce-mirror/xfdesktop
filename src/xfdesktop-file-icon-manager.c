@@ -173,6 +173,22 @@ monitor_data_free(MonitorData *mdata) {
 }
 
 typedef struct {
+    XfdesktopFileIconManager *fmanager;
+    XfceDesktop *desktop;
+    GtkWidget *radio_select_monitor;
+    GtkWidget *monitor_list_view;
+    GtkListStore *monitor_list;
+    XfdesktopIconPositionConfig *fallback;
+} MonitorConfigurationResponseData;
+
+static void
+monitor_configuration_response_data_free_closure(MonitorConfigurationResponseData *mcrdata, GClosure *closure) {
+    g_object_unref(mcrdata->desktop);
+    g_object_unref(mcrdata->fmanager);
+    g_free(mcrdata);
+}
+
+typedef struct {
     GCancellable *cancellable;
 
     MonitorData *mdata;
@@ -1333,9 +1349,41 @@ xfdesktop_settings_launch(GtkWidget *w, MonitorData *mdata) {
 }
 
 static void
-create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
+update_icon_monitors(XfdesktopFileIconManager *fmanager) {
+    GtkTreeIter iter;
+    if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(fmanager->model), &iter)) {
+        do {
+            XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(fmanager->model, &iter);
+            if (icon != NULL) {
+                gboolean changed = FALSE;
+
+                const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
+                XfwMonitor *icon_monitor = NULL;
+                gint row, col;
+                if (xfdesktop_icon_position_configs_lookup(fmanager->position_configs, identifier, &icon_monitor, &row, &col)) {
+                    changed |= xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), icon_monitor);
+                    changed |= xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
+                } else {
+                    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+                    XfwMonitor *primary = xfw_screen_get_primary_monitor(screen);
+                    changed |= xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), primary);
+                }
+
+                if (changed) {
+                    GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(fmanager->model), &iter);
+                    gtk_tree_model_row_changed(GTK_TREE_MODEL(fmanager->model), path, &iter);
+                    gtk_tree_path_free(path);
+                }
+            }
+        } while (gtk_tree_model_iter_next(GTK_TREE_MODEL(fmanager->model), &iter));
+    }
+}
+
+static void
+finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop, XfdesktopIconPositionConfig *position_config) {
     MonitorData *mdata = g_new0(MonitorData, 1);
     mdata->fmanager = fmanager;
+    mdata->position_config = position_config;
 
     XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
@@ -1390,6 +1438,52 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view, accel_group);
 
     XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
+
+    mdata->filter = xfdesktop_file_icon_model_filter_new(channel, fmanager->position_configs, monitor, fmanager->model);
+    if (fmanager->ready) {
+        xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
+    }
+
+    g_hash_table_insert(fmanager->monitor_data, g_object_ref(monitor), mdata);
+
+    update_icon_monitors(fmanager);
+}
+
+static void
+config_chooser_dialog_response(GtkWidget *dialog, GtkResponseType response, MonitorConfigurationResponseData *mcrdata) {
+    XfdesktopIconPositionConfig *position_config = NULL;
+
+    if (response == GTK_RESPONSE_ACCEPT) {
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(mcrdata->radio_select_monitor))) {
+            GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(mcrdata->monitor_list_view));
+            GtkTreeIter iter;
+            if (gtk_tree_selection_get_selected(selection, NULL, &iter)) {
+                GtkTreeModel *monitor_list = gtk_tree_view_get_model(GTK_TREE_VIEW(mcrdata->monitor_list_view));
+                gtk_tree_model_get(monitor_list, &iter, 1, &position_config, -1);
+            }
+        }
+    }
+
+    if (position_config == NULL) {
+        // Either they selected auto-assign, didn't select anything, or
+        // canceled the dialog, so we auto-assign for them.
+        position_config = mcrdata->fallback;
+    }
+
+    XfwMonitor *monitor = xfce_desktop_get_monitor(mcrdata->desktop);
+    xfdesktop_icon_position_configs_assign_monitor(mcrdata->fmanager->position_configs, position_config, monitor);
+
+    finish_create_icon_view(mcrdata->fmanager, mcrdata->desktop, position_config);
+
+    gtk_widget_destroy(dialog);
+}
+
+static void
+begin_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
+    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+
+    XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
     XfdesktopIconPositionLevel level;
     if (xfw_monitor_is_primary(monitor)) {
         level = XFDESKTOP_ICON_POSITION_LEVEL_PRIMARY;
@@ -1403,125 +1497,86 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     }
 
     GList *candidates = NULL;
-    mdata->position_config = xfdesktop_icon_position_configs_add_monitor(fmanager->position_configs,
-                                                                         monitor,
-                                                                         level,
-                                                                         &candidates);
+    XfdesktopIconPositionConfig *position_config = xfdesktop_icon_position_configs_add_monitor(fmanager->position_configs,
+                                                                                               monitor,
+                                                                                               level,
+                                                                                               &candidates);
 
-    if (mdata->position_config == NULL && candidates == NULL) {
-        mdata->position_config = xfdesktop_icon_positions_try_migrate(channel, screen, monitor, level);
-        if (mdata->position_config == NULL) {
-            mdata->position_config = xfdesktop_icon_position_config_new(level);
-        }
-        xfdesktop_icon_position_configs_assign_monitor(fmanager->position_configs, mdata->position_config, monitor);
-    }
-
-    if (mdata->position_config == NULL) {
-        g_assert(candidates != NULL);
-
-        GtkBuilder *builder = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-monitor-chooser-ui.glade");
-        g_assert(builder != NULL);
-
-        GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_candidates_chooser"));
-        gtk_window_set_title(GTK_WINDOW(dialog), _("Choose Monitor Configuration"));
-
-        gchar *monitor_question_text = g_markup_printf_escaped( _("Would you like to assign an existing desktop icon layout to monitor <b>%s</b>?"),
-                                                               xfw_monitor_get_description(monitor));
-        GtkWidget *monitor_question_label = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_question_label"));
-        gtk_label_set_markup(GTK_LABEL(monitor_question_label), monitor_question_text);
-        g_free(monitor_question_text);
-
-        GtkWidget *monitor_list_view = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_list_view"));
-        GtkCellRenderer *name_renderer = gtk_cell_renderer_text_new();
-        GtkTreeViewColumn *col = gtk_tree_view_column_new_with_attributes(N_("Monitors"),
-                                                                          name_renderer,
-                                                                          "text", 0,
-                                                                          NULL);
-        gtk_tree_view_append_column(GTK_TREE_VIEW(monitor_list_view), col);
-
-        GtkListStore *monitor_list = GTK_LIST_STORE(gtk_builder_get_object(builder, "monitor_list"));
-        for (GList *lc = candidates; lc != NULL; lc = lc->next) {
-            XfdesktopIconPositionConfig *candidate = lc->data;
-
-            GList *names = xfdesktop_icon_position_config_get_monitor_display_names(candidate);
-            for (GList *ln = names; ln != NULL; ln = ln->next) {
-                const gchar *name = ln->data;
-                GtkTreeIter iter;
-                gtk_list_store_append(monitor_list, &iter);
-                gtk_list_store_set(monitor_list, &iter,
-                                   0, name,
-                                   1, candidate,
-                                   -1);
+    if (position_config == NULL) {
+        if (candidates == NULL) {
+            position_config = xfdesktop_icon_positions_try_migrate(channel, screen, monitor, level);
+            if (position_config == NULL) {
+                position_config = xfdesktop_icon_position_config_new(level);
             }
-            g_list_free(names);
-        }
+            xfdesktop_icon_position_configs_assign_monitor(fmanager->position_configs, position_config, monitor);
+            finish_create_icon_view(fmanager, desktop, position_config);
+        } else {
+            GtkBuilder *builder = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-monitor-chooser-ui.glade");
+            g_assert(builder != NULL);
 
-        GtkWidget *radio_auto_assign = GTK_WIDGET(gtk_builder_get_object(builder, "radio_auto_assign"));
-        GtkWidget *chk_always_auto_assign = GTK_WIDGET(gtk_builder_get_object(builder, "chk_always_auto_assign"));
-        g_object_bind_property(radio_auto_assign, "active", chk_always_auto_assign, "sensitive", G_BINDING_SYNC_CREATE);
-        GtkWidget *radio_select_monitor = GTK_WIDGET(gtk_builder_get_object(builder, "radio_select_monitor"));
+            GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_candidates_chooser"));
+            gtk_window_set_title(GTK_WINDOW(dialog), _("Choose Monitor Configuration"));
+            gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(desktop));
 
-        gtk_widget_show_all(dialog);
-        GtkResponseType response = gtk_dialog_run(GTK_DIALOG(dialog));
-        if (response == GTK_RESPONSE_ACCEPT) {
-            if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radio_select_monitor))) {
-                GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(monitor_list_view));
-                GtkTreeIter iter;
-                if (gtk_tree_selection_get_selected(selection, NULL, &iter)) {
-                    gtk_tree_model_get(GTK_TREE_MODEL(monitor_list), &iter, 1, &mdata->position_config, -1);
+            gchar *monitor_question_text = g_markup_printf_escaped( _("Would you like to assign an existing desktop icon layout to monitor <b>%s</b>?"),
+                                                                   xfw_monitor_get_description(monitor));
+            GtkWidget *monitor_question_label = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_question_label"));
+            gtk_label_set_markup(GTK_LABEL(monitor_question_label), monitor_question_text);
+            g_free(monitor_question_text);
+
+            GtkWidget *monitor_list_view = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_list_view"));
+            GtkCellRenderer *name_renderer = gtk_cell_renderer_text_new();
+            GtkTreeViewColumn *col = gtk_tree_view_column_new_with_attributes(N_("Monitors"),
+                                                                              name_renderer,
+                                                                              "text", 0,
+                                                                              NULL);
+            gtk_tree_view_append_column(GTK_TREE_VIEW(monitor_list_view), col);
+
+            GtkListStore *monitor_list = GTK_LIST_STORE(gtk_builder_get_object(builder, "monitor_list"));
+            for (GList *lc = candidates; lc != NULL; lc = lc->next) {
+                XfdesktopIconPositionConfig *candidate = lc->data;
+
+                GList *names = xfdesktop_icon_position_config_get_monitor_display_names(candidate);
+                for (GList *ln = names; ln != NULL; ln = ln->next) {
+                    const gchar *name = ln->data;
+                    GtkTreeIter iter;
+                    gtk_list_store_append(monitor_list, &iter);
+                    gtk_list_store_set(monitor_list, &iter,
+                                       0, name,
+                                       1, candidate,
+                                       -1);
                 }
+                g_list_free(names);
             }
+
+            GtkWidget *radio_auto_assign = GTK_WIDGET(gtk_builder_get_object(builder, "radio_auto_assign"));
+            GtkWidget *chk_always_auto_assign = GTK_WIDGET(gtk_builder_get_object(builder, "chk_always_auto_assign"));
+            g_object_bind_property(radio_auto_assign, "active", chk_always_auto_assign, "sensitive", G_BINDING_SYNC_CREATE);
+            GtkWidget *radio_select_monitor = GTK_WIDGET(gtk_builder_get_object(builder, "radio_select_monitor"));
+
+            MonitorConfigurationResponseData *mcrdata = g_new0(MonitorConfigurationResponseData, 1);
+            mcrdata->fmanager = g_object_ref(fmanager);
+            mcrdata->desktop = g_object_ref(desktop);
+            mcrdata->radio_select_monitor = radio_select_monitor;
+            mcrdata->monitor_list_view = monitor_list_view;
+            mcrdata->monitor_list = monitor_list;
+            mcrdata->fallback = candidates->data;
+            g_signal_connect_data(dialog,
+                                  "response",
+                                  G_CALLBACK(config_chooser_dialog_response),
+                                  mcrdata,
+                                  (GClosureNotify)monitor_configuration_response_data_free_closure,
+                                  0);
+
+            gtk_widget_show_all(dialog);
+
+            g_object_unref(builder);
         }
-
-        if (mdata->position_config == NULL) {
-            // Either they selected auto-assign, didn't select anything, or
-            // canceled the dialog, so we auto-assign for them.
-            mdata->position_config = candidates->data;
-        }
-
-        xfdesktop_icon_position_configs_assign_monitor(fmanager->position_configs, mdata->position_config, monitor);
-
-        g_list_free(candidates);
-        g_object_unref(builder);
+    } else {
+        finish_create_icon_view(fmanager, desktop, position_config);
     }
 
-    mdata->filter = xfdesktop_file_icon_model_filter_new(channel, fmanager->position_configs, monitor, fmanager->model);
-    if (fmanager->ready) {
-        xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
-    }
-
-    g_hash_table_insert(fmanager->monitor_data, g_object_ref(monitor), mdata);
-}
-
-static void
-update_icon_monitors(XfdesktopFileIconManager *fmanager) {
-    GtkTreeIter iter;
-    if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(fmanager->model), &iter)) {
-        do {
-            XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(fmanager->model, &iter);
-            if (icon != NULL) {
-                gboolean changed = FALSE;
-
-                const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
-                XfwMonitor *icon_monitor = NULL;
-                gint row, col;
-                if (xfdesktop_icon_position_configs_lookup(fmanager->position_configs, identifier, &icon_monitor, &row, &col)) {
-                    changed |= xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), icon_monitor);
-                    changed |= xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
-                } else {
-                    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-                    XfwMonitor *primary = xfw_screen_get_primary_monitor(screen);
-                    changed |= xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), primary);
-                }
-
-                if (changed) {
-                    GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(fmanager->model), &iter);
-                    gtk_tree_model_row_changed(GTK_TREE_MODEL(fmanager->model), path, &iter);
-                    gtk_tree_path_free(path);
-                }
-            }
-        } while (gtk_tree_model_iter_next(GTK_TREE_MODEL(fmanager->model), &iter));
-    }
+    g_list_free(candidates);
 }
 
 static void
@@ -1529,8 +1584,7 @@ xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *manager, Xfc
     TRACE("entering");
 
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
-    create_icon_view(fmanager, desktop);
-    update_icon_monitors(fmanager);
+    begin_create_icon_view(fmanager, desktop);
 }
 
 static void
