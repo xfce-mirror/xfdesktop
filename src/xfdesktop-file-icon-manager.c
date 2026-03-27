@@ -1442,12 +1442,6 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
     g_signal_connect(icon_view, "drag-leave",
                      G_CALLBACK(xfdesktop_file_icon_manager_drag_leave), mdata);
 
-    // Below signals allow us to sort icons and replace them where they belong in the newly-sized view
-    g_signal_connect(G_OBJECT(icon_view), "start-grid-resize",
-                     G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), mdata);
-    g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
-                     G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), mdata);
-
     GtkAccelGroup *accel_group = xfdesktop_icon_view_manager_get_accel_group(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view, accel_group);
 
@@ -1459,6 +1453,12 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
     }
 
     g_hash_table_insert(fmanager->monitor_data, g_object_ref(monitor), mdata);
+
+    // Below signals allow us to sort icons and replace them where they belong in the newly-sized view
+    g_signal_connect(G_OBJECT(icon_view), "start-grid-resize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), mdata);
+    g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), mdata);
 
     update_icon_monitors(fmanager);
 }
