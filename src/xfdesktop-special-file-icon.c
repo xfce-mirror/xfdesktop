@@ -60,7 +60,10 @@ struct _XfdesktopSpecialFileIcon
     GFile *file;
     GdkScreen *gscreen;
 
+    GCancellable *metadata_fetch;
+
     /* only needed for trash */
+    GCancellable *children_enumerate;
     guint trash_item_count;
 };
 
@@ -81,6 +84,8 @@ static void xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
                                                 GFileMonitorEvent event,
                                                 XfdesktopSpecialFileIcon *special_file_icon);
 static void xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special_file_icon);
+
+static void start_metadata_update(XfdesktopSpecialFileIcon *special_file_icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -127,6 +132,15 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
                                              G_CALLBACK(xfdesktop_special_file_icon_changed),
                                              icon);
         g_object_unref(icon->monitor);
+    }
+
+    if (icon->children_enumerate != NULL) {
+        g_cancellable_cancel(icon->children_enumerate);
+        g_object_unref(icon->children_enumerate);
+    }
+    if (icon->metadata_fetch != NULL) {
+        g_cancellable_cancel(icon->metadata_fetch);
+        g_object_unref(icon->metadata_fetch);
     }
 
     g_object_unref(icon->file);
@@ -209,10 +223,34 @@ xfdesktop_special_file_icon_get_gicon(XfdesktopFileIcon *icon)
     }
 
     /* If we still don't have an icon, use the default */
-    if(!G_IS_ICON(base_gicon)) {
-        base_gicon = g_file_info_get_icon(special_icon->file_info);
-        if(G_IS_ICON(base_gicon))
-            g_object_ref(base_gicon);
+    if (!G_IS_ICON(base_gicon)) {
+        if (special_icon->file_info != NULL) {
+            base_gicon = g_file_info_get_icon(special_icon->file_info);
+            if (G_IS_ICON(base_gicon)) {
+                g_object_ref(base_gicon);
+            }
+        } else {
+            const gchar *fallback_icon_name;
+            switch (special_icon->type) {
+                case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
+                    fallback_icon_name = "drive-harddisk";
+                    break;
+                case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
+                    fallback_icon_name = "user-home";
+                    break;
+                case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
+                    fallback_icon_name = "user-trash";
+                    break;
+                default:
+                    g_assert_not_reached();
+                    break;
+            }
+            base_gicon = g_themed_icon_new_with_default_fallbacks(fallback_icon_name);
+        }
+    }
+
+    if (!G_IS_ICON(base_gicon)) {
+        base_gicon = g_themed_icon_new("document");
     }
 
     /* Add any user set emblems */
@@ -399,49 +437,86 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
        event == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
         return;
 
-    /* release the old file information */
-    if(special_file_icon->file_info) {
-        g_object_unref(special_file_icon->file_info);
-        special_file_icon->file_info = NULL;
+    start_metadata_update(special_file_icon);
+}
+
+static void
+child_file_enumerator_close_done(GObject *source, GAsyncResult *result, gpointer data) {
+    g_file_enumerator_close_finish(G_FILE_ENUMERATOR(source), result, NULL);
+    g_object_unref(source);
+}
+
+static void
+child_files_ready(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GList *file_infos = g_file_enumerator_next_files_finish(G_FILE_ENUMERATOR(source), result, &error);
+
+    if (file_infos == NULL) {
+        if (error != NULL) {
+            if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+                g_message("Failed to count number of items in trash: %s", error->message);
+
+                XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+                g_clear_object(&icon->children_enumerate);
+            }
+            g_error_free(error);
+        } else {
+            XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+            g_clear_object(&icon->children_enumerate);
+            g_clear_pointer(&icon->tooltip, g_free);
+
+            xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+            xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+        }
+
+        g_file_enumerator_close_async(G_FILE_ENUMERATOR(source),
+                                      G_PRIORITY_LOW,
+                                      NULL,
+                                      child_file_enumerator_close_done,
+                                      NULL);
+    } else {
+        XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+        icon->trash_item_count += g_list_length(file_infos);
+        g_list_free_full(file_infos, g_object_unref);
+
+        g_file_enumerator_next_files_async(G_FILE_ENUMERATOR(source),
+                                           G_MAXINT,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           icon->children_enumerate,
+                                           child_files_ready,
+                                           icon);
     }
+}
 
-    /* release the old file system information */
-    if(special_file_icon->filesystem_info) {
-        g_object_unref(special_file_icon->filesystem_info);
-        special_file_icon->filesystem_info = NULL;
+static void
+child_enumerator_ready(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileEnumerator *enumerator = g_file_enumerate_children_finish(G_FILE(source), result, &error);
+
+    if (enumerator == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            g_message("Failed to count number of items in trash: %s", error->message);
+
+            XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+            g_clear_object(&icon->children_enumerate);
+        }
+        g_error_free(error);
+    } else {
+        XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+
+        g_file_enumerator_next_files_async(enumerator,
+                                           G_MAXINT,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           icon->children_enumerate,
+                                           child_files_ready,
+                                           icon);
+
     }
-
-    /* reload the file information */
-    special_file_icon->file_info = g_file_query_info(special_file_icon->file,
-                                                     XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                     G_FILE_QUERY_INFO_NONE,
-                                                     NULL, NULL);
-
-    /* reload the file system information */
-    special_file_icon->filesystem_info = g_file_query_filesystem_info(special_file_icon->file,
-                                                                      XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                      NULL, NULL);
-
-    /* update the trash full state */
-    if(special_file_icon->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
-        xfdesktop_special_file_icon_update_trash_count(special_file_icon);
-
-    /* invalidate the tooltip */
-    g_free(special_file_icon->tooltip);
-    special_file_icon->tooltip = NULL;
-
-    /* update the icon */
-    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(special_file_icon));
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 
 static void
 xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special_file_icon)
 {
-    GFileEnumerator *enumerator;
-    GFileInfo *f_info;
-    gint n = 0;
-
     g_return_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(special_file_icon));
 
     if(special_file_icon->file_info == NULL
@@ -450,31 +525,103 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
         return;
     }
 
+    if (special_file_icon->children_enumerate != NULL) {
+        g_cancellable_cancel(special_file_icon->children_enumerate);
+        g_clear_object(&special_file_icon->children_enumerate);
+    }
+    special_file_icon->children_enumerate = g_cancellable_new();
+
+    special_file_icon->trash_item_count = 0;
+
     /* The trash count may return a number of files the user can't
      * currently delete, for example if the file is in a removable
      * drive that isn't mounted.
      */
-    enumerator = g_file_enumerate_children(special_file_icon->file,
+    g_file_enumerate_children_async(special_file_icon->file,
                                            G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE "," G_FILE_ATTRIBUTE_STANDARD_NAME,
                                            G_FILE_QUERY_INFO_NONE,
-                                           NULL,
-                                           NULL);
-    if(enumerator == NULL)
-        return;
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           special_file_icon->children_enumerate,
+                                           child_enumerator_ready,
+                                           special_file_icon);
+}
 
-    for(f_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
-        f_info != NULL;
-        f_info = g_file_enumerator_next_file(enumerator, NULL, NULL))
-    {
-          n++;
-          g_object_unref(f_info);
+static void
+filesystem_info_loaded(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_filesystem_info_finish(G_FILE(source), result, &error);
+
+    if (info == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            gchar *uri = g_file_get_uri(G_FILE(source));
+            g_message("Failed to load filesystem metadata for %s: %s", uri, error->message);
+            g_free(uri);
+
+            XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+            g_clear_object(&icon->metadata_fetch);
+        }
+        g_error_free(error);
+    } else {
+        XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+        icon->filesystem_info = info;
+        g_clear_object(&icon->metadata_fetch);
+
+        if (icon->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+            xfdesktop_special_file_icon_update_trash_count(icon);
+        }
+
+        xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+    }
+}
+
+static void
+file_info_loaded(GObject *source, GAsyncResult *result, gpointer data) {
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info_finish(G_FILE(source), result, &error);
+
+    if (info == NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            gchar *uri = g_file_get_uri(G_FILE(source));
+            g_message("Failed to load metadata for %s: %s", uri, error->message);
+            g_free(uri);
+
+            XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+            g_clear_object(&icon->metadata_fetch);
+        }
+        g_error_free(error);
+    } else {
+        XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(data);
+        icon->file_info = info;
+
+        g_file_query_filesystem_info_async(icon->file,
+                                           XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           icon->metadata_fetch,
+                                           filesystem_info_loaded,
+                                           icon);
+    }
+}
+
+static void
+start_metadata_update(XfdesktopSpecialFileIcon *special_file_icon) {
+    if (special_file_icon->metadata_fetch != NULL) {
+        g_cancellable_cancel(special_file_icon->metadata_fetch);
+        g_clear_object(&special_file_icon->metadata_fetch);
     }
 
-    g_file_enumerator_close(enumerator, NULL, NULL);
-    g_object_unref(enumerator);
+    g_clear_object(&special_file_icon->file_info);
+    g_clear_object(&special_file_icon->filesystem_info);
+    g_clear_pointer(&special_file_icon->tooltip, g_free);
+    special_file_icon->metadata_fetch = g_cancellable_new();
 
-    special_file_icon->trash_item_count = n;
-    TRACE("exiting, trash count %d", n);
+    g_file_query_info_async(special_file_icon->file,
+                            XFDESKTOP_FILE_INFO_NAMESPACE,
+                            G_FILE_QUERY_INFO_NONE,
+                            G_PRIORITY_DEFAULT_IDLE,
+                            special_file_icon->metadata_fetch,
+                            file_info_loaded,
+                            special_file_icon);
 }
 
 /* public API */
@@ -507,27 +654,11 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     special_file_icon->gscreen = screen;
     special_file_icon->file = file;
 
-    special_file_icon->file_info = g_file_query_info(file,
-                                                     XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                     G_FILE_QUERY_INFO_NONE,
-                                                     NULL, NULL);
-
-    if(!special_file_icon->file_info) {
-        g_object_unref(special_file_icon);
-        return NULL;
-    }
-
-    /* query file system information from GIO */
-    special_file_icon->filesystem_info = g_file_query_filesystem_info(special_file_icon->file,
-                                                                      XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                      NULL, NULL);
-    /* update the trash full state */
-    if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
-        xfdesktop_special_file_icon_update_trash_count(special_file_icon);
+    start_metadata_update(special_file_icon);
 
     special_file_icon->monitor = g_file_monitor(special_file_icon->file,
-                                                      G_FILE_MONITOR_NONE,
-                                                      NULL, NULL);
+                                                G_FILE_MONITOR_NONE,
+                                                NULL, NULL);
     if(special_file_icon->monitor) {
         g_signal_connect(special_file_icon->monitor,
                          "changed",
