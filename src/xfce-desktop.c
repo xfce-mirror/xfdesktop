@@ -462,10 +462,14 @@ static void
 group_monitor_removed(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *desktop) {
     if (monitor == desktop->monitor) {
         desktop->workspace_group = NULL;
+        desktop->backdrop_workspace = NULL;
+        desktop->active_workspace = NULL;
+
         g_signal_handlers_disconnect_by_func(group, group_workspace_added, desktop);
         g_signal_handlers_disconnect_by_func(group, group_workspace_removed, desktop);
         g_signal_handlers_disconnect_by_func(group, workspace_changed_cb, desktop);
-        update_backdrop_workspace(desktop);
+
+        clear_backdrop_media(desktop);
     }
 }
 
@@ -510,7 +514,7 @@ manager_backdrop_changed(XfdesktopBackdropManager *manager,
 {
     DBG("entering: monitor=%p, our monitor=%p, workspace=%d, our workspace=%d",
         monitor, desktop->monitor, xfw_workspace_get_number(workspace),
-        xfw_workspace_get_number(desktop->backdrop_workspace));
+        desktop->backdrop_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->backdrop_workspace) : -1);
     if (monitor == desktop->monitor && workspace == desktop->backdrop_workspace) {
         fetch_backdrop(desktop, FALSE);
     }
