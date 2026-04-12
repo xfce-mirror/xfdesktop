@@ -176,7 +176,7 @@ msgstr "Il team di sviluppo di Xfce. Tutti i diritti riservati."
 #: settings/main.c:133 src/xfdesktop-application.c:1203
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Segnalare i problemi a <%s>."
+msgstr "Segnalare eventuali problemi a <%s>."
 
 #: settings/main.c:139
 msgid "Desktop Settings"
@@ -340,7 +340,7 @@ msgid ""
 "icons according to the selected orientation?"
 msgstr ""
 "Ordinare le icone esistenti\n"
-"in base all'ordine selezionato?"
+"in base all'orientamento selezionato?"
 
 #: settings/xfdesktop-icon-settings.c:94
 msgid "Arrange icons"
@@ -420,7 +420,8 @@ msgstr "Stil_e:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:164
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Specifica come ridimensionare l'immagine per adattarsi allo schermo."
+msgstr ""
+"Specifica come verrà ridimensionata l'immagine per adattarsi allo schermo."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:166
 #: settings/xfdesktop-settings-ui.glade:60
@@ -580,7 +581,7 @@ msgstr "Icone delle applicazioni minimizzate"
 
 #: settings/xfdesktop-settings-ui.glade:123
 msgid "File/launcher icons"
-msgstr "Icone di file/avviatori"
+msgstr "Icone file/avviatori"
 
 #: settings/xfdesktop-settings-ui.glade:134
 msgid "Top Left Vertical"
@@ -626,7 +627,7 @@ msgstr "S_fondo"
 msgid "Include applications menu on _desktop right click"
 msgstr ""
 "Includi il menu delle applicazioni al clic con il tasto _destro sulla "
-"scrivania"
+"Scrivania"
 
 #: settings/xfdesktop-settings-ui.glade:304
 msgid "_Button:"
@@ -642,7 +643,7 @@ msgstr "_Visualizza le icone delle applicazioni nel menu"
 
 #: settings/xfdesktop-settings-ui.glade:398
 msgid "_Edit desktop menu"
-msgstr "_Modifica il menu della scrivania"
+msgstr "_Modifica il menu della Scrivania"
 
 #: settings/xfdesktop-settings-ui.glade:432
 msgid "<b>Desktop Menu</b>"
@@ -706,7 +707,7 @@ msgstr "_Tipo di icona:"
 
 #: settings/xfdesktop-settings-ui.glade:813
 msgid "Icon _size:"
-msgstr "Dimen_sione delle icone:"
+msgstr "Dimen_sione icone:"
 
 #: settings/xfdesktop-settings-ui.glade:829
 msgid "48"
@@ -722,7 +723,7 @@ msgstr "12"
 
 #: settings/xfdesktop-settings-ui.glade:871
 msgid "Show icon toolt_ips. Size:"
-msgstr "Mostra i suggerimenti dell'_icona. Dimensione:"
+msgstr "Mostra suggerimenti delle _icone. Dimensione:"
 
 #: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
@@ -770,7 +771,7 @@ msgstr "Comportamento"
 
 #: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
-msgstr "_Icone scrivania"
+msgstr "_Icone della Scrivania"
 
 #: settings/xfdesktop-settings-ui.glade:1204
 msgid ""
@@ -778,7 +779,7 @@ msgid ""
 "Icons\" tab."
 msgstr ""
 "Le icone per file/avviatori non sono attivi. È necessario attivarli dalla "
-"scheda \"Icone scrivania\"."
+"scheda \"Icone della Scrivania\"."
 
 #: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
@@ -814,7 +815,7 @@ msgstr "Icone predefinite"
 
 #: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
-msgstr "Icone per _file/avviatori"
+msgstr "Icone _file/avviatori"
 
 #: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
@@ -851,7 +852,7 @@ msgstr ""
 
 #: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
-msgstr "Ordina automaticamente tutte le icone sulla scrivania"
+msgstr "Ordina automaticamente tutte le icone sulla Scrivania"
 
 #: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
@@ -882,7 +883,7 @@ msgstr "Opzioni di compilazione:\n"
 #: src/xfdesktop-application.c:1206
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr " Menu della scrivania: %s\n"
+msgstr " Menu della Scrivania: %s\n"
 
 #: src/xfdesktop-application.c:1208 src/xfdesktop-application.c:1215
 #: src/xfdesktop-application.c:1222
@@ -897,12 +898,12 @@ msgstr "disattivato"
 #: src/xfdesktop-application.c:1213
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr " Icone della scrivania: %s\n"
+msgstr " Icone della Scrivania: %s\n"
 
 #: src/xfdesktop-application.c:1220
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr " Icone dei file della scrivania: %s\n"
+msgstr " Icone dei file della Scrivania: %s\n"
 
 #: src/xfdesktop-file-icon-manager.c:699 src/xfdesktop-file-utils.c:757
 #: src/xfdesktop-file-utils.c:821
@@ -934,14 +935,16 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 "Impossibile avviare \"exo-desktop-item-edit\", necessario per creare e "
-"modificare avviatori e collegamenti sulla scrivania."
+"modificare avviatori e collegamenti sulla Scrivania."
 
 #: src/xfdesktop-file-icon-manager.c:1422
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
-msgstr "Assegnare l'icona desktop esistente allo schermo <b>%s</b>?"
+msgstr ""
+"Assegnare una disposizione esistente delle icone della Scrivania allo "
+"schermo <b>%s</b>?"
 
 #: src/xfdesktop-file-icon-manager.c:1430
 msgid "Monitors"
@@ -1011,7 +1014,7 @@ msgstr "Apri in una nuova _finestra"
 #: src/xfdesktop-file-icon-manager.c:2069
 #: src/xfdesktop-window-icon-manager.c:308
 msgid "Arrange Desktop _Icons"
-msgstr "_Ordina le icone della scrivania"
+msgstr "_Ordina le icone della Scrivania"
 
 #: src/xfdesktop-file-icon-manager.c:2084
 #: src/xfdesktop-window-icon-manager.c:322
@@ -1056,7 +1059,7 @@ msgstr "_Crea collegamento qui"
 #: src/xfdesktop-file-icon-manager.c:3520 src/xfdesktop-file-utils.c:1156
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
-msgstr "A_nnulla"
+msgstr "Ann_ulla"
 
 #: src/xfdesktop-file-icon-manager.c:3613
 #, c-format
@@ -1069,7 +1072,7 @@ msgstr "Impossibile caricare la cartella della Scrivania"
 
 #: src/xfdesktop-file-icon-manager.c:3630
 msgid "A desktop file icon error occurred"
-msgstr "Si è verificato un errore con il file di icone desktop"
+msgstr "Si è verificato un errore con l'icona di un file della Scrivania"
 
 #: src/xfdesktop-file-icon-manager.c:3634
 msgid "Desktop Folder Error"
@@ -1261,7 +1264,7 @@ msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
-"Questo riordinerà tutti gli elementi della scrivania e li sposterà in posizioni diverse dello schermo.\n"
+"Questo riordinerà tutti gli elementi della Scrivania e li sposterà in posizioni diverse dello schermo.\n"
 "Procedere?"
 
 #: src/xfdesktop-icon-view-manager.c:513
@@ -1337,16 +1340,16 @@ msgstr ""
 
 #: src/xfdesktop-special-file-icon.c:258
 msgid "Trash is empty"
-msgstr "Cestino vuoto"
+msgstr "Il Cestino è vuoto"
 
 #: src/xfdesktop-special-file-icon.c:261
 msgid "Trash contains one item"
-msgstr "Il cestino contiene un elemento"
+msgstr "Il Cestino contiene un elemento"
 
 #: src/xfdesktop-special-file-icon.c:262
 #, c-format
 msgid "Trash contains %d items"
-msgstr "Il cestino contiene %d elementi"
+msgstr "Il Cestino contiene %d elementi"
 
 #: src/xfdesktop-special-file-icon.c:290
 #, c-format
