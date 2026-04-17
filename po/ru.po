@@ -6,7 +6,7 @@
 # Aleksandr P, 2010-2011
 # Aleksey Kabanov <ak099@mail.ru>, 2013
 # Alexandr Boltris <alex@altlinux.org>, 2011
-# Andrei Stepanov, 2022-2025
+# Andrei Stepanov, 2022-2026
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006
 # Anthony Ivanoff <a-i@bk.ru>, 2004-2005
 # Anton Bulgakov, 2023
@@ -30,9 +30,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Andrei Stepanov, 2022-2025\n"
+"Last-Translator: Andrei Stepanov, 2022-2026\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfdesktop/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -229,67 +229,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nТип: %s\nРазмер: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Невозможно загрузить изображения из папки «%s»"
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Фоновое изображение для монитора %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Фоновое изображение для монитора %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Переместите этот диалог на экран, настройки которого хотите изменить."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Фоновое изображение для %s на мониторе %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Фоновое изображение для %s на мониторе %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Переместите этот диалог на экран и рабочее место, настройки которых хотите изменить."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Фоновое изображение для рабочего стола"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Фоновое изображение для %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Перенесите этот диалог на рабочее место настройки, которого хотите изменить."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Выбор изображения недоступен, если не указан стиль изображения."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Файлы изображений"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Выбор каталога"
 
@@ -537,7 +537,7 @@ msgstr "Выбирать случайное изображение из того
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:450
 msgid "_Pause video if window overlaps desktop"
-msgstr ""
+msgstr "При_останавливать видео, если окно перекрывает рабочий стол"
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
@@ -815,11 +815,11 @@ msgstr "Список окон"
 
 #: src/xfce-desktop.c:1269
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
-msgstr ""
+msgstr "Плагин «gtk» для GStreamer, необходимый для воспроизведения видео, не найден"
 
 #: src/xfce-desktop.c:1333
 msgid "Unable to create gstreamer video player"
-msgstr ""
+msgstr "Не удаётся создать видеоплеер GStreamer"
 
 #: src/xfdesktop-application.c:274
 msgid "Display version information"
@@ -1332,12 +1332,12 @@ msgstr "Корзина пуста"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "В корзине %d объект"
+msgstr[1] "В корзине %d объекта"
+msgstr[2] "В корзине %d объектов"
+msgstr[3] "В корзине %d объектов"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
