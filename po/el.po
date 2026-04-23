@@ -9,7 +9,7 @@
 # Efstathios Iosifidis <eiosifidis@gmail.com>, 2015,2018
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
 # Ioannis LM, 2018,2022
-# Ioannis LM, 2018,2022-2025
+# Ioannis LM, 2018,2022-2026
 # Michales Michaloudes, 2024
 # Stathis Kamperis <ekamperi@auth.gr>, 2006
 # Stavros Giannouris <stavrosg@hellug.gr>, 2008
@@ -19,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Ioannis LM, 2018,2022-2025\n"
+"Last-Translator: Ioannis LM, 2018,2022-2026\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfdesktop/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -218,67 +218,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nΤύπος: %s\nΜέγεθος: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Αδυναμία φόρτωσης εικόνων από το φάκελο \"%s\""
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Εικόνα φόντου για την οθόνη %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Εικόνα φόντου για την οθόνη %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Μετακινήστε αυτό το παράθυρο στην οθόνη της οποίας επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Εικόνα φόντου για %s στην οθόνη %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Εικόνα φόντου για %s στην οθόνη %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Μετακινήστε αυτό το παράθυρο στην οθόνη και το χώρο εργασίας του οποίου επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Εικόνα φόντου για την επιφάνεια εργασίας μου"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Εικόνα φόντου για %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Μετακινήστε αυτό το παράθυρο στο χώρο εργασίας του οποίου θέλετε να επεξεργαστείτε τις ρυθμίσεις."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Η επιλογή εικόνας δεν είναι διαθέσιμη όταν το στυλ έχει οριστεί σε κανένα."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Αρχεία εικόνας"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Επιλογή καταλόγου"
 
@@ -820,7 +820,7 @@ msgstr "Επαναφόρτωση όλων των ρυθμίσεων"
 
 #: src/xfdesktop-application.c:276
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Μετάβαση στην επόμενη εικόνα στο τρέχοντα χώρο εργασίας"
+msgstr "Μετάβαση στην επόμενη εικόνα φόντου στο τρέχοντα χώρο εργασίας"
 
 #: src/xfdesktop-application.c:277
 msgid "Pop up the menu (at the current mouse position)"
@@ -1321,10 +1321,10 @@ msgstr "Ο κάδος απορριμμάτων είναι άδειος"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ο κάδος απορριμάτων περιέχει %d αρχείο"
+msgstr[1] "Ο κάδος απορριμάτων περιέχει %d αρχεία"
 
 #: src/xfdesktop-special-file-icon.c:286
 #, c-format
