@@ -107,21 +107,6 @@ XFDESKTOP_G_DEFINE_ENUM_TYPE(XfceDesktopIconStyle, xfce_desktop_icon_style,
     XFDESKTOP_G_DEFINE_ENUM_VALUE(XFCE_DESKTOP_ICON_STYLE_FILES, "files")
 )
 
-/* Free the string whe done using it */
-gchar*
-xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget, gint monitor_num)
-{
-    GdkWindow     *window = NULL;
-    GdkDisplay    *display = NULL;
-    GdkMonitor    *monitor = NULL;
-
-    window = gtk_widget_get_window(widget);
-    display = gdk_window_get_display(window);
-    monitor = gdk_display_get_monitor(display, monitor_num);
-
-    return g_strdup(gdk_monitor_get_model(monitor));
-}
-
 gint
 xfdesktop_compare_paths(GFile *a, GFile *b)
 {

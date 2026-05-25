@@ -1451,6 +1451,20 @@ xfdesktop_settings_get_active_workspace(XfdesktopBackgroundSettings *background_
     return workspace_num;
 }
 
+static gchar *
+get_monitor_name_from_gtk_widget(XfwScreen *screen, GtkWidget *widget, gint monitor_num) {
+    GdkWindow *window = gtk_widget_get_window(widget);
+    GdkDisplay *display = gdk_window_get_display(window);
+    GdkMonitor *gdkmonitor = gdk_display_get_monitor(display, monitor_num);
+    XfwMonitor *xfwmonitor = xfw_screen_get_monitor_from_gdk_monitor(screen, gdkmonitor);
+
+    if (xfwmonitor != NULL) {
+        return g_strdup(xfw_monitor_get_connector(xfwmonitor));
+    } else {
+        return g_strdup("default");
+    }
+}
+
 static void
 cb_update_background_tab(XfwWindow *xfw_window, XfdesktopBackgroundSettings *background_settings) {
     /* If we haven't found our window return now and wait for that */
@@ -1468,7 +1482,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     GdkDisplay *display = gdk_window_get_display(window);
     GdkMonitor *monitor = gdk_display_get_monitor_at_window(display, window);
     gint monitor_num = xfdesktop_get_monitor_num(display, monitor);
-    gchar *monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
+    gchar *monitor_name = get_monitor_name_from_gtk_widget(background_settings->xfw_screen,
+                                                           background_settings->image_iconview,
+                                                           monitor_num);
 
     /* Most of the time we won't change monitor, screen, or workspace so try
      * to bail out now if we can */
@@ -1498,7 +1514,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     background_settings->screen = screen_num;
     background_settings->monitor = monitor_num;
     g_free(background_settings->monitor_name);
-    background_settings->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
+    background_settings->monitor_name = get_monitor_name_from_gtk_widget(background_settings->xfw_screen,
+                                                                         background_settings->image_iconview,
+                                                                         monitor_num);
 
     /* The first monitor has the option of doing the "spanning screens" style,
      * but only if there's multiple monitors attached. Remove it in all other cases.
