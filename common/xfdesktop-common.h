@@ -204,9 +204,6 @@ GType xfce_backdrop_image_style_get_type(void) G_GNUC_CONST;
 GType xfce_backdrop_cycle_period_get_type(void) G_GNUC_CONST;
 GType xfce_desktop_icon_style_get_type(void) G_GNUC_CONST;
 
-gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget,
-                                                  gint monitor_num);
-
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
 gint xfce_translate_image_styles(gint input);
