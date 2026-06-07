@@ -218,7 +218,7 @@ msgstr "<b>%s</b>\nTyp: %s\nVelikost: %s"
 #: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr "Nelze načíst obrázky ze složky „%s"
+msgstr "Nelze načíst obrázky ze složky \"%s\""
 
 #: settings/xfdesktop-background-settings.c:733
 #, c-format
@@ -232,7 +232,7 @@ msgstr "Tapeta pro monitor %d"
 
 #: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Přesuňte toto dialogové okno na displej a pracovní plochu, pro které chcete měnit nastavení."
+msgstr "Přesuňte toto dialogové okno na displej, pro který chcete měnit nastavení."
 
 #: settings/xfdesktop-background-settings.c:748
 #, c-format
@@ -248,7 +248,7 @@ msgstr "Tapeta pro %s na monitoru %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Přesuňte toto dialogové okno na displej a pracovní plochu, jehož nastavení chcete měnit."
+msgstr "Přesuňte toto dialogové okno na displej a pracovní plochu, pro které chcete měnit nastavení."
 
 #. Single monitor and single workspace
 #: settings/xfdesktop-background-settings.c:770
@@ -750,7 +750,7 @@ msgstr "_Ikony na ploše"
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
-msgstr "Ikony souborů a spouštěčů nejsou povoleny. Můžete je povolit v kartě „Ikony na ploše."
+msgstr "Ikony souborů a spouštěčů nejsou povoleny. Můžete je povolit v kartě „Ikony na ploše“."
 
 #: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
@@ -973,7 +973,7 @@ msgstr "Otevřít po_mocí jiné aplikace..."
 
 #: src/xfdesktop-file-icon-manager.c:1929
 msgid "Set Defa_ult Application..."
-msgstr "Nastavit vý_chozí aplikaci"
+msgstr "Nastavit vý_chozí aplikaci..."
 
 #: src/xfdesktop-file-icon-manager.c:1985
 msgid "Paste Into Folder"
@@ -1147,7 +1147,7 @@ msgstr "Nelze vysypat koš"
 #: src/xfdesktop-file-utils.c:995
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
-msgstr "Nelze vytvořit nový soubor z „%1$s“ ze souboru šablony „%2$s“ˇ: %3$s"
+msgstr "Nelze vytvořit nový soubor z „%1$s“ ze souboru šablony „%2$s“: %3$s"
 
 #: src/xfdesktop-file-utils.c:1001 src/xfdesktop-file-utils.c:1115
 #: src/xfdesktop-file-utils.c:1211
@@ -1276,7 +1276,7 @@ msgstr "Zápis dat na zařízení"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Před odebráním zařízení „%s je nutné zapsat data. Nevyjímejte médium ani neodpojujte jednotku"
+msgstr "Před odebráním zařízení \"%s\" je nutné zapsat data. Nevyjímejte médium ani neodpojujte jednotku"
 
 #: src/xfdesktop-notify.c:206
 msgid "Unmount Finished"
