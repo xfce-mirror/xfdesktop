@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfdesktop.master package.
 # 
 # Translators:
-# Əmrə Türkoğlu Tutsaq <mdyos@inbox.ru>, 2019,2022
+# Bilgin Gamer <mdyos@inbox.ru>, 2019,2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Əmrə Türkoğlu Tutsaq <mdyos@inbox.ru>, 2019,2022\n"
+"Last-Translator: Bilgin Gamer <mdyos@inbox.ru>, 2019,2022\n"
 "Language-Team: Azerbaijani (http://app.transifex.com/xfce/xfdesktop/language/az/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:126
 msgid "_Properties"
-msgstr ""
+msgstr "_Özəlliklər"
 
 #: settings/main.c:95
 msgid "Settings manager socket"
@@ -207,67 +207,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nBiçimi: %s\nÖlçüsü: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr ""
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Göstərən %d (%s) üçün divar kağızı"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Göstərən %d üçün Divar kağızı"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Bu danışığı, quruluşlarını düzəltmək istədiyiniz göstəriciyə yerləşdirin."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "%s üçün %d (%s) Monitorunda divar kağızı"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "%s üçün Monitor %d'da-ə divar kağızı"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Bu danışıq quruluşunu, düzəltmək istədiyiniz göstəriciyiə, iş alanına yerləşdirin."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "İş qoyağı üçün divar kağızı"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s üçün divar kağızı"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Bu danışığı, quruluşlarını düzəltmək istədiyiniz iş alanına yerləşdirin."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Görsəl biçimi Heç Nə olduğu üçün görsəl seçimi əlçatan deyil."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Görsəl düzümü"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Dizin seç"
 
@@ -733,7 +733,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
-msgstr ""
+msgstr "Davranış"
 
 #: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
@@ -1310,7 +1310,7 @@ msgstr "Çöp boşdur"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
 msgstr[0] ""
 msgstr[1] ""
