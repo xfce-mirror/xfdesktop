@@ -1,3 +1,81 @@
+4.21.0 (2026-06-21)
+======
+- And remove ignore pattern for new version of gcc-analyzer
+- Add ignore pattern for new version of gcc-analyzer
+- Use XfwMonitor in backdrop settings instead of GdkMonitor
+- I18n: Update po/LINGUAS list
+- Fix dimensions in xfce-shapes backgound image
+- Fix folder string being NULL in error popup in desktop settings
+- Move start-grid-resize and end-grid-resize signal connections later
+- Fix incorrect enum value for POSITION_LEVEL_OTHER
+- Tear down monitor position config dialog if its monitor is unplugged
+- Refactor choose monitor config dialog
+- Move backdrop rendering cancellation & signal disconnections to
+  dispose
+- Don't pass a BackdropMedia if the render was cancelled
+- When a regular file is deleted, remove its position from the config
+  file
+- Don't fetch backdrop when XfceDesktop's monitor removed from group
+- Make file ops in notifications code async
+- Make the file operations in XfdesktopFileIconModel async
+- Close file enumerator asynchronously
+- Make XfdesktopSpecialFileIcon filesystem operations async
+- Don't include unplaced items in rubberband selection
+- Don't include unplaced items when doing keyboard navigation
+- Don't include unplaced items when selecting all
+- Fix desktop not resizing on monitor resolution change
+- Avoid unrefing objects that only have floating references
+- Remove the programmatic fatal-warnings/criticals for debug builds
+- Fix context menu positioning on wayland with icons enabled
+- Fix two leaks when using the "Delete" context menu item
+- Call XfdesktopBackdropMedia's parent finalizer to prevent leaks
+- Add %d to strings to fix some transl.(#450)
+- Fix a GtkTreeIter leak in background settings
+- Fix GIcon leaks when using emblems on desktop icons
+- Fix g_dngettext string arguments (#450)
+- I18n: Update po/LINGUAS list
+- feature(video-backdrop): Support for setting video as backdrop
+- Avoid a crash when unrefing return data from g_file_icon_get_file
+- build: Fix typo in optimization level
+- Fix criticals in g_file_info_get_name with trashed files
+- I18n: Update po/LINGUAS list
+- README.md: Add uninstall info
+- Fix a use-after-free crash in the icon unplace/removal code
+- Fix column boundary check in xfdesktop_icon_view_unplace_item
+- Small change for meson i18n
+- Mark shortcut editor group names as translatable
+- Update README after switchover to meson
+- Remove autotools build
+- Update issue template
+- Fix backdrop file monitor not being created
+- Remove xfce_desktop_(freeze|thaw)_updates()
+- Re-read backdrop image file on 'xfdesktop --reload'
+- Ensure working directory is always set when executing something
+- Fix random backdrop cycling getting stuck on last image
+- Ensure src icon & parent are writable and can be moved more thoroughly
+- Add xfdesktop-monitor-chooser-ui.glade to POTFILES
+- Properly set markup label text in monitor configuration chooser
+- Set window title for monitor configuration chooser dialog
+- Fix leaks in xfdesktop_menu_create_menu_item_from_thunarx_menu_item
+- Replace deprecated exo with libxfce4ui 4.21.0
+- Don't limit number of templates shown in the 'Create Document' menu
+- Add gradient benchmarking test binary to .gitignore
+- Add test-gradient-benchmarking to autotools build
+- Set up for new machinery to automatically update copyright year
+- I18n: Update po/LINGUAS list
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kabyle, Kazakh, Korean,
+  Lao, Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovenian, Spanish, Swedish, Tatar, Thai,
+  Ukrainian, Uyghur, Venetian, Vietnamese
+
 4.20.1 (2025-02-17)
 ======
 - Fix another gcc-analyzer warning
