@@ -1284,7 +1284,9 @@ xfdesktop_icon_position_configs_add_monitor(XfdesktopIconPositionConfigs *config
                     if (pos_monitor->geometry.width == geom.width && pos_monitor->geometry.height == geom.height) {
                         // If it's the same level and width/height, it *could*
                         // match, but we'll (possibly) ask the user to choose.
-                        *candidates = g_list_prepend(*candidates, config);
+                        if (g_list_find(*candidates, config) == NULL) {
+                            *candidates = g_list_prepend(*candidates, config);
+                        }
                     }
                 }
             }
@@ -1314,7 +1316,9 @@ xfdesktop_icon_position_configs_add_monitor(XfdesktopIconPositionConfigs *config
                 XfdesktopIconPositionMonitor *pos_monitor;
                 while (g_hash_table_iter_next(&iter, NULL, (gpointer)&pos_monitor)) {
                     if (gdk_rectangle_equal(&geom, &pos_monitor->geometry)) {
-                        same_geom_candidates = g_list_prepend(same_geom_candidates, config);
+                        if (g_list_find(same_geom_candidates, config) == NULL) {
+                            same_geom_candidates = g_list_prepend(same_geom_candidates, config);
+                        }
                     }
                 }
             }
