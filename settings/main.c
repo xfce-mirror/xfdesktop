@@ -101,6 +101,8 @@ static GOptionEntry option_entries[] = {
 
 int
 main(int argc, char **argv) {
+    g_set_prgname("xfce-backdrop-settings");
+
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     GError *error = NULL;
