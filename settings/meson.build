@@ -9,8 +9,8 @@ settings_generated_sources += gnome.compile_resources(
 )
 
 settings_desktop_file_tmp = configure_file(
-  input: 'xfce-backdrop-settings.desktop.in',
-  output: 'xfce-backdrop-settings.desktop.in.tmp',
+  input: 'xfdesktop-settings.desktop.in',
+  output: 'xfdesktop-settings.desktop.in.tmp',
   configuration: {
     'VERSION_SHORT': version_short,
   },
@@ -19,7 +19,7 @@ settings_desktop_file_tmp = configure_file(
 
 i18n.merge_file(
   input: settings_desktop_file_tmp,
-  output: 'xfce-backdrop-settings.desktop',
+  output: 'xfdesktop-settings.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
