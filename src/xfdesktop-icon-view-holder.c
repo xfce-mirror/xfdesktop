@@ -63,7 +63,12 @@ xfdesktop_icon_view_holder_finalize(GObject *object) {
 
     g_signal_handlers_disconnect_by_data(holder->monitor, holder);
 
+#ifdef ENABLE_VIDEO_BACKDROP
+    /* XfceDesktop should know that the widget has been deleted */
+    xfce_desktop_put_to_layer(holder->desktop, XFCE_DESKTOP_LAYER_ICONS, NULL);
+#else
     gtk_widget_destroy(holder->container);
+#endif /* ENABLE_VIDEO_BACKDROP */
 
     G_OBJECT_CLASS(xfdesktop_icon_view_holder_parent_class)->finalize(object);
 }
