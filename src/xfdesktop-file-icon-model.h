@@ -43,7 +43,7 @@ typedef enum {
 } XfdesktopFileIconModelError;
 
 
-GType xfdesktop_file_icon_model_get_type(void) G_GNUC_CONST;
+GType xfdesktop_file_icon_model_get_type(void);
 GQuark xfdesktop_file_icon_model_error_quark(void) G_GNUC_CONST;
 
 XfdesktopFileIconModel *xfdesktop_file_icon_model_new(XfconfChannel *channel,

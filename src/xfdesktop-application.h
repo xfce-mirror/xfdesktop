@@ -36,7 +36,7 @@ typedef struct _XfdesktopApplication        XfdesktopApplication;
 typedef struct _XfdesktopApplicationClass   XfdesktopApplicationClass;
 
 
-GType xfdesktop_application_get_type(void) G_GNUC_CONST;
+GType xfdesktop_application_get_type(void);
 
 XfdesktopApplication *xfdesktop_application_get(void);
 

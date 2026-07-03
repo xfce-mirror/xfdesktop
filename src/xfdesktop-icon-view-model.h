@@ -72,7 +72,7 @@ struct _XfdesktopIconViewModelClass
 
 };
 
-GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
+GType xfdesktop_icon_view_model_get_type(void);
 
 /* The following should only be called by subclasses */
 

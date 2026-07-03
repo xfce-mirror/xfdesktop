@@ -40,7 +40,7 @@ typedef struct _XfdesktopClipboardManager      XfdesktopClipboardManager;
 #define XFDESKTOP_IS_CLIPBAORD_MANAGER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), XFDESKTOP_TYPE_CLIPBOARD_MANAGER))
 #define XFDESKTOP_CLIPBOARD_MANAGER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), XFDESKTOP_TYPE_CLIPBAORD_MANAGER, XfdesktopClipboardManagerClass))
 
-GType                      xfdesktop_clipboard_manager_get_type        (void) G_GNUC_CONST;
+GType                      xfdesktop_clipboard_manager_get_type        (void);
 
 XfdesktopClipboardManager *xfdesktop_clipboard_manager_get_for_display (GdkDisplay                      *display);
 

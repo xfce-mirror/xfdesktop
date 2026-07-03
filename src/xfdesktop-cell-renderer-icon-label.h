@@ -33,7 +33,7 @@ typedef struct _XfdesktopCellRendererIconLabel XfdesktopCellRendererIconLabel;
 typedef struct _XfdesktopCellRendererIconLabelPrivate XfdesktopCellRendererIconLabelPrivate;
 typedef struct _XfdesktopCellRendererIconLabelClass XfdesktopCellRendererIconLabelClass;
 
-GType xfdesktop_cell_renderer_icon_label_get_type(void) G_GNUC_CONST;
+GType xfdesktop_cell_renderer_icon_label_get_type(void);
 
 GtkCellRenderer *xfdesktop_cell_renderer_icon_label_new(void);
 
