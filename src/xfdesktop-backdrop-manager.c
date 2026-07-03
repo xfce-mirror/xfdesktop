@@ -108,7 +108,7 @@ typedef struct {
     GList *instances; // RenderInstanceData
 } RenderData;
 
-static GQuark monitor_quark(void) G_GNUC_CONST;
+static GQuark monitor_quark(void);
 G_DEFINE_QUARK("monitor", monitor)
 
 static void xfdesktop_backdrop_manager_constructed(GObject *obj);

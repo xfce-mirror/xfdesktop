@@ -190,10 +190,10 @@ typedef enum {
     XFCE_DESKTOP_ICON_STYLE_FILES,
 } XfceDesktopIconStyle;
 
-GType xfce_backdrop_color_style_get_type(void) G_GNUC_CONST;
-GType xfce_backdrop_image_style_get_type(void) G_GNUC_CONST;
-GType xfce_backdrop_cycle_period_get_type(void) G_GNUC_CONST;
-GType xfce_desktop_icon_style_get_type(void) G_GNUC_CONST;
+GType xfce_backdrop_color_style_get_type(void);
+GType xfce_backdrop_image_style_get_type(void);
+GType xfce_backdrop_cycle_period_get_type(void);
+GType xfce_desktop_icon_style_get_type(void);
 
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
