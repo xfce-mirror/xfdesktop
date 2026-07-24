@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-03-01 01:02+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2013-2015,2019,2023\n"
 "Language-Team: Croatian (http://app.transifex.com/xfce/xfdesktop/language/hr/)\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:91
 msgid "Select _All"
-msgstr ""
+msgstr "Odaberi_sve"
 
 #: common/xfdesktop-keyboard-shortcuts.c:92
 msgid "U_nselect All"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:93
 msgid "A_rrange Icons"
-msgstr ""
+msgstr "U_redite ikone"
 
 #: common/xfdesktop-keyboard-shortcuts.c:97
 msgid "Un_minimize Window"
@@ -70,7 +70,7 @@ msgstr "_Zatvori prozor"
 
 #: common/xfdesktop-keyboard-shortcuts.c:103
 msgid "Create _Folder"
-msgstr ""
+msgstr "Napravi _mapu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
 #: src/xfdesktop-file-icon-manager.c:1761
@@ -89,15 +89,15 @@ msgstr ""
 
 #: common/xfdesktop-keyboard-shortcuts.c:107
 msgid "Open _Filesystem"
-msgstr ""
+msgstr "Otvori _datotečni sustav"
 
 #: common/xfdesktop-keyboard-shortcuts.c:108
 msgid "Open _Home"
-msgstr ""
+msgstr "Otvori _osobnu mapu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:109
 msgid "Open _Trash"
-msgstr ""
+msgstr "Otvori _smeće"
 
 #: common/xfdesktop-keyboard-shortcuts.c:110
 msgid "_Rename"
@@ -120,7 +120,7 @@ msgstr "Zalije_pi"
 
 #: common/xfdesktop-keyboard-shortcuts.c:117
 msgid "Paste _Into Folder"
-msgstr ""
+msgstr "Zalijepi _u mapu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
 #: src/xfdesktop-file-icon-manager.c:1996
@@ -213,67 +213,67 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTip: %s\nVeličina: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:632
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr ""
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Pozadinske slike za monitor %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Pozadinske slike za monitor %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Premjesti ovaj dijalog do zaslona za kojeg želite mijenjati postavke."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Pozadinska slika za %s na monitoru %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Pozadinska slika za %s na monitoru %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Premjesti ovaj dijalog do radnog prostora i zaslona za kojeg želite mijenjati postavke."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Pozadinske slike za moju radnu površinu"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Pozadinske slike za %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Premjesti ovaj dijalog do radnog prostora za kojeg želite mijenjati postavke."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Izbor slika je nedostupan kada je stil slike postavljen na Ništa."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2003
 msgid "Image files"
 msgstr "Datoteke slika"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2011
 msgid "Select a Directory"
 msgstr "Odaberi direktorij"
 
@@ -302,7 +302,7 @@ msgstr "Dijeljenja na mreži"
 
 #: settings/xfdesktop-file-icon-settings.c:100
 msgid "Removable Disks and Drives"
-msgstr ""
+msgstr "Uklonjivi diskovi pogoni"
 
 #: settings/xfdesktop-file-icon-settings.c:102
 msgid "Fixed Disks and Drives"
@@ -366,11 +366,11 @@ msgstr "Ikone"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:57
 msgid "Window Icons"
-msgstr ""
+msgstr "Ikone prozora"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:67
 msgid "File Icons"
-msgstr ""
+msgstr "Ikone datoteke"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -779,7 +779,7 @@ msgstr "Općenito"
 
 #: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
-msgstr ""
+msgstr "Zadane ikone"
 
 #: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
@@ -923,7 +923,7 @@ msgstr ""
 
 #: src/xfdesktop-file-icon-manager.c:1435
 msgid "Monitors"
-msgstr ""
+msgstr "Monitori"
 
 #: src/xfdesktop-file-icon-manager.c:1721
 msgid "_Open all"
@@ -963,7 +963,7 @@ msgstr "Uredi_pokretač"
 
 #: src/xfdesktop-file-icon-manager.c:1893
 msgid "Ope_n With"
-msgstr ""
+msgstr "Otvor_i pomoću"
 
 #: src/xfdesktop-file-icon-manager.c:1921
 #: src/xfdesktop-file-icon-manager.c:1938
@@ -1227,7 +1227,7 @@ msgstr "Ne može se izvesti prijenos datoteke"
 
 #: src/xfdesktop-icon-view-manager.c:484
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Uredite ikone"
 
 #: src/xfdesktop-icon-view-manager.c:505
 msgid ""
@@ -1316,7 +1316,7 @@ msgstr "Smeće je prazno"
 
 #: src/xfdesktop-special-file-icon.c:257
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
 msgstr[0] ""
 msgstr[1] ""
