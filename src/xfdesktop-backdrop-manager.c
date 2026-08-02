@@ -22,6 +22,10 @@
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <glib.h>
 #include <gio/gio.h>
 #include <libxfce4util/libxfce4util.h>
@@ -29,7 +33,6 @@
 #include <stdlib.h>
 
 #include "xfdesktop-common.h"
-#include "xfdesktop-mime-type.h"
 #include "xfdesktop-backdrop-cycler.h"
 #include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-backdrop-renderer.h"
@@ -44,6 +47,7 @@ struct _XfdesktopBackdropManager {
     XfwScreen *xfw_screen;
     XfwWorkspaceManager *workspace_manager;
 
+    GdkRectangle screen_geometry;
     GPtrArray *monitors;  // Monitor
     GHashTable *backdrops;  // property prefix string -> Backdrop
 
@@ -65,12 +69,18 @@ enum {
 typedef struct {
     XfwMonitor *xfwmonitor;
     gchar *identifier;
+    gint scale;
+    GdkRectangle device_geometry;
+    GdkRectangle logical_geometry;
+
+    GArray *signal_ids;
+
     gatomicrefcount ref_count;
 } Monitor;
 
 typedef struct {
     XfdesktopBackdropManager *manager;
-    XfdesktopBackdropMedia *bmedia;
+    cairo_surface_t *surface;
     gint width;
     gint height;
     GFile *image_file;
@@ -98,12 +108,7 @@ typedef struct {
     GList *instances; // RenderInstanceData
 } RenderData;
 
-typedef struct {
-    XfdesktopBackdropManager *manager;
-    gchar *property_prefix_prefix;
-} BackdropInvalidateForeachData;
-
-static GQuark monitor_quark(void);
+static GQuark monitor_quark(void) G_GNUC_CONST;
 G_DEFINE_QUARK("monitor", monitor)
 
 static void xfdesktop_backdrop_manager_constructed(GObject *obj);
@@ -117,9 +122,15 @@ static void xfdesktop_backdrop_manager_get_property(GObject *obj,
                                                     GParamSpec *pspec);
 static void xfdesktop_backdrop_manager_finalize(GObject *obj);
 
+static void xfwmonitor_changed(XfwMonitor *xfwmonitor,
+                               GParamSpec *pspec,
+                               XfdesktopBackdropManager *manager);
+
 static void channel_property_changed(XfdesktopBackdropManager *manager,
                                      const gchar *property_name,
                                      const GValue *value);
+static void screen_monitors_changed(XfwScreen *screen,
+                                   XfdesktopBackdropManager *manager);
 static void screen_monitor_removed(XfwScreen *screen,
                                    XfwMonitor *monitor,
                                    XfdesktopBackdropManager *manager);
@@ -136,6 +147,10 @@ monitor_unref(Monitor *monitor) {
     g_return_if_fail(monitor != NULL);
     if (g_atomic_ref_count_dec(&monitor->ref_count)) {
         g_object_set_qdata(G_OBJECT(monitor->xfwmonitor), MONITOR_QUARK, NULL);
+        for (gsize i = 0; i < monitor->signal_ids->len; ++i) {
+            g_signal_handler_disconnect(monitor->xfwmonitor, g_array_index(monitor->signal_ids, gulong, i));
+        }
+        g_array_free(monitor->signal_ids, TRUE);
         g_object_unref(monitor->xfwmonitor);
         g_free(monitor->identifier);
         g_free(monitor);
@@ -152,8 +167,23 @@ monitor_new(XfdesktopBackdropManager *manager, XfwMonitor *xfwmonitor) {
     // TODO: this is what we use now, but it would be better to use _get_identifier()
     // after migrating config.
     monitor->identifier = g_strdup(xfw_monitor_get_connector(xfwmonitor));
+    monitor->scale = xfw_monitor_get_scale(xfwmonitor);
+    xfw_monitor_get_physical_geometry(xfwmonitor, &monitor->device_geometry);
+    xfw_monitor_get_logical_geometry(xfwmonitor, &monitor->logical_geometry);
+    monitor->signal_ids = g_array_sized_new(FALSE, TRUE, sizeof(gulong), 3);
 
     g_object_set_qdata(G_OBJECT(xfwmonitor), MONITOR_QUARK, monitor);
+
+    gulong id;
+    id = g_signal_connect(xfwmonitor, "notify::scale",
+                          G_CALLBACK(xfwmonitor_changed), manager);
+    g_array_append_val(monitor->signal_ids, id);
+    id = g_signal_connect(xfwmonitor, "notify::physical-geometry",
+                          G_CALLBACK(xfwmonitor_changed), manager);
+    g_array_append_val(monitor->signal_ids, id);
+    id =g_signal_connect(xfwmonitor, "notify::logical-geometry",
+                         G_CALLBACK(xfwmonitor_changed), manager);
+    g_array_append_val(monitor->signal_ids, id);
 
     g_ptr_array_add(manager->monitors, monitor);
 
@@ -164,6 +194,19 @@ static const gchar *
 monitor_get_identifier(Monitor *monitor) {
     g_return_val_if_fail(monitor != NULL, NULL);
     return monitor->identifier;
+}
+
+static GdkRectangle *
+monitor_get_device_geometry(Monitor *monitor) {
+    g_return_val_if_fail(monitor != NULL, NULL);
+    return &monitor->device_geometry;
+}
+
+static Monitor *
+monitor_get(GPtrArray *monitors, guint index) {
+    g_return_val_if_fail(monitors != NULL, NULL);
+    g_return_val_if_fail(index < monitors->len, NULL);
+    return g_ptr_array_index(monitors, index);
 }
 
 static Monitor *
@@ -185,7 +228,7 @@ monitor_get_from_identifier(GPtrArray *monitors, const gchar *identifier) {
     g_return_val_if_fail(identifier != NULL, NULL);
 
     for (guint i = 0; i < monitors->len; ++i) {
-        Monitor *monitor = g_ptr_array_index(monitors, i);
+        Monitor *monitor = monitor_get(monitors, i);
         if (g_strcmp0(identifier, monitor->identifier) == 0) {
             return monitor;
         }
@@ -197,7 +240,7 @@ monitor_get_from_identifier(GPtrArray *monitors, const gchar *identifier) {
 
 static void
 backdrop_free(Backdrop *backdrop) {
-    g_clear_object(&backdrop->bmedia);
+    cairo_surface_destroy(backdrop->surface);
     if (backdrop->image_file_monitor != NULL) {
         g_file_monitor_cancel(backdrop->image_file_monitor);
         g_object_unref(backdrop->image_file_monitor);
@@ -294,6 +337,9 @@ xfdesktop_backdrop_manager_constructed(GObject *obj) {
     XfdesktopBackdropManager *manager = XFDESKTOP_BACKDROP_MANAGER(obj);
     manager->workspace_manager = xfw_screen_get_workspace_manager(manager->xfw_screen);
 
+    screen_monitors_changed(manager->xfw_screen, manager);
+    g_signal_connect(manager->xfw_screen, "monitors-changed",
+                     G_CALLBACK(screen_monitors_changed), manager);
     g_signal_connect(manager->xfw_screen, "monitor-removed",
                      G_CALLBACK(screen_monitor_removed), manager);
 
@@ -360,9 +406,10 @@ build_property_prefix_prefix(XfdesktopBackdropManager *manager, Monitor *monitor
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gint screen_num = gdk_screen_get_number(gscreen);
 G_GNUC_END_IGNORE_DEPRECATIONS
+    gboolean single_monitor = xfconf_channel_get_bool(manager->channel, "/backdrop/single-monitor-mode", TRUE);
     return g_strdup_printf("/backdrop/screen%d/monitor%s/",
                            screen_num,
-                           monitor_get_identifier(monitor));
+                           single_monitor ? "0" : monitor_get_identifier(monitor));
 }
 
 static gchar *
@@ -394,9 +441,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_return_val_if_fail(first_xfwmonitor != NULL, NULL);
     Monitor *first_monitor = get_or_create_monitor(manager, first_xfwmonitor);
 
+    gboolean single_monitor = xfconf_channel_get_bool(manager->channel, "/backdrop/single-monitor-mode", TRUE);
     gchar *span_monitor_property_prefix = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d",
                                                           screen_num,
-                                                          monitor_get_identifier(first_monitor),
+                                                          single_monitor ? "0" : monitor_get_identifier(first_monitor),
                                                           workspace_num);
     gchar *first_image_style_prop = g_strconcat(span_monitor_property_prefix, "/image-style", NULL);
     XfceBackdropImageStyle first_image_style = xfconf_channel_get_int(manager->channel,
@@ -421,7 +469,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         }
         return g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d",
                                screen_num,
-                               monitor_get_identifier(the_monitor),
+                               single_monitor ? "0" : monitor_get_identifier(the_monitor),
                                workspace_num);
     }
 }
@@ -483,7 +531,13 @@ parse_property_prefix(XfdesktopBackdropManager *manager,
         gint workspace_num = strtol(parts[3] + 9, NULL, 10);
         DBG("got screen_num %d, monitor %s, workspace %d", screen_num, monitor_identifier, workspace_num);
 
-        Monitor *monitor = monitor_get_from_identifier(manager->monitors, monitor_identifier);
+        gboolean single_monitor = xfconf_channel_get_bool(manager->channel, "/backdrop/single-monitor-mode", TRUE);
+        Monitor *monitor = NULL;
+        if (single_monitor && manager->monitors->len > 0) {
+            monitor = g_ptr_array_index(manager->monitors, 0);
+        } else {
+            monitor = monitor_get_from_identifier(manager->monitors, monitor_identifier);
+        }
         XfwWorkspace *workspace = find_workspace_by_number(manager->workspace_manager, workspace_num);
         DBG("monitor=%p, workspace=%p", monitor, workspace);
 
@@ -521,7 +575,8 @@ emit_backdrop_changed(XfdesktopBackdropManager *manager, const gchar *property_p
             g_hash_table_remove(manager->in_progress_rendering, property_prefix);
         }
 
-        if (backdrop->is_spanning) {
+        gboolean single_monitor = xfconf_channel_get_bool(manager->channel, "/backdrop/single-monitor-mode", TRUE);
+        if (backdrop->is_spanning || single_monitor) {
             for (guint i = 0; i < manager->monitors->len; ++i) {
                 Monitor *a_monitor = g_ptr_array_index(manager->monitors, i);
                 g_signal_emit(manager,
@@ -542,7 +597,10 @@ static void
 invalidate_backdrops_for_property_prefix(XfdesktopBackdropManager *manager, const gchar *property_prefix) {
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
     if (backdrop != NULL) {
-        g_clear_object(&backdrop->bmedia);
+        if (backdrop->surface != NULL) {
+            cairo_surface_destroy(backdrop->surface);
+            backdrop->surface = NULL;
+        }
         emit_backdrop_changed(manager, property_prefix, backdrop);
     }
 }
@@ -562,6 +620,73 @@ channel_property_changed(XfdesktopBackdropManager *manager, const gchar *propert
     }
 }
 
+typedef struct {
+    XfdesktopBackdropManager *manager;
+    gchar *property_prefix_prefix;
+} BackdropInvalidateForeachData;
+
+static void
+backdrops_ht_invalidate(gpointer key, gpointer value, gpointer data) {
+    const gchar *property_prefix = key;
+    BackdropInvalidateForeachData *bifd = data;
+
+    if (g_str_has_prefix(property_prefix, bifd->property_prefix_prefix)) {
+        Backdrop *backdrop = value;
+        if (backdrop->surface != NULL) {
+            cairo_surface_destroy(backdrop->surface);
+            backdrop->surface = NULL;
+        }
+        emit_backdrop_changed(bifd->manager, property_prefix, backdrop);
+    }
+}
+
+static void
+invalidate_backdrops_for_monitor(XfdesktopBackdropManager *manager, Monitor *monitor) {
+    BackdropInvalidateForeachData bifd = {
+        .manager = manager,
+        .property_prefix_prefix = build_property_prefix_prefix(manager, monitor),
+    };
+    g_hash_table_foreach(manager->backdrops, backdrops_ht_invalidate, &bifd);
+    g_free(bifd.property_prefix_prefix);
+}
+
+
+static void
+xfwmonitor_changed(XfwMonitor *xfwmonitor, GParamSpec *pspec, XfdesktopBackdropManager *manager) {
+    gboolean changed = FALSE;
+
+    for (guint i = 0; i < manager->monitors->len; ++i) {
+        Monitor *monitor = g_ptr_array_index(manager->monitors, i);
+        if (monitor->xfwmonitor == xfwmonitor) {
+            gint scale = xfw_monitor_get_scale(xfwmonitor);
+            if (scale != monitor->scale) {
+                monitor->scale = scale;
+                changed = TRUE;
+            }
+
+            GdkRectangle physical_geometry;
+            xfw_monitor_get_physical_geometry(xfwmonitor, &physical_geometry);
+            if (!gdk_rectangle_equal(&physical_geometry, &monitor->device_geometry)) {
+                monitor->device_geometry = physical_geometry;
+                changed = TRUE;
+            }
+
+            GdkRectangle logical_geometry;
+            xfw_monitor_get_logical_geometry(xfwmonitor, &logical_geometry);
+            if (!gdk_rectangle_equal(&logical_geometry, &monitor->logical_geometry)) {
+                monitor->logical_geometry = logical_geometry;
+                changed = TRUE;
+            }
+
+            if (changed) {
+                invalidate_backdrops_for_monitor(manager, monitor);
+            }
+
+            break;
+        }
+    }
+}
+
 static gboolean
 backdrops_ht_monitor_removed(gpointer key, gpointer value, gpointer data) {
     const gchar *property_prefix = key;
@@ -570,22 +695,21 @@ backdrops_ht_monitor_removed(gpointer key, gpointer value, gpointer data) {
 }
 
 static void
-compute_spanning_geometry(XfdesktopBackdropManager *manager, GdkRectangle *geometry) {
-    DBG("monitors-changed; updating backdrop manager geometry");
-    GList *monitors = xfw_screen_get_monitors(manager->xfw_screen);
+screen_monitors_changed(XfwScreen *screen, XfdesktopBackdropManager *manager) {
+    GList *monitors = xfw_screen_get_monitors(screen);
     if (monitors == NULL) {
-        geometry->x = 0;
-        geometry->y = 0;
-        geometry->width = 0;
-        geometry->height = 0;
+        manager->screen_geometry.x = 0;
+        manager->screen_geometry.y = 0;
+        manager->screen_geometry.width = 0;
+        manager->screen_geometry.height = 0;
     } else {
         XfwMonitor *monitor = XFW_MONITOR(monitors->data);
-        xfw_monitor_get_physical_geometry(monitor, geometry);
+        xfw_monitor_get_physical_geometry(monitor, &manager->screen_geometry);
         for (GList *l = monitors->next; l != NULL; l = l->next) {
             monitor = XFW_MONITOR(l->data);
             GdkRectangle geom;
             xfw_monitor_get_physical_geometry(monitor, &geom);
-            gdk_rectangle_union(&geom, geometry, geometry);
+            gdk_rectangle_union(&geom, &manager->screen_geometry, &manager->screen_geometry);
         }
     }
 }
@@ -606,24 +730,23 @@ screen_monitor_removed(XfwScreen *screen, XfwMonitor *xfwmonitor, XfdesktopBackd
 }
 
 static void
-notify_complete(XfdesktopBackdropMedia *bmedia,
+notify_complete(cairo_surface_t *surface,
                 Monitor *monitor,
                 gboolean is_spanning,
                 GFile *image_file,
                 GetImageSurfaceCallback callback,
                 gpointer callback_user_data)
 {
-    g_return_if_fail(bmedia != NULL);
+    g_return_if_fail(surface != NULL);
     g_return_if_fail(monitor != NULL);
     g_return_if_fail(callback != NULL);
 
-    GdkRectangle region;
-    xfw_monitor_get_physical_geometry(monitor->xfwmonitor, &region);
+    GdkRectangle region = *monitor_get_device_geometry(monitor);
     if (!is_spanning) {
         region.x = region.y = 0;
     }
 
-    callback(bmedia, &region, image_file, NULL, callback_user_data);
+    callback(surface, &region, image_file, NULL, callback_user_data);
 }
 
 static void
@@ -678,7 +801,7 @@ backdrop_image_file_changed(GFileMonitor *fmonitor,
 }
 
 static void
-render_finished(XfdesktopBackdropMedia *bmedia, gint width, gint height, GError *error, gpointer user_data) {
+render_finished(cairo_surface_t *surface, gint width, gint height, GError *error, gpointer user_data) {
     RenderData *rdata = user_data;
     const gchar *property_prefix = rdata->property_prefix;
 
@@ -686,23 +809,71 @@ render_finished(XfdesktopBackdropMedia *bmedia, gint width, gint height, GError 
         g_message("Failed to load image file '%s': %s", g_file_peek_path(rdata->image_file), error->message);
     }
 
-    if (bmedia != NULL) {
+    if (surface != NULL) {
         if (rdata->manager != NULL) {
             Backdrop *backdrop = g_hash_table_lookup(rdata->manager->backdrops, rdata->property_prefix);
             if (backdrop == NULL) {
+                gchar *new_property_prefix = g_strdup(rdata->property_prefix);
+
                 backdrop = g_new0(Backdrop, 1);
                 backdrop->manager = rdata->manager;
-                backdrop->cycler = xfdesktop_backdrop_cycler_new(rdata->manager->channel, rdata->property_prefix,
+                backdrop->cycler = xfdesktop_backdrop_cycler_new(rdata->manager->channel,
+                                                                 rdata->property_prefix,
                                                                  rdata->image_file);
+
                 g_hash_table_insert(rdata->manager->backdrops, rdata->property_prefix, backdrop);
                 rdata->property_prefix = NULL;
+
+                /* Copy wallpaper from an existing monitor */
+                {
+                    gchar *wallpaper = NULL;
+                    GHashTableIter iter;
+                    gpointer key, value;
+
+                    g_hash_table_iter_init(&iter, rdata->manager->backdrops);
+
+                    while (g_hash_table_iter_next(&iter, &key, &value)) {
+                        if (g_strcmp0((gchar *)key, new_property_prefix) != 0) {
+                            gchar *path = g_strdup_printf("%s/last-image", (gchar *)key);
+
+                            wallpaper = xfconf_channel_get_string(
+                                rdata->manager->channel,
+                                path,
+                                NULL
+                            );
+
+                            g_free(path);
+
+                            if (wallpaper != NULL && *wallpaper != '\0')
+                                break;
+
+                            g_clear_pointer(&wallpaper, g_free);
+                        }
+                    }
+
+                    if (wallpaper != NULL) {
+                        gchar *target = g_strdup_printf("%s/last-image",
+                                                        new_property_prefix);
+
+                        xfconf_channel_set_string(
+                            rdata->manager->channel,
+                            target,
+                            wallpaper
+                        );
+
+                        g_free(target);
+                        g_free(wallpaper);
+                    }
+                }
+
+                g_free(new_property_prefix);
             } else {
-                g_clear_object(&backdrop->bmedia);
+                g_clear_pointer(&backdrop->surface, cairo_surface_destroy);
                 g_clear_object(&backdrop->image_file);
             }
 
             // XXX: maybe we shouldn't cache if error is non-null
-            backdrop->bmedia = bmedia;
+            backdrop->surface = surface;
             backdrop->width = width;
             backdrop->height = height;
             if (rdata->image_file != NULL) {
@@ -719,7 +890,7 @@ render_finished(XfdesktopBackdropMedia *bmedia, gint width, gint height, GError 
                                                                    G_FILE_MONITOR_NONE,
                                                                    NULL,
                                                                    NULL);
-                if (backdrop->image_file_monitor != NULL) {
+                if (backdrop->image_file_monitor == NULL) {
                     g_signal_connect(backdrop->image_file_monitor, "changed",
                                      G_CALLBACK(backdrop_image_file_changed), backdrop);
                 }
@@ -728,7 +899,7 @@ render_finished(XfdesktopBackdropMedia *bmedia, gint width, gint height, GError 
 
         for (GList *l = rdata->instances; l != NULL; l = l->next) {
             RenderInstanceData *ridata = l->data;
-            notify_complete(bmedia,
+            notify_complete(surface,
                             ridata->monitor,
                             rdata->is_spanning,
                             error == NULL ? rdata->image_file : NULL,
@@ -752,22 +923,6 @@ static void
 forward_cancellation(GCancellable *cancellable, GCancellable *main_cancellable) {
     g_cancellable_cancel(main_cancellable);
 }
-
-#ifdef ENABLE_VIDEO_BACKDROP
-static void
-create_video_backdrop(GFile *video_file,
-                      XfceBackdropImageStyle image_style,
-                      gint geom_width,
-                      gint geom_height,
-                      GetImageSurfaceCallback callback,
-                      gpointer rdata)
-{
-    gchar *file_uri = g_file_get_uri(video_file);
-    XfdesktopBackdropMedia *bmedia = xfdesktop_backdrop_media_new_from_video_uri(file_uri, image_style);
-    g_free(file_uri);
-    render_finished(bmedia, geom_width, geom_height, NULL, rdata);
-}
-#endif /* ENABLE_VIDEO_BACKDROP */
 
 static void
 create_backdrop(XfdesktopBackdropManager *manager,
@@ -805,11 +960,11 @@ create_backdrop(XfdesktopBackdropManager *manager,
     GFile *image_file = image_filename != NULL ? g_file_new_for_path(image_filename) : NULL;
     g_free(image_filename);
 
-    GdkRectangle geom;
+    GdkRectangle *geom;
     if (is_spanning) {
-        compute_spanning_geometry(manager, &geom);
+        geom = &manager->screen_geometry;
     } else {
-        xfw_monitor_get_physical_geometry(monitor->xfwmonitor, &geom);
+        geom = monitor_get_device_geometry(monitor);
     }
 
     RenderData *rdata = g_new0(RenderData, 1);
@@ -833,21 +988,14 @@ create_backdrop(XfdesktopBackdropManager *manager,
 
     g_hash_table_insert(manager->in_progress_rendering, g_strdup(property_prefix), rdata);
 
-#ifdef ENABLE_VIDEO_BACKDROP
-    if (image_file != NULL && image_style != XFCE_BACKDROP_IMAGE_NONE && xfdesktop_file_has_video_mime_type(image_file)) {
-        create_video_backdrop(image_file, image_style, geom.width, geom.height, callback, rdata);
-        return;
-    }
-#endif /* ENABLE_VIDEO_BACKDROP */
-
     xfdesktop_backdrop_render(rdata->main_cancellable,
                               color_style,
                               &color1,
                               &color2,
                               image_style,
                               image_file,
-                              geom.width,
-                              geom.height,
+                              geom->width,
+                              geom->height,
                               render_finished,
                               rdata);
 }
@@ -863,7 +1011,6 @@ xfdesktop_backdrop_manager_new(XfwScreen *screen, XfconfChannel *channel) {
 void
 xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
                                              GCancellable *cancellable,
-                                             GetImageMode get_image_mode,
                                              XfwMonitor *xfwmonitor,
                                              XfwWorkspace *workspace,
                                              GetImageSurfaceCallback callback,
@@ -875,20 +1022,14 @@ xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
     g_return_if_fail(XFW_IS_WORKSPACE(workspace));
     g_return_if_fail(callback != NULL);
 
-    DBG("fetching new backdrop");
-
     Monitor *monitor = NULL;
     gboolean is_spanning = FALSE;
 
     gchar *property_prefix = build_property_prefix(manager, xfwmonitor, workspace, &monitor, &is_spanning);
-    if (get_image_mode == IMAGE_FORCE_RELOAD) {
-        g_hash_table_remove(manager->backdrops, property_prefix);
-    }
-
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
-    if (backdrop != NULL && backdrop->bmedia != NULL) {
+    if (backdrop != NULL && backdrop->surface != NULL) {
         g_free(property_prefix);
-        notify_complete(backdrop->bmedia,
+        notify_complete(backdrop->surface,
                         monitor,
                         is_spanning,
                         backdrop->image_file,
@@ -954,30 +1095,4 @@ xfdesktop_backdrop_manager_cycle_backdrop(XfdesktopBackdropManager *manager,
     if (cycler != NULL) {
         xfdesktop_backdrop_cycler_cycle_backdrop(cycler);
     }
-}
-
-static void
-backdrops_ht_invalidate(gpointer key, gpointer value, gpointer data) {
-    const gchar *property_prefix = key;
-    BackdropInvalidateForeachData *bifd = data;
-
-    if (g_str_has_prefix(property_prefix, bifd->property_prefix_prefix)) {
-        Backdrop *backdrop = value;
-        g_clear_object(&backdrop->bmedia);
-        emit_backdrop_changed(bifd->manager, property_prefix, backdrop);
-    }
-}
-
-void
-xfdesktop_backdrop_manager_monitor_changed(XfdesktopBackdropManager *manager, XfwMonitor *xfwmonitor) {
-    g_return_if_fail(XFDESKTOP_IS_BACKDROP_MANAGER(manager));
-    g_return_if_fail(XFW_IS_MONITOR(xfwmonitor));
-
-    Monitor *monitor = get_or_create_monitor(manager, xfwmonitor);
-    BackdropInvalidateForeachData bifd = {
-        .manager = manager,
-        .property_prefix_prefix = build_property_prefix_prefix(manager, monitor),
-    };
-    g_hash_table_foreach(manager->backdrops, backdrops_ht_invalidate, &bifd);
-    g_free(bifd.property_prefix_prefix);
 }
