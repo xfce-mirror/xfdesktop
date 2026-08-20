@@ -1328,7 +1328,8 @@ xfdesktop_application_command_line(GApplication *g_application,
     TRACE("entering");
 
     if (!handle_option(g_application, options) && g_application_command_line_get_is_remote(command_line)) {
-        g_application_command_line_printerr(command_line, PACKAGE " is already running\n");
+        g_application_command_line_printerr(command_line, _("%s is already running"), PACKAGE);
+        g_application_command_line_printerr(command_line, "\n");
         return 1;
     }
 
