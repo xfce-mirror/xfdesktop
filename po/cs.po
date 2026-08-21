@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-03-01 01:02+0100\n"
+"POT-Creation-Date: 2026-08-21 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2021,2024-2026\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfdesktop/language/cs/)\n"
@@ -74,13 +74,13 @@ msgid "Create _Folder"
 msgstr "Vytvořit _složku"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
-#: src/xfdesktop-file-icon-manager.c:1761
+#: src/xfdesktop-file-icon-manager.c:1847
 msgid "Create _Document"
 msgstr "Vytvořit _dokument"
 
 #: common/xfdesktop-keyboard-shortcuts.c:105
-#: src/xfdesktop-file-icon-manager.c:1819
-#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:750
+#: src/xfdesktop-file-icon-manager.c:1905
+#: src/xfdesktop-special-file-icon.c:373 src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -105,17 +105,17 @@ msgid "_Rename"
 msgstr "_Přejmenovat"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
-#: src/xfdesktop-file-icon-manager.c:1965
+#: src/xfdesktop-file-icon-manager.c:2051
 msgid "Cu_t"
 msgstr "_Vyjmout"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
-#: src/xfdesktop-file-icon-manager.c:1973
+#: src/xfdesktop-file-icon-manager.c:2059
 msgid "_Copy"
 msgstr "_Kopírovat"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1952
+#: src/xfdesktop-file-icon-manager.c:2038
 msgid "_Paste"
 msgstr "Vloži_t"
 
@@ -124,17 +124,17 @@ msgid "Paste _Into Folder"
 msgstr "Vložit _do složky"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
-#: src/xfdesktop-file-icon-manager.c:1996
+#: src/xfdesktop-file-icon-manager.c:2082
 msgid "Mo_ve to Trash"
 msgstr "Přesu_nout do koše"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
-#: src/xfdesktop-special-file-icon.c:351
+#: src/xfdesktop-special-file-icon.c:389
 msgid "_Empty Trash"
 msgstr "_Vysypat koš"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:2005
+#: src/xfdesktop-file-icon-manager.c:2091
 msgid "_Delete"
 msgstr "Sma_zat"
 
@@ -158,49 +158,35 @@ msgstr "SOCKET ID"
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: settings/main.c:98 src/xfdesktop-application.c:282
+#: settings/main.c:98 src/xfdesktop-application.c:284
 msgid "Enable debug messages"
 msgstr "Povolit ladění"
 
-#: settings/main.c:116
+#: settings/main.c:110
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Informace o použití získáte příkazem '%s --help'."
 
-#: settings/main.c:128 src/xfdesktop-application.c:1198
+#: settings/main.c:122 src/xfdesktop-application.c:1246
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tým vývojářů Xfce. Všechna práva vyhrazena."
 
-#: settings/main.c:129 src/xfdesktop-application.c:1199
+#: settings/main.c:123 src/xfdesktop-application.c:1247
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prosíme, nahlaste chyby na adresu <%s>."
 
-#: settings/main.c:135
+#: settings/main.c:129
 msgid "Desktop Settings"
 msgstr "Nastavení plochy"
 
-#: settings/main.c:137
+#: settings/main.c:131
 msgid "Unable to contact settings server"
 msgstr "Spojení se serverem nastavení nelze navázat"
 
-#: settings/main.c:139
+#: settings/main.c:133
 msgid "Quit"
 msgstr "Ukončit"
-
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
-msgid "Desktop"
-msgstr "Plocha"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Nastavení pozadí pracovní plochy a nabídky a chování ikon"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "pracovní plocha;pozadí;tapeta;nastavení;xfce;"
 
 #: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
@@ -215,7 +201,7 @@ msgid ""
 msgstr "<b>%s</b>\nTyp: %s\nVelikost: %s"
 
 #: settings/xfdesktop-background-settings.c:550
-#: settings/xfdesktop-background-settings.c:632
+#: settings/xfdesktop-background-settings.c:630
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Nelze načíst obrázky ze složky \"%s\""
@@ -269,27 +255,27 @@ msgstr "Přesuňte toto dialogové okno na pracovní plochu, jejíž nastavení 
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Výběr obrázku není k dispozici, pokud je styl obrázku nastaven na Žádný."
 
-#: settings/xfdesktop-background-settings.c:2003
+#: settings/xfdesktop-background-settings.c:2021
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2011
+#: settings/xfdesktop-background-settings.c:2029
 msgid "Select a Directory"
 msgstr "Vyberte adresář"
 
 #: settings/xfdesktop-file-icon-settings.c:90
-#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+#: src/xfdesktop-special-file-icon.c:270 src/xfdesktop-special-file-icon.c:308
 msgid "Home"
 msgstr "Domovská složka"
 
 #: settings/xfdesktop-file-icon-settings.c:92
-#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+#: src/xfdesktop-special-file-icon.c:272 src/xfdesktop-special-file-icon.c:306
 msgid "File System"
 msgstr "Systém souborů"
 
 #: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:236
+#: src/xfdesktop-special-file-icon.c:274
 msgid "Trash"
 msgstr "Koš"
 
@@ -326,16 +312,16 @@ msgid "Arrange icons"
 msgstr "Uspořádat ikony"
 
 #. printf is to be translator-friendly
-#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:760
-#: src/xfdesktop-file-icon-manager.c:1321
+#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:791
+#: src/xfdesktop-file-icon-manager.c:1352
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nelze spustit „%s“:"
 
-#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:762
-#: src/xfdesktop-file-icon-manager.c:1006
-#: src/xfdesktop-file-icon-manager.c:1054
-#: src/xfdesktop-file-icon-manager.c:1323 src/xfdesktop-file-utils.c:579
+#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:793
+#: src/xfdesktop-file-icon-manager.c:1037
+#: src/xfdesktop-file-icon-manager.c:1085
+#: src/xfdesktop-file-icon-manager.c:1354 src/xfdesktop-file-utils.c:579
 #: src/xfdesktop-file-utils.c:1462 src/xfdesktop-file-utils.c:1487
 #: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
@@ -343,11 +329,11 @@ msgstr "Chyba při spuštění"
 
 #: settings/xfdesktop-icon-settings.c:97
 #: settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:698 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1010
-#: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1325
-#: src/xfdesktop-file-icon-manager.c:3654 src/xfdesktop-file-utils.c:582
+#: src/xfdesktop-file-icon-manager.c:729 src/xfdesktop-file-icon-manager.c:795
+#: src/xfdesktop-file-icon-manager.c:1041
+#: src/xfdesktop-file-icon-manager.c:1089
+#: src/xfdesktop-file-icon-manager.c:1356
+#: src/xfdesktop-file-icon-manager.c:3741 src/xfdesktop-file-utils.c:582
 #: src/xfdesktop-file-utils.c:699 src/xfdesktop-file-utils.c:754
 #: src/xfdesktop-file-utils.c:818 src/xfdesktop-file-utils.c:879
 #: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
@@ -360,6 +346,12 @@ msgstr "Chyba při spuštění"
 #: src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "Za_vřít"
+
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: settings/xfdesktop-settings-ui.glade:162
+#: settings/xfdesktop-settings.desktop.in:4 src/xfce-desktop.c:640
+msgid "Desktop"
+msgstr "Plocha"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
@@ -421,7 +413,7 @@ msgid "Spanning Screens"
 msgstr "Přes více obrazovek"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:172
-#: src/xfdesktop-monitor-chooser-ui.glade:33
+#: src/xfdesktop-monitor-chooser-ui.glade:34
 msgid "Apply"
 msgstr "Použít"
 
@@ -790,6 +782,14 @@ msgstr "Ikony _souborů a spouštěčů"
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
+#: settings/xfdesktop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Nastavení pozadí pracovní plochy a nabídky a chování ikon"
+
+#: settings/xfdesktop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "pracovní plocha;pozadí;tapeta;nastavení;xfce;"
+
 #: src/menu.c:82
 msgid "_Applications"
 msgstr "A_plikace"
@@ -798,263 +798,268 @@ msgstr "A_plikace"
 msgid "Window List"
 msgstr "Seznam oken"
 
-#: src/xfce-desktop.c:1269
+#: src/xfce-desktop.c:1279
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
 msgstr "Zásuvný modul \"gtk\" pro gstreamer požadovaný pro přehrávání videa nebyl nalezen"
 
-#: src/xfce-desktop.c:1333
+#: src/xfce-desktop.c:1343
 msgid "Unable to create gstreamer video player"
 msgstr "Nelze vytvořit přehrávač videa typu gstreamer"
 
-#: src/xfdesktop-application.c:274
+#: src/xfdesktop-application.c:276
 msgid "Display version information"
 msgstr "Zobrazit informace o verzi"
 
-#: src/xfdesktop-application.c:275
+#: src/xfdesktop-application.c:277
 msgid "Reload all settings"
 msgstr "Znovu načíst všechna nastavení"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Postoupit na další tapetu na aktuální pracovní ploše"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Otevře nabídku (na aktuální pozici kurzoru myši)"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Otevře seznam oken (na aktuální pozici kurzoru myši)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Automaticky uspořádat všechny ikony na pracovní ploše"
 
-#: src/xfdesktop-application.c:283
+#: src/xfdesktop-application.c:285
 msgid "Disable debug messages"
 msgstr "Zakázat ladění"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Do not wait for a window manager on startup"
 msgstr "Nečekat na správce oken při startu"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Cause xfdesktop to quit"
 msgstr "Ukončí správce plochy xfdesktop"
 
-#: src/xfdesktop-application.c:1191
+#: src/xfdesktop-application.c:1239
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Toto je aplikace %s ve verzi %s, spuštěná v prostředí %s.\n"
 
-#: src/xfdesktop-application.c:1193
+#: src/xfdesktop-application.c:1241
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Sestaveno s GTK+ %d.%d.%d, slinkováno s GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1201
+#: src/xfdesktop-application.c:1249
 msgid "Build options:\n"
 msgstr "Volby při sestavování:\n"
 
-#: src/xfdesktop-application.c:1202
+#: src/xfdesktop-application.c:1250
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Hlavní nabídka: %s\n"
 
-#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
-#: src/xfdesktop-application.c:1218
+#: src/xfdesktop-application.c:1252 src/xfdesktop-application.c:1259
+#: src/xfdesktop-application.c:1266
 msgid "enabled"
 msgstr "povoleno"
 
-#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
-#: src/xfdesktop-application.c:1220
+#: src/xfdesktop-application.c:1254 src/xfdesktop-application.c:1261
+#: src/xfdesktop-application.c:1268
 msgid "disabled"
 msgstr "zakázáno"
 
-#: src/xfdesktop-application.c:1209
+#: src/xfdesktop-application.c:1257
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Ikony plochy: %s\n"
 
-#: src/xfdesktop-application.c:1216
+#: src/xfdesktop-application.c:1264
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Ikony souborů plochy: %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:695 src/xfdesktop-file-utils.c:750
+#: src/xfdesktop-application.c:1331
+#, c-format
+msgid "%s is already running"
+msgstr "Aplikace %s je již spuštěna"
+
+#: src/xfdesktop-file-icon-manager.c:726 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "Chyba přejmenování"
 
-#: src/xfdesktop-file-icon-manager.c:696 src/xfdesktop-file-utils.c:815
+#: src/xfdesktop-file-icon-manager.c:727 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "Soubory nelze přejmenovat"
 
-#: src/xfdesktop-file-icon-manager.c:697
+#: src/xfdesktop-file-icon-manager.c:728
 msgid "None of the icons selected support being renamed."
 msgstr "Žádná z vybraných ikon nepodporuje přejmenování."
 
-#: src/xfdesktop-file-icon-manager.c:955
+#: src/xfdesktop-file-icon-manager.c:986
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Otevřít pomocí „%s“"
 
-#: src/xfdesktop-file-icon-manager.c:958
+#: src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Otevřít pomocí „%s“"
 
-#: src/xfdesktop-file-icon-manager.c:1008
-#: src/xfdesktop-file-icon-manager.c:1056
+#: src/xfdesktop-file-icon-manager.c:1039
+#: src/xfdesktop-file-icon-manager.c:1087
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr "Nelze spustit \"xfce-desktop-item-edit\". Tato aplikace je vyžadována pro vytváření a úpravu spouštěčů a odkazů na ploše."
 
-#: src/xfdesktop-file-icon-manager.c:1425
+#: src/xfdesktop-file-icon-manager.c:1537
 msgid "Choose Monitor Configuration"
 msgstr "Zvolit konfiguraci monitoru"
 
-#: src/xfdesktop-file-icon-manager.c:1427
+#: src/xfdesktop-file-icon-manager.c:1540
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "Chcete monitoru <b>%s</b> přiřadit existující rozložení ikon na ploše?"
 
-#: src/xfdesktop-file-icon-manager.c:1435
+#: src/xfdesktop-file-icon-manager.c:1548
 msgid "Monitors"
 msgstr "Monitory"
 
-#: src/xfdesktop-file-icon-manager.c:1721
+#: src/xfdesktop-file-icon-manager.c:1807
 msgid "_Open all"
 msgstr "_Otevřít vše"
 
-#: src/xfdesktop-file-icon-manager.c:1733
+#: src/xfdesktop-file-icon-manager.c:1819
 msgid "Create _Launcher..."
 msgstr "Vytvořit s_pouštěč…"
 
-#: src/xfdesktop-file-icon-manager.c:1743
+#: src/xfdesktop-file-icon-manager.c:1829
 msgid "Create _URL Link..."
 msgstr "Vytvořit odkaz _URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1753
+#: src/xfdesktop-file-icon-manager.c:1839
 msgid "Create _Folder..."
 msgstr "Vytvořit _složku…"
 
-#: src/xfdesktop-file-icon-manager.c:1792
+#: src/xfdesktop-file-icon-manager.c:1878
 msgid "No templates installed"
 msgstr "Nejsou nainstalovány žádné šablony"
 
-#: src/xfdesktop-file-icon-manager.c:1810
+#: src/xfdesktop-file-icon-manager.c:1896
 msgid "_Empty File"
 msgstr "_Prázdný soubor"
 
-#: src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-file-icon-manager.c:1905
 msgid "_Open All"
 msgstr "_Otevřít vše"
 
-#: src/xfdesktop-file-icon-manager.c:1832
+#: src/xfdesktop-file-icon-manager.c:1918
 msgid "_Execute"
 msgstr "_Spustit"
 
-#: src/xfdesktop-file-icon-manager.c:1845
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Edit _Launcher"
 msgstr "_Upravit spouštěč"
 
-#: src/xfdesktop-file-icon-manager.c:1893
+#: src/xfdesktop-file-icon-manager.c:1979
 msgid "Ope_n With"
 msgstr "Otevřít po_mocí"
 
-#: src/xfdesktop-file-icon-manager.c:1921
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:2007
+#: src/xfdesktop-file-icon-manager.c:2024
 msgid "Ope_n With Other Application..."
 msgstr "Otevřít po_mocí jiné aplikace..."
 
-#: src/xfdesktop-file-icon-manager.c:1929
+#: src/xfdesktop-file-icon-manager.c:2015
 msgid "Set Defa_ult Application..."
 msgstr "Nastavit vý_chozí aplikaci..."
 
-#: src/xfdesktop-file-icon-manager.c:1985
+#: src/xfdesktop-file-icon-manager.c:2071
 msgid "Paste Into Folder"
 msgstr "Vložit do složky"
 
-#: src/xfdesktop-file-icon-manager.c:2016
+#: src/xfdesktop-file-icon-manager.c:2102
 msgid "_Rename..."
 msgstr "Přej_menovat..."
 
-#: src/xfdesktop-file-icon-manager.c:2067
+#: src/xfdesktop-file-icon-manager.c:2153
 msgid "_Open in New Window"
 msgstr "_Otevřít v novém okně"
 
-#: src/xfdesktop-file-icon-manager.c:2074
-#: src/xfdesktop-window-icon-manager.c:304
+#: src/xfdesktop-file-icon-manager.c:2160
+#: src/xfdesktop-window-icon-manager.c:305
 msgid "Arrange Desktop _Icons"
 msgstr "Uspořádat _ikony na ploše"
 
-#: src/xfdesktop-file-icon-manager.c:2089
-#: src/xfdesktop-window-icon-manager.c:318
+#: src/xfdesktop-file-icon-manager.c:2175
+#: src/xfdesktop-window-icon-manager.c:319
 msgid "_Next Background"
 msgstr "Další po_zadí"
 
-#: src/xfdesktop-file-icon-manager.c:2099
-#: src/xfdesktop-window-icon-manager.c:331
+#: src/xfdesktop-file-icon-manager.c:2185
+#: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
 msgstr "_Nastavení pracovní plochy..."
 
-#: src/xfdesktop-file-icon-manager.c:2106 src/xfdesktop-volume-icon.c:812
+#: src/xfdesktop-file-icon-manager.c:2192 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "Vlas_tnosti..."
 
-#: src/xfdesktop-file-icon-manager.c:3096
+#: src/xfdesktop-file-icon-manager.c:3183
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "Uložení přetaženého souboru do „%s“ se nezdařilo"
 
-#: src/xfdesktop-file-icon-manager.c:3098
+#: src/xfdesktop-file-icon-manager.c:3185
 msgid "Drop Failure"
 msgstr "Umístění se nezdařilo"
 
-#: src/xfdesktop-file-icon-manager.c:3102
-#: src/xfdesktop-icon-view-manager.c:488
+#: src/xfdesktop-file-icon-manager.c:3189
+#: src/xfdesktop-icon-view-manager.c:489
 msgid "_OK"
 msgstr "_OK"
 
-#: src/xfdesktop-file-icon-manager.c:3507
+#: src/xfdesktop-file-icon-manager.c:3594
 msgid "Copy _Here"
 msgstr "_Zkopírovat sem"
 
-#: src/xfdesktop-file-icon-manager.c:3508
+#: src/xfdesktop-file-icon-manager.c:3595
 msgid "_Move Here"
 msgstr "_Přesunout sem"
 
-#: src/xfdesktop-file-icon-manager.c:3509
+#: src/xfdesktop-file-icon-manager.c:3596
 msgid "_Link Here"
 msgstr "_Vytvořit zde odkaz"
 
-#: src/xfdesktop-file-icon-manager.c:3534 src/xfdesktop-file-utils.c:1149
-#: src/xfdesktop-icon-view-manager.c:487
+#: src/xfdesktop-file-icon-manager.c:3621 src/xfdesktop-file-utils.c:1149
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: src/xfdesktop-file-icon-manager.c:3627
+#: src/xfdesktop-file-icon-manager.c:3714
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Nedaří se vytvořit složku na ploše „%s“"
 
-#: src/xfdesktop-file-icon-manager.c:3635
+#: src/xfdesktop-file-icon-manager.c:3722
 msgid "Failed to load the desktop folder"
 msgstr "Složku pracovní plochy se nepodařilo načíst"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3731
 msgid "A desktop file icon error occurred"
 msgstr "Došlo k chybě souborové ikony na ploše"
 
-#: src/xfdesktop-file-icon-manager.c:3648
+#: src/xfdesktop-file-icon-manager.c:3735
 msgid "Desktop Folder Error"
 msgstr "Chyba složky na ploše"
 
-#: src/xfdesktop-file-icon-model.c:548
+#: src/xfdesktop-file-icon-model.c:599
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Soubor se stejným názvem již existuje. Smažte jej nebo přejmenujte."
@@ -1226,39 +1231,39 @@ msgstr "Chyba při přenosu"
 msgid "The file transfer could not be performed"
 msgstr "Přenos souboru nelze uskutečnit"
 
-#: src/xfdesktop-icon-view-manager.c:484
+#: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
 msgstr "Uspořádat ikony"
 
-#: src/xfdesktop-icon-view-manager.c:505
+#: src/xfdesktop-icon-view-manager.c:506
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Tato akce přeuspořádá všechny položky pracovní plochy a umístí je na jiné pozice.\nJste si jisti?"
 
-#: src/xfdesktop-icon-view-manager.c:509
+#: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
 msgstr "Příště se již _nedotazovat"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:77
+#: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
 msgstr "Povolit pracovnímu prostředí Xfce automatické přidělení nejlepší shody"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:92
+#: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
 msgstr "Vybrat z existujících konfigurací monitoru"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:126
+#: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
 msgstr "Vždy přidělovat automaticky"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:147
+#: src/xfdesktop-notify.c:133
 msgid "Unmounting device"
 msgstr "Odpojování zařízení"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:150
+#: src/xfdesktop-notify.c:136
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1266,39 +1271,39 @@ msgid ""
 msgstr "Systém odpojuje zařízení „%s“. Nevyjímejte médium ani neodpojujte jednotku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
+#: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "Zápis dat na zařízení"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
+#: src/xfdesktop-notify.c:143 src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "Před odebráním zařízení \"%s\" je nutné zapsat data. Nevyjímejte médium ani neodpojujte jednotku"
 
-#: src/xfdesktop-notify.c:206
+#: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "Odpojení dokončeno"
 
-#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:394
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Zařízení %s bylo úspěšně odebráno ze systému."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:229
+#: src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "Vysouvání zařízení"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:232
+#: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Zařízení \"%s\" se vysouvá. Tato akce může chvíli trvat"
 
-#: src/xfdesktop-notify.c:349
+#: src/xfdesktop-notify.c:393
 msgid "Eject Finished"
 msgstr "Vysunutí dokončeno"
 
@@ -1311,11 +1316,11 @@ msgid ""
 "Last modified: %s"
 msgstr "Jméno: %s\nTyp: %s\nVelikost: %s\nPoslední změna: %s"
 
-#: src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:292
 msgid "Trash is empty"
 msgstr "Koš je prázdný"
 
-#: src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:295
 #, c-format
 msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
@@ -1324,7 +1329,7 @@ msgstr[1] "Koš obsahuje %d položky"
 msgstr[2] "Koš obsahuje %d položek"
 msgstr[3] "Koš obsahuje %d položek"
 
-#: src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:324
 #, c-format
 msgid ""
 "%s\n"
@@ -1400,6 +1405,6 @@ msgstr "_Odpojit svazek"
 msgid "_Mount Volume"
 msgstr "_Připojit svazek"
 
-#: src/xfdesktop-window-icon-manager.c:292
+#: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "Spustit p_rogram…"
