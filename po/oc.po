@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-03-01 01:02+0100\n"
+"POT-Creation-Date: 2026-08-21 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Quentin PAGÈS, 2020-2026\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/xfce/xfdesktop/language/oc/)\n"
@@ -69,13 +69,13 @@ msgid "Create _Folder"
 msgstr "Crear _dorsièr"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
-#: src/xfdesktop-file-icon-manager.c:1761
+#: src/xfdesktop-file-icon-manager.c:1847
 msgid "Create _Document"
 msgstr "C_rear un document"
 
 #: common/xfdesktop-keyboard-shortcuts.c:105
-#: src/xfdesktop-file-icon-manager.c:1819
-#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:750
+#: src/xfdesktop-file-icon-manager.c:1905
+#: src/xfdesktop-special-file-icon.c:373 src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "_Dobrir"
 
@@ -100,17 +100,17 @@ msgid "_Rename"
 msgstr "_Renomenar"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
-#: src/xfdesktop-file-icon-manager.c:1965
+#: src/xfdesktop-file-icon-manager.c:2051
 msgid "Cu_t"
 msgstr "Tal_har"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
-#: src/xfdesktop-file-icon-manager.c:1973
+#: src/xfdesktop-file-icon-manager.c:2059
 msgid "_Copy"
 msgstr "_Copiar"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1952
+#: src/xfdesktop-file-icon-manager.c:2038
 msgid "_Paste"
 msgstr "_Pegar"
 
@@ -119,17 +119,17 @@ msgid "Paste _Into Folder"
 msgstr "Pegar _dins lo dorsièr"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
-#: src/xfdesktop-file-icon-manager.c:1996
+#: src/xfdesktop-file-icon-manager.c:2082
 msgid "Mo_ve to Trash"
 msgstr "Desplaçar  dins l'esco_bilhièr"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
-#: src/xfdesktop-special-file-icon.c:351
+#: src/xfdesktop-special-file-icon.c:389
 msgid "_Empty Trash"
 msgstr "_Voidar l'escobilhièr"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:2005
+#: src/xfdesktop-file-icon-manager.c:2091
 msgid "_Delete"
 msgstr "Suprim_ir"
 
@@ -153,49 +153,35 @@ msgstr "ID SOCKET"
 msgid "Version information"
 msgstr "Informacions sus la version"
 
-#: settings/main.c:98 src/xfdesktop-application.c:282
+#: settings/main.c:98 src/xfdesktop-application.c:284
 msgid "Enable debug messages"
 msgstr "Activar los messatge de desbugatge"
 
-#: settings/main.c:116
+#: settings/main.c:110
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Picatz '%s --help' per afichar las opcions."
 
-#: settings/main.c:128 src/xfdesktop-application.c:1198
+#: settings/main.c:122 src/xfdesktop-application.c:1246
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equipa de desvolopament de Xfce. Totes los dreits reservats."
 
-#: settings/main.c:129 src/xfdesktop-application.c:1199
+#: settings/main.c:123 src/xfdesktop-application.c:1247
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Se vos plai raportatz los bugs a <%s>."
 
-#: settings/main.c:135
+#: settings/main.c:129
 msgid "Desktop Settings"
 msgstr "Paramètres del burèu"
 
-#: settings/main.c:137
+#: settings/main.c:131
 msgid "Unable to contact settings server"
 msgstr "Impossible de contactar lo servidor de paramètres"
 
-#: settings/main.c:139
+#: settings/main.c:133
 msgid "Quit"
 msgstr "Quitar"
-
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
-msgid "Desktop"
-msgstr "Burèu"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Reglar lo fons d'ecran del burèu, lo menú e lo compòrtament de las icònas"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "burèu;fons;rèireplan;papièr;pintrat;paramètres;reglatges;configuracion;xfce;"
 
 #: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
@@ -210,7 +196,7 @@ msgid ""
 msgstr "<b>%s</b>\nTipe : %s\nTalha : %s"
 
 #: settings/xfdesktop-background-settings.c:550
-#: settings/xfdesktop-background-settings.c:632
+#: settings/xfdesktop-background-settings.c:630
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Cargament impossible dels imatges del dorsièr « %s »"
@@ -264,27 +250,27 @@ msgstr "Desplaçar aquesta bóstia de dialòg cap a l'espaci de trabalh que ne v
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La seleccion d'imatge es indisponible tant que l'estil d'imatge es reglat sus Pas cap."
 
-#: settings/xfdesktop-background-settings.c:2003
+#: settings/xfdesktop-background-settings.c:2021
 msgid "Image files"
 msgstr "Fichièrs imatges"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2011
+#: settings/xfdesktop-background-settings.c:2029
 msgid "Select a Directory"
 msgstr "Seleccionar un Repertòri"
 
 #: settings/xfdesktop-file-icon-settings.c:90
-#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+#: src/xfdesktop-special-file-icon.c:270 src/xfdesktop-special-file-icon.c:308
 msgid "Home"
 msgstr "Repertòri personal"
 
 #: settings/xfdesktop-file-icon-settings.c:92
-#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+#: src/xfdesktop-special-file-icon.c:272 src/xfdesktop-special-file-icon.c:306
 msgid "File System"
 msgstr "Sistèma de fichièrs"
 
 #: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:236
+#: src/xfdesktop-special-file-icon.c:274
 msgid "Trash"
 msgstr "Escobilhièr"
 
@@ -321,16 +307,16 @@ msgid "Arrange icons"
 msgstr "Arrengar las icònas"
 
 #. printf is to be translator-friendly
-#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:760
-#: src/xfdesktop-file-icon-manager.c:1321
+#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:791
+#: src/xfdesktop-file-icon-manager.c:1352
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Impossible d'aviar « %s » :"
 
-#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:762
-#: src/xfdesktop-file-icon-manager.c:1006
-#: src/xfdesktop-file-icon-manager.c:1054
-#: src/xfdesktop-file-icon-manager.c:1323 src/xfdesktop-file-utils.c:579
+#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:793
+#: src/xfdesktop-file-icon-manager.c:1037
+#: src/xfdesktop-file-icon-manager.c:1085
+#: src/xfdesktop-file-icon-manager.c:1354 src/xfdesktop-file-utils.c:579
 #: src/xfdesktop-file-utils.c:1462 src/xfdesktop-file-utils.c:1487
 #: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
@@ -338,11 +324,11 @@ msgstr "Error al moment de l'aviada"
 
 #: settings/xfdesktop-icon-settings.c:97
 #: settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:698 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1010
-#: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1325
-#: src/xfdesktop-file-icon-manager.c:3654 src/xfdesktop-file-utils.c:582
+#: src/xfdesktop-file-icon-manager.c:729 src/xfdesktop-file-icon-manager.c:795
+#: src/xfdesktop-file-icon-manager.c:1041
+#: src/xfdesktop-file-icon-manager.c:1089
+#: src/xfdesktop-file-icon-manager.c:1356
+#: src/xfdesktop-file-icon-manager.c:3741 src/xfdesktop-file-utils.c:582
 #: src/xfdesktop-file-utils.c:699 src/xfdesktop-file-utils.c:754
 #: src/xfdesktop-file-utils.c:818 src/xfdesktop-file-utils.c:879
 #: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
@@ -355,6 +341,12 @@ msgstr "Error al moment de l'aviada"
 #: src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "_Tampar"
+
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: settings/xfdesktop-settings-ui.glade:162
+#: settings/xfdesktop-settings.desktop.in:4 src/xfce-desktop.c:640
+msgid "Desktop"
+msgstr "Burèu"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
@@ -416,7 +408,7 @@ msgid "Spanning Screens"
 msgstr "Ecrans cobrent"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:172
-#: src/xfdesktop-monitor-chooser-ui.glade:33
+#: src/xfdesktop-monitor-chooser-ui.glade:34
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -785,6 +777,14 @@ msgstr "Icònas _fichièr/aviador"
 msgid "_Keyboard Shortcuts"
 msgstr "_Acorchis clavièr"
 
+#: settings/xfdesktop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Reglar lo fons d'ecran del burèu, lo menú e lo compòrtament de las icònas"
+
+#: settings/xfdesktop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "burèu;fons;rèireplan;papièr;pintrat;paramètres;reglatges;configuracion;xfce;"
+
 #: src/menu.c:82
 msgid "_Applications"
 msgstr "_Aplicacions"
@@ -793,263 +793,268 @@ msgstr "_Aplicacions"
 msgid "Window List"
 msgstr "Lista de las fenèstras"
 
-#: src/xfce-desktop.c:1269
+#: src/xfce-desktop.c:1279
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
 msgstr "L'extension « gtk » per gstreamer necessari a la lectura vidèo es pas estat trobat"
 
-#: src/xfce-desktop.c:1333
+#: src/xfce-desktop.c:1343
 msgid "Unable to create gstreamer video player"
 msgstr "Creacion impossibla del lector vidèo gstreamer"
 
-#: src/xfdesktop-application.c:274
+#: src/xfdesktop-application.c:276
 msgid "Display version information"
 msgstr "Afichar las informacions de version"
 
-#: src/xfdesktop-application.c:275
+#: src/xfdesktop-application.c:277
 msgid "Reload all settings"
 msgstr "Recargar totes los paramètres"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Avançar cap al fons d’ecran venant sus l’espaci de trabalh actual"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Far aparéisser lo menú (a la posicion actuala de la mirga)"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Far aparéisser la lista de las fenèstras (a la posicion correnta de la mirga)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Organizar automaticament totas las icònas sul burèu"
 
-#: src/xfdesktop-application.c:283
+#: src/xfdesktop-application.c:285
 msgid "Disable debug messages"
 msgstr "Desactivar los messatge de desbugatge"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Do not wait for a window manager on startup"
 msgstr "Esperar pas un gestionari de fenèstras a l'aviada"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Cause xfdesktop to quit"
 msgstr "Causa xfdesktop de quitar"
 
-#: src/xfdesktop-application.c:1191
+#: src/xfdesktop-application.c:1239
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Aquò es la version %s %s, foncionant sus Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1193
+#: src/xfdesktop-application.c:1241
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construsís amb GTK+ %d.%d.%d, ligat amb GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1201
+#: src/xfdesktop-application.c:1249
 msgid "Build options:\n"
 msgstr "Opcions de construccion :\n"
 
-#: src/xfdesktop-application.c:1202
+#: src/xfdesktop-application.c:1250
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú del burèu :        %s\n"
 
-#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
-#: src/xfdesktop-application.c:1218
+#: src/xfdesktop-application.c:1252 src/xfdesktop-application.c:1259
+#: src/xfdesktop-application.c:1266
 msgid "enabled"
 msgstr "activat"
 
-#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
-#: src/xfdesktop-application.c:1220
+#: src/xfdesktop-application.c:1254 src/xfdesktop-application.c:1261
+#: src/xfdesktop-application.c:1268
 msgid "disabled"
 msgstr "desactivat"
 
-#: src/xfdesktop-application.c:1209
+#: src/xfdesktop-application.c:1257
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icònas del burèu :       %s\n"
 
-#: src/xfdesktop-application.c:1216
+#: src/xfdesktop-application.c:1264
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "   Icònas dels fichièrs del burèu :  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:695 src/xfdesktop-file-utils.c:750
+#: src/xfdesktop-application.c:1331
+#, c-format
+msgid "%s is already running"
+msgstr "%s es ja en execucion"
+
+#: src/xfdesktop-file-icon-manager.c:726 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "Error de cambiament de nom"
 
-#: src/xfdesktop-file-icon-manager.c:696 src/xfdesktop-file-utils.c:815
+#: src/xfdesktop-file-icon-manager.c:727 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "Los fichièrs pòdon pas èsser renomenats"
 
-#: src/xfdesktop-file-icon-manager.c:697
+#: src/xfdesktop-file-icon-manager.c:728
 msgid "None of the icons selected support being renamed."
 msgstr "Cap de las icònas seleccionadas pòt pas èsser renomenada."
 
-#: src/xfdesktop-file-icon-manager.c:955
+#: src/xfdesktop-file-icon-manager.c:986
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Dobrir amb « %s »"
 
-#: src/xfdesktop-file-icon-manager.c:958
+#: src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Dobrir amb « %s »"
 
-#: src/xfdesktop-file-icon-manager.c:1008
-#: src/xfdesktop-file-icon-manager.c:1056
+#: src/xfdesktop-file-icon-manager.c:1039
+#: src/xfdesktop-file-icon-manager.c:1087
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr "Impossible de lançar « xfce-desktop-item-edit », qu’es requerit per crear e modificar los aviadors e los ligams del burèu."
 
-#: src/xfdesktop-file-icon-manager.c:1425
+#: src/xfdesktop-file-icon-manager.c:1537
 msgid "Choose Monitor Configuration"
 msgstr "Causissètz un ecran de configurar"
 
-#: src/xfdesktop-file-icon-manager.c:1427
+#: src/xfdesktop-file-icon-manager.c:1540
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "Volriatz atribuir una disposicion d’icòna de burèu existenta al monitor <b>%s</b> ?"
 
-#: src/xfdesktop-file-icon-manager.c:1435
+#: src/xfdesktop-file-icon-manager.c:1548
 msgid "Monitors"
 msgstr "Monitors"
 
-#: src/xfdesktop-file-icon-manager.c:1721
+#: src/xfdesktop-file-icon-manager.c:1807
 msgid "_Open all"
 msgstr "_Dobrir totes"
 
-#: src/xfdesktop-file-icon-manager.c:1733
+#: src/xfdesktop-file-icon-manager.c:1819
 msgid "Create _Launcher..."
 msgstr "Crear un _aviador..."
 
-#: src/xfdesktop-file-icon-manager.c:1743
+#: src/xfdesktop-file-icon-manager.c:1829
 msgid "Create _URL Link..."
 msgstr "Crear un ligam _URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1753
+#: src/xfdesktop-file-icon-manager.c:1839
 msgid "Create _Folder..."
 msgstr "Crear un _dorsièr..."
 
-#: src/xfdesktop-file-icon-manager.c:1792
+#: src/xfdesktop-file-icon-manager.c:1878
 msgid "No templates installed"
 msgstr "Cap de modèl pas installat"
 
-#: src/xfdesktop-file-icon-manager.c:1810
+#: src/xfdesktop-file-icon-manager.c:1896
 msgid "_Empty File"
 msgstr "_Fichièr void"
 
-#: src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-file-icon-manager.c:1905
 msgid "_Open All"
 msgstr "_Tot dobrir"
 
-#: src/xfdesktop-file-icon-manager.c:1832
+#: src/xfdesktop-file-icon-manager.c:1918
 msgid "_Execute"
 msgstr "_Executar"
 
-#: src/xfdesktop-file-icon-manager.c:1845
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Edit _Launcher"
 msgstr "Modificar _Aviador"
 
-#: src/xfdesktop-file-icon-manager.c:1893
+#: src/xfdesktop-file-icon-manager.c:1979
 msgid "Ope_n With"
 msgstr "Do_brir amb"
 
-#: src/xfdesktop-file-icon-manager.c:1921
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:2007
+#: src/xfdesktop-file-icon-manager.c:2024
 msgid "Ope_n With Other Application..."
 msgstr "Dobrir amb u_na autra aplicacion..."
 
-#: src/xfdesktop-file-icon-manager.c:1929
+#: src/xfdesktop-file-icon-manager.c:2015
 msgid "Set Defa_ult Application..."
 msgstr "Definir aplicacion per defa_ut..."
 
-#: src/xfdesktop-file-icon-manager.c:1985
+#: src/xfdesktop-file-icon-manager.c:2071
 msgid "Paste Into Folder"
 msgstr "Pegar dins lo dorsièr"
 
-#: src/xfdesktop-file-icon-manager.c:2016
+#: src/xfdesktop-file-icon-manager.c:2102
 msgid "_Rename..."
 msgstr "To_rnar nomenar..."
 
-#: src/xfdesktop-file-icon-manager.c:2067
+#: src/xfdesktop-file-icon-manager.c:2153
 msgid "_Open in New Window"
 msgstr "_Dobrir dins una novèla fenèstra"
 
-#: src/xfdesktop-file-icon-manager.c:2074
-#: src/xfdesktop-window-icon-manager.c:304
+#: src/xfdesktop-file-icon-manager.c:2160
+#: src/xfdesktop-window-icon-manager.c:305
 msgid "Arrange Desktop _Icons"
 msgstr "_Arrengar las icònas del burèu"
 
-#: src/xfdesktop-file-icon-manager.c:2089
-#: src/xfdesktop-window-icon-manager.c:318
+#: src/xfdesktop-file-icon-manager.c:2175
+#: src/xfdesktop-window-icon-manager.c:319
 msgid "_Next Background"
 msgstr "Fons d’ecran _seguent"
 
-#: src/xfdesktop-file-icon-manager.c:2099
-#: src/xfdesktop-window-icon-manager.c:331
+#: src/xfdesktop-file-icon-manager.c:2185
+#: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
 msgstr "Paramètres del _burèu..."
 
-#: src/xfdesktop-file-icon-manager.c:2106 src/xfdesktop-volume-icon.c:812
+#: src/xfdesktop-file-icon-manager.c:2192 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "_Proprietats..."
 
-#: src/xfdesktop-file-icon-manager.c:3096
+#: src/xfdesktop-file-icon-manager.c:3183
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "Fracàs de l’enregistrament del fichièr depausat dins « %s »"
 
-#: src/xfdesktop-file-icon-manager.c:3098
+#: src/xfdesktop-file-icon-manager.c:3185
 msgid "Drop Failure"
 msgstr "Fracàs del depaus"
 
-#: src/xfdesktop-file-icon-manager.c:3102
-#: src/xfdesktop-icon-view-manager.c:488
+#: src/xfdesktop-file-icon-manager.c:3189
+#: src/xfdesktop-icon-view-manager.c:489
 msgid "_OK"
 msgstr "_D'acòrdi"
 
-#: src/xfdesktop-file-icon-manager.c:3507
+#: src/xfdesktop-file-icon-manager.c:3594
 msgid "Copy _Here"
 msgstr "_Copiar aicí"
 
-#: src/xfdesktop-file-icon-manager.c:3508
+#: src/xfdesktop-file-icon-manager.c:3595
 msgid "_Move Here"
 msgstr "_Desplaçar aicí"
 
-#: src/xfdesktop-file-icon-manager.c:3509
+#: src/xfdesktop-file-icon-manager.c:3596
 msgid "_Link Here"
 msgstr "_Ligar aicí"
 
-#: src/xfdesktop-file-icon-manager.c:3534 src/xfdesktop-file-utils.c:1149
-#: src/xfdesktop-icon-view-manager.c:487
+#: src/xfdesktop-file-icon-manager.c:3621 src/xfdesktop-file-utils.c:1149
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: src/xfdesktop-file-icon-manager.c:3627
+#: src/xfdesktop-file-icon-manager.c:3714
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Impossible de crear lo repertòri del burèu « %s »"
 
-#: src/xfdesktop-file-icon-manager.c:3635
+#: src/xfdesktop-file-icon-manager.c:3722
 msgid "Failed to load the desktop folder"
 msgstr "Impossible de cargar lo repertòri del burèu"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3731
 msgid "A desktop file icon error occurred"
 msgstr "Una error d'icòna de fichièr de burèu s'es produita"
 
-#: src/xfdesktop-file-icon-manager.c:3648
+#: src/xfdesktop-file-icon-manager.c:3735
 msgid "Desktop Folder Error"
 msgstr "Error dins lo repertòri del burèu"
 
-#: src/xfdesktop-file-icon-model.c:548
+#: src/xfdesktop-file-icon-model.c:599
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Un fichièr normal qu'a lo meteis nom existís ja. Suprimissètz-lo o lo tornar nomenar."
@@ -1221,39 +1226,39 @@ msgstr "Error de transferiment"
 msgid "The file transfer could not be performed"
 msgstr "Lo transferiment de fichièr a pas pogut èsser efectuat"
 
-#: src/xfdesktop-icon-view-manager.c:484
+#: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
 msgstr "Organizar las icònas"
 
-#: src/xfdesktop-icon-view-manager.c:505
+#: src/xfdesktop-icon-view-manager.c:506
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Aquò reordenarà totes los elements del burèu e los botarà dins diferentas posicion de l’ecran.\nO volètz vertadièrament ?"
 
-#: src/xfdesktop-icon-view-manager.c:509
+#: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
 msgstr "_Me pausar pas mai aquesta question"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:77
+#: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
 msgstr "Permetre a Xfce d’autoassignar la melhora correspondéncia"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:92
+#: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
 msgstr "Seleccionar a partir d’una configuracion d’ecran existenta :"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:126
+#: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
 msgstr "Permtre l’autoassignacion"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:147
+#: src/xfdesktop-notify.c:133
 msgid "Unmounting device"
 msgstr "Desmontatge del periferic"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:150
+#: src/xfdesktop-notify.c:136
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1261,39 +1266,39 @@ msgid ""
 msgstr "Lo periferic « %s » es a èsser levat del sistèma. Levetz pas lo mèdia o desconnectar lo lector"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
+#: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "Escritura de las donadas sul periferic"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
+#: src/xfdesktop-notify.c:143 src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "I a de donadas que devon èsser escrichas sul periferic « %s » abans que pòsca èsser levat. Levetz pas lo mèdia o desconnectar lo lector"
 
-#: src/xfdesktop-notify.c:206
+#: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "Lo desmontatge es acabar"
 
-#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:394
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Lo periferic « %s » es estat levat en tota seguretat del sistèma. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:229
+#: src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "Ejeccion del periferic"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:232
+#: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Lo periferic « %s » es en cors d'ejeccion. Aquò pòt trigar"
 
-#: src/xfdesktop-notify.c:349
+#: src/xfdesktop-notify.c:393
 msgid "Eject Finished"
 msgstr "L'ejeccion es acabar"
 
@@ -1306,18 +1311,18 @@ msgid ""
 "Last modified: %s"
 msgstr "Nom : %s\nTipe : %s\nTalha : %s\nDarrièra modificacion : %s"
 
-#: src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:292
 msgid "Trash is empty"
 msgstr "L'escobilhièr es voida"
 
-#: src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:295
 #, c-format
 msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
 msgstr[0] "L'escobilhièr conten %d element"
 msgstr[1] "L'escobilhièr conten %d elements"
 
-#: src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:324
 #, c-format
 msgid ""
 "%s\n"
@@ -1393,6 +1398,6 @@ msgstr "_Desmontar lo volum"
 msgid "_Mount Volume"
 msgstr "_Montar lo volum"
 
-#: src/xfdesktop-window-icon-manager.c:292
+#: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "_Executar lo programa..."
