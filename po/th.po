@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-03-01 01:02+0100\n"
+"POT-Creation-Date: 2026-08-21 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025-2026\n"
 "Language-Team: Thai (http://app.transifex.com/xfce/xfdesktop/language/th/)\n"
@@ -72,13 +72,13 @@ msgid "Create _Folder"
 msgstr "สร้างโ_ฟลเดอร์"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
-#: src/xfdesktop-file-icon-manager.c:1761
+#: src/xfdesktop-file-icon-manager.c:1847
 msgid "Create _Document"
 msgstr "สร้างเ_อกสาร"
 
 #: common/xfdesktop-keyboard-shortcuts.c:105
-#: src/xfdesktop-file-icon-manager.c:1819
-#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:750
+#: src/xfdesktop-file-icon-manager.c:1905
+#: src/xfdesktop-special-file-icon.c:373 src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "_เปิด"
 
@@ -103,17 +103,17 @@ msgid "_Rename"
 msgstr "เ_ปลี่ยนชื่อ"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
-#: src/xfdesktop-file-icon-manager.c:1965
+#: src/xfdesktop-file-icon-manager.c:2051
 msgid "Cu_t"
 msgstr "_ตัด"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
-#: src/xfdesktop-file-icon-manager.c:1973
+#: src/xfdesktop-file-icon-manager.c:2059
 msgid "_Copy"
 msgstr "_คัดลอก"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1952
+#: src/xfdesktop-file-icon-manager.c:2038
 msgid "_Paste"
 msgstr "_แปะ"
 
@@ -122,17 +122,17 @@ msgid "Paste _Into Folder"
 msgstr "แปะ_ลงในโฟลเดอร์"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
-#: src/xfdesktop-file-icon-manager.c:1996
+#: src/xfdesktop-file-icon-manager.c:2082
 msgid "Mo_ve to Trash"
 msgstr "_ทิ้งลงถังขยะ"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
-#: src/xfdesktop-special-file-icon.c:351
+#: src/xfdesktop-special-file-icon.c:389
 msgid "_Empty Trash"
 msgstr "เ_ทขยะ"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:2005
+#: src/xfdesktop-file-icon-manager.c:2091
 msgid "_Delete"
 msgstr "_ลบ"
 
@@ -156,49 +156,35 @@ msgstr "หมายเลขซ็อกเก็ต"
 msgid "Version information"
 msgstr "ข้อมูลรุ่น"
 
-#: settings/main.c:98 src/xfdesktop-application.c:282
+#: settings/main.c:98 src/xfdesktop-application.c:284
 msgid "Enable debug messages"
 msgstr "เปิดแสดงข้อความดีบั๊ก"
 
-#: settings/main.c:116
+#: settings/main.c:110
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "สั่ง '%s --help' เพื่อดูวิธีใช้"
 
-#: settings/main.c:128 src/xfdesktop-application.c:1198
+#: settings/main.c:122 src/xfdesktop-application.c:1246
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: settings/main.c:129 src/xfdesktop-application.c:1199
+#: settings/main.c:123 src/xfdesktop-application.c:1247
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "หากพบปัญหา กรุณารายงานที่ <%s>"
 
-#: settings/main.c:135
+#: settings/main.c:129
 msgid "Desktop Settings"
 msgstr "การตั้งค่าพื้นโต๊ะ"
 
-#: settings/main.c:137
+#: settings/main.c:131
 msgid "Unable to contact settings server"
 msgstr "ไม่สามารถติดต่อกับเซิร์ฟเวอร์ค่าตั้ง"
 
-#: settings/main.c:139
+#: settings/main.c:133
 msgid "Quit"
 msgstr "ออก"
-
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
-msgid "Desktop"
-msgstr "พื้นโต๊ะ"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "กำหนดพื้นหลังพื้นโต๊ะและพฤติกรรมของเมนูและไอคอน"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "เดสก์ท็อป;พื้นหลัง;วอลเปเปอร์;การตั้งค่า;xfce;"
 
 #: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
@@ -213,7 +199,7 @@ msgid ""
 msgstr "<b>%s</b>\nชนิด: %s\nขนาด: %s"
 
 #: settings/xfdesktop-background-settings.c:550
-#: settings/xfdesktop-background-settings.c:632
+#: settings/xfdesktop-background-settings.c:630
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "ไม่สามารถโหลดรูปภาพจากโฟลเดอร์ \"%s\""
@@ -267,27 +253,27 @@ msgstr "กรุณาย้ายกล่องโต้ตอบนี้ไ
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "ไม่สามารถเลือกรูปภาพได้ในระหว่างที่กำหนดสไตล์ของรูปภาพเป็น \"ไม่มี\""
 
-#: settings/xfdesktop-background-settings.c:2003
+#: settings/xfdesktop-background-settings.c:2021
 msgid "Image files"
 msgstr "แฟ้มรูปภาพ"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2011
+#: settings/xfdesktop-background-settings.c:2029
 msgid "Select a Directory"
 msgstr "เลือกไดเรกทอรี"
 
 #: settings/xfdesktop-file-icon-settings.c:90
-#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+#: src/xfdesktop-special-file-icon.c:270 src/xfdesktop-special-file-icon.c:308
 msgid "Home"
 msgstr "บ้าน"
 
 #: settings/xfdesktop-file-icon-settings.c:92
-#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+#: src/xfdesktop-special-file-icon.c:272 src/xfdesktop-special-file-icon.c:306
 msgid "File System"
 msgstr "ระบบแฟ้ม"
 
 #: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:236
+#: src/xfdesktop-special-file-icon.c:274
 msgid "Trash"
 msgstr "ถังขยะ"
 
@@ -324,16 +310,16 @@ msgid "Arrange icons"
 msgstr "จัดเรียงไอคอน"
 
 #. printf is to be translator-friendly
-#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:760
-#: src/xfdesktop-file-icon-manager.c:1321
+#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:791
+#: src/xfdesktop-file-icon-manager.c:1352
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "ไม่สามารถเรียกทำงาน \"%s\":"
 
-#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:762
-#: src/xfdesktop-file-icon-manager.c:1006
-#: src/xfdesktop-file-icon-manager.c:1054
-#: src/xfdesktop-file-icon-manager.c:1323 src/xfdesktop-file-utils.c:579
+#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:793
+#: src/xfdesktop-file-icon-manager.c:1037
+#: src/xfdesktop-file-icon-manager.c:1085
+#: src/xfdesktop-file-icon-manager.c:1354 src/xfdesktop-file-utils.c:579
 #: src/xfdesktop-file-utils.c:1462 src/xfdesktop-file-utils.c:1487
 #: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
@@ -341,11 +327,11 @@ msgstr "เรียกทำงานผิดพลาด"
 
 #: settings/xfdesktop-icon-settings.c:97
 #: settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:698 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1010
-#: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1325
-#: src/xfdesktop-file-icon-manager.c:3654 src/xfdesktop-file-utils.c:582
+#: src/xfdesktop-file-icon-manager.c:729 src/xfdesktop-file-icon-manager.c:795
+#: src/xfdesktop-file-icon-manager.c:1041
+#: src/xfdesktop-file-icon-manager.c:1089
+#: src/xfdesktop-file-icon-manager.c:1356
+#: src/xfdesktop-file-icon-manager.c:3741 src/xfdesktop-file-utils.c:582
 #: src/xfdesktop-file-utils.c:699 src/xfdesktop-file-utils.c:754
 #: src/xfdesktop-file-utils.c:818 src/xfdesktop-file-utils.c:879
 #: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
@@ -358,6 +344,12 @@ msgstr "เรียกทำงานผิดพลาด"
 #: src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "ปิ_ด"
+
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: settings/xfdesktop-settings-ui.glade:162
+#: settings/xfdesktop-settings.desktop.in:4 src/xfce-desktop.c:640
+msgid "Desktop"
+msgstr "พื้นโต๊ะ"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
@@ -419,7 +411,7 @@ msgid "Spanning Screens"
 msgstr "หน้าจอขยายข้ามจอภาพ"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:172
-#: src/xfdesktop-monitor-chooser-ui.glade:33
+#: src/xfdesktop-monitor-chooser-ui.glade:34
 msgid "Apply"
 msgstr "เริ่มใช้"
 
@@ -788,6 +780,14 @@ msgstr "_ไอคอนไฟล์/ปุ่มเรียกใช้งา�
 msgid "_Keyboard Shortcuts"
 msgstr "_แป้นพิมพ์ลัด"
 
+#: settings/xfdesktop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "กำหนดพื้นหลังพื้นโต๊ะและพฤติกรรมของเมนูและไอคอน"
+
+#: settings/xfdesktop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "เดสก์ท็อป;พื้นหลัง;วอลเปเปอร์;การตั้งค่า;xfce;"
+
 #: src/menu.c:82
 msgid "_Applications"
 msgstr "โ_ปรแกรม"
@@ -796,263 +796,268 @@ msgstr "โ_ปรแกรม"
 msgid "Window List"
 msgstr "รายชื่อหน้าต่าง"
 
-#: src/xfce-desktop.c:1269
+#: src/xfce-desktop.c:1279
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
 msgstr "ไม่พบปลั๊กอิน \"gtk\" ของ gstreamer สำหรับการเล่นวีดิโอ"
 
-#: src/xfce-desktop.c:1333
+#: src/xfce-desktop.c:1343
 msgid "Unable to create gstreamer video player"
 msgstr "ไม่สามารถสร้างตัวเล่นวีดีโอ gstreamer ได้"
 
-#: src/xfdesktop-application.c:274
+#: src/xfdesktop-application.c:276
 msgid "Display version information"
 msgstr "แสดงข้อมูลรุ่น"
 
-#: src/xfdesktop-application.c:275
+#: src/xfdesktop-application.c:277
 msgid "Reload all settings"
 msgstr "โหลดค่าตั้งทั้งหมดใหม่"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "ขยับไปใช้ภาพพื้นหลังถัดไปบนพื้นที่ทำงานปัจจุบัน"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "ผุดเมนูขึ้น (ที่ตำแหน่งตัวชี้เมาส์ปัจจุบัน)"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "ผุดรายชื่อหน้าต่างขึ้น (ที่ตำแหน่งตัวชี้เมาส์ปัจจุบัน)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "จัดเรียงไอคอนบนพื้นโต๊ะทั้งหมดโดยอัตโนมัติ"
 
-#: src/xfdesktop-application.c:283
+#: src/xfdesktop-application.c:285
 msgid "Disable debug messages"
 msgstr "ปิดการแสดงข้อความดีบั๊ก"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Do not wait for a window manager on startup"
 msgstr "ไม่ต้องรอให้โปรแกรมจัดการหน้าต่างเปิดทำงาน"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Cause xfdesktop to quit"
 msgstr "ให้ xfdesktop จบการทำงาน"
 
-#: src/xfdesktop-application.c:1191
+#: src/xfdesktop-application.c:1239
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "นี่คือ %s รุ่น %s ทำงานบน Xfce %s\n"
 
-#: src/xfdesktop-application.c:1193
+#: src/xfdesktop-application.c:1241
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "ประกอบสร้างด้วย GTK+ %d.%d.%d ลิงก์กับ GTK+ %d.%d.%d"
 
-#: src/xfdesktop-application.c:1201
+#: src/xfdesktop-application.c:1249
 msgid "Build options:\n"
 msgstr "ตัวเลือกที่ใช้ประกอบสร้าง:\n"
 
-#: src/xfdesktop-application.c:1202
+#: src/xfdesktop-application.c:1250
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    เมนูพื้นโต๊ะ:            %s\n"
 
-#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
-#: src/xfdesktop-application.c:1218
+#: src/xfdesktop-application.c:1252 src/xfdesktop-application.c:1259
+#: src/xfdesktop-application.c:1266
 msgid "enabled"
 msgstr "เปิดใช้งาน"
 
-#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
-#: src/xfdesktop-application.c:1220
+#: src/xfdesktop-application.c:1254 src/xfdesktop-application.c:1261
+#: src/xfdesktop-application.c:1268
 msgid "disabled"
 msgstr "ปิดใช้"
 
-#: src/xfdesktop-application.c:1209
+#: src/xfdesktop-application.c:1257
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    ไอคอนพื้นโต๊ะ:          %s\n"
 
-#: src/xfdesktop-application.c:1216
+#: src/xfdesktop-application.c:1264
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ไอคอนแฟ้มบนพื้นโต๊ะ:     %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:695 src/xfdesktop-file-utils.c:750
+#: src/xfdesktop-application.c:1331
+#, c-format
+msgid "%s is already running"
+msgstr "%s กำลังทำงานอยู่"
+
+#: src/xfdesktop-file-icon-manager.c:726 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "ผิดพลาดขณะเปลี่ยนชื่อ"
 
-#: src/xfdesktop-file-icon-manager.c:696 src/xfdesktop-file-utils.c:815
+#: src/xfdesktop-file-icon-manager.c:727 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "ไม่สามารถเปลี่ยนชื่อแฟ้มได้"
 
-#: src/xfdesktop-file-icon-manager.c:697
+#: src/xfdesktop-file-icon-manager.c:728
 msgid "None of the icons selected support being renamed."
 msgstr "ไอคอนที่เลือกไม่มีไอคอนใดรองรับการเปลี่ยนชื่อ"
 
-#: src/xfdesktop-file-icon-manager.c:955
+#: src/xfdesktop-file-icon-manager.c:986
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_เปิดด้วย \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:958
+#: src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Open With \"%s\""
 msgstr "เปิดด้วย \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1008
-#: src/xfdesktop-file-icon-manager.c:1056
+#: src/xfdesktop-file-icon-manager.c:1039
+#: src/xfdesktop-file-icon-manager.c:1087
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr "ไม่สามารถเรียกทำงาน \"xfce-desktop-item-edit\" ซึ่งจำเป็นต้องใช้ในการสร้างและแก้ไขปุ่มเรียกโปรแกรมและลิงก์บนพื้นโต๊ะ"
 
-#: src/xfdesktop-file-icon-manager.c:1425
+#: src/xfdesktop-file-icon-manager.c:1537
 msgid "Choose Monitor Configuration"
 msgstr "เลือกค่าตั้งจอภาพ"
 
-#: src/xfdesktop-file-icon-manager.c:1427
+#: src/xfdesktop-file-icon-manager.c:1540
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "คุณต้องการกำหนดเค้าโครงไอคอนเดสก์ท็อปที่มีอยู่ในจอภาพ <b>%s</b> หรือไม่"
 
-#: src/xfdesktop-file-icon-manager.c:1435
+#: src/xfdesktop-file-icon-manager.c:1548
 msgid "Monitors"
 msgstr "จอภาพ"
 
-#: src/xfdesktop-file-icon-manager.c:1721
+#: src/xfdesktop-file-icon-manager.c:1807
 msgid "_Open all"
 msgstr "_เปิดทั้งหมด"
 
-#: src/xfdesktop-file-icon-manager.c:1733
+#: src/xfdesktop-file-icon-manager.c:1819
 msgid "Create _Launcher..."
 msgstr "สร้างปุ่มเ_รียก..."
 
-#: src/xfdesktop-file-icon-manager.c:1743
+#: src/xfdesktop-file-icon-manager.c:1829
 msgid "Create _URL Link..."
 msgstr "สร้าง_ลิงก์ URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1753
+#: src/xfdesktop-file-icon-manager.c:1839
 msgid "Create _Folder..."
 msgstr "สร้างโ_ฟลเดอร์..."
 
-#: src/xfdesktop-file-icon-manager.c:1792
+#: src/xfdesktop-file-icon-manager.c:1878
 msgid "No templates installed"
 msgstr "ไม่มีเทมเพลตติดตั้งไว้"
 
-#: src/xfdesktop-file-icon-manager.c:1810
+#: src/xfdesktop-file-icon-manager.c:1896
 msgid "_Empty File"
 msgstr "แฟ้มเ_ปล่า"
 
-#: src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-file-icon-manager.c:1905
 msgid "_Open All"
 msgstr "_เปิดทั้งหมด"
 
-#: src/xfdesktop-file-icon-manager.c:1832
+#: src/xfdesktop-file-icon-manager.c:1918
 msgid "_Execute"
 msgstr "เ_รียกทำงาน"
 
-#: src/xfdesktop-file-icon-manager.c:1845
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Edit _Launcher"
 msgstr "แก้ไขตัวเ_รียกโปรแกรม"
 
-#: src/xfdesktop-file-icon-manager.c:1893
+#: src/xfdesktop-file-icon-manager.c:1979
 msgid "Ope_n With"
 msgstr "เ_ปิดด้วย"
 
-#: src/xfdesktop-file-icon-manager.c:1921
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:2007
+#: src/xfdesktop-file-icon-manager.c:2024
 msgid "Ope_n With Other Application..."
 msgstr "เปิดด้วยโ_ปรแกรมอื่น..."
 
-#: src/xfdesktop-file-icon-manager.c:1929
+#: src/xfdesktop-file-icon-manager.c:2015
 msgid "Set Defa_ult Application..."
 msgstr "กำหนดโปรแกรม_ปริยาย..."
 
-#: src/xfdesktop-file-icon-manager.c:1985
+#: src/xfdesktop-file-icon-manager.c:2071
 msgid "Paste Into Folder"
 msgstr "แปะลงในโฟลเดอร์"
 
-#: src/xfdesktop-file-icon-manager.c:2016
+#: src/xfdesktop-file-icon-manager.c:2102
 msgid "_Rename..."
 msgstr "เ_ปลี่ยนชื่อ..."
 
-#: src/xfdesktop-file-icon-manager.c:2067
+#: src/xfdesktop-file-icon-manager.c:2153
 msgid "_Open in New Window"
 msgstr "_เปิดในหน้าต่างใหม่"
 
-#: src/xfdesktop-file-icon-manager.c:2074
-#: src/xfdesktop-window-icon-manager.c:304
+#: src/xfdesktop-file-icon-manager.c:2160
+#: src/xfdesktop-window-icon-manager.c:305
 msgid "Arrange Desktop _Icons"
 msgstr "จัดเรียงไ_อคอนบนพื้นโต๊ะ"
 
-#: src/xfdesktop-file-icon-manager.c:2089
-#: src/xfdesktop-window-icon-manager.c:318
+#: src/xfdesktop-file-icon-manager.c:2175
+#: src/xfdesktop-window-icon-manager.c:319
 msgid "_Next Background"
 msgstr "พื้นหลัง_ถัดไป"
 
-#: src/xfdesktop-file-icon-manager.c:2099
-#: src/xfdesktop-window-icon-manager.c:331
+#: src/xfdesktop-file-icon-manager.c:2185
+#: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
 msgstr "_ตั้งค่าพื้นโต๊ะ..."
 
-#: src/xfdesktop-file-icon-manager.c:2106 src/xfdesktop-volume-icon.c:812
+#: src/xfdesktop-file-icon-manager.c:2192 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "คุณ_สมบัติ..."
 
-#: src/xfdesktop-file-icon-manager.c:3096
+#: src/xfdesktop-file-icon-manager.c:3183
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "ไม่สามารถบันทึกแฟ้มที่ลากไปที่ '%s'"
 
-#: src/xfdesktop-file-icon-manager.c:3098
+#: src/xfdesktop-file-icon-manager.c:3185
 msgid "Drop Failure"
 msgstr "การย้ายล้มเหลว"
 
-#: src/xfdesktop-file-icon-manager.c:3102
-#: src/xfdesktop-icon-view-manager.c:488
+#: src/xfdesktop-file-icon-manager.c:3189
+#: src/xfdesktop-icon-view-manager.c:489
 msgid "_OK"
 msgstr "_ตกลง"
 
-#: src/xfdesktop-file-icon-manager.c:3507
+#: src/xfdesktop-file-icon-manager.c:3594
 msgid "Copy _Here"
 msgstr "คัดลอกมาที่_นี่"
 
-#: src/xfdesktop-file-icon-manager.c:3508
+#: src/xfdesktop-file-icon-manager.c:3595
 msgid "_Move Here"
 msgstr "_ย้ายมาที่นี่"
 
-#: src/xfdesktop-file-icon-manager.c:3509
+#: src/xfdesktop-file-icon-manager.c:3596
 msgid "_Link Here"
 msgstr "เ_ชื่อมโยงมาที่นี่"
 
-#: src/xfdesktop-file-icon-manager.c:3534 src/xfdesktop-file-utils.c:1149
-#: src/xfdesktop-icon-view-manager.c:487
+#: src/xfdesktop-file-icon-manager.c:3621 src/xfdesktop-file-utils.c:1149
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
-#: src/xfdesktop-file-icon-manager.c:3627
+#: src/xfdesktop-file-icon-manager.c:3714
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "ไม่สามารถสร้างโฟลเดอร์พื้นโต๊ะ \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:3635
+#: src/xfdesktop-file-icon-manager.c:3722
 msgid "Failed to load the desktop folder"
 msgstr "โหลดโฟลเดอร์พื้นโต๊ะไม่สำเร็จ"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3731
 msgid "A desktop file icon error occurred"
 msgstr "เกิดข้อผิดพลาดกับไอคอนพื้นโต๊ะ"
 
-#: src/xfdesktop-file-icon-manager.c:3648
+#: src/xfdesktop-file-icon-manager.c:3735
 msgid "Desktop Folder Error"
 msgstr "ข้อผิดพลาดเกี่ยวกับโฟลเดอร์พื้นโต๊ะ"
 
-#: src/xfdesktop-file-icon-model.c:548
+#: src/xfdesktop-file-icon-model.c:599
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "มีแฟ้มธรรมดาในชื่อเดียวกันอยู่ก่อนแล้ว กรุณาลบหรือเปลี่ยนชื่อแฟ้มดังกล่าว"
@@ -1224,39 +1229,39 @@ msgstr "ผิดพลาดขณะถ่ายโอน"
 msgid "The file transfer could not be performed"
 msgstr "ไม่สามารถถ่ายโอนแฟ้มได้"
 
-#: src/xfdesktop-icon-view-manager.c:484
+#: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
 msgstr "จัดเรียงไอคอน"
 
-#: src/xfdesktop-icon-view-manager.c:505
+#: src/xfdesktop-icon-view-manager.c:506
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "การกระทำนี้จะเรียงลำดับรายการบนพื้นโต๊ะใหม่หมด และจัดวางรายการต่างๆ ในตำแหน่งที่ต่างจากเดิม\nคุณแน่ใจหรือไม่?"
 
-#: src/xfdesktop-icon-view-manager.c:509
+#: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
 msgstr "ไ_ม่ต้องถามอีก"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:77
+#: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
 msgstr "อนุญาตให้ Xfce กำหนดการจัดการที่ดีที่สุดโดยอัตโนมัติ"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:92
+#: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
 msgstr "เลือกจากการกำหนดค่าจอภาพที่มีอยู่:"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:126
+#: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
 msgstr "กำหนดการจัดการอัตโนมัติเสมอ"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:147
+#: src/xfdesktop-notify.c:133
 msgid "Unmounting device"
 msgstr "กำลังเลิกเมานท์อุปกรณ์"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:150
+#: src/xfdesktop-notify.c:136
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1264,39 +1269,39 @@ msgid ""
 msgstr "ระบบกำลังเลิกเมานท์ \"%s\" กรุณาอย่าถอดสื่อหรือตัดการเชื่อมต่อไดรว์"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
+#: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "กำลังเขียนข้อมูลลงในอุปกรณ์"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
+#: src/xfdesktop-notify.c:143 src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "มีข้อมูลที่ต้องเขียนลงในอุปกรณ์ \"%s\" ก่อนที่จะถอดออกได้ กรุณาอย่าถอดสื่อหรือตัดการเชื่อมต่อไดรว์"
 
-#: src/xfdesktop-notify.c:206
+#: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "เลิกเมานท์เรียบร้อยแล้ว"
 
-#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:394
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "ระบบได้ตัดอุปกรณ์ \"%s\" ออกอย่างปลอดภัยเรียบร้อยแล้ว"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:229
+#: src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "กำลังดันสื่อในอุปกรณ์ออก"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:232
+#: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "กำลังดันสื่อในอุปกรณ์ \"%s\" ออก อาจใช้เวลาสักนิด"
 
-#: src/xfdesktop-notify.c:349
+#: src/xfdesktop-notify.c:393
 msgid "Eject Finished"
 msgstr "ดันสื่อออกเรียบร้อยแล้ว"
 
@@ -1309,17 +1314,17 @@ msgid ""
 "Last modified: %s"
 msgstr "ชื่อ: %s\nชนิด: %s\nขนาด: %s\nเปลี่ยนแปลงล่าสุด: %s"
 
-#: src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:292
 msgid "Trash is empty"
 msgstr "ถังขยะว่างเปล่า"
 
-#: src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:295
 #, c-format
 msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
 msgstr[0] "ถังขยะมีสิ่งของ %d รายการ"
 
-#: src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:324
 #, c-format
 msgid ""
 "%s\n"
@@ -1395,6 +1400,6 @@ msgstr "เ_ลิกเมานท์โวลุม"
 msgid "_Mount Volume"
 msgstr "เ_มานท์โวลุม"
 
-#: src/xfdesktop-window-icon-manager.c:292
+#: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "เ_รียกโปรแกรม..."
