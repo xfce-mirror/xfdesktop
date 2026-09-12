@@ -107,6 +107,10 @@
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
+#define DESKTOP_ICONS_SHOW_EMBLEMS           "/desktop-icons/show-emblems"
+#define DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM "/desktop-icons/show-unreadable-emblem"
+#define DESKTOP_ICONS_SHOW_READONLY_EMBLEM   "/desktop-icons/show-readonly-emblem"
+#define DESKTOP_ICONS_SHOW_SYMLINK_EMBLEM    "/desktop-icons/show-symlink-emblem"
 #define DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE "/desktop-icons/file-icons/show-network-removable"
 #define DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE  "/desktop-icons/file-icons/show-device-removable"
 #define DESKTOP_ICONS_SHOW_DEVICE_FIXED      "/desktop-icons/file-icons/show-device-fixed"
