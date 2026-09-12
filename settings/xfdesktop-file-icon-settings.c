@@ -200,5 +200,28 @@ xfdesktop_file_icon_settings_init(XfdesktopSettings *settings) {
     xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SORT_FOLDERS_BEFORE_FILES_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(chk_sort_folders_before_files), "active");
 
+    /* emblems */
+    GtkWidget *chk_show_emblems = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_emblems"));
+    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_EMBLEMS, G_TYPE_BOOLEAN,
+                           G_OBJECT(chk_show_emblems), "active");
+
+    GtkWidget *chk_show_unreadable_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_unreadable_emblem"));
+    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM, G_TYPE_BOOLEAN,
+                           G_OBJECT(chk_show_unreadable_emblem), "active");
+
+    GtkWidget *chk_show_readonly_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_readonly_emblem"));
+    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_READONLY_EMBLEM, G_TYPE_BOOLEAN,
+                           G_OBJECT(chk_show_readonly_emblem), "active");
+
+    GtkWidget *chk_show_symlink_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_symlink_emblem"));
+    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_SYMLINK_EMBLEM, G_TYPE_BOOLEAN,
+                           G_OBJECT(chk_show_symlink_emblem), "active");
+
+    g_object_bind_property(chk_show_emblems, "active", chk_show_unreadable_emblem, "sensitive", G_BINDING_SYNC_CREATE);
+
+    g_object_bind_property(chk_show_emblems, "active", chk_show_readonly_emblem, "sensitive", G_BINDING_SYNC_CREATE);
+
+    g_object_bind_property(chk_show_emblems, "active", chk_show_symlink_emblem, "sensitive", G_BINDING_SYNC_CREATE);
+
     special_icon_list_init(settings->main_gxml, settings->channel);
 }
