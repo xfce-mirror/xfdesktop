@@ -101,6 +101,9 @@ struct _XfdesktopFileIconManager
     XfdesktopIconViewManager parent;
 
     gboolean ready;
+    guint monitor_update_depth;
+    gboolean monitor_update_pending;
+    gboolean disposing;
 
     XfdesktopFileIconModel *model;
     GHashTable *monitor_data;  // XfwMonitor (owner) -> MonitorData (owner)
@@ -145,6 +148,7 @@ typedef struct {
     XfdesktopIconViewHolder *holder;
     XfdesktopFileIconModelFilter *filter;
     XfdesktopIconPositionConfig *position_config;
+    gboolean awaiting_first_model;
 } MonitorData;
 
 static MonitorData *
@@ -184,11 +188,18 @@ typedef struct {
     XfdesktopIconPositionConfig *fallback;
 } MonitorConfigurationResponseData;
 
+static void maybe_complete_monitor_update(XfdesktopFileIconManager *fmanager);
+
 static void
 monitor_configuration_response_data_free(MonitorConfigurationResponseData *mcrdata) {
-    mcrdata->fmanager->monitor_config_datas = g_list_remove(mcrdata->fmanager->monitor_config_datas, mcrdata);
+    XfdesktopFileIconManager *fmanager = mcrdata->fmanager;
+
+    fmanager->monitor_config_datas = g_list_remove(fmanager->monitor_config_datas, mcrdata);
+    // Keep fmanager alive through completion; mcrdata owns a reference here.
+    maybe_complete_monitor_update(fmanager);
+
     g_object_unref(mcrdata->desktop);
-    g_object_unref(mcrdata->fmanager);
+    g_object_unref(fmanager);
     g_free(mcrdata);
 }
 
@@ -612,6 +623,10 @@ static void
 xfdesktop_file_icon_manager_dispose(GObject *obj)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
+
+    // Dialog destruction runs chooser cleanup; never complete a deferred
+    // topology update while the manager itself is being disposed.
+    fmanager->disposing = TRUE;
 
     while (fmanager->monitor_config_datas != NULL) {
         MonitorConfigurationResponseData *mcrdata = fmanager->monitor_config_datas->data;
@@ -1393,9 +1408,86 @@ update_icon_monitors(XfdesktopFileIconManager *fmanager) {
     }
 }
 
+static gboolean
+monitor_update_blocked(XfdesktopFileIconManager *fmanager) {
+    return fmanager->disposing
+        || fmanager->monitor_update_depth != 0
+        || fmanager->monitor_config_datas != NULL;
+}
+
+
+static void
+attach_monitor_model(MonitorData *mdata) {
+    XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+    gboolean was_awaiting_first_model = mdata->awaiting_first_model;
+
+    mdata->awaiting_first_model = FALSE;
+    xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
+
+    if (was_awaiting_first_model) {
+        xfdesktop_icon_view_enable_drag_dest(icon_view,
+                                             drop_targets, G_N_ELEMENTS(drop_targets),
+                                             GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
+    }
+}
+
+
+static void
+attach_monitor_models(XfdesktopFileIconManager *fmanager) {
+    if (!fmanager->ready) {
+        return;
+    }
+
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, fmanager->monitor_data);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        // This is a no-op for surviving views already attached to this model.
+        attach_monitor_model(mdata);
+    }
+}
+
+static void
+maybe_complete_monitor_update(XfdesktopFileIconManager *fmanager) {
+    if (!fmanager->monitor_update_pending || monitor_update_blocked(fmanager)) {
+        return;
+    }
+
+    fmanager->monitor_update_pending = FALSE;
+
+    // Resolve ownership against the complete assignment set before attaching
+    // any new/deferred views, whose placement can persist icon coordinates.
+    update_icon_monitors(fmanager);
+    attach_monitor_models(fmanager);
+}
+
+static void
+request_monitor_update(XfdesktopFileIconManager *fmanager) {
+    fmanager->monitor_update_pending = TRUE;
+    maybe_complete_monitor_update(fmanager);
+}
+
+void
+xfdesktop_file_icon_manager_begin_monitor_update(XfdesktopFileIconManager *fmanager) {
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager));
+
+    ++fmanager->monitor_update_depth;
+}
+
+void
+xfdesktop_file_icon_manager_end_monitor_update(XfdesktopFileIconManager *fmanager) {
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager));
+    g_return_if_fail(fmanager->monitor_update_depth > 0);
+
+    --fmanager->monitor_update_depth;
+    request_monitor_update(fmanager);
+}
+
 static void
 finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop, XfdesktopIconPositionConfig *position_config) {
     MonitorData *mdata = g_new0(MonitorData, 1);
+    mdata->awaiting_first_model = TRUE;
     mdata->fmanager = fmanager;
     mdata->position_config = position_config;
 
@@ -1419,10 +1511,6 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
                                            drag_targets, G_N_ELEMENTS(drag_targets),
                                            GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
-    xfdesktop_icon_view_enable_drag_dest(icon_view,
-                                         drop_targets, G_N_ELEMENTS(drop_targets),
-                                         GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
-
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
     g_signal_connect_swapped(icon_view, "icon-activated",
@@ -1448,8 +1536,8 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
     XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
 
     mdata->filter = xfdesktop_file_icon_model_filter_new(channel, fmanager->position_configs, monitor, fmanager->model);
-    if (fmanager->ready) {
-        xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
+    if (fmanager->ready && !monitor_update_blocked(fmanager)) {
+        attach_monitor_model(mdata);
     }
 
     g_hash_table_insert(fmanager->monitor_data, g_object_ref(monitor), mdata);
@@ -1460,7 +1548,7 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
     g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
                      G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), mdata);
 
-    update_icon_monitors(fmanager);
+    request_monitor_update(fmanager);
 }
 
 static void
@@ -1617,7 +1705,7 @@ xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, X
     XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
 
     xfdesktop_icon_position_configs_unassign_monitor(fmanager->position_configs, monitor);
-    update_icon_monitors(fmanager);
+    request_monitor_update(fmanager);
 
     MonitorData *mdata = g_hash_table_lookup(fmanager->monitor_data, monitor);
     if (mdata != NULL) {
@@ -2361,7 +2449,7 @@ xfdesktop_file_icon_manager_start_grid_resize(XfdesktopIconView *icon_view,
                                               gint new_cols,
                                               MonitorData *mdata)
 {
-    if (!mdata->fmanager->ready) {
+    if (!mdata->fmanager->ready || mdata->awaiting_first_model) {
         return;
     }
 
@@ -2421,7 +2509,7 @@ xfdesktop_file_icon_manager_start_grid_resize(XfdesktopIconView *icon_view,
 
 static void
 xfdesktop_file_icon_manager_end_grid_resize(XfdesktopIconView *icon_view, MonitorData *mdata) {
-    if (mdata->fmanager->ready) {
+    if (mdata->fmanager->ready && !mdata->awaiting_first_model) {
         // Re-set the model after the resize is done so the view can repopulate itself.
         xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
     }
@@ -3688,13 +3776,17 @@ model_ready(XfdesktopFileIconModel *fmodel, XfdesktopFileIconManager *fmanager) 
     DBG("entering");
     fmanager->ready = TRUE;
 
+    if (monitor_update_blocked(fmanager) || fmanager->monitor_update_pending) {
+        request_monitor_update(fmanager);
+        return;
+    }
+
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, fmanager->monitor_data);
 
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-        xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
+        attach_monitor_model(mdata);
     }
 }
 
