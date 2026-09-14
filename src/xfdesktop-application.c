@@ -978,8 +978,13 @@ build_monitor_mirror_sets(XfdesktopApplication *app) {
 
 static void
 handle_monitors_changed(XfdesktopApplication *app) {
-#ifdef ENABLE_FILE_ICONS
-    XfdesktopFileIconManager *fmanager = NULL;
+#ifdef ENABLE_DESKTOP_ICONS
+    XfdesktopIconViewManager *manager = app->icon_view_manager;
+
+    if (manager != NULL) {
+        g_object_ref(manager);
+        xfdesktop_icon_view_manager_freeze(manager);
+    }
 #endif
 
     // Release obsolete assignments before selecting replacement layouts, but
@@ -989,12 +994,6 @@ handle_monitors_changed(XfdesktopApplication *app) {
     for (GList *l = desktop_monitors; l != NULL; l = l->next) {
         XfwMonitor *monitor = XFW_MONITOR(l->data);
         if (g_list_find(current_monitors, monitor) == NULL) {
-#ifdef ENABLE_FILE_ICONS
-            if (fmanager == NULL && XFDESKTOP_IS_FILE_ICON_MANAGER(app->icon_view_manager)) {
-                fmanager = g_object_ref(XFDESKTOP_FILE_ICON_MANAGER(app->icon_view_manager));
-                xfdesktop_file_icon_manager_begin_monitor_update(fmanager);
-            }
-#endif
             remove_monitor_desktop(app, monitor);
         }
     }
@@ -1004,10 +1003,10 @@ handle_monitors_changed(XfdesktopApplication *app) {
     handle_new_mirror_sets(app, mirror_sets);
     g_list_free_full(mirror_sets, (GDestroyNotify)g_list_free);
 
-#ifdef ENABLE_FILE_ICONS
-    if (fmanager != NULL) {
-        xfdesktop_file_icon_manager_end_monitor_update(fmanager);
-        g_object_unref(fmanager);
+#ifdef ENABLE_DESKTOP_ICONS
+    if (manager != NULL) {
+        xfdesktop_icon_view_manager_thaw(manager);
+        g_object_unref(manager);
     }
 #endif
 }

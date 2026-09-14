@@ -41,9 +41,6 @@ XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                                           GList *desktops,
                                                           GFile *folder);
 
-void xfdesktop_file_icon_manager_begin_monitor_update(XfdesktopFileIconManager *fmanager);
-void xfdesktop_file_icon_manager_end_monitor_update(XfdesktopFileIconManager *fmanager);
-
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_FILE_ICON_MANAGER_H__ */
