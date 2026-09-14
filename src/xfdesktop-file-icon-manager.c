@@ -201,7 +201,7 @@ monitor_configuration_response_data_free(MonitorConfigurationResponseData *mcrda
     xfdesktop_icon_view_manager_thaw(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
 
     g_object_unref(mcrdata->desktop);
-    g_object_unref(fmanager);
+    g_object_unref(mcrdata->fmanager);
     g_free(mcrdata);
 }
 
@@ -637,7 +637,7 @@ xfdesktop_file_icon_manager_dispose(GObject *obj)
         // An emitting response closure is finalized only after it returns.
         // Remove the list entry now so disposal cannot loop on that dialog.
         fmanager->monitor_config_datas = g_list_delete_link(fmanager->monitor_config_datas,
-                                                           fmanager->monitor_config_datas);
+                                                            fmanager->monitor_config_datas);
         gtk_widget_destroy(mcrdata->dialog);
     }
 
@@ -1428,7 +1428,6 @@ attach_monitor_model(MonitorData *mdata) {
                                          GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
 }
 
-
 static void
 attach_monitor_models(XfdesktopFileIconManager *fmanager) {
     if (!fmanager->ready) {
@@ -1440,7 +1439,6 @@ attach_monitor_models(XfdesktopFileIconManager *fmanager) {
 
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        // This is a no-op for surviving views already attached to this model.
         attach_monitor_model(mdata);
     }
 }
@@ -2518,7 +2516,8 @@ xfdesktop_file_icon_manager_start_grid_resize(XfdesktopIconView *icon_view,
 static void
 xfdesktop_file_icon_manager_end_grid_resize(XfdesktopIconView *icon_view, MonitorData *mdata) {
     if (mdata->fmanager->ready && !mdata->awaiting_first_model) {
-        // Restore surviving-view occupancy before deferred redistribution.
+        // Reattach the model before thawing so existing icons occupy their cells
+        // before pending monitor updates can place additional icons.
         xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(mdata->filter));
     }
     xfdesktop_icon_view_manager_thaw(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));

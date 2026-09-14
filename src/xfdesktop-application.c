@@ -982,7 +982,6 @@ handle_monitors_changed(XfdesktopApplication *app) {
     XfdesktopIconViewManager *manager = app->icon_view_manager;
 
     if (manager != NULL) {
-        g_object_ref(manager);
         xfdesktop_icon_view_manager_freeze(manager);
     }
 #endif
@@ -1006,7 +1005,6 @@ handle_monitors_changed(XfdesktopApplication *app) {
 #ifdef ENABLE_DESKTOP_ICONS
     if (manager != NULL) {
         xfdesktop_icon_view_manager_thaw(manager);
-        g_object_unref(manager);
     }
 #endif
 }
