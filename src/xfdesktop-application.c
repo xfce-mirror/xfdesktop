@@ -978,9 +978,37 @@ build_monitor_mirror_sets(XfdesktopApplication *app) {
 
 static void
 handle_monitors_changed(XfdesktopApplication *app) {
+#ifdef ENABLE_DESKTOP_ICONS
+    XfdesktopIconViewManager *manager = app->icon_view_manager;
+
+    if (manager != NULL) {
+        g_object_ref(manager);
+        xfdesktop_icon_view_manager_freeze(manager);
+    }
+#endif
+
+    // Release obsolete assignments before selecting replacement layouts, but
+    // defer redistribution and new-view attachment until assignments settle.
+    GList *current_monitors = xfw_screen_get_monitors(app->screen);
+    GList *desktop_monitors = g_hash_table_get_keys(app->monitors);
+    for (GList *l = desktop_monitors; l != NULL; l = l->next) {
+        XfwMonitor *monitor = XFW_MONITOR(l->data);
+        if (g_list_find(current_monitors, monitor) == NULL) {
+            remove_monitor_desktop(app, monitor);
+        }
+    }
+    g_list_free(desktop_monitors);
+
     GList *mirror_sets = build_monitor_mirror_sets(app);
     handle_new_mirror_sets(app, mirror_sets);
     g_list_free_full(mirror_sets, (GDestroyNotify)g_list_free);
+
+#ifdef ENABLE_DESKTOP_ICONS
+    if (manager != NULL) {
+        xfdesktop_icon_view_manager_thaw(manager);
+        g_object_unref(manager);
+    }
+#endif
 }
 
 static gboolean
@@ -1045,7 +1073,7 @@ static void
 screen_monitor_removed(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplication *app) {
     TRACE("entering, %s", xfw_monitor_get_description(monitor));
     g_signal_handlers_disconnect_by_data(monitor, app);
-    remove_monitor_desktop(app, monitor);
+    // Reconciliation owns removal so redistribution cannot precede its scope.
     handle_monitors_changed(app);
 }
 

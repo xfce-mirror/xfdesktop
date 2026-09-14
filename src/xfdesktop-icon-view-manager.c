@@ -543,3 +543,21 @@ xfdesktop_icon_view_manager_reload(XfdesktopIconViewManager *manager) {
         klass->reload(manager);
     }
 }
+
+void
+xfdesktop_icon_view_manager_freeze(XfdesktopIconViewManager *manager) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+    if (klass->freeze != NULL) {
+        klass->freeze(manager);
+    }
+}
+
+void
+xfdesktop_icon_view_manager_thaw(XfdesktopIconViewManager *manager) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+    if (klass->thaw != NULL) {
+        klass->thaw(manager);
+    }
+}
