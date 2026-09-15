@@ -630,7 +630,7 @@ add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
 }
 
 static void
-remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
+remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon, gboolean notify) {
     GFile *file = xfdesktop_file_icon_peek_file(icon);
     if (G_LIKELY(file != NULL)) {
         gchar *filename = g_file_get_path(file);
@@ -653,7 +653,9 @@ remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
     g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
 
-    g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, icon);
+    if (notify) {
+        g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, icon);
+    }
 
     g_object_unref(icon);
 }
@@ -709,7 +711,7 @@ volume_removed(GVolumeMonitor *monitor, GVolume *volume, XfdesktopFileIconModel 
     XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, volume);
     if (icon != NULL) {
         g_hash_table_remove(fmodel->volume_icons, volume);
-        remove_icon(fmodel, icon);
+        remove_icon(fmodel, icon, TRUE);
     }
 }
 
@@ -753,7 +755,7 @@ mount_removed(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fm
         xfdesktop_volume_icon_unmounted(vicon);
 
         if (xfdesktop_volume_icon_peek_volume(vicon) == NULL && xfdesktop_volume_icon_peek_mount(vicon) == NULL) {
-            remove_icon(fmodel, icon);
+            remove_icon(fmodel, icon, TRUE);
         }
     }
 }
@@ -864,7 +866,7 @@ file_info_loaded_for_change(GObject *source, GAsyncResult *result, gpointer data
         if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
             g_message("Failed to query file info for changed file (%s) on desktop: %s", g_file_peek_path(G_FILE(source)), error->message);
             ChangedFileData *cfdata = data;
-            remove_icon(cfdata->fmodel, cfdata->icon);
+            remove_icon(cfdata->fmodel, cfdata->icon, TRUE);
             g_hash_table_remove(cfdata->fmodel->changed_file_datas, source);
         }
         g_error_free(error);
@@ -908,7 +910,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 XF_DEBUG("row %d, col %d", row, col);
 
                 /* Remove the old icon */
-                remove_icon(fmodel, icon);
+                remove_icon(fmodel, icon, TRUE);
             }
 
             /* In case of MOVED_OUT, other_file will be NULL */
@@ -928,7 +930,7 @@ file_monitor_changed(GFileMonitor *monitor,
                     }
                     XF_DEBUG("row %d, col %d", row, col);
 
-                    remove_icon(fmodel, moved_icon);
+                    remove_icon(fmodel, moved_icon, TRUE);
                 }
 
                 if (xfdesktop_compare_paths(g_file_get_parent(other_file), fmodel->folder)) {
@@ -992,7 +994,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->icons, ht_key);
                 g_free(ht_key);
                 if (icon != NULL) {
-                    remove_icon(fmodel, icon);
+                    remove_icon(fmodel, icon, TRUE);
                 }
 
                 AddFileData *afdata = g_new0(AddFileData, 1);
@@ -1025,7 +1027,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 /* Always try to remove thumbnail so it doesn't take up
                  * space on the user's disk. */
                 xfdesktop_thumbnailer_delete_thumbnail(fmodel->thumbnailer, filename);
-                remove_icon(fmodel, icon);
+                remove_icon(fmodel, icon, TRUE);
                 g_free(filename);
             } else if (g_file_equal(file, fmodel->folder)) {
                 XF_DEBUG("~/Desktop disappeared!");
@@ -1326,7 +1328,8 @@ xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel) {
     GList *icons = g_hash_table_get_values(fmodel->icons);
     for (GList *l = icons; l != NULL; l = l->next) {
         XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
-        remove_icon(fmodel, icon);
+        // Reload only replaces model objects; keep their saved positions.
+        remove_icon(fmodel, icon, FALSE);
     }
     g_list_free(icons);
     g_assert(g_hash_table_size(fmodel->icons) == 0);
