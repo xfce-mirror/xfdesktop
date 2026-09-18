@@ -45,6 +45,9 @@ struct _XfdesktopIconViewManagerClass
 
     /* Virtual Functions */
 
+    void (*freeze)(XfdesktopIconViewManager *manager);
+    void (*thaw)(XfdesktopIconViewManager *manager);
+
     void (*desktop_added)(XfdesktopIconViewManager *manager,
                           XfceDesktop *desktop);
     void (*desktop_removed)(XfdesktopIconViewManager *manager,
@@ -83,6 +86,10 @@ void xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manag
                                                  XfceDesktop *desktop);
 
 /* virtual function accessors */
+
+/* Nestable update deferral; optional implementations default to no-ops. */
+void xfdesktop_icon_view_manager_freeze(XfdesktopIconViewManager *manager);
+void xfdesktop_icon_view_manager_thaw(XfdesktopIconViewManager *manager);
 
 XfceDesktop *xfdesktop_icon_view_manager_get_focused_desktop(XfdesktopIconViewManager *manager);
 

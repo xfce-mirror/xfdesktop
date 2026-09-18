@@ -93,6 +93,7 @@ struct _XfdesktopFileIconModel
     //   * Special file icons: xfdesktop_file_icon_sort_key_for_file()
     //   * Volume icons: xfdesktop_volume_icon_sort_key_for_volume()
     GHashTable *icons;
+    GHashTable *reload_removed_icons;
 
     GHashTable *add_file_datas;
     GHashTable *changed_file_datas;
@@ -306,6 +307,10 @@ xfdesktop_file_icon_model_init(XfdesktopFileIconModel *fmodel) {
                                           g_str_equal,
                                           g_free,
                                           g_object_unref);
+    fmodel->reload_removed_icons = g_hash_table_new_full(g_str_hash,
+                                                         g_str_equal,
+                                                         g_free,
+                                                         g_object_unref);
     fmodel->volume_icons = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, NULL);
     fmodel->add_file_datas = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, (GDestroyNotify)add_file_data_free);
     fmodel->changed_file_datas = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, (GDestroyNotify)changed_file_data_free);
@@ -447,6 +452,7 @@ xfdesktop_file_icon_model_finalize(GObject *object) {
     g_hash_table_destroy(fmodel->updating_file_datas);
 
     g_hash_table_destroy(fmodel->volume_icons);
+    g_hash_table_destroy(fmodel->reload_removed_icons);
     g_hash_table_destroy(fmodel->icons);
     g_object_unref(fmodel->folder);
     g_object_unref(fmodel->channel);
@@ -611,6 +617,13 @@ check_create_desktop_folder(XfdesktopFileIconModel *fmodel) {
 
 static void
 add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
+    if (!XFDESKTOP_IS_VOLUME_ICON(icon)) {
+        const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
+        if (identifier != NULL) {
+            g_hash_table_remove(fmodel->reload_removed_icons, identifier);
+        }
+    }
+
     XfwMonitor *monitor = NULL;
     gint16 row = -1, col = -1;
     g_signal_emit(fmodel, signals[SIG_ICON_POSITION_REQUEST], 0, icon, &row, &col, &monitor);
@@ -630,7 +643,7 @@ add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
 }
 
 static void
-remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
+remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon, gboolean notify) {
     GFile *file = xfdesktop_file_icon_peek_file(icon);
     if (G_LIKELY(file != NULL)) {
         gchar *filename = g_file_get_path(file);
@@ -653,7 +666,9 @@ remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
     g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
 
-    g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, icon);
+    if (notify) {
+        g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, icon);
+    }
 
     g_object_unref(icon);
 }
@@ -709,7 +724,7 @@ volume_removed(GVolumeMonitor *monitor, GVolume *volume, XfdesktopFileIconModel 
     XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, volume);
     if (icon != NULL) {
         g_hash_table_remove(fmodel->volume_icons, volume);
-        remove_icon(fmodel, icon);
+        remove_icon(fmodel, icon, TRUE);
     }
 }
 
@@ -753,7 +768,7 @@ mount_removed(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fm
         xfdesktop_volume_icon_unmounted(vicon);
 
         if (xfdesktop_volume_icon_peek_volume(vicon) == NULL && xfdesktop_volume_icon_peek_mount(vicon) == NULL) {
-            remove_icon(fmodel, icon);
+            remove_icon(fmodel, icon, TRUE);
         }
     }
 }
@@ -864,7 +879,7 @@ file_info_loaded_for_change(GObject *source, GAsyncResult *result, gpointer data
         if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
             g_message("Failed to query file info for changed file (%s) on desktop: %s", g_file_peek_path(G_FILE(source)), error->message);
             ChangedFileData *cfdata = data;
-            remove_icon(cfdata->fmodel, cfdata->icon);
+            remove_icon(cfdata->fmodel, cfdata->icon, TRUE);
             g_hash_table_remove(cfdata->fmodel->changed_file_datas, source);
         }
         g_error_free(error);
@@ -908,7 +923,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 XF_DEBUG("row %d, col %d", row, col);
 
                 /* Remove the old icon */
-                remove_icon(fmodel, icon);
+                remove_icon(fmodel, icon, TRUE);
             }
 
             /* In case of MOVED_OUT, other_file will be NULL */
@@ -928,7 +943,7 @@ file_monitor_changed(GFileMonitor *monitor,
                     }
                     XF_DEBUG("row %d, col %d", row, col);
 
-                    remove_icon(fmodel, moved_icon);
+                    remove_icon(fmodel, moved_icon, TRUE);
                 }
 
                 if (xfdesktop_compare_paths(g_file_get_parent(other_file), fmodel->folder)) {
@@ -992,7 +1007,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->icons, ht_key);
                 g_free(ht_key);
                 if (icon != NULL) {
-                    remove_icon(fmodel, icon);
+                    remove_icon(fmodel, icon, TRUE);
                 }
 
                 AddFileData *afdata = g_new0(AddFileData, 1);
@@ -1025,7 +1040,7 @@ file_monitor_changed(GFileMonitor *monitor,
                 /* Always try to remove thumbnail so it doesn't take up
                  * space on the user's disk. */
                 xfdesktop_thumbnailer_delete_thumbnail(fmodel->thumbnailer, filename);
-                remove_icon(fmodel, icon);
+                remove_icon(fmodel, icon, TRUE);
                 g_free(filename);
             } else if (g_file_equal(file, fmodel->folder)) {
                 XF_DEBUG("~/Desktop disappeared!");
@@ -1167,6 +1182,14 @@ enumerator_files_ready(GFileEnumerator *enumerator, GAsyncResult *result, Xfdesk
                     g_free(location);
                 }
             }
+
+            GHashTableIter reload_iter;
+            gpointer old_icon;
+            g_hash_table_iter_init(&reload_iter, fmodel->reload_removed_icons);
+            while (g_hash_table_iter_next(&reload_iter, NULL, &old_icon)) {
+                g_signal_emit(fmodel, signals[SIG_ICON_REMOVED], 0, old_icon);
+            }
+            g_hash_table_remove_all(fmodel->reload_removed_icons);
 
             g_signal_emit(fmodel, signals[SIG_READY], 0);
         }
@@ -1326,7 +1349,18 @@ xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel) {
     GList *icons = g_hash_table_get_values(fmodel->icons);
     for (GList *l = icons; l != NULL; l = l->next) {
         XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
-        remove_icon(fmodel, icon);
+        if (!XFDESKTOP_IS_VOLUME_ICON(icon)) {
+            const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
+            if (identifier != NULL) {
+                g_hash_table_replace(fmodel->reload_removed_icons,
+                                     g_strdup(identifier),
+                                     g_object_ref(icon));
+            }
+        }
+
+        // Reload only replaces model objects; defer removal notification until
+        // the replacement enumeration shows which identifiers did not return.
+        remove_icon(fmodel, icon, FALSE);
     }
     g_list_free(icons);
     g_assert(g_hash_table_size(fmodel->icons) == 0);
