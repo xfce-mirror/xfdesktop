@@ -1509,7 +1509,10 @@ finish_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
                                            drag_targets, G_N_ELEMENTS(drag_targets),
                                            GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
-    // The view enables internal drops at construction, too.
+    // The view enables internal drops at construction, too.  Do not use
+    // xfdesktop_icon_view_unset_drag_dest() here: that intentionally retains
+    // internal icon-move drops, while a deferred view must reject all drops
+    // until its first model is attached.
     gtk_drag_dest_unset(GTK_WIDGET(icon_view));
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
