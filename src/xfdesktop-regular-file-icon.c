@@ -70,6 +70,7 @@ struct _XfdesktopRegularFileIcon
     GFileMonitor *monitor;
     gboolean show_thumbnails;
     gboolean show_emblems;
+    gboolean show_user_assigned_emblem;
     gboolean show_unreadable_emblem;
     gboolean show_readonly_emblem;
     gboolean show_symlink_emblem;
@@ -84,6 +85,7 @@ enum {
     PROP_FILE_INFO,
     PROP_SHOW_THUMBNAILS,
     PROP_SHOW_EMBLEMS,
+    PROP_SHOW_USER_ASSIGNED_EMBLEM,
     PROP_SHOW_UNREADABLE_EMBLEM,
     PROP_SHOW_READONLY_EMBLEM,
     PROP_SHOW_SYMLINK_EMBLEM,
@@ -228,6 +230,13 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
                                                          TRUE,
                                                          G_PARAM_READWRITE));
     g_object_class_install_property(gobject_class,
+                                    PROP_SHOW_USER_ASSIGNED_EMBLEM,
+                                    g_param_spec_boolean("show-user-assigned-emblem",
+                                                         "show-user-assigned-emblem",
+                                                         "show-user-assigned-emblem",
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
+    g_object_class_install_property(gobject_class,
                                     PROP_SHOW_UNREADABLE_EMBLEM,
                                     g_param_spec_boolean("show-unreadable-emblem",
                                                          "show-unreadable-emblem",
@@ -257,6 +266,7 @@ xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
     icon->display_name = NULL;
     icon->show_thumbnails = TRUE;
     icon->show_emblems = TRUE;
+    icon->show_user_assigned_emblem = TRUE;
     icon->show_unreadable_emblem = TRUE;
     icon->show_readonly_emblem = TRUE;
     icon->show_symlink_emblem = TRUE;
@@ -300,6 +310,12 @@ xfdesktop_regular_file_icon_constructed(GObject *obj) {
                            G_TYPE_BOOLEAN,
                            regular_file_icon,
                            "show-emblems");
+
+    xfconf_g_property_bind(regular_file_icon->channel,
+                           DESKTOP_ICONS_SHOW_USER_ASSIGNED_EMBLEM,
+                           G_TYPE_BOOLEAN,
+                           regular_file_icon,
+                           "show-user-assigned-emblem");
 
     xfconf_g_property_bind(regular_file_icon->channel,
                            DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM,
@@ -356,6 +372,16 @@ xfdesktop_regular_file_icon_set_property(GObject *obj, guint property_id, const 
                 icon->show_emblems = g_value_get_boolean(value);
 
                 XF_DEBUG("show-emblems changed! now: %s", icon->show_emblems ? "TRUE" : "FALSE");
+                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+            }
+            break;
+
+        case PROP_SHOW_USER_ASSIGNED_EMBLEM:
+            if (icon->show_user_assigned_emblem != g_value_get_boolean(value)) {
+                icon->show_user_assigned_emblem = g_value_get_boolean(value);
+
+                XF_DEBUG("show-user-assigned-emblem changed! now: %s", icon->show_user_assigned_emblem ? "TRUE" : "FALSE");
                 xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
                 xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
             }
@@ -424,6 +450,10 @@ xfdesktop_regular_file_icon_get_property(GObject *obj, guint property_id, GValue
 
         case PROP_SHOW_EMBLEMS:
             g_value_set_boolean(value, icon->show_emblems);
+            break;
+
+        case PROP_SHOW_USER_ASSIGNED_EMBLEM:
+            g_value_set_boolean(value, icon->show_user_assigned_emblem);
             break;
 
         case PROP_SHOW_UNREADABLE_EMBLEM:
@@ -745,34 +775,43 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
             g_object_ref(base_gicon);
     }
 
-    /* Add any user set emblems */
-    gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
-    g_object_unref(base_gicon);
+    /* Add emblems */
+    if (!regular_icon->show_emblems) {
+        gicon = base_gicon;
+    } else {
 
-    if(regular_icon->show_emblems) {
+        /* Add any user set emblems */
+        if (regular_icon->show_user_assigned_emblem) {
+            gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
+        } else {
+            /* needed in case automatic emblems are added below */
+            gicon = g_emblemed_icon_new(base_gicon, NULL);
+        }
+        g_object_unref(base_gicon);
+
         /* load the unreadable emblem if necessary */
-        if(regular_icon->show_unreadable_emblem
-           && !g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-        {
-            GIcon *themed_icon = g_themed_icon_new(EMBLEM_UNREADABLE);
-            GEmblem *emblem = g_emblem_new(themed_icon);
+        if (!g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
+            if(regular_icon->show_unreadable_emblem) {
+                GIcon *themed_icon = g_themed_icon_new(EMBLEM_UNREADABLE);
+                GEmblem *emblem = g_emblem_new(themed_icon);
 
-            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+                g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
 
-            g_object_unref(emblem);
-            g_object_unref(themed_icon);
+                g_object_unref(emblem);
+                g_object_unref(themed_icon);
+            }
         }
         /* load the read only emblem if necessary */
-        else if(regular_icon->show_readonly_emblem
-                && !g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-        {
-            GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
-            GEmblem *emblem = g_emblem_new(themed_icon);
+        else if(!g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)){
+            if (regular_icon->show_readonly_emblem){
+                GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
+                GEmblem *emblem = g_emblem_new(themed_icon);
 
-            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+                g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
 
-            g_object_unref(emblem);
-            g_object_unref(themed_icon);
+                g_object_unref(emblem);
+                g_object_unref(themed_icon);
+            }
         }
 
         /* load the symlink emblem if necessary */
