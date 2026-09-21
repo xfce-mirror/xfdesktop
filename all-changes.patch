@@ -1,0 +1,502 @@
+diff --git a/common/xfdesktop-common.h b/common/xfdesktop-common.h
+index 5f6463b2..233a509c 100644
+--- a/common/xfdesktop-common.h
++++ b/common/xfdesktop-common.h
+@@ -107,6 +107,11 @@
+ 
+ #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
+ #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
++#define DESKTOP_ICONS_SHOW_EMBLEMS           "/desktop-icons/show-emblems"
++#define DESKTOP_ICONS_SHOW_USER_ASSIGNED_EMBLEM "/desktop-icons/show-user-assigned-emblem"
++#define DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM "/desktop-icons/show-unreadable-emblem"
++#define DESKTOP_ICONS_SHOW_READONLY_EMBLEM   "/desktop-icons/show-readonly-emblem"
++#define DESKTOP_ICONS_SHOW_SYMLINK_EMBLEM    "/desktop-icons/show-symlink-emblem"
+ #define DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE "/desktop-icons/file-icons/show-network-removable"
+ #define DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE  "/desktop-icons/file-icons/show-device-removable"
+ #define DESKTOP_ICONS_SHOW_DEVICE_FIXED      "/desktop-icons/file-icons/show-device-fixed"
+diff --git a/doc/README.xfconf b/doc/README.xfconf
+index b618ac25..83a4c0f5 100644
+--- a/doc/README.xfconf
++++ b/doc/README.xfconf
+@@ -48,6 +48,11 @@ the same monitor is plugged in again those settings apply to it.
+     <single-click bool>
+     <show-thumbnails bool>
+     <show-hidden-files bool>
++    <show-emblems bool>
++    <show-user-assigned-emblem bool>
++    <show-unreadable-emblem bool>
++    <show-readonly-emblem bool>
++    <show-symlink-emblem bool>
+     <show-tooltips bool>
+     <tooltip-size double>
+     <file-icons>
+diff --git a/settings/xfdesktop-file-icon-settings.c b/settings/xfdesktop-file-icon-settings.c
+index e99b7d44..a608cc37 100644
+--- a/settings/xfdesktop-file-icon-settings.c
++++ b/settings/xfdesktop-file-icon-settings.c
+@@ -200,5 +200,34 @@ xfdesktop_file_icon_settings_init(XfdesktopSettings *settings) {
+     xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SORT_FOLDERS_BEFORE_FILES_PROP, G_TYPE_BOOLEAN,
+                            G_OBJECT(chk_sort_folders_before_files), "active");
+ 
++    /* emblems */
++    GtkWidget *chk_show_emblems = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_emblems"));
++    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_EMBLEMS, G_TYPE_BOOLEAN,
++                           G_OBJECT(chk_show_emblems), "active");
++
++    GtkWidget *chk_show_unreadable_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_unreadable_emblem"));
++    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM, G_TYPE_BOOLEAN,
++                           G_OBJECT(chk_show_unreadable_emblem), "active");
++
++    GtkWidget *chk_show_readonly_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_readonly_emblem"));
++    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_READONLY_EMBLEM, G_TYPE_BOOLEAN,
++                           G_OBJECT(chk_show_readonly_emblem), "active");
++
++    GtkWidget *chk_show_user_assigned_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_user_assigned_emblem"));
++    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_USER_ASSIGNED_EMBLEM, G_TYPE_BOOLEAN,
++                           G_OBJECT(chk_show_user_assigned_emblem), "active");
++
++    GtkWidget *chk_show_symlink_emblem = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_show_symlink_emblem"));
++    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SHOW_SYMLINK_EMBLEM, G_TYPE_BOOLEAN,
++                           G_OBJECT(chk_show_symlink_emblem), "active");
++
++    g_object_bind_property(chk_show_emblems, "active", chk_show_user_assigned_emblem, "sensitive", G_BINDING_SYNC_CREATE);
++
++    g_object_bind_property(chk_show_emblems, "active", chk_show_unreadable_emblem, "sensitive", G_BINDING_SYNC_CREATE);
++
++    g_object_bind_property(chk_show_emblems, "active", chk_show_readonly_emblem, "sensitive", G_BINDING_SYNC_CREATE);
++
++    g_object_bind_property(chk_show_emblems, "active", chk_show_symlink_emblem, "sensitive", G_BINDING_SYNC_CREATE);
++
+     special_icon_list_init(settings->main_gxml, settings->channel);
+ }
+diff --git a/settings/xfdesktop-settings-ui.glade b/settings/xfdesktop-settings-ui.glade
+index 7cc0631a..aafd6a0b 100644
+--- a/settings/xfdesktop-settings-ui.glade
++++ b/settings/xfdesktop-settings-ui.glade
+@@ -1331,6 +1331,133 @@
+                         <property name="position">0</property>
+                       </packing>
+                     </child>
++                    <child>
++                      <object class="GtkFrame">
++                        <property name="visible">True</property>
++                        <property name="can-focus">False</property>
++                        <property name="label-xalign">0</property>
++                        <property name="shadow-type">none</property>
++                        <child>
++                          <object class="GtkBox">
++                            <property name="visible">True</property>
++                            <property name="can-focus">False</property>
++                            <property name="margin-start">12</property>
++                            <property name="margin-top">6</property>
++                            <property name="orientation">vertical</property>
++                            <property name="spacing">6</property>
++                            <child>
++                              <object class="GtkCheckButton" id="chk_show_emblems">
++                                <property name="label" translatable="yes">Show _emblems on file icons</property>
++                                <property name="visible">True</property>
++                                <property name="can-focus">True</property>
++                                <property name="receives-default">False</property>
++                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
++                                <property name="tooltip-text" translatable="yes">Unchecking this hides all of the emblems below, without changing their individual settings.</property>
++                                <property name="use-underline">True</property>
++                                <property name="active">True</property>
++                                <property name="draw-indicator">True</property>
++                              </object>
++                              <packing>
++                                <property name="expand">False</property>
++                                <property name="fill">True</property>
++                                <property name="position">0</property>
++                              </packing>
++                            </child>
++                            <child>
++                              <object class="GtkCheckButton" id="chk_show_user_assigned_emblem">
++                                <property name="label" translatable="yes">Show user-assi_gned emblems</property>
++                                <property name="visible">True</property>
++                                <property name="can-focus">True</property>
++                                <property name="receives-default">False</property>
++                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
++                                <property name="tooltip-text" translatable="yes">Select this option to show emblems that were manually assigned to a file, e.g. via Thunar's Properties dialog.</property>
++                                <property name="margin-start">12</property>
++                                <property name="use-underline">True</property>
++                                <property name="active">True</property>
++                                <property name="draw-indicator">True</property>
++                              </object>
++                              <packing>
++                                <property name="expand">False</property>
++                                <property name="fill">True</property>
++                                <property name="position">1</property>
++                              </packing>
++                            </child>
++                            <child>
++                              <object class="GtkCheckButton" id="chk_show_symlink_emblem">
++                                <property name="label" translatable="yes">Show _symlink emblem</property>
++                                <property name="visible">True</property>
++                                <property name="can-focus">True</property>
++                                <property name="receives-default">False</property>
++                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
++                                <property name="tooltip-text" translatable="yes">Select this option to overlay an emblem on desktop icons that are symbolic links.</property>
++                                <property name="margin-start">12</property>
++                                <property name="use-underline">True</property>
++                                <property name="active">True</property>
++                                <property name="draw-indicator">True</property>
++                              </object>
++                              <packing>
++                                <property name="expand">False</property>
++                                <property name="fill">True</property>
++                                <property name="position">2</property>
++                              </packing>
++                            </child>
++                            <child>
++                              <object class="GtkCheckButton" id="chk_show_readonly_emblem">
++                                <property name="label" translatable="yes">Show _read-only emblem</property>
++                                <property name="visible">True</property>
++                                <property name="can-focus">True</property>
++                                <property name="receives-default">False</property>
++                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
++                                <property name="tooltip-text" translatable="yes">Select this option to overlay an emblem on desktop icons for files you don't have permission to write to.</property>
++                                <property name="margin-start">12</property>
++                                <property name="use-underline">True</property>
++                                <property name="active">True</property>
++                                <property name="draw-indicator">True</property>
++                              </object>
++                              <packing>
++                                <property name="expand">False</property>
++                                <property name="fill">True</property>
++                                <property name="position">3</property>
++                              </packing>
++                            </child>
++                            <child>
++                              <object class="GtkCheckButton" id="chk_show_unreadable_emblem">
++                                <property name="label" translatable="yes">Show _unreadable emblem</property>
++                                <property name="visible">True</property>
++                                <property name="can-focus">True</property>
++                                <property name="receives-default">False</property>
++                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
++                                <property name="tooltip-text" translatable="yes">Select this option to overlay an emblem on desktop icons for files you don't have permission to read.</property>
++                                <property name="margin-start">12</property>
++                                <property name="use-underline">True</property>
++                                <property name="active">True</property>
++                                <property name="draw-indicator">True</property>
++                              </object>
++                              <packing>
++                                <property name="expand">False</property>
++                                <property name="fill">True</property>
++                                <property name="position">4</property>
++                              </packing>
++                            </child>
++                          </object>
++                        </child>
++                        <child type="label">
++                          <object class="GtkLabel">
++                            <property name="visible">True</property>
++                            <property name="can-focus">False</property>
++                            <property name="label" translatable="yes">Emblems</property>
++                            <attributes>
++                              <attribute name="weight" value="bold"/>
++                            </attributes>
++                          </object>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
+                     <child>
+                       <object class="GtkFrame">
+                         <property name="visible">True</property>
+diff --git a/src/xfdesktop-regular-file-icon.c b/src/xfdesktop-regular-file-icon.c
+index 6a4daa27..8d29996b 100644
+--- a/src/xfdesktop-regular-file-icon.c
++++ b/src/xfdesktop-regular-file-icon.c
+@@ -69,6 +69,11 @@ struct _XfdesktopRegularFileIcon
+     GFile *thumbnail_file;
+     GFileMonitor *monitor;
+     gboolean show_thumbnails;
++    gboolean show_emblems;
++    gboolean show_user_assigned_emblem;
++    gboolean show_unreadable_emblem;
++    gboolean show_readonly_emblem;
++    gboolean show_symlink_emblem;
+     gboolean is_hidden;
+ };
+ 
+@@ -79,6 +84,11 @@ enum {
+     PROP_FILE,
+     PROP_FILE_INFO,
+     PROP_SHOW_THUMBNAILS,
++    PROP_SHOW_EMBLEMS,
++    PROP_SHOW_USER_ASSIGNED_EMBLEM,
++    PROP_SHOW_UNREADABLE_EMBLEM,
++    PROP_SHOW_READONLY_EMBLEM,
++    PROP_SHOW_SYMLINK_EMBLEM,
+ };
+ 
+ static void xfdesktop_regular_file_icon_constructed(GObject *obj);
+@@ -212,6 +222,41 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
+                                                          "show-thumbnails",
+                                                          TRUE,
+                                                          G_PARAM_READWRITE));
++    g_object_class_install_property(gobject_class,
++                                    PROP_SHOW_EMBLEMS,
++                                    g_param_spec_boolean("show-emblems",
++                                                         "show-emblems",
++                                                         "show-emblems",
++                                                         TRUE,
++                                                         G_PARAM_READWRITE));
++    g_object_class_install_property(gobject_class,
++                                    PROP_SHOW_USER_ASSIGNED_EMBLEM,
++                                    g_param_spec_boolean("show-user-assigned-emblem",
++                                                         "show-user-assigned-emblem",
++                                                         "show-user-assigned-emblem",
++                                                         TRUE,
++                                                         G_PARAM_READWRITE));
++    g_object_class_install_property(gobject_class,
++                                    PROP_SHOW_UNREADABLE_EMBLEM,
++                                    g_param_spec_boolean("show-unreadable-emblem",
++                                                         "show-unreadable-emblem",
++                                                         "show-unreadable-emblem",
++                                                         TRUE,
++                                                         G_PARAM_READWRITE));
++    g_object_class_install_property(gobject_class,
++                                    PROP_SHOW_READONLY_EMBLEM,
++                                    g_param_spec_boolean("show-readonly-emblem",
++                                                         "show-readonly-emblem",
++                                                         "show-readonly-emblem",
++                                                         TRUE,
++                                                         G_PARAM_READWRITE));
++    g_object_class_install_property(gobject_class,
++                                    PROP_SHOW_SYMLINK_EMBLEM,
++                                    g_param_spec_boolean("show-symlink-emblem",
++                                                         "show-symlink-emblem",
++                                                         "show-symlink-emblem",
++                                                         TRUE,
++                                                         G_PARAM_READWRITE));
+ }
+ 
+ static void
+@@ -220,6 +265,11 @@ xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
+     icon = xfdesktop_regular_file_icon_get_instance_private(icon);
+     icon->display_name = NULL;
+     icon->show_thumbnails = TRUE;
++    icon->show_emblems = TRUE;
++    icon->show_user_assigned_emblem = TRUE;
++    icon->show_unreadable_emblem = TRUE;
++    icon->show_readonly_emblem = TRUE;
++    icon->show_symlink_emblem = TRUE;
+ }
+ 
+ static void
+@@ -254,6 +304,36 @@ xfdesktop_regular_file_icon_constructed(GObject *obj) {
+                            G_TYPE_BOOLEAN,
+                            regular_file_icon,
+                            "show-thumbnails");
++
++    xfconf_g_property_bind(regular_file_icon->channel,
++                           DESKTOP_ICONS_SHOW_EMBLEMS,
++                           G_TYPE_BOOLEAN,
++                           regular_file_icon,
++                           "show-emblems");
++
++    xfconf_g_property_bind(regular_file_icon->channel,
++                           DESKTOP_ICONS_SHOW_USER_ASSIGNED_EMBLEM,
++                           G_TYPE_BOOLEAN,
++                           regular_file_icon,
++                           "show-user-assigned-emblem");
++
++    xfconf_g_property_bind(regular_file_icon->channel,
++                           DESKTOP_ICONS_SHOW_UNREADABLE_EMBLEM,
++                           G_TYPE_BOOLEAN,
++                           regular_file_icon,
++                           "show-unreadable-emblem");
++
++    xfconf_g_property_bind(regular_file_icon->channel,
++                           DESKTOP_ICONS_SHOW_READONLY_EMBLEM,
++                           G_TYPE_BOOLEAN,
++                           regular_file_icon,
++                           "show-readonly-emblem");
++
++    xfconf_g_property_bind(regular_file_icon->channel,
++                           DESKTOP_ICONS_SHOW_SYMLINK_EMBLEM,
++                           G_TYPE_BOOLEAN,
++                           regular_file_icon,
++                           "show-symlink-emblem");
+ }
+ 
+ static void
+@@ -287,6 +367,56 @@ xfdesktop_regular_file_icon_set_property(GObject *obj, guint property_id, const
+             }
+             break;
+ 
++        case PROP_SHOW_EMBLEMS:
++            if (icon->show_emblems != g_value_get_boolean(value)) {
++                icon->show_emblems = g_value_get_boolean(value);
++
++                XF_DEBUG("show-emblems changed! now: %s", icon->show_emblems ? "TRUE" : "FALSE");
++                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
++                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
++            }
++            break;
++
++        case PROP_SHOW_USER_ASSIGNED_EMBLEM:
++            if (icon->show_user_assigned_emblem != g_value_get_boolean(value)) {
++                icon->show_user_assigned_emblem = g_value_get_boolean(value);
++
++                XF_DEBUG("show-user-assigned-emblem changed! now: %s", icon->show_user_assigned_emblem ? "TRUE" : "FALSE");
++                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
++                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
++            }
++            break;
++
++        case PROP_SHOW_UNREADABLE_EMBLEM:
++            if (icon->show_unreadable_emblem != g_value_get_boolean(value)) {
++                icon->show_unreadable_emblem = g_value_get_boolean(value);
++
++                XF_DEBUG("show-unreadable-emblem changed! now: %s", icon->show_unreadable_emblem ? "TRUE" : "FALSE");
++                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
++                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
++            }
++            break;
++
++        case PROP_SHOW_READONLY_EMBLEM:
++            if (icon->show_readonly_emblem != g_value_get_boolean(value)) {
++                icon->show_readonly_emblem = g_value_get_boolean(value);
++
++                XF_DEBUG("show-readonly-emblem changed! now: %s", icon->show_readonly_emblem ? "TRUE" : "FALSE");
++                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
++                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
++            }
++            break;
++
++        case PROP_SHOW_SYMLINK_EMBLEM:
++            if (icon->show_symlink_emblem != g_value_get_boolean(value)) {
++                icon->show_symlink_emblem = g_value_get_boolean(value);
++
++                XF_DEBUG("show-symlink-emblem changed! now: %s", icon->show_symlink_emblem ? "TRUE" : "FALSE");
++                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
++                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
++            }
++            break;
++
+         default:
+             G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, property_id, pspec);
+             break;
+@@ -318,6 +448,26 @@ xfdesktop_regular_file_icon_get_property(GObject *obj, guint property_id, GValue
+             g_value_set_boolean(value, icon->show_thumbnails);
+             break;
+ 
++        case PROP_SHOW_EMBLEMS:
++            g_value_set_boolean(value, icon->show_emblems);
++            break;
++
++        case PROP_SHOW_USER_ASSIGNED_EMBLEM:
++            g_value_set_boolean(value, icon->show_user_assigned_emblem);
++            break;
++
++        case PROP_SHOW_UNREADABLE_EMBLEM:
++            g_value_set_boolean(value, icon->show_unreadable_emblem);
++            break;
++
++        case PROP_SHOW_READONLY_EMBLEM:
++            g_value_set_boolean(value, icon->show_readonly_emblem);
++            break;
++
++        case PROP_SHOW_SYMLINK_EMBLEM:
++            g_value_set_boolean(value, icon->show_symlink_emblem);
++            break;
++
+         default:
+             G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, property_id, pspec);
+             break;
+@@ -625,46 +775,57 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
+             g_object_ref(base_gicon);
+     }
+ 
+-    /* Add any user set emblems */
+-    gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
+-    g_object_unref(base_gicon);
++    /* Add emblems */
++    if (!regular_icon->show_emblems) {
++        gicon = base_gicon;
++    } else {
+ 
+-    /* load the unreadable emblem if necessary */
+-    if(!g_file_info_get_attribute_boolean(regular_icon->file_info,
+-                                          G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+-    {
+-        GIcon *themed_icon = g_themed_icon_new(EMBLEM_UNREADABLE);
+-        GEmblem *emblem = g_emblem_new(themed_icon);
++        /* Add any user set emblems */
++        if (regular_icon->show_user_assigned_emblem) {
++            gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
++        } else {
++            /* needed in case automatic emblems are added below */
++            gicon = g_emblemed_icon_new(base_gicon, NULL);
++        }
++        g_object_unref(base_gicon);
+ 
+-        g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
++        /* load the unreadable emblem if necessary */
++        if (!g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
++            if(regular_icon->show_unreadable_emblem) {
++                GIcon *themed_icon = g_themed_icon_new(EMBLEM_UNREADABLE);
++                GEmblem *emblem = g_emblem_new(themed_icon);
+ 
+-        g_object_unref(emblem);
+-        g_object_unref(themed_icon);
+-    }
+-    /* load the read only emblem if necessary */
+-    else if(!g_file_info_get_attribute_boolean(regular_icon->file_info,
+-                                               G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+-    {
+-        GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
+-        GEmblem *emblem = g_emblem_new(themed_icon);
++                g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+ 
+-        g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
++                g_object_unref(emblem);
++                g_object_unref(themed_icon);
++            }
++        }
++        /* load the read only emblem if necessary */
++        else if(!g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)){
++            if (regular_icon->show_readonly_emblem){
++                GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
++                GEmblem *emblem = g_emblem_new(themed_icon);
+ 
+-        g_object_unref(emblem);
+-        g_object_unref(themed_icon);
+-    }
++                g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+ 
+-    /* load the symlink emblem if necessary */
+-    if(g_file_info_get_attribute_boolean(regular_icon->file_info,
+-                                         G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
+-    {
+-        GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
+-        GEmblem *emblem = g_emblem_new(themed_icon);
++                g_object_unref(emblem);
++                g_object_unref(themed_icon);
++            }
++        }
+ 
+-        g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
++        /* load the symlink emblem if necessary */
++        if(regular_icon->show_symlink_emblem
++           && g_file_info_get_attribute_boolean(regular_icon->file_info, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
++        {
++            GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
++            GEmblem *emblem = g_emblem_new(themed_icon);
+ 
+-        g_object_unref(emblem);
+-        g_object_unref(themed_icon);
++            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
++
++            g_object_unref(emblem);
++            g_object_unref(themed_icon);
++        }
+     }
+ 
+     return gicon;
