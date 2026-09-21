@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-02-21 13:01+0100\n"
+"POT-Creation-Date: 2026-09-21 13:09+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: dsafsadf <heneral@gmail.com>, 2020,2025\n"
 "Language-Team: Ukrainian (http://app.transifex.com/xfce/xfdesktop/language/uk/)\n"
@@ -74,13 +74,13 @@ msgid "Create _Folder"
 msgstr "Створити _теку"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
-#: src/xfdesktop-file-icon-manager.c:1761
+#: src/xfdesktop-file-icon-manager.c:1940
 msgid "Create _Document"
 msgstr "Створити _документ"
 
 #: common/xfdesktop-keyboard-shortcuts.c:105
-#: src/xfdesktop-file-icon-manager.c:1819
-#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:750
+#: src/xfdesktop-file-icon-manager.c:1998
+#: src/xfdesktop-special-file-icon.c:373 src/xfdesktop-volume-icon.c:750
 msgid "_Open"
 msgstr "_Відкрити"
 
@@ -105,17 +105,17 @@ msgid "_Rename"
 msgstr "Перей_менувати"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
-#: src/xfdesktop-file-icon-manager.c:1965
+#: src/xfdesktop-file-icon-manager.c:2144
 msgid "Cu_t"
 msgstr "Ви_різати"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
-#: src/xfdesktop-file-icon-manager.c:1973
+#: src/xfdesktop-file-icon-manager.c:2152
 msgid "_Copy"
 msgstr "_Копіювати"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
-#: src/xfdesktop-file-icon-manager.c:1952
+#: src/xfdesktop-file-icon-manager.c:2131
 msgid "_Paste"
 msgstr "Вст_авити"
 
@@ -124,17 +124,17 @@ msgid "Paste _Into Folder"
 msgstr "Вставити в _теку"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
-#: src/xfdesktop-file-icon-manager.c:1996
+#: src/xfdesktop-file-icon-manager.c:2175
 msgid "Mo_ve to Trash"
 msgstr "_Перемістити в смітник"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
-#: src/xfdesktop-special-file-icon.c:351
+#: src/xfdesktop-special-file-icon.c:389
 msgid "_Empty Trash"
 msgstr "О_чистити смітник"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
-#: src/xfdesktop-file-icon-manager.c:2005
+#: src/xfdesktop-file-icon-manager.c:2184
 msgid "_Delete"
 msgstr "В_идалити"
 
@@ -158,49 +158,35 @@ msgstr "ІД сокета"
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: settings/main.c:98 src/xfdesktop-application.c:282
+#: settings/main.c:98 src/xfdesktop-application.c:284
 msgid "Enable debug messages"
 msgstr "Дозволити повідомлення зневадження"
 
-#: settings/main.c:116
+#: settings/main.c:110
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Наберіть '%s --help' для використання."
 
-#: settings/main.c:128 src/xfdesktop-application.c:1198
+#: settings/main.c:122 src/xfdesktop-application.c:1272
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда розробників Xfce. Всі права застережено."
 
-#: settings/main.c:129 src/xfdesktop-application.c:1199
+#: settings/main.c:123 src/xfdesktop-application.c:1273
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Про помилки повідомляйте для <%s>."
 
-#: settings/main.c:135
+#: settings/main.c:129
 msgid "Desktop Settings"
 msgstr "Налаштування стільниці"
 
-#: settings/main.c:137
+#: settings/main.c:131
 msgid "Unable to contact settings server"
 msgstr "Не вдається звʼязатися зі сервером налаштувань."
 
-#: settings/main.c:139
+#: settings/main.c:133
 msgid "Quit"
 msgstr "Вийти"
-
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:640
-msgid "Desktop"
-msgstr "Стільниця"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Призначити фонове зображення стільниці, меню і значок заголовку"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "desktop;background;wallpaper;settings;xfce;"
 
 #: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
@@ -214,82 +200,82 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nТип: %s\nРозмір: %s"
 
-#: settings/xfdesktop-background-settings.c:547
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:550
+#: settings/xfdesktop-background-settings.c:630
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "Не вдається завантажити зображення з теки \"%s\""
 
-#: settings/xfdesktop-background-settings.c:730
+#: settings/xfdesktop-background-settings.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Шпалери для монітору %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:734
+#: settings/xfdesktop-background-settings.c:737
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Шпалери для монітору %d"
 
-#: settings/xfdesktop-background-settings.c:740
+#: settings/xfdesktop-background-settings.c:743
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Перемістіть це вікно на дисплей, який Ви бажаєте налаштувати."
 
-#: settings/xfdesktop-background-settings.c:745
+#: settings/xfdesktop-background-settings.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Шпалери для %s на монітор %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:750
+#: settings/xfdesktop-background-settings.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Шпалери для %s на монітор %d"
 
-#: settings/xfdesktop-background-settings.c:758
+#: settings/xfdesktop-background-settings.c:761
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Перемістіть цей діалог на дисплей і робочу область, які Ви бажаєте налаштувати."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:767
+#: settings/xfdesktop-background-settings.c:770
 msgid "Wallpaper for my desktop"
 msgstr "Шпалери для моєї стільниці"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:773
+#: settings/xfdesktop-background-settings.c:776
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Шпалери для %s"
 
-#: settings/xfdesktop-background-settings.c:778
+#: settings/xfdesktop-background-settings.c:781
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Перемістіть цей діалог на робочу область, яку Ви бажаєте налаштувати."
 
-#: settings/xfdesktop-background-settings.c:1092
+#: settings/xfdesktop-background-settings.c:1095
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Вибір малюнка недоступний, поки не встановлено стиль малюнка."
 
-#: settings/xfdesktop-background-settings.c:2000
+#: settings/xfdesktop-background-settings.c:2021
 msgid "Image files"
 msgstr "Файли зображень"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:2008
+#: settings/xfdesktop-background-settings.c:2029
 msgid "Select a Directory"
 msgstr "Виберіть каталог"
 
 #: settings/xfdesktop-file-icon-settings.c:90
-#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+#: src/xfdesktop-special-file-icon.c:270 src/xfdesktop-special-file-icon.c:308
 msgid "Home"
 msgstr "Домівка"
 
 #: settings/xfdesktop-file-icon-settings.c:92
-#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+#: src/xfdesktop-special-file-icon.c:272 src/xfdesktop-special-file-icon.c:306
 msgid "File System"
 msgstr "Файлова система"
 
 #: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:236
+#: src/xfdesktop-special-file-icon.c:274
 msgid "Trash"
 msgstr "Смітник"
 
@@ -326,16 +312,16 @@ msgid "Arrange icons"
 msgstr "Упорядкувати значки"
 
 #. printf is to be translator-friendly
-#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:760
-#: src/xfdesktop-file-icon-manager.c:1321
+#: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:814
+#: src/xfdesktop-file-icon-manager.c:1375
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Не вдається запустити «%s»:"
 
-#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:762
-#: src/xfdesktop-file-icon-manager.c:1006
-#: src/xfdesktop-file-icon-manager.c:1054
-#: src/xfdesktop-file-icon-manager.c:1323 src/xfdesktop-file-utils.c:579
+#: settings/xfdesktop-icon-settings.c:95 src/xfdesktop-file-icon-manager.c:816
+#: src/xfdesktop-file-icon-manager.c:1060
+#: src/xfdesktop-file-icon-manager.c:1108
+#: src/xfdesktop-file-icon-manager.c:1377 src/xfdesktop-file-utils.c:579
 #: src/xfdesktop-file-utils.c:1462 src/xfdesktop-file-utils.c:1487
 #: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
@@ -343,11 +329,11 @@ msgstr "Помилка запуску"
 
 #: settings/xfdesktop-icon-settings.c:97
 #: settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:698 src/xfdesktop-file-icon-manager.c:764
-#: src/xfdesktop-file-icon-manager.c:1010
-#: src/xfdesktop-file-icon-manager.c:1058
-#: src/xfdesktop-file-icon-manager.c:1325
-#: src/xfdesktop-file-icon-manager.c:3654 src/xfdesktop-file-utils.c:582
+#: src/xfdesktop-file-icon-manager.c:752 src/xfdesktop-file-icon-manager.c:818
+#: src/xfdesktop-file-icon-manager.c:1064
+#: src/xfdesktop-file-icon-manager.c:1112
+#: src/xfdesktop-file-icon-manager.c:1379
+#: src/xfdesktop-file-icon-manager.c:3844 src/xfdesktop-file-utils.c:582
 #: src/xfdesktop-file-utils.c:699 src/xfdesktop-file-utils.c:754
 #: src/xfdesktop-file-utils.c:818 src/xfdesktop-file-utils.c:879
 #: src/xfdesktop-file-utils.c:940 src/xfdesktop-file-utils.c:988
@@ -360,6 +346,12 @@ msgstr "Помилка запуску"
 #: src/xfdesktop-volume-icon.c:519
 msgid "_Close"
 msgstr "_Закрити"
+
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:38
+#: settings/xfdesktop-settings-ui.glade:162
+#: settings/xfdesktop-settings.desktop.in:4 src/xfce-desktop.c:640
+msgid "Desktop"
+msgstr "Стільниця"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:48
 msgid "Icons"
@@ -421,7 +413,7 @@ msgid "Spanning Screens"
 msgstr "Покриваючи екрани"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:172
-#: src/xfdesktop-monitor-chooser-ui.glade:33
+#: src/xfdesktop-monitor-chooser-ui.glade:34
 msgid "Apply"
 msgstr "Застосувати"
 
@@ -778,17 +770,79 @@ msgstr "_Розташувати теки перед файлами"
 msgid "General"
 msgstr "Основні"
 
-#: settings/xfdesktop-settings-ui.glade:1365
+#: settings/xfdesktop-settings-ui.glade:1350
+msgid "Show _emblems on file icons"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1355
+msgid ""
+"Unchecking this hides all of the emblems below, without changing their "
+"individual settings."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1368
+msgid "Show user-assi_gned emblems"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1373
+msgid ""
+"Select this option to show emblems that were manually assigned to a file, "
+"e.g. via Thunar's Properties dialog."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1387
+msgid "Show _symlink emblem"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1392
+msgid ""
+"Select this option to overlay an emblem on desktop icons that are symbolic "
+"links."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1406
+msgid "Show _read-only emblem"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1411
+msgid ""
+"Select this option to overlay an emblem on desktop icons for files you don't"
+" have permission to write to."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1425
+msgid "Show _unreadable emblem"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1430
+msgid ""
+"Select this option to overlay an emblem on desktop icons for files you don't"
+" have permission to read."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1448
+msgid "Emblems"
+msgstr "Емблеми"
+
+#: settings/xfdesktop-settings-ui.glade:1492
 msgid "Default Icons"
 msgstr "Типові значки"
 
-#: settings/xfdesktop-settings-ui.glade:1395
+#: settings/xfdesktop-settings-ui.glade:1522
 msgid "_File/Launcher Icons"
 msgstr "Значки _файлів/запускачів"
 
-#: settings/xfdesktop-settings-ui.glade:1421
+#: settings/xfdesktop-settings-ui.glade:1548
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбінації клавіш"
+
+#: settings/xfdesktop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Призначити фонове зображення стільниці, меню і значок заголовку"
+
+#: settings/xfdesktop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "desktop;background;wallpaper;settings;xfce;"
 
 #: src/menu.c:82
 msgid "_Applications"
@@ -798,263 +852,268 @@ msgstr "_Програми"
 msgid "Window List"
 msgstr "Список вікон"
 
-#: src/xfce-desktop.c:1269
+#: src/xfce-desktop.c:1279
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
 msgstr ""
 
-#: src/xfce-desktop.c:1333
+#: src/xfce-desktop.c:1343
 msgid "Unable to create gstreamer video player"
 msgstr ""
 
-#: src/xfdesktop-application.c:274
+#: src/xfdesktop-application.c:276
 msgid "Display version information"
 msgstr "Відобразити інформація про версію"
 
-#: src/xfdesktop-application.c:275
+#: src/xfdesktop-application.c:277
 msgid "Reload all settings"
 msgstr "Перезавантажити всі параметри"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Перехід до наступної шпалери на поточній робочій області"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Показати меню (у місці, де знаходиться курсор миші)"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Показати перелік вікон (у місці, де знаходиться курсор миші)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Автоматично розмістити всі значки на стільниці"
 
-#: src/xfdesktop-application.c:283
+#: src/xfdesktop-application.c:285
 msgid "Disable debug messages"
 msgstr "Виключити повідомлення зневадження"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Do not wait for a window manager on startup"
 msgstr "Не очікувати на запуск керівника вікон"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Cause xfdesktop to quit"
 msgstr "Вийти з xfdesktop"
 
-#: src/xfdesktop-application.c:1191
+#: src/xfdesktop-application.c:1265
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Це %s версії %s, що виконується в Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1193
+#: src/xfdesktop-application.c:1267
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Зібрано з GTK+ %d.%d.%d, звʼязано з GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1201
+#: src/xfdesktop-application.c:1275
 msgid "Build options:\n"
 msgstr "Параметри збирання:\n"
 
-#: src/xfdesktop-application.c:1202
+#: src/xfdesktop-application.c:1276
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню стільниці:        %s\n"
 
-#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
-#: src/xfdesktop-application.c:1218
+#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
+#: src/xfdesktop-application.c:1292
 msgid "enabled"
 msgstr "дозволено"
 
-#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
-#: src/xfdesktop-application.c:1220
+#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
+#: src/xfdesktop-application.c:1294
 msgid "disabled"
 msgstr "вимкнено"
 
-#: src/xfdesktop-application.c:1209
+#: src/xfdesktop-application.c:1283
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значки на стільниці:       %s\n"
 
-#: src/xfdesktop-application.c:1216
+#: src/xfdesktop-application.c:1290
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значки файлів на стільниці: %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:695 src/xfdesktop-file-utils.c:750
+#: src/xfdesktop-application.c:1357
+#, c-format
+msgid "%s is already running"
+msgstr ""
+
+#: src/xfdesktop-file-icon-manager.c:749 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
 msgstr "Помилка під час перейменування"
 
-#: src/xfdesktop-file-icon-manager.c:696 src/xfdesktop-file-utils.c:815
+#: src/xfdesktop-file-icon-manager.c:750 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
 msgstr "Файли не можливо перейменувати"
 
-#: src/xfdesktop-file-icon-manager.c:697
+#: src/xfdesktop-file-icon-manager.c:751
 msgid "None of the icons selected support being renamed."
 msgstr "Жоден із вибраних значків не перейменовано."
 
-#: src/xfdesktop-file-icon-manager.c:955
+#: src/xfdesktop-file-icon-manager.c:1009
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Відкрити через «%s»"
 
-#: src/xfdesktop-file-icon-manager.c:958
+#: src/xfdesktop-file-icon-manager.c:1012
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Відкрити через «%s»"
 
-#: src/xfdesktop-file-icon-manager.c:1008
-#: src/xfdesktop-file-icon-manager.c:1056
+#: src/xfdesktop-file-icon-manager.c:1062
+#: src/xfdesktop-file-icon-manager.c:1110
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
 msgstr "Не вдалося запустити «xfce-desktop-item-edit», який потрібен для створення і редагування запускачів і посилань на стільниці."
 
-#: src/xfdesktop-file-icon-manager.c:1425
+#: src/xfdesktop-file-icon-manager.c:1628
 msgid "Choose Monitor Configuration"
 msgstr "Оиберіть Конфігурація Монітора"
 
-#: src/xfdesktop-file-icon-manager.c:1427
+#: src/xfdesktop-file-icon-manager.c:1631
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr "Ви хочете призначити  наявну розкладку значків стільниці монітору <b>%s</b>?"
 
-#: src/xfdesktop-file-icon-manager.c:1435
+#: src/xfdesktop-file-icon-manager.c:1639
 msgid "Monitors"
 msgstr "Монітори"
 
-#: src/xfdesktop-file-icon-manager.c:1721
+#: src/xfdesktop-file-icon-manager.c:1900
 msgid "_Open all"
 msgstr "_Відкрити все"
 
-#: src/xfdesktop-file-icon-manager.c:1733
+#: src/xfdesktop-file-icon-manager.c:1912
 msgid "Create _Launcher..."
 msgstr "Створити _значок запуску..."
 
-#: src/xfdesktop-file-icon-manager.c:1743
+#: src/xfdesktop-file-icon-manager.c:1922
 msgid "Create _URL Link..."
 msgstr "Створити _посилання URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1753
+#: src/xfdesktop-file-icon-manager.c:1932
 msgid "Create _Folder..."
 msgstr "Створити _теку..."
 
-#: src/xfdesktop-file-icon-manager.c:1792
+#: src/xfdesktop-file-icon-manager.c:1971
 msgid "No templates installed"
 msgstr "Шаблони не встановлені"
 
-#: src/xfdesktop-file-icon-manager.c:1810
+#: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Empty File"
 msgstr "_Порожній файл"
 
-#: src/xfdesktop-file-icon-manager.c:1819
+#: src/xfdesktop-file-icon-manager.c:1998
 msgid "_Open All"
 msgstr "_Відкрити все"
 
-#: src/xfdesktop-file-icon-manager.c:1832
+#: src/xfdesktop-file-icon-manager.c:2011
 msgid "_Execute"
 msgstr "Ви_конати"
 
-#: src/xfdesktop-file-icon-manager.c:1845
+#: src/xfdesktop-file-icon-manager.c:2024
 msgid "Edit _Launcher"
 msgstr "Редагувати _запускач"
 
-#: src/xfdesktop-file-icon-manager.c:1893
+#: src/xfdesktop-file-icon-manager.c:2072
 msgid "Ope_n With"
 msgstr "Від_крити з..."
 
-#: src/xfdesktop-file-icon-manager.c:1921
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:2100
+#: src/xfdesktop-file-icon-manager.c:2117
 msgid "Ope_n With Other Application..."
 msgstr "Відкрити _іншою програмою"
 
-#: src/xfdesktop-file-icon-manager.c:1929
+#: src/xfdesktop-file-icon-manager.c:2108
 msgid "Set Defa_ult Application..."
 msgstr "Встановити про_граму за замовчуванням"
 
-#: src/xfdesktop-file-icon-manager.c:1985
+#: src/xfdesktop-file-icon-manager.c:2164
 msgid "Paste Into Folder"
 msgstr "Вставити в теку"
 
-#: src/xfdesktop-file-icon-manager.c:2016
+#: src/xfdesktop-file-icon-manager.c:2195
 msgid "_Rename..."
 msgstr "Переймен_увати..."
 
-#: src/xfdesktop-file-icon-manager.c:2067
+#: src/xfdesktop-file-icon-manager.c:2246
 msgid "_Open in New Window"
 msgstr "Відкрити в _новому вікні"
 
-#: src/xfdesktop-file-icon-manager.c:2074
-#: src/xfdesktop-window-icon-manager.c:304
+#: src/xfdesktop-file-icon-manager.c:2253
+#: src/xfdesktop-window-icon-manager.c:305
 msgid "Arrange Desktop _Icons"
 msgstr "_Упорядкувати значки стільниці"
 
-#: src/xfdesktop-file-icon-manager.c:2089
-#: src/xfdesktop-window-icon-manager.c:318
+#: src/xfdesktop-file-icon-manager.c:2268
+#: src/xfdesktop-window-icon-manager.c:319
 msgid "_Next Background"
 msgstr "_Наступне тло"
 
-#: src/xfdesktop-file-icon-manager.c:2099
-#: src/xfdesktop-window-icon-manager.c:331
+#: src/xfdesktop-file-icon-manager.c:2278
+#: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
 msgstr "_Налаштування стільниці..."
 
-#: src/xfdesktop-file-icon-manager.c:2106 src/xfdesktop-volume-icon.c:812
+#: src/xfdesktop-file-icon-manager.c:2285 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
 msgstr "В_ластивості..."
 
-#: src/xfdesktop-file-icon-manager.c:3096
+#: src/xfdesktop-file-icon-manager.c:3282
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr "Не вдалося зберегти скинутий файл у «%s»"
 
-#: src/xfdesktop-file-icon-manager.c:3098
+#: src/xfdesktop-file-icon-manager.c:3284
 msgid "Drop Failure"
 msgstr "Помилка падіння"
 
-#: src/xfdesktop-file-icon-manager.c:3102
-#: src/xfdesktop-icon-view-manager.c:488
+#: src/xfdesktop-file-icon-manager.c:3288
+#: src/xfdesktop-icon-view-manager.c:489
 msgid "_OK"
 msgstr "_Добре"
 
-#: src/xfdesktop-file-icon-manager.c:3507
+#: src/xfdesktop-file-icon-manager.c:3693
 msgid "Copy _Here"
 msgstr "_Скопіювати сюди"
 
-#: src/xfdesktop-file-icon-manager.c:3508
+#: src/xfdesktop-file-icon-manager.c:3694
 msgid "_Move Here"
 msgstr "_Перемістити вгору"
 
-#: src/xfdesktop-file-icon-manager.c:3509
+#: src/xfdesktop-file-icon-manager.c:3695
 msgid "_Link Here"
 msgstr "_Тут посилання:"
 
-#: src/xfdesktop-file-icon-manager.c:3534 src/xfdesktop-file-utils.c:1149
-#: src/xfdesktop-icon-view-manager.c:487
+#: src/xfdesktop-file-icon-manager.c:3720 src/xfdesktop-file-utils.c:1149
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: src/xfdesktop-file-icon-manager.c:3627
+#: src/xfdesktop-file-icon-manager.c:3817
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Неможливо створити теку «%s» на стільниці"
 
-#: src/xfdesktop-file-icon-manager.c:3635
+#: src/xfdesktop-file-icon-manager.c:3825
 msgid "Failed to load the desktop folder"
 msgstr "Неможливо завантажити теку стільниці"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3834
 msgid "A desktop file icon error occurred"
 msgstr "Виникла помилка зі значком файлу на робочому столі"
 
-#: src/xfdesktop-file-icon-manager.c:3648
+#: src/xfdesktop-file-icon-manager.c:3838
 msgid "Desktop Folder Error"
 msgstr "Помилка теки стільниці"
 
-#: src/xfdesktop-file-icon-model.c:548
+#: src/xfdesktop-file-icon-model.c:605
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Звичайний файл із такою назвою вже існує. Будь ласка, видаліть його, або перейменуйте."
@@ -1226,39 +1285,39 @@ msgstr "Помилка передачі"
 msgid "The file transfer could not be performed"
 msgstr "Передачу файлу не можливо виконати"
 
-#: src/xfdesktop-icon-view-manager.c:484
+#: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
 msgstr "Упорядкувати значки"
 
-#: src/xfdesktop-icon-view-manager.c:505
+#: src/xfdesktop-icon-view-manager.c:506
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Це змінить порядок усіх елементів стільниці і розмістить їх у різних місцях екрана. Ви впевнені?"
 
-#: src/xfdesktop-icon-view-manager.c:509
+#: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
 msgstr "_Не питати надалі"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:77
+#: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
 msgstr "Дозволити Xfce автоматично призначати найкращий збіг"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:92
+#: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
 msgstr "Виберіть із існуючих конфігурацій монітора:"
 
-#: src/xfdesktop-monitor-chooser-ui.glade:126
+#: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
 msgstr " Завжди призначати автоматично"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:147
+#: src/xfdesktop-notify.c:133
 msgid "Unmounting device"
 msgstr "Відмонтування пристрою"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:150
+#: src/xfdesktop-notify.c:136
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1266,43 +1325,43 @@ msgid ""
 msgstr "Пристрій «%s» відмонтовано системою. Будь ласка, не витягуйте носій чи не відʼєднуйте пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:157 src/xfdesktop-notify.c:236
+#: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
 msgstr "Запис даних на пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:160 src/xfdesktop-notify.c:239
+#: src/xfdesktop-notify.c:143 src/xfdesktop-notify.c:240
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "Є дані, які мають записатися на пристрій «%s» перед тим як він буде витягнутий. Будь ласка, не витягуйте носій чи не відʼєднуйте пристрій"
 
-#: src/xfdesktop-notify.c:206
+#: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
 msgstr "Відключення завершено"
 
-#: src/xfdesktop-notify.c:207 src/xfdesktop-notify.c:350
+#: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:394
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Пристрій «%s» успішно витягнено з системи."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:229
+#: src/xfdesktop-notify.c:230
 msgid "Ejecting device"
 msgstr "Витягування пристрою"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: src/xfdesktop-notify.c:232
+#: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Пристрій «%s» в даний час витягується. Це може зайняти деякий час"
 
-#: src/xfdesktop-notify.c:349
+#: src/xfdesktop-notify.c:393
 msgid "Eject Finished"
 msgstr "Витягнення завершено"
 
-#: src/xfdesktop-regular-file-icon.c:724
+#: src/xfdesktop-regular-file-icon.c:885
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1311,20 +1370,20 @@ msgid ""
 "Last modified: %s"
 msgstr "Назва: %s\nТип: %s\nРозмір: %s\nОстання зміна: %s"
 
-#: src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:292
 msgid "Trash is empty"
 msgstr "Смітник порожній"
 
-#: src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:295
 #, c-format
-msgid "Trash contains one item"
+msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:324
 #, c-format
 msgid ""
 "%s\n"
@@ -1400,6 +1459,6 @@ msgstr "В_ідключити том"
 msgid "_Mount Volume"
 msgstr "_Підключити том"
 
-#: src/xfdesktop-window-icon-manager.c:292
+#: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "_Запустити програму..."
