@@ -559,6 +559,9 @@ xfdesktop_migrate_backdrop_settings(GdkDisplay *display, XfconfChannel *channel)
         XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
         gint n_workspaces = g_list_length(xfw_workspace_manager_list_workspaces(workspace_manager));
         g_object_unref(xfw_screen);
+        /* Ensure at least one workspace for migration when n_workspaces is 0 */
+        if (n_workspaces <= 0)
+            n_workspaces = 1;
 
         gint n_monitors = gdk_display_get_n_monitors(display);
         GHashTable *backdrop_properties = xfconf_channel_get_properties(channel, "/backdrop");
