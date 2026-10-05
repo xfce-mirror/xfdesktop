@@ -25,6 +25,7 @@ dependency_versions = {
   'libyaml': '>= 0.2.5',
   'xfce4': '>= 4.18.0',
   'libxfce4ui': '>= 4.21.0',
+  'libxfce4session-client': '>= 4.21.1-dev',
   'xfconf': '>= 4.19.3',
   'gtk-layer-shell': '>= 0.7.0',
   'gstreamer': '>= 1.18.0',
@@ -39,6 +40,7 @@ libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['libxfce4ui
 libxfce4kbd_private = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
 libxfce4windowing = dependency('libxfce4windowing-0', version: dependency_versions['libxfce4windowing'])
 libxfce4windowingui = dependency('libxfce4windowingui-0', version: dependency_versions['libxfce4windowing'])
+libxfce4session_client = dependency('libxfce4session-client-1', version: dependency_versions['libxfce4session-client'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
 libm = cc.find_library('m', required: false)
 
