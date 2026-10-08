@@ -1124,6 +1124,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
     g_object_add_weak_pointer(G_OBJECT(app->session_client), (gpointer *)&app->session_client);
     xfce_session_client_set_restart_style(app->session_client, XFCE_SESSION_CLIENT_RESTART_IMMEDIATELY);
     xfce_session_client_set_priority(app->session_client, XFCE_SESSION_CLIENT_PRIORITY_DESKTOP);
+    xfce_session_client_set_desktop_file(app->session_client, DATADIR "/xfce4/applications/" PACKAGE_NAME ".desktop");
     g_signal_connect_swapped(app->session_client, "replaced", G_CALLBACK(session_replaced), app);
     g_signal_connect_swapped(app->session_client, "quit", G_CALLBACK(session_die), app);
 

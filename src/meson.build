@@ -114,3 +114,8 @@ executable(
   install: true,
   install_dir: get_option('prefix') / get_option('bindir'),
 )
+
+install_data(
+  'xfdesktop.desktop',
+  install_dir: get_option('prefix') / get_option('datadir') / 'xfce4' / 'applications',
+)
