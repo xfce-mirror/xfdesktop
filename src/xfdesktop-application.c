@@ -48,6 +48,7 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4windowing/libxfce4windowing.h>
+#include <libxfce4session-client/libxfce4session-client.h>
 
 #include "common/xfdesktop-keyboard-shortcuts.h"
 #include "menu.h"
@@ -110,6 +111,7 @@ static void xfdesktop_application_get_property(GObject *object,
 static void xfdesktop_application_finalize(GObject *object);
 
 static void session_logout(XfdesktopApplication *app);
+static gboolean session_replaced(XfdesktopApplication *app);
 static void session_die(XfdesktopApplication *app);
 
 static void xfdesktop_application_action_activated(GAction *action,
@@ -193,9 +195,9 @@ struct _XfdesktopApplication
     gboolean disable_wm_check;
 
     GdkWindow *selection_window;
-
-    XfceSMClient *sm_client;
 #endif
+
+    XfceSessionClient *session_client;
 
     XfceDesktopIconStyle icon_style;
 #ifdef ENABLE_DESKTOP_ICONS
@@ -426,11 +428,16 @@ xfdesktop_application_get(void)
 
 static void
 session_logout(XfdesktopApplication *app) {
-#ifdef ENABLE_X11
-    if (app->sm_client != NULL) {
-        xfce_sm_client_request_shutdown(app->sm_client, XFCE_SM_CLIENT_SHUTDOWN_HINT_ASK);
+    if (app->session_client != NULL) {
+        xfce_session_client_request_shutdown(app->session_client, XFCE_SESSION_CLIENT_SHUTDOWN_HINT_ASK);
     }
-#endif
+}
+
+static gboolean
+session_replaced(XfdesktopApplication *app) {
+    g_message("Another instance of xfdesktop has replaced us; quitting");
+    gtk_main_quit();
+    return FALSE;
 }
 
 static void
@@ -637,13 +644,9 @@ xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpo
         }
 #endif
     } else if (g_strcmp0(name, ACTION_QUIT) == 0) {
-#ifdef ENABLE_X11
-        /* If the user told xfdesktop to quit, set the restart style to something
-         * where it won't restart itself */
-        if (app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
-            xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_NORMAL);
+        if (XFCE_IS_SESSION_CLIENT(app->session_client)) {
+            xfce_session_client_discard(app->session_client);
         }
-#endif
 
         session_die(app);
     } else if (g_strcmp0(name, ACTION_DEBUG) == 0) {
@@ -1113,20 +1116,22 @@ xfdesktop_application_start(XfdesktopApplication *app)
             g_error_free(error);
             exit(1);
         }
-
-        /* setup the session management options */
-        app->sm_client = xfce_sm_client_get();
-        g_object_add_weak_pointer(G_OBJECT(app->sm_client), (gpointer *)&app->sm_client);
-        xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
-        xfce_sm_client_set_priority(app->sm_client, XFCE_SM_CLIENT_PRIORITY_DESKTOP);
-        g_signal_connect_swapped(app->sm_client, "quit", G_CALLBACK(session_die), app);
-
-        if(!xfce_sm_client_connect(app->sm_client, &error) && error) {
-            g_printerr("Failed to connect to session manager: %s\n", error->message);
-            g_clear_error(&error);
-        }
     }
 #endif
+
+    /* setup the session management options */
+    app->session_client = xfce_session_client_new();
+    g_object_add_weak_pointer(G_OBJECT(app->session_client), (gpointer *)&app->session_client);
+    xfce_session_client_set_restart_style(app->session_client, XFCE_SESSION_CLIENT_RESTART_IMMEDIATELY);
+    xfce_session_client_set_priority(app->session_client, XFCE_SESSION_CLIENT_PRIORITY_DESKTOP);
+    xfce_session_client_set_desktop_file(app->session_client, DATADIR "/xfce4/applications/" PACKAGE_NAME ".desktop");
+    g_signal_connect_swapped(app->session_client, "replaced", G_CALLBACK(session_replaced), app);
+    g_signal_connect_swapped(app->session_client, "quit", G_CALLBACK(session_die), app);
+
+    if(!xfce_session_client_connect(app->session_client, &error) && error) {
+        g_printerr("Failed to connect to session manager: %s\n", error->message);
+        g_clear_error(&error);
+    }
 
     if (app->channel != NULL) {
         xfdesktop_migrate_backdrop_settings(gdk_display_get_default(), app->channel);
@@ -1227,11 +1232,9 @@ xfdesktop_application_shutdown(GApplication *g_application)
 
     xfconf_shutdown();
 
-#ifdef ENABLE_X11
-    if (app->sm_client != NULL) {
-        g_object_unref(app->sm_client);
+    if (app->session_client != NULL) {
+        g_object_unref(app->session_client);
     }
-#endif
 
 #ifdef HAVE_LIBNOTIFY
     xfdesktop_notify_uninit();

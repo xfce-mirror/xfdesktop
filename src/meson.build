@@ -99,6 +99,7 @@ executable(
     libxfce4ui,
     libxfce4windowing,
     libxfce4windowingui,
+    libxfce4session_client,
     xfconf,
     desktop_menu_deps,
     desktop_icons_deps,
@@ -112,4 +113,13 @@ executable(
   ],
   install: true,
   install_dir: get_option('prefix') / get_option('bindir'),
+)
+
+i18n.merge_file(
+  input: 'xfdesktop.desktop.in',
+  output: 'xfdesktop.desktop',
+  type: 'desktop',
+  po_dir: '../po',
+  install: true,
+  install_dir: get_option('prefix') / get_option('datadir') / 'xfce4' / 'applications',
 )
