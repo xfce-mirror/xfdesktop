@@ -308,7 +308,7 @@ xfdesktop_file_icon_model_filter_get_property(GObject *object, guint property_id
             break;
 
         case PROP_POSITION_CONFIGS:
-            g_value_set_object(value, filter->position_configs);
+            g_value_set_pointer(value, filter->position_configs);
             break;
 
         case PROP_MONITOR:
