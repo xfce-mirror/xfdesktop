@@ -1,3 +1,36 @@
+4.21.1 (2026-10-10)
+======
+- Fix incorrect filename in po/POTFILES
+- Fix incorrect GValue type
+- Install a .desktop file so the session client can reference it
+- Use XfceSessionClient instead of XfceSMClient
+- Remove accidentally checked-in patch file
+- Add checkbox to toggle user-assigned emblems, per review feedback
+- Add settings to hide symlink, read-only, and unreadable emblems
+- file-icons: Explain deferred-view DND disable
+- file-icons: Defer removal notification across reload
+- file-icons: Preserve positions when reloading model
+- file-icons: Address monitor reconciliation review comments
+- file-icons: Freeze reconciliation through the icon view manager
+- file-icons: Defer monitor updates until reconciliation
+- Translate command line output
+- Remove G_GNUC_CONST from quark getters too
+- Remove G_GNUC_CONST
+- Rename settings dialog .desktop file instead
+- Set settings dialog prgname to xfce-backdrop-settings
+- Deduplicate monitor layout candidates
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Bulgarian, Catalan, Chinese (China), Chinese
+  (Hong Kong), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+  Eastern Armenian, English (Australia), English (United Kingdom),
+  Estonian, Finnish, French, Galician, Georgian, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Kazakh, Korean, Lao, Lithuanian, Malay, Norwegian Bokmål, Norwegian
+  Nynorsk, Occitan (post 1500), Persian (Iran), Polish, Portuguese,
+  Portuguese (Brazil), Romanian, Russian, Serbian, Slovenian, Spanish,
+  Swedish, Tatar, Thai, Ukrainian, Uyghur, Venetian, Vietnamese
+
 4.21.0 (2026-06-21)
 ======
 - And remove ignore pattern for new version of gcc-analyzer
