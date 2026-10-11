@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2026\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
@@ -154,7 +154,7 @@ msgstr "SOCKET ID"
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "デバッグメッセージを有効にする"
 
@@ -163,11 +163,11 @@ msgstr "デバッグメッセージを有効にする"
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' で使用方法が表示されます。"
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までおねがいします。"
@@ -856,82 +856,82 @@ msgstr "ビデオ再生に必要な gstreamer の「gtk」プラグインが見�
 msgid "Unable to create gstreamer video player"
 msgstr "gstreamer ビデオプレーヤーを作成できません"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "バージョン情報を表示する"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "すべての設定を再読込みする"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "現在の壁紙から次の壁紙へ進む"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "現在のマウス位置でメニューをポップアップする"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "現在のマウス位置でウィンドウリストをポップアップする"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "デスクトップにあるすべてのアイコンを自動整列する"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "デバッグメッセージを無効にする"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "起動時にウィンドウマネージャーを待たない"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop を終了させる"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "有効"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "無効"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
 msgstr "%s はすでに動作しています"
@@ -1455,3 +1455,15 @@ msgstr "マウント(_M)"
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "プログラムを実行(_R)..."
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Xfce デスクトップマネージャー"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "デスクトップ背景、メニュー、アイコンを表示します"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "デスクトップ;背景;壁紙;xfce;"
