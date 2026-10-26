@@ -6,6 +6,7 @@
 # Asier Iturralde Sarasola <asier.iturralde@gmail.com>, 2014-2015
 # beriain, 2020-2021,2023
 # Eder Etxebarria Rojo, 2024
+# Eder Etxebarria Rojo, 2024
 # Jon Latorre Martinez <patataman@airtel.net>, 2003
 # Piarres Beobide <pi@beobide.net>, 2013
 # Piarres Beobide <pi@beobide.net>, 2004,2006-2009
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Eder Etxebarria Rojo, 2024\n"
+"Last-Translator: Piarres Beobide <pi@beobide.net>, 2013\n"
 "Language-Team: Basque (http://app.transifex.com/xfce/xfdesktop/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,39 +30,39 @@ msgstr "_Birkargatu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:74
 msgid "Activate _Primary Menu"
-msgstr "Aktibatu _Menu Nagusia"
+msgstr "Aktibatu _menu nagusia"
 
 #: common/xfdesktop-keyboard-shortcuts.c:76
 msgid "Activate _Secondary Menu"
-msgstr "Aktibatu _Bigarren Menua"
+msgstr "Aktibatu _bigarren mailako menua"
 
 #: common/xfdesktop-keyboard-shortcuts.c:78
 msgid "Cycle Next Background"
-msgstr "Banandu atzealdera"
+msgstr "Aldatu hurrengo atzeko planora"
 
 #: common/xfdesktop-keyboard-shortcuts.c:84
 msgid "_Activate Icon"
-msgstr "_Aktibatu Ikonoa"
+msgstr "_Aktibatu ikonoa"
 
 #: common/xfdesktop-keyboard-shortcuts.c:89
 msgid "_Toggle Cursor Icon"
-msgstr "_Txandakatu Kursorearen Ikonoa"
+msgstr "_Txandakatu kurtsorearen ikonoa"
 
 #: common/xfdesktop-keyboard-shortcuts.c:91
 msgid "Select _All"
-msgstr "Hautatu _Denak"
+msgstr "Hautatu _denak"
 
 #: common/xfdesktop-keyboard-shortcuts.c:92
 msgid "U_nselect All"
-msgstr "Deshautatu fitxategi guztiak"
+msgstr "Desh_autatu denak"
 
 #: common/xfdesktop-keyboard-shortcuts.c:93
 msgid "A_rrange Icons"
-msgstr "Ikonoak antolatu"
+msgstr "Antolatu _ikonoak"
 
 #: common/xfdesktop-keyboard-shortcuts.c:97
 msgid "Un_minimize Window"
-msgstr "Minimizatu Leihoa"
+msgstr "Des_minimizatu leihoa"
 
 #: common/xfdesktop-keyboard-shortcuts.c:98
 msgid "_Close Window"
@@ -69,7 +70,7 @@ msgstr "_Itxi leihoa"
 
 #: common/xfdesktop-keyboard-shortcuts.c:103
 msgid "Create _Folder"
-msgstr "Sortu _Karpeta"
+msgstr "Sortu _karpeta"
 
 #: common/xfdesktop-keyboard-shortcuts.c:104
 #: src/xfdesktop-file-icon-manager.c:1940
@@ -84,7 +85,7 @@ msgstr "_Ireki"
 
 #: common/xfdesktop-keyboard-shortcuts.c:106
 msgid "Ope_n With Other Application"
-msgstr "Ireki beste aplikazio batekin"
+msgstr "Ireki _beste aplikazio batekin"
 
 #: common/xfdesktop-keyboard-shortcuts.c:107
 msgid "Open _Filesystem"
@@ -92,39 +93,39 @@ msgstr "Ireki _fitxategi-sistema"
 
 #: common/xfdesktop-keyboard-shortcuts.c:108
 msgid "Open _Home"
-msgstr "Ireki _Karpeta Nagusia"
+msgstr "Ireki karpeta _nagusia"
 
 #: common/xfdesktop-keyboard-shortcuts.c:109
 msgid "Open _Trash"
-msgstr "Ireki _Zakarrontzia"
+msgstr "Ireki _zakarrontzia"
 
 #: common/xfdesktop-keyboard-shortcuts.c:110
 msgid "_Rename"
-msgstr "Berrizendatu"
+msgstr "Be_rrizendatu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
 #: src/xfdesktop-file-icon-manager.c:2144
 msgid "Cu_t"
-msgstr "Ebaki"
+msgstr "Eb_aki"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
 #: src/xfdesktop-file-icon-manager.c:2152
 msgid "_Copy"
-msgstr "_=Kopiatu"
+msgstr "_Kopiatu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:115
 #: src/xfdesktop-file-icon-manager.c:2131
 msgid "_Paste"
-msgstr "Itsasi"
+msgstr "Itsat_si"
 
 #: common/xfdesktop-keyboard-shortcuts.c:117
 msgid "Paste _Into Folder"
-msgstr "Itsatsi _Karpetan"
+msgstr "Itsatsi _karpetan"
 
 #: common/xfdesktop-keyboard-shortcuts.c:118
 #: src/xfdesktop-file-icon-manager.c:2175
 msgid "Mo_ve to Trash"
-msgstr "_Bota zakarrontzira"
+msgstr "Bota _zakarrontzira"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
 #: src/xfdesktop-special-file-icon.c:389
@@ -138,7 +139,7 @@ msgstr "_Ezabatu"
 
 #: common/xfdesktop-keyboard-shortcuts.c:125
 msgid "Show _Hidden Files"
-msgstr "Bistarazi _ezkutatutako fitxategiak"
+msgstr "Erakutsi fitxategi _ezkutuak"
 
 #: common/xfdesktop-keyboard-shortcuts.c:126
 msgid "_Properties"
@@ -146,7 +147,7 @@ msgstr "_Propietateak"
 
 #: settings/main.c:95
 msgid "Settings manager socket"
-msgstr "Ezarpen kudeatzaile socketa"
+msgstr "Ezarpen-kudeatzailearen socketa"
 
 #: settings/main.c:95
 msgid "SOCKET ID"
@@ -154,41 +155,41 @@ msgstr "SOCKET IDa"
 
 #: settings/main.c:97
 msgid "Version information"
-msgstr "Bertsio argibideak"
+msgstr "Bertsioaren informazioa"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Gaitu arazketa-mezuak"
 
 #: settings/main.c:110
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Idatzi '%s --help' erabilerarako."
+msgstr "Idatzi '%s --help' erabilera ikusteko."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce garapen taldea. Eskubide guztiak erreserbaturik."
+msgstr "Xfce garapen taldea. Eskubide guztiak erreserbatuta."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Programa-erroreen berri <%s>(e)n eman."
+msgstr "Jakinarazi programa-erroreak hona: <%s>."
 
 #: settings/main.c:129
 msgid "Desktop Settings"
-msgstr "Mahaigain ezarpenak"
+msgstr "Mahaigainaren ezarpenak"
 
 #: settings/main.c:131
 msgid "Unable to contact settings server"
-msgstr "Ezin da ezarpen zerbitzaria konektatu"
+msgstr "Ezin da ezarpenen zerbitzariarekin konektatu"
 
 #: settings/main.c:133
 msgid "Quit"
-msgstr "Itxi"
+msgstr "Irten"
 
 #: settings/xfdesktop-background-settings.c:245
 msgid "Choose the folder to select wallpapers from."
-msgstr "Aukeratu karpeta bertatik horma-paperak hautatzeko."
+msgstr "Aukeratu horma-paperak hautatzeko karpeta."
 
 #: settings/xfdesktop-background-settings.c:463
 #, c-format
@@ -260,17 +261,17 @@ msgstr "Irudi-fitxategiak"
 #. Change the title of the file chooser dialog
 #: settings/xfdesktop-background-settings.c:2029
 msgid "Select a Directory"
-msgstr "Direktorio bat hautatu"
+msgstr "Hautatu direktorio bat"
 
 #: settings/xfdesktop-file-icon-settings.c:90
 #: src/xfdesktop-special-file-icon.c:270 src/xfdesktop-special-file-icon.c:308
 msgid "Home"
-msgstr "Etxea"
+msgstr "Karpeta nagusia"
 
 #: settings/xfdesktop-file-icon-settings.c:92
 #: src/xfdesktop-special-file-icon.c:272 src/xfdesktop-special-file-icon.c:306
 msgid "File System"
-msgstr "Fitxategi sistema"
+msgstr "Fitxategi-sistema"
 
 #: settings/xfdesktop-file-icon-settings.c:94
 #: src/xfdesktop-special-file-icon.c:274
@@ -283,7 +284,7 @@ msgstr "Gailuak"
 
 #: settings/xfdesktop-file-icon-settings.c:98
 msgid "Network Shares"
-msgstr "Sare partekatzeak"
+msgstr "Sareko partekatzeak"
 
 #: settings/xfdesktop-file-icon-settings.c:100
 msgid "Removable Disks and Drives"
@@ -291,11 +292,11 @@ msgstr "Disko eta unitate aldagarriak"
 
 #: settings/xfdesktop-file-icon-settings.c:102
 msgid "Fixed Disks and Drives"
-msgstr "Disko finkoak eta unitateak"
+msgstr "Disko eta unitate finkoak"
 
 #: settings/xfdesktop-file-icon-settings.c:104
 msgid "Other Devices"
-msgstr "Beste gailuak"
+msgstr "Bestelako gailuak"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
@@ -307,7 +308,7 @@ msgstr "Ikono guztiak hautatutako orientazioaren\narabera antolatu nahi dituzu?"
 
 #: settings/xfdesktop-icon-settings.c:90
 msgid "Arrange icons"
-msgstr "Ikonoak ordenatu"
+msgstr "Antolatu ikonoak"
 
 #. printf is to be translator-friendly
 #: settings/xfdesktop-icon-settings.c:94 src/xfdesktop-file-icon-manager.c:814
@@ -357,7 +358,7 @@ msgstr "Ikonoak"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:57
 msgid "Window Icons"
-msgstr "Leihoen Ikonoak"
+msgstr "Leihoen ikonoak"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:67
 msgid "File Icons"
@@ -404,16 +405,16 @@ msgstr "Eskalatua"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:61
 msgid "Zoomed"
-msgstr "Haunditua"
+msgstr "Zoomatua"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:65
 msgid "Spanning Screens"
-msgstr "Pantailak hedatu"
+msgstr "Pantailetan zehar hedatua"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:172
 #: src/xfdesktop-monitor-chooser-ui.glade:34
 msgid "Apply"
-msgstr "Ezarri"
+msgstr "Aplikatu"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:187
 msgid "St_yle:"
@@ -421,15 +422,15 @@ msgstr "Est_iloa:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:202
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Zehaztu pantailara doitzeko irudia tamainaz nola aldatuko den."
+msgstr "Zehaztu irudiaren tamaina nola aldatuko den pantailara egokitzeko."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:223
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Zehaztu idazpaper irudiaren atzean margotuko den kolorearen estiloa."
+msgstr "Zehaztu atzeko planoko irudiaren atzean marraztuko den kolorearen estiloa."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr "Gradientearen kolore solidoa, edo \"eskuineko\" edo \"beheko\" kolorea ezartzen du."
+msgstr "Kolore solidoa edo gradientearen \"ezkerreko\" edo \"goiko\" kolorea zehazten du."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:246
 msgid "Select First Color"
@@ -437,7 +438,7 @@ msgstr "Hautatu lehen kolorea"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:259
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Gradientearen \"eskuineko\" edo \"beheko\" kolorea ezartzen du."
+msgstr "Gradientearen \"eskuineko\" edo \"beheko\" kolorea zehazten du."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:260
 msgid "Select Second Color"
@@ -457,16 +458,16 @@ msgstr "K_olorea:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:370
 msgid "Change the _background "
-msgstr "Aldatu atzeko _planoa"
+msgstr "Aldatu atzeko _planoa "
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:375
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Automatikoki atzealde ezberdin bat hautatu oraingo direktoriotik."
+msgstr "Hautatu automatikoki beste atzeko plano bat uneko direktoriotik."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:391
 msgid "Specify how often the background will change."
-msgstr "Atzealdea zenbatero aldatuko den zehaztu."
+msgstr "Zehaztu atzeko planoa zenbatero aldatuko den."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:393
 msgid "in seconds:"
@@ -498,7 +499,7 @@ msgstr "kronologikoki"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:414
 msgid "Amount of time before a different background is selected."
-msgstr "Beste atzealde bat hautatua izan baino lehen pasatuko den denbora kopurua."
+msgstr "Beste atzeko plano bat hautatu aurretik igaroko den denbora."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:425
 msgid "_Random Order"
@@ -508,26 +509,26 @@ msgstr "_Ausazko ordena"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Direktorio bereko ausazko beste irudi bat hautatzen du atzealdea zikloan aldatzera doanean."
+msgstr "Direktorio bereko beste irudi bat ausaz hautatzen du horma-papera aldatzea tokatzen denean."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:450
 msgid "_Pause video if window overlaps desktop"
-msgstr ""
+msgstr "Pausatu _bideoa leiho batek mahaigaina estaltzen badu"
 
 #: settings/xfdesktop-settings-ui.glade:43
 #: settings/xfdesktop-settings-ui.glade:80
 msgid "Left"
-msgstr "Ezker"
+msgstr "Ezkerrekoa"
 
 #: settings/xfdesktop-settings-ui.glade:46
 #: settings/xfdesktop-settings-ui.glade:83
 msgid "Middle"
-msgstr "Erdian"
+msgstr "Erdikoa"
 
 #: settings/xfdesktop-settings-ui.glade:49
 #: settings/xfdesktop-settings-ui.glade:86
 msgid "Right"
-msgstr "Eskuin"
+msgstr "Eskuinekoa"
 
 #: settings/xfdesktop-settings-ui.glade:63
 #: settings/xfdesktop-settings-ui.glade:100
@@ -546,11 +547,11 @@ msgstr "Kontrol"
 
 #: settings/xfdesktop-settings-ui.glade:120
 msgid "Minimized application icons"
-msgstr "Txikituriko aplikazio ikonoak"
+msgstr "Minimizatutako aplikazioen ikonoak"
 
 #: settings/xfdesktop-settings-ui.glade:123
 msgid "File/launcher icons"
-msgstr "Fitx/abiarazle ikonoak"
+msgstr "Fitxategi/abiarazle-ikonoak"
 
 #: settings/xfdesktop-settings-ui.glade:134
 msgid "Top Left Vertical"
@@ -590,11 +591,11 @@ msgstr "_Laguntza"
 
 #: settings/xfdesktop-settings-ui.glade:238
 msgid "_Background"
-msgstr "Atzeko _planoa:"
+msgstr "Atzeko _planoa"
 
 #: settings/xfdesktop-settings-ui.glade:271
 msgid "Include applications menu on _desktop right click"
-msgstr "Aplikazioen menua gehitu mahaigainean eskuineko botoiaz klikatzerakoan"
+msgstr "Erakutsi aplikazioen menua mahaigainean e_skuin-klik egitean"
 
 #: settings/xfdesktop-settings-ui.glade:304
 msgid "_Button:"
@@ -606,7 +607,7 @@ msgstr "Al_datzailea:"
 
 #: settings/xfdesktop-settings-ui.glade:376
 msgid "Show _application icons in menu"
-msgstr "Ikusi _aplikazio ikonoak menuan"
+msgstr "Erakutsi _aplikazio-ikonoak menuan"
 
 #: settings/xfdesktop-settings-ui.glade:398
 msgid "_Edit desktop menu"
@@ -618,7 +619,7 @@ msgstr "<b>Mahaigaineko menua</b>"
 
 #: settings/xfdesktop-settings-ui.glade:461
 msgid "Show _window list menu on desktop middle click"
-msgstr "Ikusi lei_ho zerrenda menua mahaigaina erdiko botoiaz klikatzean"
+msgstr "Erakutsi _leiho-zerrendaren menua mahaigainean erdiko klik egitean"
 
 #: settings/xfdesktop-settings-ui.glade:494
 msgid "B_utton:"
@@ -626,15 +627,15 @@ msgstr "B_otoia:"
 
 #: settings/xfdesktop-settings-ui.glade:528
 msgid "Modi_fier:"
-msgstr "Aldatzai_lea:"
+msgstr "Aldat_zailea:"
 
 #: settings/xfdesktop-settings-ui.glade:566
 msgid "Sh_ow application icons in menu"
-msgstr "Iku_si aplikazio ikonoak menuan"
+msgstr "Erakutsi aplikazio-iko_noak menuan"
 
 #: settings/xfdesktop-settings-ui.glade:583
 msgid "List windows on a_ll workspaces"
-msgstr "Zerrendatu leihoak lan-eremu guztietan"
+msgstr "Zerrendatu laneko a_rea guztietako leihoak"
 
 #: settings/xfdesktop-settings-ui.glade:600
 msgid "Show workspace _names in list"
@@ -642,23 +643,23 @@ msgstr "Erakutsi laneko areen _izenak zerrendan"
 
 #: settings/xfdesktop-settings-ui.glade:623
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Erabili a_zpimenuak laneko area bakoitzeko leihoentzako"
+msgstr "Erabili azpimen_uak laneko area bakoitzeko leihoetarako"
 
 #: settings/xfdesktop-settings-ui.glade:646
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Erakutsi _atxikituriko leihoak laneko area aktiboan bakarrik"
+msgstr "Erakutsi atxi_kitutako leihoak laneko area aktiboan soilik"
 
 #: settings/xfdesktop-settings-ui.glade:662
 msgid "Show a section listing all _urgent windows on other workspaces"
-msgstr "Erakutsi beste lan-eremuetako premiazko leiho guztiak zerrendatzen dituen atal bat"
+msgstr "Erakutsi beste laneko areetako premiazko lei_ho guztiak zerrendatzen dituen atal bat"
 
 #: settings/xfdesktop-settings-ui.glade:678
 msgid "Show a_dd and remove workspace options in list"
-msgstr "Erakutsi _gehitu eta kendu laneko areak aukerak zerrendan"
+msgstr "Erakutsi laneko areak _gehitzeko eta kentzeko aukerak zerrendan"
 
 #: settings/xfdesktop-settings-ui.glade:707
 msgid "<b>Window List Menu</b>"
-msgstr "<b>Leiho zerrenda menua</b>"
+msgstr "<b>Leiho-zerrendaren menua</b>"
 
 #: settings/xfdesktop-settings-ui.glade:728
 msgid "_Menus"
@@ -670,7 +671,7 @@ msgstr "Ikono _mota:"
 
 #: settings/xfdesktop-settings-ui.glade:813
 msgid "Icon _size:"
-msgstr "Ikono _tamaina:"
+msgstr "Ikono-_tamaina:"
 
 #: settings/xfdesktop-settings-ui.glade:829
 msgid "48"
@@ -678,7 +679,7 @@ msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
 msgid "Fo_nt size:"
-msgstr "Letra-tamaina:"
+msgstr "_Letra-tamaina:"
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -686,11 +687,11 @@ msgstr "12"
 
 #: settings/xfdesktop-settings-ui.glade:871
 msgid "Show icon toolt_ips. Size:"
-msgstr "Erakutsi ikonoen argibideak. Tamaina:"
+msgstr "Erakutsi ikonoen _argibideak. Tamaina:"
 
 #: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
-msgstr "Tresna-informazioaren aurrebistaren irudiaren tamaina."
+msgstr "Argibideko aurrebista-irudiaren tamaina."
 
 #: settings/xfdesktop-settings-ui.glade:892
 msgid "64"
@@ -698,11 +699,11 @@ msgstr "64"
 
 #: settings/xfdesktop-settings-ui.glade:903
 msgid "Font co_lor:"
-msgstr "Letraren Kolorea:"
+msgstr "Letra-_kolorea:"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
-msgstr "Atzeko planoaren kolorearen etiketa:"
+msgstr "Etiketaren atzeko _planoko kolorea:"
 
 #: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
@@ -710,23 +711,23 @@ msgstr "<b>Itxura</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
-msgstr "Kokapen norabidea:"
+msgstr "Kokapen-_norabidea:"
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr "Erakutsi ikonoak pantaila nagusian soilik"
+msgstr "Erakutsi ikonoak pantaila nagusian _soilik"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr "Egin klik bakarra elementuak aktibatzeko"
+msgstr "Klik _bakarra elementuak aktibatzeko"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
-msgstr "Azpimarratu testua sagua gainetik pasatzerakoan"
+msgstr "A_zpimarratu testua sagua gainetik pasatzean"
 
 #: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
-msgstr "Erakutsi berrespen-koadroa ikonoak antolatu aurretik"
+msgstr "_Erakutsi berrespen-elkarrizketa ikonoak antolatu aurretik"
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
@@ -734,7 +735,7 @@ msgstr "Portaera"
 
 #: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
-msgstr "Mahaigain ikonoak"
+msgstr "Mahaigaineko _ikonoak"
 
 #: settings/xfdesktop-settings-ui.glade:1204
 msgid ""
@@ -748,7 +749,7 @@ msgstr "Erakutsi ezkutuko fitxategiak mahaigainean"
 
 #: settings/xfdesktop-settings-ui.glade:1266
 msgid "Show t_humbnails"
-msgstr "Ikusi a_rgazkitxoak"
+msgstr "Erakutsi koadro _txikiak"
 
 #: settings/xfdesktop-settings-ui.glade:1271
 msgid ""
@@ -758,7 +759,7 @@ msgstr "Hautatu aukera hau fitxategi aurreikusgarriak mahaigainean automatikoki 
 
 #: settings/xfdesktop-settings-ui.glade:1283
 msgid "Show \"Delete\" option in file context menu"
-msgstr "Erakutsi \"Ezabatu\" aukera fitxategiaren testuinguru-menuan"
+msgstr "Erakutsi \"Ezabatu\" aukera fitxategiaren laster-menuan"
 
 #: settings/xfdesktop-settings-ui.glade:1300
 msgid "_Arrange folders before files"
@@ -770,53 +771,53 @@ msgstr "Orokorra"
 
 #: settings/xfdesktop-settings-ui.glade:1350
 msgid "Show _emblems on file icons"
-msgstr ""
+msgstr "Erakutsi _ikurrak fitxategi-ikonoetan"
 
 #: settings/xfdesktop-settings-ui.glade:1355
 msgid ""
 "Unchecking this hides all of the emblems below, without changing their "
 "individual settings."
-msgstr ""
+msgstr "Hau desmarkatzean beheko ikur guztiak ezkutatzen dira, banakako ezarpenak aldatu gabe."
 
 #: settings/xfdesktop-settings-ui.glade:1368
 msgid "Show user-assi_gned emblems"
-msgstr ""
+msgstr "Erakutsi _erabiltzaileak esleitutako ikurrak"
 
 #: settings/xfdesktop-settings-ui.glade:1373
 msgid ""
 "Select this option to show emblems that were manually assigned to a file, "
 "e.g. via Thunar's Properties dialog."
-msgstr ""
+msgstr "Hautatu aukera hau fitxategi bati eskuz esleitutako ikurrak erakusteko, adib. Thunar-en Propietateak elkarrizketaren bidez."
 
 #: settings/xfdesktop-settings-ui.glade:1387
 msgid "Show _symlink emblem"
-msgstr ""
+msgstr "Erakutsi esteka _sinbolikoen ikurra"
 
 #: settings/xfdesktop-settings-ui.glade:1392
 msgid ""
 "Select this option to overlay an emblem on desktop icons that are symbolic "
 "links."
-msgstr ""
+msgstr "Hautatu aukera hau esteka sinbolikoak diren mahaigaineko ikonoen gainean ikur bat erakusteko."
 
 #: settings/xfdesktop-settings-ui.glade:1406
 msgid "Show _read-only emblem"
-msgstr ""
+msgstr "Erakutsi i_rakurtzeko soilik ikurra"
 
 #: settings/xfdesktop-settings-ui.glade:1411
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to write to."
-msgstr ""
+msgstr "Hautatu aukera hau idazteko baimenik ez duzun fitxategien mahaigaineko ikonoen gainean ikur bat erakusteko."
 
 #: settings/xfdesktop-settings-ui.glade:1425
 msgid "Show _unreadable emblem"
-msgstr ""
+msgstr "Erakutsi irakurri e_zinaren ikurra"
 
 #: settings/xfdesktop-settings-ui.glade:1430
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to read."
-msgstr ""
+msgstr "Hautatu aukera hau irakurtzeko baimenik ez duzun fitxategien mahaigaineko ikonoen gainean ikur bat erakusteko."
 
 #: settings/xfdesktop-settings-ui.glade:1448
 msgid "Emblems"
@@ -828,7 +829,7 @@ msgstr "Ikono lehenetsiak"
 
 #: settings/xfdesktop-settings-ui.glade:1522
 msgid "_File/Launcher Icons"
-msgstr "_Fitxategi/abiarazlearen ikonoak"
+msgstr "_Fitxategi/abiarazle-ikonoak"
 
 #: settings/xfdesktop-settings-ui.glade:1548
 msgid "_Keyboard Shortcuts"
@@ -836,11 +837,11 @@ msgstr "_Teklatuko lasterbideak"
 
 #: settings/xfdesktop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Ezarri idazmahaieko atzeko planoa eta menua eta ikono ingurunea"
+msgstr "Ezarri mahaigaineko atzeko planoa eta menuaren eta ikonoen portaera"
 
 #: settings/xfdesktop-settings.desktop.in:17
 msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "desktop;background;wallpaper;settings;xfce;"
+msgstr "desktop;background;wallpaper;settings;xfce;mahaigaina;atzeko planoa;horma-papera;ezarpenak;"
 
 #: src/menu.c:82
 msgid "_Applications"
@@ -848,129 +849,129 @@ msgstr "_Aplikazioak"
 
 #: src/windowlist.c:79
 msgid "Window List"
-msgstr "Leiho zerrenda"
+msgstr "Leiho-zerrenda"
 
 #: src/xfce-desktop.c:1279
 msgid "The \"gtk\" plugin for gstreamer required for video playback was not found"
-msgstr ""
+msgstr "Ez da aurkitu bideoak erreproduzitzeko behar den gstreamer-en \"gtk\" plugina"
 
 #: src/xfce-desktop.c:1343
 msgid "Unable to create gstreamer video player"
-msgstr ""
-
-#: src/xfdesktop-application.c:276
-msgid "Display version information"
-msgstr "Bistarazi bertsio argibideak"
-
-#: src/xfdesktop-application.c:277
-msgid "Reload all settings"
-msgstr "Ezarpen guztiak birkargatu"
+msgstr "Ezin da gstreamer bideo-erreproduzitzailea sortu"
 
 #: src/xfdesktop-application.c:278
+msgid "Display version information"
+msgstr "Erakutsi bertsioaren informazioa"
+
+#: src/xfdesktop-application.c:279
+msgid "Reload all settings"
+msgstr "Birkargatu ezarpen guztiak"
+
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Joan uneko laneko areako hurrengo horma-paperera"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "Menua bistarazi (saguaren kokalekuan)"
-
-#: src/xfdesktop-application.c:280
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Leiho zerrenda bistarazi (saguaren kokalekuan)"
+msgstr "Bistaratu menua (saguaren uneko kokalekuan)"
 
 #: src/xfdesktop-application.c:282
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Bistaratu leiho-zerrenda (saguaren uneko kokalekuan)"
+
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Antolatu mahaigaineko ikonoak automatikoki"
 
-#: src/xfdesktop-application.c:285
-msgid "Disable debug messages"
-msgstr "Arazketa-mezuak desgaitu"
-
 #: src/xfdesktop-application.c:287
-msgid "Do not wait for a window manager on startup"
-msgstr "Ez itxoin leiho kudeatzailerik abiaraztean"
+msgid "Disable debug messages"
+msgstr "Desgaitu arazketa-mezuak"
 
 #: src/xfdesktop-application.c:289
-msgid "Cause xfdesktop to quit"
-msgstr "xfdesktop ixtea eragin"
+msgid "Do not wait for a window manager on startup"
+msgstr "Ez itxaron leiho-kudeatzaileari abioan"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:291
+msgid "Cause xfdesktop to quit"
+msgstr "Itxi xfdesktop"
+
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Hau %s %s bertsioa da, Xfce %s -en abiarazia.\n"
+msgstr "Hau %s da, %s bertsioa, Xfce %s-en exekutatzen.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "GTK+ %d.%d.%d erabiliaz eraikia, GTK+ %d.%d.%d-rekin lotua."
+msgstr "GTK+ %d.%d.%d-rekin eraikia, GTK+ %d.%d.%d-rekin estekatua."
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
-msgstr "Eraikitze aukerak:\n"
+msgstr "Eraikitze-aukerak:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "Mahaigaineko menua: %s\n"
+msgstr "    Mahaigaineko menua:             %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
-msgstr "gaiturik"
+msgstr "gaituta"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
-msgstr "ezgaiturik"
+msgstr "desgaituta"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Mahaigaineko ikonoak: %s\n"
+msgstr "    Mahaigaineko ikonoak:           %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Mahaigaineko fitxategi-ikonoak: %s\n"
+msgstr "    Mahaigaineko fitxategi-ikonoak: %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
-msgstr ""
+msgstr "%s dagoeneko exekutatzen ari da"
 
 #: src/xfdesktop-file-icon-manager.c:749 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
 msgid "Rename Error"
-msgstr "Berrizendatze errorea"
+msgstr "Errorea izena aldatzean"
 
 #: src/xfdesktop-file-icon-manager.c:750 src/xfdesktop-file-utils.c:815
 msgid "The files could not be renamed"
-msgstr "Fitxategiak ezin izan dira berrizendatu"
+msgstr "Ezin izan zaie fitxategiei izena aldatu"
 
 #: src/xfdesktop-file-icon-manager.c:751
 msgid "None of the icons selected support being renamed."
-msgstr "Hautatutako ikonoetako bat ere ez du onartzen berrizendatua izatea."
+msgstr "Hautatutako ikonoetako batek ere ez du onartzen izena aldatzea."
 
 #: src/xfdesktop-file-icon-manager.c:1009
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "\"%s\"-(re)kin _Ireki"
+msgstr "_Ireki \"%s\"(r)ekin"
 
 #: src/xfdesktop-file-icon-manager.c:1012
 #, c-format
 msgid "Open With \"%s\""
-msgstr "\"%s\"-(re)kin Ireki"
+msgstr "Ireki \"%s\"(r)ekin"
 
 #: src/xfdesktop-file-icon-manager.c:1062
 #: src/xfdesktop-file-icon-manager.c:1110
 msgid ""
 "Unable to launch \"xfce-desktop-item-edit\", which is required to create and"
 " edit launchers and links on the desktop."
-msgstr ""
+msgstr "Ezin da \"xfce-desktop-item-edit\" abiarazi; beharrezkoa da mahaigainean abiarazleak eta estekak sortzeko eta editatzeko."
 
 #: src/xfdesktop-file-icon-manager.c:1628
 msgid "Choose Monitor Configuration"
-msgstr ""
+msgstr "Aukeratu monitore-konfigurazioa"
 
 #: src/xfdesktop-file-icon-manager.c:1631
 #, c-format
@@ -993,11 +994,11 @@ msgstr "Sortu _abiarazlea..."
 
 #: src/xfdesktop-file-icon-manager.c:1922
 msgid "Create _URL Link..."
-msgstr "Sortu _URL lotura..."
+msgstr "Sortu _URL esteka..."
 
 #: src/xfdesktop-file-icon-manager.c:1932
 msgid "Create _Folder..."
-msgstr "Sortu _karpeta"
+msgstr "Sortu _karpeta..."
 
 #: src/xfdesktop-file-icon-manager.c:1971
 msgid "No templates installed"
@@ -1017,20 +1018,20 @@ msgstr "_Abiarazi"
 
 #: src/xfdesktop-file-icon-manager.c:2024
 msgid "Edit _Launcher"
-msgstr "Editatu _Abiarazlea"
+msgstr "Edi_tatu abiarazlea"
 
 #: src/xfdesktop-file-icon-manager.c:2072
 msgid "Ope_n With"
-msgstr "Ireki Honekin"
+msgstr "Ireki _honekin"
 
 #: src/xfdesktop-file-icon-manager.c:2100
 #: src/xfdesktop-file-icon-manager.c:2117
 msgid "Ope_n With Other Application..."
-msgstr "Ireki beste aplikazio batekin..."
+msgstr "Ireki _beste aplikazio batekin..."
 
 #: src/xfdesktop-file-icon-manager.c:2108
 msgid "Set Defa_ult Application..."
-msgstr "Ezarri Aplikazio Lehenetsia..."
+msgstr "Ezarri aplikazio _lehenetsia..."
 
 #: src/xfdesktop-file-icon-manager.c:2164
 msgid "Paste Into Folder"
@@ -1047,17 +1048,17 @@ msgstr "_Ireki leiho berrian"
 #: src/xfdesktop-file-icon-manager.c:2253
 #: src/xfdesktop-window-icon-manager.c:305
 msgid "Arrange Desktop _Icons"
-msgstr "_Ordenatu mahaigaineko ikonoak"
+msgstr "Antolatu mahaigaineko _ikonoak"
 
 #: src/xfdesktop-file-icon-manager.c:2268
 #: src/xfdesktop-window-icon-manager.c:319
 msgid "_Next Background"
-msgstr "Hurrengo atzealdea"
+msgstr "_Hurrengo atzeko planoa"
 
 #: src/xfdesktop-file-icon-manager.c:2278
 #: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
-msgstr "Mahaigainaren _ezarpenak"
+msgstr "Mahaigainaren _ezarpenak..."
 
 #: src/xfdesktop-file-icon-manager.c:2285 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
@@ -1066,11 +1067,11 @@ msgstr "_Propietateak..."
 #: src/xfdesktop-file-icon-manager.c:3282
 #, c-format
 msgid "Failed to save dropped file to '%s'"
-msgstr "Ezin izan da gordetako fitxategia '%s'-n gorde"
+msgstr "Huts egin du jaregindako fitxategia '%s'(e)n gordetzean"
 
 #: src/xfdesktop-file-icon-manager.c:3284
 msgid "Drop Failure"
-msgstr "Erortzen uzteak huts egin du"
+msgstr "Jaregiteak huts egin du"
 
 #: src/xfdesktop-file-icon-manager.c:3288
 #: src/xfdesktop-icon-view-manager.c:489
@@ -1087,7 +1088,7 @@ msgstr "_Mugitu hona"
 
 #: src/xfdesktop-file-icon-manager.c:3695
 msgid "_Link Here"
-msgstr "_Lotu hona"
+msgstr "Sortu _esteka hemen"
 
 #: src/xfdesktop-file-icon-manager.c:3720 src/xfdesktop-file-utils.c:1149
 #: src/xfdesktop-icon-view-manager.c:488
@@ -1101,7 +1102,7 @@ msgstr "Ezin izan da mahaigaineko \"%s\" karpeta sortu"
 
 #: src/xfdesktop-file-icon-manager.c:3825
 msgid "Failed to load the desktop folder"
-msgstr "Huts mahaigaineko karpeta kargatzerakoan"
+msgstr "Huts egin du mahaigaineko karpeta kargatzean"
 
 #: src/xfdesktop-file-icon-manager.c:3834
 msgid "A desktop file icon error occurred"
@@ -1109,41 +1110,41 @@ msgstr "Mahaigaineko fitxategi-ikonoaren errore bat gertatu da"
 
 #: src/xfdesktop-file-icon-manager.c:3838
 msgid "Desktop Folder Error"
-msgstr "Mahaigaineko karpeta errorea"
+msgstr "Errorea mahaigaineko karpetan"
 
 #: src/xfdesktop-file-icon-model.c:605
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Dagoeneko badago izen berdineko fitxategi arrunt bat. Mesedez ezabatu edo berrizendatu ezazu."
+msgstr "Badago izen bereko fitxategi arrunt bat. Ezabatu edo aldatu izena."
 
 #. TRANSLATORS: file was modified less than one day ago
 #: src/xfdesktop-file-utils.c:178
 #, c-format
 msgid "Today at %X"
-msgstr "Gaur %X-etan"
+msgstr "Gaur, %X(e)tan"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "Yesterday at %X"
-msgstr "Atzo %X-etan"
+msgstr "Atzo, %X(e)tan"
 
 #. Days from last week
 #: src/xfdesktop-file-utils.c:187
 #, c-format
 msgid "%A at %X"
-msgstr "%A-ean %X-etan"
+msgstr "%A, %X(e)tan"
 
 #. Any other date
 #: src/xfdesktop-file-utils.c:190
 #, c-format
 msgid "%x at %X"
-msgstr "%x-ean %X-etan"
+msgstr "%x, %X(e)tan"
 
 #. the file_time is invalid
 #: src/xfdesktop-file-utils.c:200 src/xfdesktop-file-utils.c:1731
 msgid "Unknown"
-msgstr "(ezezaguna)"
+msgstr "Ezezaguna"
 
 #: src/xfdesktop-file-utils.c:329
 #, c-format
@@ -1152,7 +1153,7 @@ msgstr "%.*s %u%s"
 
 #: src/xfdesktop-file-utils.c:580
 msgid "The folder could not be opened"
-msgstr "Ezin da karpeta ireki"
+msgstr "Ezin izan da karpeta ireki"
 
 #: src/xfdesktop-file-utils.c:696
 msgid "Error"
@@ -1164,7 +1165,7 @@ msgstr "Eskatutako operazioa ezin izan da burutu"
 
 #: src/xfdesktop-file-utils.c:751
 msgid "The file could not be renamed"
-msgstr "Ezin da fitxategia berrizendatu"
+msgstr "Ezin izan zaio fitxategiari izena aldatu"
 
 #: src/xfdesktop-file-utils.c:752 src/xfdesktop-file-utils.c:816
 #: src/xfdesktop-file-utils.c:877 src/xfdesktop-file-utils.c:1403
@@ -1173,33 +1174,33 @@ msgstr "Ezin da fitxategia berrizendatu"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+msgstr "Eginbide honek fitxategi-kudeatzailearen zerbitzu bat behar du (Thunar-ek eskaintzen duena, adibidez)."
 
 #: src/xfdesktop-file-utils.c:875
 msgid "Delete Error"
-msgstr "Ezabatze errorea"
+msgstr "Errorea ezabatzean"
 
 #: src/xfdesktop-file-utils.c:876
 msgid "The selected files could not be deleted"
-msgstr "Ezin dira hautatutako fitxategiak ezabatu"
+msgstr "Ezin izan dira hautatutako fitxategiak ezabatu"
 
 #: src/xfdesktop-file-utils.c:936 src/xfdesktop-file-utils.c:984
 msgid "Trash Error"
-msgstr "Zakarrontzi errorea"
+msgstr "Zakarrontziaren errorea"
 
 #: src/xfdesktop-file-utils.c:937
 msgid "The selected files could not be moved to the trash"
-msgstr "Ezin dira hautatutako fitxategiak zaborrontzira mugitu"
+msgstr "Ezin izan dira hautatutako fitxategiak zakarrontzira bota"
 
 #: src/xfdesktop-file-utils.c:938 src/xfdesktop-file-utils.c:986
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+msgstr "Eginbide honek zakarrontzi-zerbitzu bat behar du (Thunar-ek eskaintzen duena, adibidez)."
 
 #: src/xfdesktop-file-utils.c:985
 msgid "Could not empty the trash"
-msgstr "Ezin da zakarrontzia hustu"
+msgstr "Ezin izan da zakarrontzia hustu"
 
 #: src/xfdesktop-file-utils.c:995
 #, c-format
@@ -1209,11 +1210,11 @@ msgstr "Ezin izan da \"%1$s\" fitxategi berria sortu \"%2$s\" txantiloi-fitxateg
 #: src/xfdesktop-file-utils.c:1001 src/xfdesktop-file-utils.c:1115
 #: src/xfdesktop-file-utils.c:1211
 msgid "Create File Error"
-msgstr "Fitxategi sortze errorea"
+msgstr "Errorea fitxategia sortzean"
 
 #: src/xfdesktop-file-utils.c:1003 src/xfdesktop-file-utils.c:1277
 msgid "Could not create a new file"
-msgstr "Ezin da fitxategi berria sortu"
+msgstr "Ezin izan da fitxategi berria sortu"
 
 #: src/xfdesktop-file-utils.c:1016
 msgid "New Empty File"
@@ -1235,12 +1236,12 @@ msgstr "So_rtu"
 #: src/xfdesktop-file-utils.c:1209
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
-msgstr "Ezin da \"%s\" fitxategi izena kodeketa lokalera bihurtu"
+msgstr "Ezin da \"%s\" fitxategi-izena kodeketa lokalera bihurtu"
 
 #: src/xfdesktop-file-utils.c:1271
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "\"%s\" txantiloitik dokumentua sortu"
+msgstr "Sortu dokumentua \"%s\" txantiloitik"
 
 #: src/xfdesktop-file-utils.c:1274 src/xfdesktop-file-utils.c:1307
 msgid "Enter the name:"
@@ -1252,40 +1253,40 @@ msgstr "Karpeta berria"
 
 #: src/xfdesktop-file-utils.c:1305
 msgid "Create New Folder"
-msgstr "Karpeta berria sortu"
+msgstr "Sortu karpeta berria"
 
 #: src/xfdesktop-file-utils.c:1401
 msgid "File Properties Error"
-msgstr "Fitxategi propietate errorea"
+msgstr "Errorea fitxategiaren propietateetan"
 
 #: src/xfdesktop-file-utils.c:1402
 msgid "The file properties dialog could not be opened"
-msgstr "Ezin da fitxategi propietate leihoa  ezin da ireki."
+msgstr "Ezin izan da fitxategiaren propietateen elkarrizketa ireki"
 
 #: src/xfdesktop-file-utils.c:1463
 msgid "The file could not be opened"
-msgstr "Fitxategia ezin izan da ireki"
+msgstr "Ezin izan da fitxategia ireki"
 
 #: src/xfdesktop-file-utils.c:1484 src/xfdesktop-file-utils.c:1594
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "Huts \"%s\" abiaraztean:"
+msgstr "Huts egin du \"%s\" exekutatzean"
 
 #: src/xfdesktop-file-utils.c:1662
 msgid "The application chooser could not be opened"
-msgstr "Aplikazio hautatzailea ezin da ireki."
+msgstr "Ezin izan da aplikazio-hautatzailea ireki"
 
 #: src/xfdesktop-file-utils.c:1733 src/xfdesktop-file-utils.c:1802
 msgid "Transfer Error"
-msgstr "Transferentzia errorea"
+msgstr "Errorea transferentzian"
 
 #: src/xfdesktop-file-utils.c:1734 src/xfdesktop-file-utils.c:1803
 msgid "The file transfer could not be performed"
-msgstr "Ezin izan da fitxategi transferentzia burutu"
+msgstr "Ezin izan da fitxategia transferitu"
 
 #: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
-msgstr "Antolatu Ikonoak"
+msgstr "Antolatu ikonoak"
 
 #: src/xfdesktop-icon-view-manager.c:506
 msgid ""
@@ -1295,19 +1296,19 @@ msgstr "Honek mahaigaineko elementu guztiak berrantolatuko ditu eta pantailaren 
 
 #: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
-msgstr "Ez galdetu _niri berriz"
+msgstr "Ez galdetu _berriro"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
-msgstr ""
+msgstr "Utzi Xfce-ri egokiena automatikoki esleitzen"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
-msgstr ""
+msgstr "Hautatu lehendik dauden monitore-konfigurazioetatik:"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
-msgstr ""
+msgstr "Esleitu beti automatikoki"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:133
@@ -1320,7 +1321,7 @@ msgstr "Gailua desmuntatzen"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo deskonektatu"
+msgstr "Sistema \"%s\" gailua desmuntatzen ari da. Ez kendu euskarria eta ez deskonektatu unitatea"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
@@ -1333,16 +1334,16 @@ msgstr "Datuak gailuan idazten"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez gailua kendu edo deskonektatu"
+msgstr "\"%s\" gailuan datuak idatzi behar dira kendu aurretik. Ez kendu euskarria eta ez deskonektatu unitatea"
 
 #: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
-msgstr "Desmuntatzea osatua"
+msgstr "Desmuntatzea amaitu da"
 
 #: src/xfdesktop-notify.c:208 src/xfdesktop-notify.c:394
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "\"%s\" gailua sistematik ziurtasunez kendu da."
+msgstr "\"%s\" gailua sistematik modu seguruan kendu da. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:230
@@ -1353,11 +1354,11 @@ msgstr "Gailua egozten"
 #: src/xfdesktop-notify.c:233
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "\"%s\" gailua egotzia izango da. Honek denbora bat behar dezake"
+msgstr "\"%s\" gailua egozten ari da. Honek denbora pixka bat har dezake"
 
 #: src/xfdesktop-notify.c:393
 msgid "Eject Finished"
-msgstr "Egoztea osatuta"
+msgstr "Egoztea amaitu da"
 
 #: src/xfdesktop-regular-file-icon.c:885
 #, c-format
@@ -1366,18 +1367,18 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Izena: %s\nMota: %s\nTamaina: %s\nAzkenengoz aldatuta: %s"
+msgstr "Izena: %s\nMota: %s\nTamaina: %s\nAzken aldaketa: %s"
 
 #: src/xfdesktop-special-file-icon.c:292
 msgid "Trash is empty"
-msgstr "Zaborrontzia hutsik dago"
+msgstr "Zakarrontzia hutsik dago"
 
 #: src/xfdesktop-special-file-icon.c:295
 #, c-format
 msgid "Trash contains %d item"
 msgid_plural "Trash contains %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zakarrontziak elementu %d du"
+msgstr[1] "Zakarrontziak %d elementu ditu"
 
 #: src/xfdesktop-special-file-icon.c:324
 #, c-format
@@ -1385,11 +1386,11 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nTamaina: %s\nAzken eraldaketa: %s"
+msgstr "%s\nTamaina: %s\nAzken aldaketa: %s"
 
 #: src/xfdesktop-volume-icon.c:328
 msgid "(not mounted)"
-msgstr "(ez muntatuta)"
+msgstr "(muntatu gabe)"
 
 #: src/xfdesktop-volume-icon.c:329 src/xfdesktop-volume-icon.c:330
 msgid "(unknown)"
@@ -1403,11 +1404,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr "Izena: %s\nMota: %s\nMuntatuta: %s\nNeurria: %s\nLeku librea: %s"
+msgstr "Izena: %s\nMota: %s\nMuntatze-puntua: %s\nTamaina: %s\nLeku librea: %s"
 
 #: src/xfdesktop-volume-icon.c:336
 msgid "Removable Volume"
-msgstr "Gailu erauzgarria"
+msgstr "Bolumen aldagarria"
 
 #: src/xfdesktop-volume-icon.c:383 src/xfdesktop-volume-icon.c:430
 #, c-format
@@ -1421,31 +1422,31 @@ msgstr "Huts egin du egoztean"
 #: src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Huts \"%s\" muntatzerakoan:"
+msgstr "Huts egin du \"%s\" muntatzean"
 
 #: src/xfdesktop-volume-icon.c:517
 msgid "Mount Failed"
-msgstr "Huts muntatzerakoan"
+msgstr "Huts egin du muntatzean"
 
 #: src/xfdesktop-volume-icon.c:774
 msgid "Safely _Remove Volume"
-msgstr "Kendu Bolumena modu seguruan"
+msgstr "_Kendu bolumena modu seguruan"
 
 #: src/xfdesktop-volume-icon.c:777
 msgid "_Disconnect Volume"
-msgstr "Bolumena _deskonektatu"
+msgstr "Desk_onektatu bolumena"
 
 #: src/xfdesktop-volume-icon.c:780
 msgid "Stop the _Multi-Disk Drive"
-msgstr "Gelditu Disko Anitzeko Unitatea"
+msgstr "_Gelditu disko anitzeko unitatea"
 
 #: src/xfdesktop-volume-icon.c:783
 msgid "_Lock Volume"
-msgstr "Bolumena b_lokeatu"
+msgstr "_Blokeatu bolumena"
 
 #: src/xfdesktop-volume-icon.c:786
 msgid "_Eject Volume"
-msgstr "Egotzi Bolumena"
+msgstr "_Egotzi bolumena"
 
 #: src/xfdesktop-volume-icon.c:795
 msgid "_Unmount Volume"
@@ -1457,4 +1458,16 @@ msgstr "_Muntatu bolumena"
 
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
-msgstr "Exekutatu programa..."
+msgstr "_Exekutatu programa..."
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Xfce mahaigain-kudeatzailea"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "Mahaigaineko atzeko planoa, menua eta ikonoak bistaratzen ditu"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "desktop;background;wallpaper;xfce;mahaigaina;atzeko planoa;horma-papera;"
