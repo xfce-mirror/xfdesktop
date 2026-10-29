@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2024-2026\n"
 "Language-Team: Swedish (http://app.transifex.com/xfce/xfdesktop/language/sv/)\n"
@@ -163,7 +163,7 @@ msgstr "UTTAGS-ID"
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Aktivera felrättningsmeddelanden"
 
@@ -172,11 +172,11 @@ msgstr "Aktivera felrättningsmeddelanden"
 msgid "Type '%s --help' for usage."
 msgstr "Ange \"%s --help\" för användningsinformation."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. Alla rättigheter reserverade."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportera fel till <%s>."
@@ -865,82 +865,82 @@ msgstr "Pluginet \"gtk\" för gstreamer som krävs för videouppspelning hittade
 msgid "Unable to create gstreamer video player"
 msgstr "Misslyckades med att skapa gstreamer videospelare"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "Visa versionsinformation"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "Läs om alla inställningar"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Gå fram till nästa skrivbordsbakgrund på aktivt skrivbord"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Öppna menyn (vid muspekarens position)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Öppna fönsterlistan (vid muspekarens position)"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Ordna alla skrivbordsikoner automatiskt"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "Inaktivera felrättningsmeddelanden"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "Vänta inte på att en fönsterhanterare skall starta"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "Gör så att xfdesktop avslutas"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Detta är %s version %s, som körs i Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Byggt med GTK+ %d.%d.%d, länkat med GTK+ %d.%d,%d"
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "Kompileringsflaggor:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Skrivbordsmeny: %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "aktiverad"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "inaktiverad"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Skrivbordsikoner: %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Skrivbordsikoner för filer: %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
 msgstr "%skörs redan"
@@ -1465,3 +1465,15 @@ msgstr "_Montera volym"
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "_Kör program..."
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Xfce skrivbordshanterare"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "Visar skrivbordsbakgrund,meny, och ikoner"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "skrivbord;bakgrund;bakgrundsbilder;xfce;"
