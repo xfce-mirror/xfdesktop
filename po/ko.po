@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2023,2026\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfdesktop/language/ko/)\n"
@@ -159,7 +159,7 @@ msgstr "소켓 ID"
 msgid "Version information"
 msgstr "버전 정보"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "디버깅 메시지 활성화"
 
@@ -168,11 +168,11 @@ msgstr "디버깅 메시지 활성화"
 msgid "Type '%s --help' for usage."
 msgstr "사용법을 보려면 '%s --help'를 입력하십시오."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 개발 팀. All rights reserved."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "<%s>(으)로 버그를 알려주십시오."
@@ -773,53 +773,53 @@ msgstr "일반"
 
 #: settings/xfdesktop-settings-ui.glade:1350
 msgid "Show _emblems on file icons"
-msgstr ""
+msgstr "파일 아이콘에 엠블럼 표시(_E)"
 
 #: settings/xfdesktop-settings-ui.glade:1355
 msgid ""
 "Unchecking this hides all of the emblems below, without changing their "
 "individual settings."
-msgstr ""
+msgstr "여기 표시를 없애면 각 설정을 바꾸지 않고도 하단의 모든 엠블럼을 숨깁니다."
 
 #: settings/xfdesktop-settings-ui.glade:1368
 msgid "Show user-assi_gned emblems"
-msgstr ""
+msgstr "사용자 지정 엠블럼 표시(_G)"
 
 #: settings/xfdesktop-settings-ui.glade:1373
 msgid ""
 "Select this option to show emblems that were manually assigned to a file, "
 "e.g. via Thunar's Properties dialog."
-msgstr ""
+msgstr "이 옵션을 선택하면 투나 속성 대화상자처럼 직접 설정을 할당한 파일에 엠블럼을 표시합니다."
 
 #: settings/xfdesktop-settings-ui.glade:1387
 msgid "Show _symlink emblem"
-msgstr ""
+msgstr "심볼릭 링크 엠블럼 표시(_S)"
 
 #: settings/xfdesktop-settings-ui.glade:1392
 msgid ""
 "Select this option to overlay an emblem on desktop icons that are symbolic "
 "links."
-msgstr ""
+msgstr "이 옵션을 선택하면 심볼릭 링크의 데스크톱 아이콘에 엠블럼을 띄워 표시합니다"
 
 #: settings/xfdesktop-settings-ui.glade:1406
 msgid "Show _read-only emblem"
-msgstr ""
+msgstr "읽기 전용 엠블럼 표시(_R)"
 
 #: settings/xfdesktop-settings-ui.glade:1411
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to write to."
-msgstr ""
+msgstr "이 옵션을 선택하면 쓰기 권한이 없는 파일의 데스크톱 아이콘에 엠블럼을 띄워 표시합니다."
 
 #: settings/xfdesktop-settings-ui.glade:1425
 msgid "Show _unreadable emblem"
-msgstr ""
+msgstr "읽을 수 없음 엠블럼 표시(_U)"
 
 #: settings/xfdesktop-settings-ui.glade:1430
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to read."
-msgstr ""
+msgstr "이 옵션을 선택하면 읽기 권한이 없는 파일의 데스크톱 아이콘에 엠블럼을 띄워 표시합니다."
 
 #: settings/xfdesktop-settings-ui.glade:1448
 msgid "Emblems"
@@ -861,85 +861,85 @@ msgstr "영상 재생에 필요한 지스트리며 \"gtk\" 플러그인을 찾�
 msgid "Unable to create gstreamer video player"
 msgstr "지스트리머 영상 재생을 생성할 수 없습니다"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "버전 정보를 표시합니다"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "모든 설정을 다시 읽어들입니다"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "현재 작업 공간에 다음 배경 표시 진행"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)단축 메뉴를 나타냅니다"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)창 목록을 나타냅니다"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "모든 데스크톱의 아이콘을 자동 정렬합니다"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "디버깅 메시지 비활성화"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "시동시 창 관리자를 기다리지 않습니다"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop을 끝냅니다"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s 입니다. xfce %s에서 실행 중입니다.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d에서 빌드하고 GTK+ %d.%d.%d에 연결했습니다."
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "데스크톱 메뉴: %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "활성화"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "비활성화"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "데스크톱 아이콘: %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "데스크톱 파일 아이콘: %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
-msgstr ""
+msgstr "%s을(를) 이미 실행중입니다"
 
 #: src/xfdesktop-file-icon-manager.c:749 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
@@ -1460,3 +1460,15 @@ msgstr "볼륨 마운트(_M)"
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "프로그램 실행(_R)..."
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Xfce 데스크톱 관리자"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "데스크톱 배경 화면, 메뉴, 아이콘을 표시합니다"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "desktop;데스크톱;background;배경;바탕화면;바탕;화면;wallpaper;xfce;"
