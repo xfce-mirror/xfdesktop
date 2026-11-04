@@ -706,8 +706,7 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
         if (cycler->used_image_files == NULL) {
             return NULL;
         } else {
-            cycler->image_files = cycler->used_image_files;
-            cycler->used_image_files = NULL;
+            cycler->image_files = g_steal_pointer(&cycler->used_image_files);
         }
     }
 
