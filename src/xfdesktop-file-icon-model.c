@@ -232,7 +232,7 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                          "show-thumbnails",
                                                          "show-thumbnails",
                                                          TRUE,
-                                                         G_PARAM_READWRITE));
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class,
                                     PROP_SORT_FOLDERS_BEFORE_FILES,
                                     g_param_spec_boolean("sort-folders-before-files",

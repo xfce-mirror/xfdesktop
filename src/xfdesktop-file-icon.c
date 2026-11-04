@@ -77,7 +77,7 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
                                                         "gicon",
                                                         "gicon",
                                                         G_TYPE_ICON,
-                                                        G_PARAM_READWRITE));
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void
