@@ -530,8 +530,7 @@ xfdesktop_clipboard_manager_clear_callback (GtkClipboard *clipboard,
                           manager);
       g_object_unref (G_OBJECT (lp->data));
     }
-  g_list_free (manager->files);
-  manager->files = NULL;
+  g_clear_list(&manager->files, NULL);
 }
 
 

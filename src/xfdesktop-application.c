@@ -1210,8 +1210,7 @@ xfdesktop_application_shutdown(GApplication *g_application)
 
     if (app->channel != NULL) {
         menu_cleanup(app->channel);
-        windowlist_cleanup(app->channel);
-        app->channel = NULL;
+        g_clear_pointer(&app->channel, windowlist_cleanup);
     }
 
     g_hash_table_remove_all(app->monitors);

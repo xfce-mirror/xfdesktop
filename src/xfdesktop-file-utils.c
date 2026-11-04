@@ -423,8 +423,7 @@ xfdesktop_file_utils_get_fallback_icon(gint size,
     g_return_val_if_fail(size > 0, NULL);
 
     if((size != xfdesktop_fallback_icon_size || scale != xfdesktop_fallback_icon_scale) && xfdesktop_fallback_icon) {
-        g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
-        xfdesktop_fallback_icon = NULL;
+        g_clear_object(&xfdesktop_fallback_icon);
     }
 
     if(!xfdesktop_fallback_icon) {

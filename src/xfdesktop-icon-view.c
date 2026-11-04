@@ -1103,10 +1103,7 @@ xfdesktop_icon_view_dispose(GObject *obj)
         g_source_remove(icon_view->drag_timer_id);
     }
 
-    if (icon_view->keyboard_navigation_state_timeout != 0) {
-        g_source_remove(icon_view->keyboard_navigation_state_timeout);
-        icon_view->keyboard_navigation_state_timeout = 0;
-    }
+    g_clear_handle_id(&icon_view->keyboard_navigation_state_timeout, g_source_remove);
     if (icon_view->keyboard_navigation_state != NULL) {
         g_array_free(icon_view->keyboard_navigation_state, TRUE);
         icon_view->keyboard_navigation_state = NULL;
@@ -1389,10 +1386,7 @@ xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view)
     for (GList *l = icon_view->items; l != NULL; l = l->next) {
         ViewItem *item = (ViewItem *)l->data;
 
-        if (item->pixbuf_surface != NULL) {
-            cairo_surface_destroy(item->pixbuf_surface);
-            item->pixbuf_surface = NULL;
-        }
+        g_clear_pointer(&item->pixbuf_surface, cairo_surface_destroy);
     }
 }
 
@@ -1759,10 +1753,7 @@ static void
 xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view) {
     gtk_grab_remove(GTK_WIDGET(icon_view));
 
-    if (icon_view->keyboard_navigation_state_timeout != 0) {
-        g_source_remove(icon_view->keyboard_navigation_state_timeout);
-        icon_view->keyboard_navigation_state_timeout = 0;
-    }
+    g_clear_handle_id(&icon_view->keyboard_navigation_state_timeout, g_source_remove);
 
     if (icon_view->keyboard_navigation_state != NULL) {
         g_array_free(icon_view->keyboard_navigation_state, TRUE);
@@ -2249,8 +2240,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                     } else {
                                         // The height is of equal size to the width, so we
                                         // should try to load the icon at the correct size.
-                                        g_object_unref(pix);
-                                        pix = NULL;
+                                        g_clear_object(&pix);
                                     }
                                 }
                             }
@@ -2859,8 +2849,7 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     }
     xfdesktop_icon_view_items_free(icon_view);
 
-    g_free(icon_view->grid_layout);
-    icon_view->grid_layout = NULL;
+    g_clear_pointer(&icon_view->grid_layout, g_free);
 
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->unrealize(widget);
 }
@@ -4130,10 +4119,7 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
     ViewItem *item = g_list_nth_data(icon_view->items, gtk_tree_path_get_indices(path)[0]);
 
     if (item != NULL) {
-        if (item->pixbuf_surface != NULL) {
-            cairo_surface_destroy(item->pixbuf_surface);
-            item->pixbuf_surface = NULL;
-        }
+        g_clear_pointer(&item->pixbuf_surface, cairo_surface_destroy);
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
 
         if (item->placed && icon_view->row_column != -1 && icon_view->col_column != -1) {
@@ -4189,11 +4175,8 @@ xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view)
     icon_view->cursor = NULL;
     icon_view->first_clicked_item = NULL;
 
-    g_list_free(icon_view->selected_items);
-    icon_view->selected_items = NULL;
-
-    g_list_free_full(icon_view->items, (GDestroyNotify)view_item_free);
-    icon_view->items = NULL;
+    g_clear_list(&icon_view->selected_items, NULL);
+    g_clear_list(&icon_view->items, (GDestroyNotify)view_item_free);
 }
 
 

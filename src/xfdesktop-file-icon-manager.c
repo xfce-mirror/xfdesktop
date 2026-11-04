@@ -3660,9 +3660,7 @@ xfdesktop_file_icon_manager_drag_leave(GtkWidget *icon_view,
     mdata->fmanager->drag_data_received = FALSE;
     mdata->fmanager->icon_on_drop_dest = NULL;
 
-    g_list_free_full(mdata->fmanager->dragged_files, g_object_unref);
-    mdata->fmanager->dragged_files = NULL;
-
+    g_clear_list(&mdata->fmanager->dragged_files, g_object_unref);
     g_clear_object(&mdata->fmanager->xdnd_direct_save_destination);
 
     xfdesktop_icon_view_unset_highlight(XFDESKTOP_ICON_VIEW(icon_view));

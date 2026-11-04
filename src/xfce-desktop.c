@@ -689,10 +689,7 @@ xfce_desktop_dispose(GObject *object) {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
 
 #ifdef ENABLE_DESKTOP_ICONS
-    if (desktop->style_refresh_timer != 0) {
-        g_source_remove(desktop->style_refresh_timer);
-        desktop->style_refresh_timer = 0;
-    }
+    g_clear_handle_id(&desktop->style_refresh_timer, g_source_remove);
 #endif
 
 #ifdef ENABLE_VIDEO_BACKDROP

@@ -340,8 +340,7 @@ xfdesktop_backdrop_clear_directory_monitor(XfdesktopBackdropCycler *cycler)
                                              cycler);
 
         g_file_monitor_cancel(cycler->monitor);
-        g_object_unref(cycler->monitor);
-        cycler->monitor = NULL;
+        g_clear_object(&cycler->monitor);
     }
 }
 
@@ -498,10 +497,7 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
             }
 
             if (cycler->image_files == NULL && cycler->used_image_files == NULL) {
-                if (cycler->timer_id != 0) {
-                    g_source_remove(cycler->timer_id);
-                    cycler->timer_id = 0;
-                }
+                g_clear_handle_id(&cycler->timer_id, g_source_remove);
             }
 
             break;
@@ -797,10 +793,7 @@ static void
 xfdesktop_backdrop_cycler_remove_backdrop_timer(XfdesktopBackdropCycler *cycler) {
     g_return_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler));
 
-    if (cycler->timer_id != 0) {
-        g_source_remove(cycler->timer_id);
-        cycler->timer_id = 0;
-    }
+    g_clear_handle_id(&cycler->timer_id, g_source_remove);
 }
 
 static gboolean
@@ -932,10 +925,8 @@ xfdesktop_backdrop_cycler_set_image_filename(XfdesktopBackdropCycler *cycler, co
         /* Directories did change */
         if (!xfdesktop_g_file_equal0(old_dir, new_dir)) {
             /* Free the image list if we had one */
-            g_list_free_full(cycler->image_files, g_object_unref);
-            cycler->image_files = NULL;
-            g_list_free_full(cycler->used_image_files, g_object_unref);
-            cycler->used_image_files = NULL;
+            g_clear_list(&cycler->image_files, g_object_unref);
+            g_clear_list(&cycler->used_image_files, g_object_unref);
 
             /* release the directory monitor */
             xfdesktop_backdrop_clear_directory_monitor(cycler);
@@ -975,10 +966,8 @@ xfdesktop_backdrop_cycler_set_enabled(XfdesktopBackdropCycler *cycler, gboolean 
             }
         } else {
             /* we're not cycling anymore, free the image files list */
-            g_list_free_full(cycler->image_files, g_object_unref);
-            cycler->image_files = NULL;
-            g_list_free_full(cycler->used_image_files, g_object_unref);
-            cycler->used_image_files = NULL;
+            g_clear_list(&cycler->image_files, g_object_unref);
+            g_clear_list(&cycler->used_image_files, g_object_unref);
         }
     }
 }

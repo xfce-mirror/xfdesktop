@@ -702,8 +702,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
     yaml_parser_set_input_file(&parser, input);
 
     g_hash_table_remove_all(configs->config_to_monitor);
-    g_list_free_full(configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
-    configs->configs = NULL;
+    g_clear_list(&configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
 
 #ifdef DEBUG
     guint level = 0;
@@ -1134,8 +1133,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
 
     if (state == PARSER_ERROR) {
         g_hash_table_remove_all(configs->config_to_monitor);
-        g_list_free_full(configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
-        configs->configs = NULL;
+        g_clear_list(&configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
 
         g_free(cur_monitor_id);
         xfdesktop_icon_position_monitor_free(cur_pos_monitor);

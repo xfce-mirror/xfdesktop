@@ -1123,10 +1123,7 @@ metadata_monitor_changed(GFileMonitor *monitor,
         XF_DEBUG("metadata file changed event");
 
         /* remove any pending metadata changes */
-        if (fmodel->metadata_timer != 0) {
-            g_source_remove(fmodel->metadata_timer);
-            fmodel->metadata_timer = 0;
-        }
+        g_clear_handle_id(&fmodel->metadata_timer, g_source_remove);
 
         /* cool down timer so we don't call this due to multiple file
          * changes at the same time. */

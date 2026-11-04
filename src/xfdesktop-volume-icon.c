@@ -158,10 +158,7 @@ xfdesktop_volume_icon_finalize(GObject *obj)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(obj);
 
-    if(icon->label) {
-        g_free(icon->label);
-        icon->label = NULL;
-    }
+    g_clear_pointer(&icon->label, g_free);
 
     if (icon->file_info_op_handle != NULL) {
         g_cancellable_cancel(icon->file_info_op_handle);
@@ -866,10 +863,7 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     /* invalidate the tooltip */
-    if(volume_icon->tooltip) {
-        g_free(volume_icon->tooltip);
-        volume_icon->tooltip = NULL;
-    }
+    g_clear_pointer(&volume_icon->tooltip, g_free);
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
