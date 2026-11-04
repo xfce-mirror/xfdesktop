@@ -144,7 +144,7 @@ xfdesktop_thumbnailer_init(XfdesktopThumbnailer *thumbnailer)
             if(supported_flavors != NULL) {
                 gint n;
                 for(n = 0; supported_flavors[n] != NULL; ++n) {
-                    if(g_strcmp0(supported_flavors[n], "large")) {
+                    if(g_strcmp0(supported_flavors[n], "large") != 0) {
                         thumbnailer->big_thumbnails = TRUE;
                     }
                 }
