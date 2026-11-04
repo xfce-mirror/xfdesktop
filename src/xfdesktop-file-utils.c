@@ -386,7 +386,7 @@ xfdesktop_file_utils_file_list_to_string(GList *list, const gchar *prefix, gbool
         *len = string->len;
     }
 
-    return g_string_free(string, FALSE);
+    return g_string_free_and_steal(string);
 }
 
 gchar **
