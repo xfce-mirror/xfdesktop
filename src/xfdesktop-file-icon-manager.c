@@ -1679,7 +1679,7 @@ begin_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop)
                                   G_CALLBACK(config_chooser_dialog_response),
                                   mcrdata,
                                   (GClosureNotify)monitor_configuration_response_data_free_closure,
-                                  0);
+                                  G_CONNECT_DEFAULT);
 
             gtk_widget_show_all(dialog);
 

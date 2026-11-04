@@ -35,7 +35,7 @@ gchar *
 xfdesktop_get_file_mime_type(GFile *file) {
     g_return_val_if_fail(G_IS_FILE(file), NULL);
 
-    GFileInfo *file_info = g_file_query_info(file, "standard::content-type", 0, NULL, NULL);
+    GFileInfo *file_info = g_file_query_info(file, "standard::content-type", G_FILE_QUERY_INFO_NONE, NULL, NULL);
     if(file_info != NULL) {
         gchar *mime_type = g_strdup(g_file_info_get_content_type(file_info));
         g_object_unref(file_info);
