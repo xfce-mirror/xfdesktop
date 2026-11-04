@@ -51,7 +51,7 @@ struct _XfdesktopBackdropManager {
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_SCREEN,
     PROP_CHANNEL,
 };

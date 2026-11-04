@@ -109,7 +109,7 @@ struct _XfdesktopFileIconModelClass
 };
 
 typedef enum {
-    PROP0,
+    PROP_0,
     PROP_GDK_SCREEN,
     PROP_CHANNEL,
     PROP_FOLDER,

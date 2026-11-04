@@ -45,7 +45,7 @@ typedef struct _XfdesktopIconViewManagerPrivate
 } XfdesktopIconViewManagerPrivate;
 
 enum {
-    PROP0 = 0,
+    PROP_0 = 0,
     PROP_SCREEN,
     PROP_DESKTOPS,
     PROP_CHANNEL,

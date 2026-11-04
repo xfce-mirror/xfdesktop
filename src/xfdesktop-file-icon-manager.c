@@ -136,11 +136,10 @@ struct _XfdesktopFileIconManager
 };
 
 enum {
-    PROP0 = 0,
+    PROP_0 = 0,
     PROP_GDK_SCREEN,
     PROP_FOLDER,
     PROP_SHOW_DELETE_MENU,
-    PROP_MAX_TEMPLATES,
 };
 
 typedef struct {

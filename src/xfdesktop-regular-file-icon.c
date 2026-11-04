@@ -78,7 +78,7 @@ struct _XfdesktopRegularFileIcon
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_CHANNEL,
     PROP_GDK_SCREEN,
     PROP_FILE,

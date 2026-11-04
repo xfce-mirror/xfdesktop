@@ -51,7 +51,7 @@ struct _XfdesktopBackdropCycler {
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_CHANNEL,
     PROP_PROPERTY_PREFIX,
     PROP_IMAGE_STYLE,

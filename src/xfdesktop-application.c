@@ -163,7 +163,7 @@ static void cancel_wait_for_wm(XfdesktopApplication *app);
 #endif
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_ICON_STYLE,
 };
 

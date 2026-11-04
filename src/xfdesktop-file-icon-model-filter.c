@@ -48,7 +48,7 @@ struct _XfdesktopFileIconModelFilter {
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_CHANNEL,
     PROP_POSITION_CONFIGS,
     PROP_MONITOR,
