@@ -473,7 +473,7 @@ scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
     return FALSE;
 }
 
-static gboolean
+static void
 reload_idle_cb(gpointer data)
 {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
@@ -492,8 +492,6 @@ reload_idle_cb(gpointer data)
 #endif
 
     g_application_release(G_APPLICATION(app));
-
-    return FALSE;
 }
 
 static XfceDesktop *
@@ -564,7 +562,7 @@ static void
 desktop_action_reload(XfdesktopApplication *app) {
     /* hold the app so it doesn't quit while we queue up a refresh */
     g_application_hold(G_APPLICATION(app));
-    g_idle_add(reload_idle_cb, app);
+    g_idle_add_once(reload_idle_cb, app);
 }
 
 static void
@@ -1012,7 +1010,7 @@ handle_monitors_changed(XfdesktopApplication *app) {
 #endif
 }
 
-static gboolean
+static void
 monitor_changed_idled(gpointer data) {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
 
@@ -1028,8 +1026,6 @@ monitor_changed_idled(gpointer data) {
 
     g_hash_table_remove_all(app->changed_monitors);
     app->changed_monitors_idle_id = 0;
-
-    return FALSE;
 }
 
 static void
@@ -1050,7 +1046,7 @@ monitor_changed(XfwMonitor *monitor, GParamSpec *pspec, XfdesktopApplication *ap
     }
 
     if (app->changed_monitors_idle_id == 0) {
-        app->changed_monitors_idle_id = g_idle_add(monitor_changed_idled, app);
+        app->changed_monitors_idle_id = g_idle_add_once(monitor_changed_idled, app);
     }
 }
 
@@ -1364,19 +1360,12 @@ xfdesktop_application_command_line(GApplication *g_application,
     return 0;
 }
 
-static gboolean
-xfce_desktop_menu_destroy_idled(gpointer data)
-{
-    gtk_widget_destroy(GTK_WIDGET(data));
-    return FALSE;
-}
-
 static void
 xfce_desktop_menu_deactivated(GtkWidget *menu, XfdesktopApplication *app) {
     if (app->active_root_menu == GTK_MENU(menu)) {
         app->active_root_menu = NULL;
     }
-    g_idle_add(xfce_desktop_menu_destroy_idled, menu);
+    g_idle_add_once((GSourceOnceFunc)gtk_widget_destroy, menu);
 }
 
 static void

@@ -1035,16 +1035,15 @@ xfdesktop_menu_item_from_app_info(MonitorData *mdata,
     return mi;
 }
 
-static gboolean
+static void
 xfdesktop_file_icon_menu_free_icon_list_idled(gpointer user_data) {
     GList *icon_list = user_data;
     g_list_free_full(icon_list, g_object_unref);
-    return FALSE;
 }
 
 static void
 xfdesktop_file_icon_menu_free_icon_list(GtkMenu *menu, GList *icon_list) {
-    g_idle_add(xfdesktop_file_icon_menu_free_icon_list_idled, icon_list);
+    g_idle_add_once(xfdesktop_file_icon_menu_free_icon_list_idled, icon_list);
 }
 
 static void

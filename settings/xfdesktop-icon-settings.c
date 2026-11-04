@@ -49,22 +49,20 @@ cb_icon_style_changed(GtkComboBox *combo, GtkBuilder *main_gxml) {
 #endif
 }
 
-static gboolean
+static void
 xfdesktop_spin_icon_size_timer(gpointer user_data) {
     TRACE("entering");
 
     GtkSpinButton *button = user_data;
     XfconfChannel *channel = g_object_get_data(G_OBJECT(button), XFCONF_CHANNEL_KEY);
 
-    g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), FALSE);
+    g_return_if_fail(XFCONF_IS_CHANNEL(channel));
 
     xfconf_channel_set_uint(channel,
                             DESKTOP_ICONS_ICON_SIZE_PROP,
                             gtk_spin_button_get_value(button));
 
     g_object_set_data(G_OBJECT(button), TIMER_ID_KEY, NULL);
-
-    return G_SOURCE_REMOVE;
 }
 
 static void
@@ -76,7 +74,7 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button, XfconfChannel *channe
         g_source_remove(timer_id);
     }
 
-    timer_id = g_timeout_add(500, xfdesktop_spin_icon_size_timer, button);
+    timer_id = g_timeout_add_once(500, xfdesktop_spin_icon_size_timer, button);
     g_object_set_data(G_OBJECT(button), TIMER_ID_KEY, GUINT_TO_POINTER(timer_id));
 }
 

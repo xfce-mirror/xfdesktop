@@ -1102,14 +1102,12 @@ update_file_info(gpointer key, gpointer value, gpointer user_data) {
     }
 }
 
-static gboolean
+static void
 metadata_update_timer(gpointer user_data)
 {
     XfdesktopFileIconModel *fmodel = XFDESKTOP_FILE_ICON_MODEL(user_data);
     fmodel->metadata_timer = 0;
     g_hash_table_foreach(fmodel->icons, update_file_info, fmodel);
-
-    return FALSE;
 }
 
 static void
@@ -1127,7 +1125,7 @@ metadata_monitor_changed(GFileMonitor *monitor,
 
         /* cool down timer so we don't call this due to multiple file
          * changes at the same time. */
-        fmodel->metadata_timer = g_timeout_add_seconds(5, metadata_update_timer, fmodel);
+        fmodel->metadata_timer = g_timeout_add_seconds_once(5, metadata_update_timer, fmodel);
     }
 }
 

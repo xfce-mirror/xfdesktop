@@ -1761,12 +1761,11 @@ xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view) {
     }
 }
 
-static gboolean
+static void
 keyboard_navigation_timeout(gpointer data) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
     icon_view->keyboard_navigation_state_timeout = 0;
     xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
-    return G_SOURCE_REMOVE;
 }
 
 static gboolean
@@ -1789,9 +1788,9 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
     }
 
     gtk_grab_add(GTK_WIDGET(icon_view));
-    icon_view->keyboard_navigation_state_timeout = g_timeout_add(KEYBOARD_NAVIGATION_TIMEOUT,
-                                                                       keyboard_navigation_timeout,
-                                                                       icon_view);
+    icon_view->keyboard_navigation_state_timeout = g_timeout_add_once(KEYBOARD_NAVIGATION_TIMEOUT,
+                                                                      keyboard_navigation_timeout,
+                                                                      icon_view);
 
     g_array_append_val(icon_view->keyboard_navigation_state, lower_char);
 
