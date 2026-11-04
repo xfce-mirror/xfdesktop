@@ -40,6 +40,8 @@ GType xfdesktop_application_get_type(void);
 
 XfdesktopApplication *xfdesktop_application_get(void);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopApplication, g_object_unref)
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_H__ */

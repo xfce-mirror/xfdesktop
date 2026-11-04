@@ -58,6 +58,8 @@ void                       xfdesktop_clipboard_manager_paste_files     (Xfdeskto
                                                                         GtkWidget                       *widget,
                                                                         GClosure                        *new_files_closure);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopClipboardManager, g_object_unref)
+
 G_END_DECLS;
 
 #endif /* !__XFDESKTOP_CLIPBOARD_MANAGER_H__ */
