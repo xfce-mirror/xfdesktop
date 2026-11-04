@@ -88,15 +88,7 @@ show_notification(const gchar *summary, const gchar *message, GIcon *icon, Notif
     } else {
         gchar *icon_name = icon_name_for_gicon(icon);
 
-#ifdef NOTIFY_CHECK_VERSION
-#if NOTIFY_CHECK_VERSION (0, 7, 0)
         NotifyNotification *notification = notify_notification_new(summary, message, icon_name);
-#else
-        NotifyNotification *notification = notify_notification_new(summary, message, icon_name, NULL);
-#endif
-#else
-        NotifyNotification *notification = notify_notification_new(summary, message, icon_name, NULL);
-#endif
         notify_notification_set_urgency(notification, urgency);
         notify_notification_set_timeout(notification, timeout);
         notify_notification_set_category(notification, "device");
