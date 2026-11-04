@@ -108,7 +108,7 @@ static void icon_view_icon_activated(XfdesktopIconView *icon_view,
 static void window_icon_manager_action_fixup(XfceGtkActionEntry *entry);
 static void accel_map_changed(XfdesktopWindowIconManager *wmanager);
 
-G_DEFINE_TYPE(XfdesktopWindowIconManager, xfdesktop_window_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
+G_DEFINE_FINAL_TYPE(XfdesktopWindowIconManager, xfdesktop_window_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
 
 
 static void

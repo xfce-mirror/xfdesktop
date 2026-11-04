@@ -351,7 +351,7 @@ static void file_icon_manager_action_fixup(XfceGtkActionEntry *entry);
 static void accel_map_changed(XfdesktopFileIconManager *fmanager);
 
 
-G_DEFINE_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
+G_DEFINE_FINAL_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
 
 
 enum

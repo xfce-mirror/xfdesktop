@@ -79,7 +79,7 @@ enum
 static guint thumbnailer_signals[LAST_SIGNAL] = { 0, };
 
 
-G_DEFINE_TYPE(XfdesktopThumbnailer, xfdesktop_thumbnailer, G_TYPE_OBJECT);
+G_DEFINE_FINAL_TYPE(XfdesktopThumbnailer, xfdesktop_thumbnailer, G_TYPE_OBJECT);
 
 
 static void

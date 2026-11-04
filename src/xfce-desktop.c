@@ -522,7 +522,7 @@ manager_backdrop_changed(XfdesktopBackdropManager *manager,
 }
 
 
-G_DEFINE_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
+G_DEFINE_FINAL_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
 
 
 static void

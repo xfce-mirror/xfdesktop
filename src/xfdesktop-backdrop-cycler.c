@@ -117,7 +117,7 @@ static void xfdesktop_backdrop_cycler_image_filename_changed(XfconfChannel *chan
                                                              XfdesktopBackdropCycler *cycler);
 
 
-G_DEFINE_TYPE(XfdesktopBackdropCycler, xfdesktop_backdrop_cycler, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE(XfdesktopBackdropCycler, xfdesktop_backdrop_cycler, G_TYPE_OBJECT)
 
 
 static void

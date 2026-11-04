@@ -133,7 +133,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_regular_file_icon_tfi_init))
 #else
-G_DEFINE_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_FINAL_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 

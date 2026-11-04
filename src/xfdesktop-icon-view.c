@@ -613,7 +613,7 @@ static struct {
 };
 
 
-G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_EVENT_BOX)
+G_DEFINE_FINAL_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_EVENT_BOX)
 
 
 static void

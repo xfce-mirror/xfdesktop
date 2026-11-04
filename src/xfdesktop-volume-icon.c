@@ -109,7 +109,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopVolumeIcon, xfdesktop_volume_icon,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_volume_icon_tfi_init))
 #else
-G_DEFINE_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon, XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_FINAL_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 

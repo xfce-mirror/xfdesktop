@@ -237,7 +237,7 @@ render_data_free(RenderData *rdata) {
 }
 
 
-G_DEFINE_TYPE(XfdesktopBackdropManager, xfdesktop_backdrop_manager, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE(XfdesktopBackdropManager, xfdesktop_backdrop_manager, G_TYPE_OBJECT)
 
 
 static guint signals[N_SIGNALS] = { 0, };
