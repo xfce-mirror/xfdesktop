@@ -192,10 +192,7 @@ xfdesktop_thumbnailer_finalize(GObject *object)
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
     g_slist_free(thumbnailer->queue);
-
-    if (thumbnailer->supported_mimetypes != NULL) {
-        g_strfreev(thumbnailer->supported_mimetypes);
-    }
+    g_strfreev(thumbnailer->supported_mimetypes);
 
     G_OBJECT_CLASS(xfdesktop_thumbnailer_parent_class)->finalize(object);
 }

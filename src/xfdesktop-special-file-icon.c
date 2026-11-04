@@ -152,8 +152,7 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
         g_object_unref(icon->filesystem_info);
     }
 
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }

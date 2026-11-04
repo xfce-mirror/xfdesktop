@@ -486,11 +486,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
         g_object_unref(icon->filesystem_info);
 
     g_object_unref(icon->file);
-
     g_free(icon->display_name);
-
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     if(icon->thumbnail_file)
         g_object_unref(icon->thumbnail_file);

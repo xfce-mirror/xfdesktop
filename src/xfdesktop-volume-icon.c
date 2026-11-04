@@ -182,8 +182,7 @@ xfdesktop_volume_icon_finalize(GObject *obj)
     if(icon->volume)
         g_object_unref(G_OBJECT(icon->volume));
 
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     G_OBJECT_CLASS(xfdesktop_volume_icon_parent_class)->finalize(obj);
 }
