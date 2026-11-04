@@ -74,9 +74,6 @@ gboolean xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon);
 GIcon *xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon);
 gdouble xfdesktop_file_icon_get_opacity(XfdesktopFileIcon *icon);
 
-gpointer xfdesktop_file_icon_get_hash_key(XfdesktopFileIcon *icon);
-void xfdesktop_file_icon_free_hash_key(gpointer key);
-
 const gchar *xfdesktop_file_icon_peek_sort_key(XfdesktopFileIcon *icon);
 guint xfdesktop_file_icon_hash(gconstpointer icon);
 gint xfdesktop_file_icon_equal(gconstpointer a,
