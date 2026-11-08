@@ -193,7 +193,7 @@ xfdesktop_clipboard_manager_class_init (gpointer g_class,
                                    PROP_CAN_PASTE,
                                    g_param_spec_boolean ("can-paste", "can-pase", "can-paste",
                                                          FALSE,
-                                                         G_PARAM_READABLE));
+                                                         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
   /**
    * XfdesktopClipboardManager::changed:
    * @manager : a #XfdesktopClipboardManager.
@@ -530,8 +530,7 @@ xfdesktop_clipboard_manager_clear_callback (GtkClipboard *clipboard,
                           manager);
       g_object_unref (G_OBJECT (lp->data));
     }
-  g_list_free (manager->files);
-  manager->files = NULL;
+  g_clear_list(&manager->files, NULL);
 }
 
 

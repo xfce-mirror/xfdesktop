@@ -109,14 +109,14 @@ menu_settings_changed(XfconfChannel *channel,
                       const GValue *value,
                       gpointer user_data)
 {
-    if(!strcmp(property, DESKTOP_MENU_SHOW_PROP)) {
+    if(strcmp(property, DESKTOP_MENU_SHOW_PROP) == 0) {
         show_desktop_menu = G_VALUE_TYPE(value)
                             ? g_value_get_boolean(value)
                             : TRUE;
         if (!show_desktop_menu) {
             g_clear_object(&garcon_menu);
         }
-    } else if(!strcmp(property, DESKTOP_MENU_SHOW_ICONS_PROP)) {
+    } else if(strcmp(property, DESKTOP_MENU_SHOW_ICONS_PROP) == 0) {
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
                                   : TRUE;

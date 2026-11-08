@@ -61,8 +61,6 @@ void xfce_desktop_refresh(XfceDesktop *desktop);
 
 void xfce_desktop_cycle_backdrop(XfceDesktop *desktop);
 
-void xfce_desktop_arrange_icons(XfceDesktop *desktop);
-
 #ifdef ENABLE_VIDEO_BACKDROP
 void xfce_desktop_put_to_layer(XfceDesktop *desktop,
                                XfceDesktopLayer layer,

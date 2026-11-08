@@ -93,6 +93,8 @@ gboolean xfdesktop_icon_view_model_get_iter_for_key(XfdesktopIconViewModel *ivmo
                                                     gpointer key,
                                                     GtkTreeIter *iter);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopIconViewModel, g_object_unref)
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_VIEW_MODEL_H__ */

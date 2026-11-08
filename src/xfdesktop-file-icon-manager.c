@@ -136,11 +136,10 @@ struct _XfdesktopFileIconManager
 };
 
 enum {
-    PROP0 = 0,
+    PROP_0 = 0,
     PROP_GDK_SCREEN,
     PROP_FOLDER,
     PROP_SHOW_DELETE_MENU,
-    PROP_MAX_TEMPLATES,
 };
 
 typedef struct {
@@ -352,7 +351,7 @@ static void file_icon_manager_action_fixup(XfceGtkActionEntry *entry);
 static void accel_map_changed(XfdesktopFileIconManager *fmanager);
 
 
-G_DEFINE_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
+G_DEFINE_FINAL_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
 
 
 enum
@@ -1036,16 +1035,15 @@ xfdesktop_menu_item_from_app_info(MonitorData *mdata,
     return mi;
 }
 
-static gboolean
+static void
 xfdesktop_file_icon_menu_free_icon_list_idled(gpointer user_data) {
     GList *icon_list = user_data;
     g_list_free_full(icon_list, g_object_unref);
-    return FALSE;
 }
 
 static void
 xfdesktop_file_icon_menu_free_icon_list(GtkMenu *menu, GList *icon_list) {
-    g_idle_add(xfdesktop_file_icon_menu_free_icon_list_idled, icon_list);
+    g_idle_add_once(xfdesktop_file_icon_menu_free_icon_list_idled, icon_list);
 }
 
 static void
@@ -1681,7 +1679,7 @@ begin_create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop)
                                   G_CALLBACK(config_chooser_dialog_response),
                                   mcrdata,
                                   (GClosureNotify)monitor_configuration_response_data_free_closure,
-                                  0);
+                                  G_CONNECT_DEFAULT);
 
             gtk_widget_show_all(dialog);
 
@@ -3661,9 +3659,7 @@ xfdesktop_file_icon_manager_drag_leave(GtkWidget *icon_view,
     mdata->fmanager->drag_data_received = FALSE;
     mdata->fmanager->icon_on_drop_dest = NULL;
 
-    g_list_free_full(mdata->fmanager->dragged_files, g_object_unref);
-    mdata->fmanager->dragged_files = NULL;
-
+    g_clear_list(&mdata->fmanager->dragged_files, g_object_unref);
     g_clear_object(&mdata->fmanager->xdnd_direct_save_destination);
 
     xfdesktop_icon_view_unset_highlight(XFDESKTOP_ICON_VIEW(icon_view));

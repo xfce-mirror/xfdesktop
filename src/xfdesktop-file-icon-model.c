@@ -109,7 +109,7 @@ struct _XfdesktopFileIconModelClass
 };
 
 typedef enum {
-    PROP0,
+    PROP_0,
     PROP_GDK_SCREEN,
     PROP_CHANNEL,
     PROP_FOLDER,
@@ -232,7 +232,7 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                          "show-thumbnails",
                                                          "show-thumbnails",
                                                          TRUE,
-                                                         G_PARAM_READWRITE));
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class,
                                     PROP_SORT_FOLDERS_BEFORE_FILES,
                                     g_param_spec_boolean("sort-folders-before-files",
@@ -1102,14 +1102,12 @@ update_file_info(gpointer key, gpointer value, gpointer user_data) {
     }
 }
 
-static gboolean
+static void
 metadata_update_timer(gpointer user_data)
 {
     XfdesktopFileIconModel *fmodel = XFDESKTOP_FILE_ICON_MODEL(user_data);
     fmodel->metadata_timer = 0;
     g_hash_table_foreach(fmodel->icons, update_file_info, fmodel);
-
-    return FALSE;
 }
 
 static void
@@ -1123,14 +1121,11 @@ metadata_monitor_changed(GFileMonitor *monitor,
         XF_DEBUG("metadata file changed event");
 
         /* remove any pending metadata changes */
-        if (fmodel->metadata_timer != 0) {
-            g_source_remove(fmodel->metadata_timer);
-            fmodel->metadata_timer = 0;
-        }
+        g_clear_handle_id(&fmodel->metadata_timer, g_source_remove);
 
         /* cool down timer so we don't call this due to multiple file
          * changes at the same time. */
-        fmodel->metadata_timer = g_timeout_add_seconds(5, metadata_update_timer, fmodel);
+        fmodel->metadata_timer = g_timeout_add_seconds_once(5, metadata_update_timer, fmodel);
     }
 }
 

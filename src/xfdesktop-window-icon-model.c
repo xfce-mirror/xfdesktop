@@ -71,7 +71,7 @@ struct _XfdesktopWindowIconModelClass
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_SCREEN,
 };
 

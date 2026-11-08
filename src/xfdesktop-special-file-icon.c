@@ -95,7 +95,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_special_file_icon_tfi_init))
 #else
-G_DEFINE_TYPE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon, XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_FINAL_TYPE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -152,8 +152,7 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
         g_object_unref(icon->filesystem_info);
     }
 
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }

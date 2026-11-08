@@ -99,7 +99,7 @@ struct _XfdesktopBackgroundSettings {
     GCancellable *cancel_enumeration;
     guint add_dir_idle_id;
 
-    guint last_image_signal_id;
+    gulong last_image_signal_id;
 };
 
 typedef struct {
@@ -330,8 +330,7 @@ xfdesktop_settings_create_previews(gpointer data) {
             return TRUE;
         } else {
             /* Nothing left, remove the queue, we're done with it */
-            g_async_queue_unref(background_settings->preview_queue);
-            background_settings->preview_queue = NULL;
+            g_clear_pointer(&background_settings->preview_queue, g_async_queue_unref);
         }
     }
 
@@ -528,10 +527,7 @@ dir_data_free(AddDirData *dir_data) {
     }
     g_free(dir_data);
 
-    if (background_settings->cancel_enumeration) {
-        g_object_unref(background_settings->cancel_enumeration);
-        background_settings->cancel_enumeration = NULL;
-    }
+    g_clear_object(&background_settings->cancel_enumeration);
 
     background_settings->add_dir_idle_id = 0;
 }
@@ -981,29 +977,19 @@ stop_image_loading(XfdesktopBackgroundSettings *background_settings) {
     xfdesktop_thumbnailer_dequeue_all_thumbnails(background_settings->thumbnailer);
 
     /* stop the idle preview callback */
-    if (background_settings->preview_id != 0) {
-        g_source_remove(background_settings->preview_id);
-        background_settings->preview_id = 0;
-    }
+    g_clear_handle_id(&background_settings->preview_id, g_source_remove);
 
     /* Remove the previews in the message queue */
-    if (background_settings->preview_queue != NULL) {
-        g_async_queue_unref(background_settings->preview_queue);
-        background_settings->preview_queue = NULL;
-    }
+    g_clear_pointer(&background_settings->preview_queue, g_async_queue_unref);
 
     /* Cancel any file enumeration that's running */
     if (background_settings->cancel_enumeration != NULL) {
         g_cancellable_cancel(background_settings->cancel_enumeration);
-        g_object_unref(background_settings->cancel_enumeration);
-        background_settings->cancel_enumeration = NULL;
+        g_clear_object(&background_settings->cancel_enumeration);
     }
 
     /* Cancel the file enumeration for populating the icon view */
-    if (background_settings->add_dir_idle_id != 0) {
-        g_source_remove(background_settings->add_dir_idle_id);
-        background_settings->add_dir_idle_id = 0;
-    }
+    g_clear_handle_id(&background_settings->add_dir_idle_id, g_source_remove);
 }
 
 static gboolean
@@ -1255,10 +1241,7 @@ xfdesktop_settings_background_tab_change_bindings(XfdesktopBackgroundSettings *b
 
     buf = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "last-image");
     if (remove_binding) {
-        if (background_settings->last_image_signal_id != 0) {
-            g_signal_handler_disconnect(channel, background_settings->last_image_signal_id);
-            background_settings->last_image_signal_id = 0;
-        }
+        g_clear_signal_handler(&background_settings->last_image_signal_id, channel);
     } else {
         gchar *signal = g_strconcat("property-changed::", buf, NULL);
         background_settings->last_image_signal_id = g_signal_connect(channel, signal,
@@ -1654,10 +1637,7 @@ is_our_window(XfdesktopBackgroundSettings *background_settings, XfwWindow *windo
             unsigned int n_children = 0;
 
             if (XQueryTree(dpy, cur_win, &root_win, &parent_win, &children, &n_children) != 0) {
-                if (children != NULL) {
-                    XFree(children);
-                    children = NULL;
-                }
+                g_clear_pointer(&children, XFree);
                 cur_win = parent_win;
             } else {
                 cur_win = 0;

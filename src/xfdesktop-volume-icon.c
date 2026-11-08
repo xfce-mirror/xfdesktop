@@ -109,7 +109,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopVolumeIcon, xfdesktop_volume_icon,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_volume_icon_tfi_init))
 #else
-G_DEFINE_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon, XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_FINAL_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -158,10 +158,7 @@ xfdesktop_volume_icon_finalize(GObject *obj)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(obj);
 
-    if(icon->label) {
-        g_free(icon->label);
-        icon->label = NULL;
-    }
+    g_clear_pointer(&icon->label, g_free);
 
     if (icon->file_info_op_handle != NULL) {
         g_cancellable_cancel(icon->file_info_op_handle);
@@ -185,8 +182,7 @@ xfdesktop_volume_icon_finalize(GObject *obj)
     if(icon->volume)
         g_object_unref(G_OBJECT(icon->volume));
 
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     G_OBJECT_CLASS(xfdesktop_volume_icon_parent_class)->finalize(obj);
 }
@@ -866,10 +862,7 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     /* invalidate the tooltip */
-    if(volume_icon->tooltip) {
-        g_free(volume_icon->tooltip);
-        volume_icon->tooltip = NULL;
-    }
+    g_clear_pointer(&volume_icon->tooltip, g_free);
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));

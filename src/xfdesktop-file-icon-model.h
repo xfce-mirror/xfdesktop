@@ -61,6 +61,8 @@ gboolean xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
 
 void xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopFileIconModel, g_object_unref)
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_FILE_ICON_MODEL_H__ */

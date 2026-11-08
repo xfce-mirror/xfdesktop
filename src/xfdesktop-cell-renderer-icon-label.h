@@ -37,6 +37,8 @@ GType xfdesktop_cell_renderer_icon_label_get_type(void);
 
 GtkCellRenderer *xfdesktop_cell_renderer_icon_label_new(void);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopCellRendererIconLabel, g_object_unref)
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_CELL_RENDERER_ICON_LABEL__ */

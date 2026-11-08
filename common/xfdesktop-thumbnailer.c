@@ -79,7 +79,7 @@ enum
 static guint thumbnailer_signals[LAST_SIGNAL] = { 0, };
 
 
-G_DEFINE_TYPE(XfdesktopThumbnailer, xfdesktop_thumbnailer, G_TYPE_OBJECT);
+G_DEFINE_FINAL_TYPE(XfdesktopThumbnailer, xfdesktop_thumbnailer, G_TYPE_OBJECT);
 
 
 static void
@@ -144,7 +144,7 @@ xfdesktop_thumbnailer_init(XfdesktopThumbnailer *thumbnailer)
             if(supported_flavors != NULL) {
                 gint n;
                 for(n = 0; supported_flavors[n] != NULL; ++n) {
-                    if(g_strcmp0(supported_flavors[n], "large")) {
+                    if(g_strcmp0(supported_flavors[n], "large") != 0) {
                         thumbnailer->big_thumbnails = TRUE;
                     }
                 }
@@ -171,11 +171,7 @@ xfdesktop_thumbnailer_dispose(GObject *object)
 {
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
-    if (thumbnailer->request_timer_id != 0) {
-        g_source_remove(thumbnailer->request_timer_id);
-        thumbnailer->request_timer_id = 0;
-    }
-
+    g_clear_handle_id(&thumbnailer->request_timer_id, g_source_remove);
     g_clear_object(&thumbnailer->proxy);
 
     if (thumbnailer == thumbnailer_object) {
@@ -196,10 +192,7 @@ xfdesktop_thumbnailer_finalize(GObject *object)
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
     g_slist_free(thumbnailer->queue);
-
-    if (thumbnailer->supported_mimetypes != NULL) {
-        g_strfreev(thumbnailer->supported_mimetypes);
-    }
+    g_strfreev(thumbnailer->supported_mimetypes);
 
     G_OBJECT_CLASS(xfdesktop_thumbnailer_parent_class)->finalize(object);
 }

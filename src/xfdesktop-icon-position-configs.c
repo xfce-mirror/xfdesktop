@@ -500,7 +500,7 @@ out_err:
     return FALSE;
 }
 
-static gboolean
+static void
 save_icons_idled(gpointer data) {
     XfdesktopIconPositionConfigs *configs = data;
     configs->scheduled_save_id = 0;
@@ -510,14 +510,12 @@ save_icons_idled(gpointer data) {
         g_message("Failed to save desktop icon positions: %s", error->message);
         g_error_free(error);
     }
-
-    return G_SOURCE_REMOVE;
 }
 
 static void
 schedule_save(XfdesktopIconPositionConfigs *configs) {
     if (configs->scheduled_save_id == 0) {
-        configs->scheduled_save_id = g_timeout_add_seconds(SAVE_DELAY_S, save_icons_idled, configs);
+        configs->scheduled_save_id = g_timeout_add_seconds_once(SAVE_DELAY_S, save_icons_idled, configs);
     }
 }
 
@@ -702,8 +700,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
     yaml_parser_set_input_file(&parser, input);
 
     g_hash_table_remove_all(configs->config_to_monitor);
-    g_list_free_full(configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
-    configs->configs = NULL;
+    g_clear_list(&configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
 
 #ifdef DEBUG
     guint level = 0;
@@ -1134,8 +1131,7 @@ xfdesktop_icon_position_configs_load(XfdesktopIconPositionConfigs *configs, GErr
 
     if (state == PARSER_ERROR) {
         g_hash_table_remove_all(configs->config_to_monitor);
-        g_list_free_full(configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
-        configs->configs = NULL;
+        g_clear_list(&configs->configs, (GDestroyNotify)xfdesktop_icon_position_config_free);
 
         g_free(cur_monitor_id);
         xfdesktop_icon_position_monitor_free(cur_pos_monitor);

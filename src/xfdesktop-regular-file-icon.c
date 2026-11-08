@@ -78,7 +78,7 @@ struct _XfdesktopRegularFileIcon
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_CHANNEL,
     PROP_GDK_SCREEN,
     PROP_FILE,
@@ -133,7 +133,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_regular_file_icon_tfi_init))
 #else
-G_DEFINE_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_FINAL_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -486,11 +486,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
         g_object_unref(icon->filesystem_info);
 
     g_object_unref(icon->file);
-
     g_free(icon->display_name);
-
-    if(icon->tooltip)
-        g_free(icon->tooltip);
+    g_free(icon->tooltip);
 
     if(icon->thumbnail_file)
         g_object_unref(icon->thumbnail_file);
@@ -565,8 +562,7 @@ xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
     gchar *path = g_strconcat(folder, "/", file, NULL);
 
     if(gdk_pixbuf_get_file_info(path, NULL, NULL) == NULL) {
-        g_free(path);
-        path = NULL;
+        g_clear_pointer(&path, g_free);
     }
 
     return path;
@@ -693,8 +689,7 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
                 g_object_unref(icon_info);
             } else {
                 /* icon not found*/
-                g_object_unref(gicon);
-                gicon = NULL;
+                g_clear_object(&gicon);
             }
         }
 
@@ -987,10 +982,7 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     g_return_if_fail(G_IS_FILE_INFO(info));
 
     /* release the old file info */
-    if(regular_file_icon->file_info) {
-        g_object_unref(regular_file_icon->file_info);
-        regular_file_icon->file_info = NULL;
-    }
+    g_clear_object(&regular_file_icon->file_info);
 
     regular_file_icon->file_info = g_object_ref(info);
 
@@ -1020,8 +1012,7 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     /* invalidate the tooltip */
-    g_free(regular_file_icon->tooltip);
-    regular_file_icon->tooltip = NULL;
+    g_clear_pointer(&regular_file_icon->tooltip, g_free);
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));

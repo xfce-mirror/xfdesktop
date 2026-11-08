@@ -48,7 +48,7 @@ struct _XfdesktopFileIconModelFilter {
 };
 
 enum {
-    PROP0,
+    PROP_0,
     PROP_CHANNEL,
     PROP_POSITION_CONFIGS,
     PROP_MONITOR,
@@ -86,7 +86,7 @@ static gboolean is_regular_file_visible(XfdesktopFileIconModelFilter *filter,
                                         XfdesktopRegularFileIcon *icon);
 
 
-G_DEFINE_TYPE(XfdesktopFileIconModelFilter, xfdesktop_file_icon_model_filter, GTK_TYPE_TREE_MODEL_FILTER)
+G_DEFINE_FINAL_TYPE(XfdesktopFileIconModelFilter, xfdesktop_file_icon_model_filter, GTK_TYPE_TREE_MODEL_FILTER)
 
 
 static const struct

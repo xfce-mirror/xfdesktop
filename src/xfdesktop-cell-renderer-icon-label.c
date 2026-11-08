@@ -68,7 +68,7 @@ struct _XfdesktopCellRendererIconLabelClass
 
 enum
 {
-    PROP0 = 0,
+    PROP_0 = 0,
     PROP_ALIGNMENT,
     PROP_ALIGN_SET,
     PROP_ATTRIBUTES,

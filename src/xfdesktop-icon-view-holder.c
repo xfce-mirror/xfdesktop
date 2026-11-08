@@ -44,7 +44,7 @@ struct _XfdesktopIconViewHolder {
 static void xfdesktop_icon_view_holder_finalize(GObject *object);
 
 
-G_DEFINE_TYPE(XfdesktopIconViewHolder, xfdesktop_icon_view_holder, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE(XfdesktopIconViewHolder, xfdesktop_icon_view_holder, G_TYPE_OBJECT)
 
 
 static void

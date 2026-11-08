@@ -51,6 +51,8 @@ gboolean xfdesktop_window_icon_model_get_window_iter(XfdesktopWindowIconModel *w
                                                      XfwWindow *window,
                                                      GtkTreeIter *iter);
 
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(XfdesktopWindowIconModel, g_object_unref)
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_WINDOW_ICON_MODEL_H__ */
