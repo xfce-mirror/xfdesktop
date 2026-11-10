@@ -30,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Andrei Stepanov, 2022-2026\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfdesktop/language/ru/)\n"
@@ -173,7 +173,7 @@ msgstr "ID СОКЕТА"
 msgid "Version information"
 msgstr "Информация о версии"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Включить отладочные сообщения"
 
@@ -182,11 +182,11 @@ msgstr "Включить отладочные сообщения"
 msgid "Type '%s --help' for usage."
 msgstr "Наберите «%s --help» для информации об использовании."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда разработчиков Xfce. Все права защищены."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Об ошибках сообщайте на <%s>."
@@ -875,82 +875,82 @@ msgstr "Плагин «gtk» для GStreamer, необходимый для в�
 msgid "Unable to create gstreamer video player"
 msgstr "Не удаётся создать видеоплеер GStreamer"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "Показать информацию о версии"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "Перезагрузить все настройки"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Перейти к следующему фоновому изображению на текущем рабочем месте"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Показать меню (под курсором мыши)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Показать список окон (под курсором мыши)"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Автоматически выравнивать значки на рабочем столе"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "Отключить отладочные сообщения"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "Не ожидать менеджера окон при запуске"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "Завершить выполнение xfdesktop"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Это %s версии %s, запущенный на Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Собрано с GTK+ %d.%d.%d, скомпоновано с GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "Параметры сборки:\\n\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Меню рабочего стола: %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "включено"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "отключено"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Значки на рабочем столе: %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Значки файлов на рабочем столе: %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
 msgstr "%s уже запущен"
@@ -1477,3 +1477,15 @@ msgstr "_Подключить том"
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "Выполнить _программу…"
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Менеджер рабочего стола Xfce"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "Отображает фон рабочего стола, меню и значки"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "рабочий стол;фон;обои;xfce;"
