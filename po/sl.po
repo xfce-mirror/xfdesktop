@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Dejweed, 2025-2026\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfdesktop/language/sl/)\n"
@@ -159,7 +159,7 @@ msgstr "ID VTIČNICE"
 msgid "Version information"
 msgstr "Podatki o različici"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Omogoči razhroščevalna sporočila"
 
@@ -168,11 +168,11 @@ msgstr "Omogoči razhroščevalna sporočila"
 msgid "Type '%s --help' for usage."
 msgstr "Za pomoč izvedite ukaz \"%s --help\"."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce razvojna ekipa. Vse pravice pridržane."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prijavite hrošče na <%s>."
@@ -773,7 +773,7 @@ msgstr "Splošno"
 
 #: settings/xfdesktop-settings-ui.glade:1350
 msgid "Show _emblems on file icons"
-msgstr ""
+msgstr "Prikaži _embleme na ikonah datotek"
 
 #: settings/xfdesktop-settings-ui.glade:1355
 msgid ""
@@ -783,7 +783,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1368
 msgid "Show user-assi_gned emblems"
-msgstr ""
+msgstr "Prikaži embleme, ki ji_h je dodelil uporabnik"
 
 #: settings/xfdesktop-settings-ui.glade:1373
 msgid ""
@@ -793,7 +793,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1387
 msgid "Show _symlink emblem"
-msgstr ""
+msgstr "Prikaži emblem po_vezave"
 
 #: settings/xfdesktop-settings-ui.glade:1392
 msgid ""
@@ -803,7 +803,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1406
 msgid "Show _read-only emblem"
-msgstr ""
+msgstr "Prikaži emblem \"_samo za branje\""
 
 #: settings/xfdesktop-settings-ui.glade:1411
 msgid ""
@@ -813,7 +813,7 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1425
 msgid "Show _unreadable emblem"
-msgstr ""
+msgstr "Prikaži emblem \"_ni berljivo\""
 
 #: settings/xfdesktop-settings-ui.glade:1430
 msgid ""
@@ -861,82 +861,82 @@ msgstr "Vtičnik »gtk« za gstreamer, ki je potreben za predvajanje videoposnet
 msgid "Unable to create gstreamer video player"
 msgstr "Ni mogoče ustvariti gstreamer video predvajalnika"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "Prikaži podatke o različici"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "Znova naloži vse nastavitve"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Nadaljuj na naslednjo sliko ozadja na trenutni delovni površini"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Odpri pojavni meni (na trenutnem mestu kazalke)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Odpri seznam oken (na trenutnem mestu kazalke)"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Samodejno razvrsti vse ikone na namizju"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "Onemogoči sporočila razhroščevanja"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "Ob zagonu ne čakaj na upravljalnik oken"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "Povzroči končanje xfdesktop-a"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "To je %s različica %s, ki se izvaja na Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Izgrajeno z GTK+ %d.%d.%d, povezano z GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "Možnosti izgradnje:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Meni namizja:          %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "omogočeno"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "onemogočeno"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikone namizja:         %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikone datotek namizja: %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
 msgstr ""
@@ -992,15 +992,15 @@ msgstr "_Odpri vse"
 
 #: src/xfdesktop-file-icon-manager.c:1912
 msgid "Create _Launcher..."
-msgstr "Ustvari zaganja_lnik..."
+msgstr "Ustvari zaganja_lnik ..."
 
 #: src/xfdesktop-file-icon-manager.c:1922
 msgid "Create _URL Link..."
-msgstr "Ustvari povezavo _URL..."
+msgstr "Ustvari povezavo _URL ..."
 
 #: src/xfdesktop-file-icon-manager.c:1932
 msgid "Create _Folder..."
-msgstr "Ustvari _mapo..."
+msgstr "Ustvari _mapo ..."
 
 #: src/xfdesktop-file-icon-manager.c:1971
 msgid "No templates installed"
@@ -1029,11 +1029,11 @@ msgstr "Odpri _z"
 #: src/xfdesktop-file-icon-manager.c:2100
 #: src/xfdesktop-file-icon-manager.c:2117
 msgid "Ope_n With Other Application..."
-msgstr "Odpri z _drugim programom..."
+msgstr "Odpri z _drugim programom ..."
 
 #: src/xfdesktop-file-icon-manager.c:2108
 msgid "Set Defa_ult Application..."
-msgstr "Določi pri_vzeti program..."
+msgstr "Določi pri_vzeti program ..."
 
 #: src/xfdesktop-file-icon-manager.c:2164
 msgid "Paste Into Folder"
@@ -1041,7 +1041,7 @@ msgstr "Prilepi v mapo"
 
 #: src/xfdesktop-file-icon-manager.c:2195
 msgid "_Rename..."
-msgstr "P_reimenuj..."
+msgstr "P_reimenuj ..."
 
 #: src/xfdesktop-file-icon-manager.c:2246
 msgid "_Open in New Window"
@@ -1060,11 +1060,11 @@ msgstr "_Naslednje ozadje"
 #: src/xfdesktop-file-icon-manager.c:2278
 #: src/xfdesktop-window-icon-manager.c:332
 msgid "Desktop _Settings..."
-msgstr "Na_stavitve namizja..."
+msgstr "Na_stavitve namizja ..."
 
 #: src/xfdesktop-file-icon-manager.c:2285 src/xfdesktop-volume-icon.c:812
 msgid "_Properties..."
-msgstr "_Lastnosti..."
+msgstr "_Lastnosti ..."
 
 #: src/xfdesktop-file-icon-manager.c:3282
 #, c-format
@@ -1462,4 +1462,16 @@ msgstr "_Priklopi nosilec"
 
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
-msgstr "_Zaženi program..."
+msgstr "_Zaženi program ..."
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr ""
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr ""
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr ""
