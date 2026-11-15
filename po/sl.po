@@ -779,7 +779,7 @@ msgstr "Prikaži _embleme na ikonah datotek"
 msgid ""
 "Unchecking this hides all of the emblems below, without changing their "
 "individual settings."
-msgstr ""
+msgstr "Če to polje odkljukate, se skrijejo vsi emblemi, ne da bi se pri tem spremenile njihove posamezne nastavitve."
 
 #: settings/xfdesktop-settings-ui.glade:1368
 msgid "Show user-assi_gned emblems"
@@ -789,7 +789,7 @@ msgstr "Prikaži embleme, ki ji_h je dodelil uporabnik"
 msgid ""
 "Select this option to show emblems that were manually assigned to a file, "
 "e.g. via Thunar's Properties dialog."
-msgstr ""
+msgstr "Prikaže embleme, ki so bili dodeljeni ročno, npr. z upravljalnikom datotek preko pogovornega okna Lastnosti."
 
 #: settings/xfdesktop-settings-ui.glade:1387
 msgid "Show _symlink emblem"
@@ -799,7 +799,7 @@ msgstr "Prikaži emblem po_vezave"
 msgid ""
 "Select this option to overlay an emblem on desktop icons that are symbolic "
 "links."
-msgstr ""
+msgstr "Prikaže emblem na ikonah namizja, ki so simbolične povezave."
 
 #: settings/xfdesktop-settings-ui.glade:1406
 msgid "Show _read-only emblem"
@@ -809,7 +809,7 @@ msgstr "Prikaži emblem \"_samo za branje\""
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to write to."
-msgstr ""
+msgstr "Prikaže emblem na ikonah, za katere nimate pravice za pisanje."
 
 #: settings/xfdesktop-settings-ui.glade:1425
 msgid "Show _unreadable emblem"
@@ -819,7 +819,7 @@ msgstr "Prikaži emblem \"_ni berljivo\""
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to read."
-msgstr ""
+msgstr "Prikaže emblem na ikonah, za katere nimate pravice za branje."
 
 #: settings/xfdesktop-settings-ui.glade:1448
 msgid "Emblems"
@@ -843,7 +843,7 @@ msgstr "Nastavite ozadje namizja in obnašanje menijev in ikon"
 
 #: settings/xfdesktop-settings.desktop.in:17
 msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr ""
+msgstr "namizje;ozadje;nastavitve;xfce;"
 
 #: src/menu.c:82
 msgid "_Applications"
@@ -939,7 +939,7 @@ msgstr "    Ikone datotek namizja: %s\n"
 #: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
-msgstr ""
+msgstr "%s je že zagnan"
 
 #: src/xfdesktop-file-icon-manager.c:749 src/xfdesktop-file-utils.c:750
 #: src/xfdesktop-file-utils.c:814
@@ -1466,12 +1466,12 @@ msgstr "_Zaženi program ..."
 
 #: src/xfdesktop.desktop.in:4
 msgid "Xfce Desktop Manager"
-msgstr ""
+msgstr "Xfce upravitelj namizja"
 
 #: src/xfdesktop.desktop.in:5
 msgid "Displays desktop background, menu, and icons"
-msgstr ""
+msgstr "Prikaže ozadje namizja, meni in ikone"
 
 #: src/xfdesktop.desktop.in:12
 msgid "desktop;background;wallpaper;xfce;"
-msgstr ""
+msgstr "namizje;ozadje;xfce;"
