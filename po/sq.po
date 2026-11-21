@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-09-21 13:09+0200\n"
+"POT-Creation-Date: 2026-10-10 01:03+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2020-2026\n"
 "Language-Team: Albanian (http://app.transifex.com/xfce/xfdesktop/language/sq/)\n"
@@ -155,7 +155,7 @@ msgstr "ID SOCKET-i"
 msgid "Version information"
 msgstr "Hollësi versioni"
 
-#: settings/main.c:98 src/xfdesktop-application.c:284
+#: settings/main.c:98 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Aktivizo mesazhe diagnostikimi"
 
@@ -164,11 +164,11 @@ msgstr "Aktivizo mesazhe diagnostikimi"
 msgid "Type '%s --help' for usage."
 msgstr "Për përdorimin, shtypni '%s --help'."
 
-#: settings/main.c:122 src/xfdesktop-application.c:1272
+#: settings/main.c:122 src/xfdesktop-application.c:1275
 msgid "The Xfce development team. All rights reserved."
 msgstr "Ekipi i zhvillimit të Xfce-së. Tërë të drejtat të rezervuara."
 
-#: settings/main.c:123 src/xfdesktop-application.c:1273
+#: settings/main.c:123 src/xfdesktop-application.c:1276
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ju lutemi, njoftoni të meta te <%s>."
@@ -769,43 +769,43 @@ msgstr "Të përgjithshme"
 
 #: settings/xfdesktop-settings-ui.glade:1350
 msgid "Show _emblems on file icons"
-msgstr ""
+msgstr "Shfaq _emblema në ikona kartelash"
 
 #: settings/xfdesktop-settings-ui.glade:1355
 msgid ""
 "Unchecking this hides all of the emblems below, without changing their "
 "individual settings."
-msgstr ""
+msgstr "Heqja e shenjës kësaj fsheh krejt emblemat më poshtë, pa ndryshuar rregullimet e tyre individuale."
 
 #: settings/xfdesktop-settings-ui.glade:1368
 msgid "Show user-assi_gned emblems"
-msgstr ""
+msgstr "Shfaq emblema të caktuara nga përdoruesi"
 
 #: settings/xfdesktop-settings-ui.glade:1373
 msgid ""
 "Select this option to show emblems that were manually assigned to a file, "
 "e.g. via Thunar's Properties dialog."
-msgstr ""
+msgstr "Përzgjidheni këtë mundësi që të shfaqen emblema që qenë caktuar dorazi mbi një kartelë, p.sh., përmes dialogut Veti, të Thunar-it."
 
 #: settings/xfdesktop-settings-ui.glade:1387
 msgid "Show _symlink emblem"
-msgstr ""
+msgstr "Shfaq emblemë _simlidhje"
 
 #: settings/xfdesktop-settings-ui.glade:1392
 msgid ""
 "Select this option to overlay an emblem on desktop icons that are symbolic "
 "links."
-msgstr ""
+msgstr "Përzgjidheni këtë mundësi që të mbivendoset një emblemë mbi ikona desktopi që janë lidhje simbolike."
 
 #: settings/xfdesktop-settings-ui.glade:1406
 msgid "Show _read-only emblem"
-msgstr ""
+msgstr "Shfaq emblemë _vetë-për-lexim"
 
 #: settings/xfdesktop-settings-ui.glade:1411
 msgid ""
 "Select this option to overlay an emblem on desktop icons for files you don't"
 " have permission to write to."
-msgstr ""
+msgstr "Përzgjidheni këtë mundësi që të mbivendoset një emblemë mbi ikona desktopi për kartela te të cilat s’keni leje të shkruani."
 
 #: settings/xfdesktop-settings-ui.glade:1425
 msgid "Show _unreadable emblem"
@@ -857,82 +857,82 @@ msgstr "Shtojca “gtk” për gstreamer-in e domosdoshëm për luajtje videosh 
 msgid "Unable to create gstreamer video player"
 msgstr "S’arrihet të krijohet lojtës gstreamer videosh"
 
-#: src/xfdesktop-application.c:276
+#: src/xfdesktop-application.c:278
 msgid "Display version information"
 msgstr "Shfaq të dhëna versioni"
 
-#: src/xfdesktop-application.c:277
+#: src/xfdesktop-application.c:279
 msgid "Reload all settings"
 msgstr "Ringarko krejt rregullimet"
 
-#: src/xfdesktop-application.c:278
+#: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Shko përpara te sfondi pasues në hapësirën e tanishme të punës"
 
-#: src/xfdesktop-application.c:279
+#: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Buthtoje menunë (në pozicionin e atëçastshëm të miut)"
 
-#: src/xfdesktop-application.c:280
+#: src/xfdesktop-application.c:282
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Buthtoje listën e dritareve (në pozicionin e atëçastshëm të miut)"
 
-#: src/xfdesktop-application.c:282
+#: src/xfdesktop-application.c:284
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Sistemoji automatikisht krejt ikonat te desktopi"
 
-#: src/xfdesktop-application.c:285
+#: src/xfdesktop-application.c:287
 msgid "Disable debug messages"
 msgstr "Çaktivizo mesazhe diagnostikimi"
 
-#: src/xfdesktop-application.c:287
+#: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
 msgstr "Mos prit për përgjegjës dritaresh gjatë nisjesh"
 
-#: src/xfdesktop-application.c:289
+#: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
 msgstr "Bëje xfcdesktop-in të mbyllet"
 
-#: src/xfdesktop-application.c:1265
+#: src/xfdesktop-application.c:1268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ky është versioni %s i %s, që po xhiron në Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1267
+#: src/xfdesktop-application.c:1270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Montuar me GTK+ %d.%d.%d, lidhur me GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1275
+#: src/xfdesktop-application.c:1278
 msgid "Build options:\n"
 msgstr "Mundësi montimi:\n"
 
-#: src/xfdesktop-application.c:1276
+#: src/xfdesktop-application.c:1279
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu Desktopi:        %s\n"
 
-#: src/xfdesktop-application.c:1278 src/xfdesktop-application.c:1285
-#: src/xfdesktop-application.c:1292
+#: src/xfdesktop-application.c:1281 src/xfdesktop-application.c:1288
+#: src/xfdesktop-application.c:1295
 msgid "enabled"
 msgstr "aktivizuar"
 
-#: src/xfdesktop-application.c:1280 src/xfdesktop-application.c:1287
-#: src/xfdesktop-application.c:1294
+#: src/xfdesktop-application.c:1283 src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1297
 msgid "disabled"
 msgstr "çaktivizuar"
 
-#: src/xfdesktop-application.c:1283
+#: src/xfdesktop-application.c:1286
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikona Desktopi:       %s\n"
 
-#: src/xfdesktop-application.c:1290
+#: src/xfdesktop-application.c:1293
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikona Kartelash Desktopi:  %s\n"
 
-#: src/xfdesktop-application.c:1357
+#: src/xfdesktop-application.c:1360
 #, c-format
 msgid "%s is already running"
 msgstr ""
@@ -1457,3 +1457,15 @@ msgstr "_Montoje Vëllimin"
 #: src/xfdesktop-window-icon-manager.c:293
 msgid "_Run Program..."
 msgstr "_Xhironi Program…"
+
+#: src/xfdesktop.desktop.in:4
+msgid "Xfce Desktop Manager"
+msgstr "Përgjegjës Desktopi Xfce"
+
+#: src/xfdesktop.desktop.in:5
+msgid "Displays desktop background, menu, and icons"
+msgstr "Bën shfaqjen e sfondit, menuve dhe ikonave të desktopit"
+
+#: src/xfdesktop.desktop.in:12
+msgid "desktop;background;wallpaper;xfce;"
+msgstr "desktop;sfond;xfce;"
