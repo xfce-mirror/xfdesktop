@@ -862,7 +862,7 @@ msgstr "Relege omnēs cōnfigūrātiōnēs"
 
 #: src/xfdesktop-application.c:280
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Trānsī ad proximam imāginem mēnsae in praesente āreā labōris."
+msgstr "Trānsī ad proximam imāginem mēnsae in praesente āreā labōris"
 
 #: src/xfdesktop-application.c:281
 msgid "Pop up the menu (at the current mouse position)"
@@ -882,7 +882,7 @@ msgstr "Supprime nūntiōs emendātiōnis"
 
 #: src/xfdesktop-application.c:289
 msgid "Do not wait for a window manager on startup"
-msgstr "Nōlī in initiō administrātōrem fenestrārum exspectāre."
+msgstr "Nōlī in initiō administrātōrem fenestrārum exspectāre"
 
 #: src/xfdesktop-application.c:291
 msgid "Cause xfdesktop to quit"
@@ -971,7 +971,7 @@ msgstr "Ēlige cōnfigūrātiōnem mōnitōriōrum"
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
-msgstr ""
+msgstr "Vīsne ōrdinātiōnem īcōnum mēnsae iam exsistentem mōnitōriō <b>%s</b> attribuere?"
 
 #: src/xfdesktop-file-icon-manager.c:1639
 msgid "Monitors"
@@ -1060,7 +1060,7 @@ msgstr "_Proprietātēs..."
 #: src/xfdesktop-file-icon-manager.c:3282
 #, c-format
 msgid "Failed to save dropped file to '%s'"
-msgstr ""
+msgstr "Plica dēmissa in '%s' servārī nōn potuit."
 
 #: src/xfdesktop-file-icon-manager.c:3284
 msgid "Drop Failure"
@@ -1091,15 +1091,15 @@ msgstr "_Abroga"
 #: src/xfdesktop-file-icon-manager.c:3817
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr ""
+msgstr "Directōrium mēnsae \"%s\" creārī nōn potuit"
 
 #: src/xfdesktop-file-icon-manager.c:3825
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "Directōrium mēnsae legī nōn potuit"
 
 #: src/xfdesktop-file-icon-manager.c:3834
 msgid "A desktop file icon error occurred"
-msgstr ""
+msgstr "Error in īcōne plicae mēnsae accidit"
 
 #: src/xfdesktop-file-icon-manager.c:3838
 msgid "Desktop Folder Error"
@@ -1108,7 +1108,7 @@ msgstr "Error directōriī mēnsae"
 #: src/xfdesktop-file-icon-model.c:605
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "Plica ōrdināria eōdem nōmine iam exstat. Quaesō eam dēlē aut eī nōmen mūtā."
 
 #. TRANSLATORS: file was modified less than one day ago
 #: src/xfdesktop-file-utils.c:178
@@ -1154,11 +1154,11 @@ msgstr "Error"
 
 #: src/xfdesktop-file-utils.c:697
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "Operātiō petīta complērī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:751
 msgid "The file could not be renamed"
-msgstr ""
+msgstr "Nōmen plicae mūtārī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:752 src/xfdesktop-file-utils.c:816
 #: src/xfdesktop-file-utils.c:877 src/xfdesktop-file-utils.c:1403
@@ -1167,7 +1167,7 @@ msgstr ""
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
+msgstr "Haec facultās requīrit ut ministerium administrātōris plicārum adsit (quāle Thunar praebet)."
 
 #: src/xfdesktop-file-utils.c:875
 msgid "Delete Error"
@@ -1175,7 +1175,7 @@ msgstr "Error Dēlētiōnis"
 
 #: src/xfdesktop-file-utils.c:876
 msgid "The selected files could not be deleted"
-msgstr ""
+msgstr "Plicae sēlēctae dēlērī nōn potuērunt"
 
 #: src/xfdesktop-file-utils.c:936 src/xfdesktop-file-utils.c:984
 msgid "Trash Error"
@@ -1183,17 +1183,17 @@ msgstr "Error purgāmentōrum"
 
 #: src/xfdesktop-file-utils.c:937
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Plicae sēlēctae in cistam purgāmentōrum mōvērī nōn potuērunt"
 
 #: src/xfdesktop-file-utils.c:938 src/xfdesktop-file-utils.c:986
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
+msgstr "Haec facultās requīrit ut ministerium purgāmentōrum adsit (quāle Thunar praebet)."
 
 #: src/xfdesktop-file-utils.c:985
 msgid "Could not empty the trash"
-msgstr ""
+msgstr "Cista purgāmentōrum vacuefierī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:995
 #, c-format
@@ -1203,7 +1203,7 @@ msgstr "Novam plicam \"%1$s\" ex plicā exemplārī \"%2$s\": %3$s creāre nōn 
 #: src/xfdesktop-file-utils.c:1001 src/xfdesktop-file-utils.c:1115
 #: src/xfdesktop-file-utils.c:1211
 msgid "Create File Error"
-msgstr ""
+msgstr "Errōr in plicā creandā"
 
 #: src/xfdesktop-file-utils.c:1003 src/xfdesktop-file-utils.c:1277
 msgid "Could not create a new file"
@@ -1229,12 +1229,12 @@ msgstr "C_reā"
 #: src/xfdesktop-file-utils.c:1209
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
-msgstr ""
+msgstr "Nōmen plicae \"%s\" in cōdificātiōnem locālem convertī nōn potest"
 
 #: src/xfdesktop-file-utils.c:1271
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Creā documentum ex exemplārī \"%s\""
 
 #: src/xfdesktop-file-utils.c:1274 src/xfdesktop-file-utils.c:1307
 msgid "Enter the name:"
@@ -1250,32 +1250,32 @@ msgstr "Creā novum directōrium"
 
 #: src/xfdesktop-file-utils.c:1401
 msgid "File Properties Error"
-msgstr ""
+msgstr "Error proprietātum plicae"
 
 #: src/xfdesktop-file-utils.c:1402
 msgid "The file properties dialog could not be opened"
-msgstr ""
+msgstr "Fenestra proprietātum plicae aperīrī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:1463
 msgid "The file could not be opened"
-msgstr ""
+msgstr "Plica aperīrī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:1484 src/xfdesktop-file-utils.c:1594
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr ""
+msgstr "\"%s\" incipere nōn potuit"
 
 #: src/xfdesktop-file-utils.c:1662
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "Fenestra ad applicātiōnem sēligendam aperīrī nōn potuit"
 
 #: src/xfdesktop-file-utils.c:1733 src/xfdesktop-file-utils.c:1802
 msgid "Transfer Error"
-msgstr ""
+msgstr "Error trānsferendī"
 
 #: src/xfdesktop-file-utils.c:1734 src/xfdesktop-file-utils.c:1803
 msgid "The file transfer could not be performed"
-msgstr ""
+msgstr "Plica trānsferrī nōn potuit"
 
 #: src/xfdesktop-icon-view-manager.c:485
 msgid "Arrange Icons"
@@ -1285,7 +1285,7 @@ msgstr "Ōrdinā īconēs"
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr ""
+msgstr "Hoc omnēs rēs mēnsae novō ōrdine disponet eāsque in aliīs locīs scrīniī collocābit.\n\nCertusne es?"
 
 #: src/xfdesktop-icon-view-manager.c:510
 msgid "Do _not ask me again"
@@ -1293,20 +1293,20 @@ msgstr "Nōlī rogāre mē iterum"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:78
 msgid "Allow Xfce to auto-assign the best match"
-msgstr ""
+msgstr "Permitte ut Xfce dispositionem aptissimam per sē attribuat"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:93
 msgid "Select from existing monitor configurations:"
-msgstr ""
+msgstr "Sēlige ex cōnfigūrātiōnibus monitōrum exstantibus:"
 
 #: src/xfdesktop-monitor-chooser-ui.glade:127
 msgid "Always auto-assign"
-msgstr ""
+msgstr "Semper per sē attribuere"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:133
 msgid "Unmounting device"
-msgstr ""
+msgstr "Solūtiō apparātūs"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:136
@@ -1314,12 +1314,12 @@ msgstr ""
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr ""
+msgstr "Apparātus \"%s\" ā systēmate solvitur. Quaesō, nōlī apparātum disiungere"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:237
 msgid "Writing data to device"
-msgstr "data ad apparātum scrībuntur"
+msgstr "Data ad apparātum scrībuntur"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: src/xfdesktop-notify.c:143 src/xfdesktop-notify.c:240
@@ -1327,7 +1327,7 @@ msgstr "data ad apparātum scrībuntur"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Dāta quaedam in apparātum \"%s\" adhūc scrībenda sunt, antequam is removērī possit. Quaesō, nōlī apparātum removēre"
 
 #: src/xfdesktop-notify.c:207
 msgid "Unmount Finished"
