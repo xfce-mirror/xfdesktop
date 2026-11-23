@@ -735,7 +735,7 @@ msgstr "    Īcōnēs plicārum mēnsae:  %s\n"
 #: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr ""
+msgstr "Directōrium mēnsae \"%s\" creārī nōn potuit"
 
 #: ../src/xfdesktop-file-icon-manager.c:582
 #: ../src/xfdesktop-file-icon-manager.c:600
@@ -746,6 +746,7 @@ msgstr "Error directōriī mēnsae"
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
+"Plica ōrdināria eōdem nōmine iam exstat. Quaesō eam dēlē aut eī nōmen mūtā."
 
 #: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:897
 #: ../src/xfdesktop-file-utils.c:961
@@ -765,6 +766,9 @@ msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
+"Hoc omnēs rēs mēnsae novō ōrdine disponet eāsque in aliīs locīs scrīniī collocābit.\n"
+"\n"
+"Certusne es?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1020
 msgid "_OK"
@@ -899,7 +903,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:3079
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "Directōrium mēnsae legī nōn potuit"
 
 #: ../src/xfdesktop-file-icon-manager.c:3625
 msgid "Copy _Here"
@@ -965,11 +969,11 @@ msgstr "Error"
 
 #: ../src/xfdesktop-file-utils.c:844
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "Operātiō petīta complērī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:898
 msgid "The file could not be renamed"
-msgstr ""
+msgstr "Nōmen plicae mūtārī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:899 ../src/xfdesktop-file-utils.c:963
 #: ../src/xfdesktop-file-utils.c:1024 ../src/xfdesktop-file-utils.c:1188
@@ -980,6 +984,8 @@ msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
+"Haec facultās requīrit ut ministerium administrātōris plicārum adsit (quāle "
+"Thunar praebet)."
 
 #: ../src/xfdesktop-file-utils.c:1022
 msgid "Delete Error"
@@ -987,7 +993,7 @@ msgstr "Error Dēlētiōnis"
 
 #: ../src/xfdesktop-file-utils.c:1023
 msgid "The selected files could not be deleted"
-msgstr ""
+msgstr "Plicae sēlēctae dēlērī nōn potuērunt"
 
 #: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1131
 msgid "Trash Error"
@@ -995,21 +1001,23 @@ msgstr "Error purgāmentōrum"
 
 #: ../src/xfdesktop-file-utils.c:1084
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Plicae sēlēctae in cistam purgāmentōrum mōvērī nōn potuērunt"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1133
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
+"Haec facultās requīrit ut ministerium purgāmentōrum adsit (quāle Thunar "
+"praebet)."
 
 #: ../src/xfdesktop-file-utils.c:1132
 msgid "Could not empty the trash"
-msgstr ""
+msgstr "Cista purgāmentōrum vacuefierī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:1186
 msgid "Create File Error"
-msgstr ""
+msgstr "Errōr in plicā creandā"
 
 #: ../src/xfdesktop-file-utils.c:1187
 msgid "Could not create a new file"
@@ -1025,37 +1033,37 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:1331
 msgid "File Properties Error"
-msgstr ""
+msgstr "Error proprietātum plicae"
 
 #: ../src/xfdesktop-file-utils.c:1332
 msgid "The file properties dialog could not be opened"
-msgstr ""
+msgstr "Fenestra proprietātum plicae aperīrī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:1393
 msgid "The file could not be opened"
-msgstr ""
+msgstr "Plica aperīrī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:1414 ../src/xfdesktop-file-utils.c:1521
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr ""
+msgstr "\"%s\" incipere nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:1589
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "Fenestra ad applicātiōnem sēligendam aperīrī nōn potuit"
 
 #: ../src/xfdesktop-file-utils.c:1660 ../src/xfdesktop-file-utils.c:1729
 msgid "Transfer Error"
-msgstr ""
+msgstr "Error trānsferendī"
 
 #: ../src/xfdesktop-file-utils.c:1661 ../src/xfdesktop-file-utils.c:1730
 msgid "The file transfer could not be performed"
-msgstr ""
+msgstr "Plica trānsferrī nōn potuit"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr ""
+msgstr "Solūtiō apparātūs"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:130
@@ -1063,7 +1071,7 @@ msgstr ""
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr ""
+msgstr "Apparātus \"%s\" ā systēmate solvitur. Quaesō, nōlī apparātum disiungere"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1077,6 +1085,8 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
+"Dāta quaedam in apparātum \"%s\" adhūc scrībenda sunt, antequam is removērī "
+"possit. Quaesō, nōlī apparātum removēre"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
